@@ -1,0 +1,47 @@
+body {
+  background-image: url(aozora/bg.gif);
+}
+.content {
+  margin-left: 70px;
+  margin-right: 160px;
+}
+h1 {
+  font-size: 20px;
+  float: right;
+  margin-top: 0px;
+  margin-right: 150px;
+}
+.sky {
+  width: 900px;
+  margin-left: 70px;
+}
+.top {
+  width: 300px;
+  margin-top: 40px;
+}
+
+p {
+  font-size: 20px;
+}
+.topseccond {
+  width: 450px;
+}
+h4 {
+  margin-left: 30px;
+  font-size: 25px;
+}
+ul {
+  margin-bottom: 50px;
+}
+li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+footer {
+  border-top: solid 2px #191918;
+  font-size: 10px;
+}
+footer p {
+  text-align: center;
+  font-size: 15px;
+}
