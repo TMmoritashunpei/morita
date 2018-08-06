@@ -4,17 +4,18 @@
 <meta charset="UTF-8">
 <title>b012</title>
 <link rel="stylesheet" href="form.css" media="screen, print">
+<script type="text/javascript" src="form.js"></script>
 </head>
 <body>
 <div id="container">
   <form action="#" method="post">
-    <p>名前：<input type="text" name="name" id="personal" size="20" maxlength="20" value=""></p>
-    <p>年齢：<input type="text" name="age" id="personal" size="20" maxlength="2" value="">才</p>
+    <p>名前：<input type="text" name="name" id="personal" size="20" maxlength="20" value=""required></p>
+    <p>年齢：<input type="text" name="age" id="personal" size="20" maxlength="2" value=""required>才</p>
     <p>性別：
-      <input type="radio" name="sex" value="male">男性
-      <input type="radio" name="sex" value="female">女性</p>
-    <p>電話：<input type="text" name="tel" id="personal2" size="20" maxlength="15" value=""></p>
-    <p>住所：<input type="text" name="address" id="personal2" size="20" maxlength="50" value=""></p>
+      <input type="radio" name="sex" value="male"required>男性
+      <input type="radio" name="sex" value="female"required>女性</p>
+    <p>電話：<input type="text" name="tel" id="personal2" size="20" maxlength="15" value=""required></p>
+    <p>住所：<input type="text" name="address" id="personal2" size="20" maxlength="50" value=""required></p>
     <p>内容：<textarea name="subject" id="content" rows="5" cols="40">お問い合せ内容</textarea></p>
     <p>回答：
       <select name="answer" id="pulldown">
@@ -27,7 +28,7 @@
     </p>
     <p class="botton"><input type="submit" value="送信">
        <input type="submit" value="リセット"></p>
-  </form>
+  </form
 </div><!-- / #container -->
 </body>
 </html>
