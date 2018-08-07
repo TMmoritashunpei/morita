@@ -17,7 +17,7 @@ var mainFlame = document.querySelector('#gallery .main');
 mainFlame.insertBefore(mainImage, null);
 mainFlame.insertBefore(mainMsg, null);
 
-var thumbFlame = document.querySelector('#gallery        .thumb');
+var thumbFlame = document.querySelector('#gallery .thumb');
 for (var i = 0; i < album.length; i++) {
   var thumbImage = document.createElement('img');
   thumbImage.setAttribute('src', album[i].src);
