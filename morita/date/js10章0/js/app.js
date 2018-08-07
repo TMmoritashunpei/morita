@@ -1,7 +1,7 @@
 $(function() {
   var topBtn = $('#scrollTop');
   topBtn.hide();
-});
+
 
 $(window).scroll(function() {
   if ($(this).scrollTop() > 200) {
@@ -15,4 +15,5 @@ topBtn.click(function (event) {
   $('body, html').animate({
     scrollTop: 0
   },500);
+});
 });
