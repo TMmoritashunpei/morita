@@ -3,20 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <title>b012</title>
-<link rel="stylesheet" href="form.css" media="screen, print">
-<script type="text/javascript" src="form.js"></script>
+<link rel="stylesheet" href="css/form.css" media="screen, print">
+
 </head>
 <body>
 <div id="container">
   <form action="#" method="post">
-    <p>名前：<input type="text" name="name" id="personal" size="20" maxlength="20" value=""required></p>
-    <p>年齢：<input type="text" name="age" id="personal" size="20" maxlength="2" value=""required>才</p>
+    <p>名前：
+      <input type="text" name="name" id="Name" size="20" maxlength="20" value="">
+      <span id="name_error" class="error_m">
+      </span>
+    </p>
+    <p>年齢：
+      <input type="age" name="age" id="age" size="20" maxlength="2" value="">才
+      <span id"age_error" class="error_m"></span>
+    </p>
     <p>性別：
       <input type="radio" name="sex" value="male"required>男性
       <input type="radio" name="sex" value="female"required>女性</p>
-    <p>電話：<input type="text" name="tel" id="personal2" size="20" maxlength="15" value=""required></p>
-    <p>住所：<input type="text" name="address" id="personal2" size="20" maxlength="50" value=""required></p>
-    <p>内容：<textarea name="subject" id="content" rows="5" cols="40">お問い合せ内容</textarea></p>
+    <p>電話：<input type="tel" name="tel" id="tel" size="20" maxlength="15" value="">
+      <span id="tel_error" class="error_m"></span>
+    </p>
+    <p>住所：
+      <input type="address" name="address" id="address" size="20" maxlength="50" value="">
+      <span id="address" class="error_m"></span>
+    </p>
+    <p>内容：<textarea name="subject" id="subject" rows="5" cols="40">お問い合せ内容</textarea>
+      <span id="subject_error" class="error_m"></span>
+    </p>
     <p>回答：
       <select name="answer" id="pulldown">
         <option value="" selected>メールで返信希望</option>
@@ -26,9 +40,11 @@
         <option value="4">すぐに来て下さい</option>
       </select>
     </p>
-    <p class="botton"><input type="submit" value="送信">
-       <input type="submit" value="リセット"></p>
+    <p class="botton"><input class="btn_submit" type="submit" value="送信" onclick="input_check();return false;">
+       <input class="btn_reset" type="submit" value="リセット"></p>
   </form
 </div><!-- / #container -->
+<script src="js/app.js"></script>
+<script src="js/jQuery.min.js"></script>
 </body>
 </html>
