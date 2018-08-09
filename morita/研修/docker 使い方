@@ -1,0 +1,22 @@
+docker ps コンテナの情報を見る
+
+docker start lamp
+lanpスタートする
+
+docker exec -it lamp /bin/bash
+コンテナに移動する 上記ではlamp
+
+centos アップデート
+docker start lamp
+
+apt-get install -y vim
+vim ダウンロード
+
+apache2ctl start
+apache起動
+
+mysql接続
+docker exec -it lamp /bin/bash
+mysql -u morita -p
+
+mysql -u root -p

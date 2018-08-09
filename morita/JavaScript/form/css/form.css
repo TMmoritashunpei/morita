@@ -92,3 +92,12 @@ p{
 .botton{
   margin-top: 5px;
 }
+
+/*----エラー表示span--*/
+span.error_m {
+	font-size: 15px;
+	font-weight: normal;
+	color:#FF4040;
+	display: block;
+	margin: 0;
+}
