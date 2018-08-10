@@ -20,3 +20,7 @@ docker exec -it lamp /bin/bash
 mysql -u morita -p
 
 mysql -u root -p
+
+
+sql リストア
+mysql -u root -D practice workbook.sql
