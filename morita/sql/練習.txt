@@ -1,0 +1,111 @@
+mysql> show tables;
++--------------+
+| Tables_in_wc |
++--------------+
+| countries    |
+| goals        |
+| goals_tmp    |
+| pairings     |
+| pairings_tmp |
+| players      |
+| players_tmp  |
++--------------+
+
+mysql> show columns from countries;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| id         | int(11)     | NO   | PRI | NULL    | auto_increment |
+| name       | varchar(50) | YES  |     | NULL    |                |
+| ranking    | int(11)     | YES  |     | NULL    |                |
+| group_name | varchar(1)  | YES  |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+
+
+
+mysql> show columns from goals;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| id         | int(11)     | NO   | PRI | NULL    | auto_increment |
+| pairing_id | int(11)     | YES  |     | NULL    |                |
+| player_id  | int(11)     | YES  |     | NULL    |                |
+| goal_time  | varchar(10) | YES  |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+
+
+
+
+mysql> show columns from goals_tmp;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| my_country    | varchar(50) | YES  |     | NULL    |       |
+| enemy_country | varchar(50) | YES  |     | NULL    |       |
+| goal_time     | varchar(10) | YES  |     | NULL    |       |
+| player_name   | varchar(50) | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+
+mysql> show columns from pairings;
++------------------+----------+------+-----+---------+----------------+
+| Field            | Type     | Null | Key | Default | Extra          |
++------------------+----------+------+-----+---------+----------------+
+| id               | int(11)  | NO   | PRI | NULL    | auto_increment |
+| kickoff          | datetime | YES  |     | NULL    |                |
+| my_country_id    | int(11)  | YES  |     | NULL    |                |
+| enemy_country_id | int(11)  | YES  |     | NULL    |                |
++------------------+----------+------+-----+---------+----------------+
+
+mysql> show columns from pairings_tmp;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| kickoff       | datetime    | YES  |     | NULL    |       |
+| my_country    | varchar(50) | YES  |     | NULL    |       |
+| enemy_country | varchar(50) | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+
+mysql> show columns from players;
++-------------+-------------+------+-----+---------+----------------+
+| Field       | Type        | Null | Key | Default | Extra          |
++-------------+-------------+------+-----+---------+----------------+
+| id          | int(11)     | NO   | PRI | NULL    | auto_increment |
+| country_id  | int(11)     | YES  |     | NULL    |                |
+| uniform_num | int(11)     | YES  |     | NULL    |                |
+| position    | varchar(2)  | YES  |     | NULL    |                |
+| name        | varchar(50) | YES  |     | NULL    |                |
+| club        | varchar(50) | YES  |     | NULL    |                |
+| birth       | date        | YES  |     | NULL    |                |
+| height      | int(11)     | YES  |     | NULL    |                |
+| weight      | int(11)     | YES  |     | NULL    |                |
++-------------+-------------+------+-----+---------+----------------+
+
+mysql> show columns from players_tmp;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| country     | varchar(50) | YES  |     | NULL    |       |
+| uniform_num | int(11)     | YES  |     | NULL    |       |
+| position    | varchar(2)  | YES  |     | NULL    |       |
+| name        | varchar(50) | YES  |     | NULL    |       |
+| club        | varchar(50) | YES  |     | NULL    |       |
+| birth       | date        | YES  |     | NULL    |       |
+| height      | int(11)     | YES  |     | NULL    |       |
+| weight      | int(11)     | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+
+
+
+
+
+mysql> select * from countries where group_name = 'c';
++----+--------------------------+---------+------------+
+| id | name                     | ranking | group_name |
++----+--------------------------+---------+------------+
+|  9 | コロンビア               |       8 | C          |
+| 10 | ギリシャ                 |      12 | C          |
+| 11 | コートジボワール         |      23 | C          |
+| 12 | 日本                     |      46 | C          |
++----+--------------------------+---------+------------+
+4 rows in set (0.00 sec)
+

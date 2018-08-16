@@ -22,5 +22,31 @@ mysql -u morita -p
 mysql -u root -p
 
 
+CREATE DATABASE wc;
+
+
+
+
 sql リストア
-mysql -u root -D practice workbook.sql
+mysql -u root  -D データベース名 < worldcup2014.dmp
+
+テーブル作る
+CREATE DATABASE テーブル名;
+
+
+テーブル選択する
+use table名;
+
+
+テーブル見る
+
+show tables;
+
+縦表示
+show table status￥G
+
+pager less -n -i -S
+折り返ししない
+
+カラムを見る
+SHOW COLUMNS FROM tbl_name
