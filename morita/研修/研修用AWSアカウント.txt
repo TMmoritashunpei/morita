@@ -1,0 +1,3 @@
+ID:s.morita
+PW:68916891
+login URL:https://636987423144.signin.aws.amazon.com/console

@@ -1,0 +1,145 @@
+EXPLAIN とは
+
+実行計画のこと
+
+
+sql文にexplainをつけて実行する
+
+DBがどういう風に結果を欲しいときはそのデータの流れがどうすると早くとってくるか自分たちで考えてこうしようと考える
+
+実行計画を覗くことができる
+
+
+postgres
+DBの構造がどういうものか見ることができる
+
+mysql　データ量が少ない
+
+一つ
+エクスプレインをつけて実行
+自分に表にする
+
+出力フォーマット
+
+explains をつけて実行する。
+explains
+Nested Loop
+を使って解決する
+
+すべてのテーブルが処理されると、MySQL は選択したカラムを出力し、さらに一致する行があるテーブルが見つかるまで、テーブルリストを逆戻りします。次の行がテーブルから読み取られ、プロセスは次のテーブルに進みます。
+
+ちゃんと絞り込めないと時間かかる
+
+EXTENDED キーワードと PARTITIONS キーワードを、同じ EXPLAIN ステートメントで一緒に使用することはできません。
+
+一つのテーブル分ける
+一億分のデータよりも
+100分の1にしたほうがはやい
+電話番号の080　090とかで分けたりできる
+パーティションを分けてやると
+検索するときに
+
+検索のパフォーマン
+
+
+インデックス
+とあるカラムに
+インデックスを張るという使いかたする
+何もしないでDBを探すとなると
+全て見る必要がある。
+カラムにインデックスに貼ると
+重複しない　IDなど
+インデックスとレコードがリンクしている
+3つのカラムがユニークになればOK
+複数つけることもできる。
+張っただけでは効果が無い。
+
+アナライズ
+テーブル名　インデックスのテーブルにアナライズしておかないと意味が無い。
+頻繁に更新しないといけないようなら頻繁にアナライズ必要になる
+
+
+possible_keys	選択可能なインデックス
+
+
+
+where インデックスにアナライズしておけば
+早く探せる
+| id | select_type        | table | partitions | type   | possible_keys | key     | key_len | ref                    | rows | filtered | Extra
+
+
+rows 1なら絞られている
+
+filtered　少ないほうがいい
+
+
+possible_keys
+rowsの数に関係してくる
+
+key
+インデックススキャン・データ行スキャン
+
+
+InnoDB
+mysqlのサーチエンジン
+
+key が NULL の場合、MySQL はクエリーをより効率的に実行するために使用するインデックスを見つけられない
+件数が少ないとインデックス使われない場合がある。
+指定しながら使う方法もある
+FORCE INDEX、USE INDEX、または IGNORE INDEX を使用します
+
+
+key_len の値によって、MySQL が実際に使用するマルチパートキーのパート数を判断できます。
+
+4の場合　idの文字数
+
+rows
+
+rows カラムは、MySQL がクエリーを実行するために調査する必要があると考える行数を示します。
+少ないほうがいい
+
+
+多かったら絞り込み出来ていない。
+
+
+
+相関サブクエリー
+
+
+
+爆弾
+エクセルcsvファイルになる
+カンマ区切りのデータ
+.ｃｓｖ
+データ数とカラムが同じであれば取り込むことができる
+
+シェルでデータに投入する
+for 文でたくさん作る
+tsv
+タブ区切り
+データの中にカンマ入っていたらおかしい
+からtsvを使う
+
+
+
+
+
+
+
+
+
+
+
+---+----------+----------------------------------------------------+
+| id | select_type        | table | partitions | type   | possible_keys | key     | key_len | ref                    | rows | filtered | Extra                                              |
++----+--------------------+-------+------------+--------+---------------+---------+---------+------------------------+------+----------+----------------------------------------------------+
+|  1 | PRIMARY            | c1    | NULL       | ALL    | PRIMARY       | NULL    | NULL    | NULL                   |   32 |    10.00 | Using where; Using temporary; Using filesort       |
+|  1 | PRIMARY            | p1    | NULL       | ALL    | NULL          | NULL    | NULL    | NULL                   |  144 |    10.00 | Using where; Using join buffer (Block Nested Loop) |
+|  1 | PRIMARY            | c2    | NULL       | eq_ref | PRIMARY       | PRIMARY | 4       | wc.p1.enemy_country_id |    1 |    10.00 | Using where                                        |
+|  5 | DEPENDENT SUBQUERY | p2    | NULL       | ALL    | PRIMARY       | NULL    | NULL    | NULL                   |  144 |     1.00 | Using where                                        |
+|  5 | DEPENDENT SUBQUERY | g2    | NULL       | ALL    | NULL          | NULL    | NULL    | NULL                   |  188 |    10.00 | Using where; Using join buffer (Block Nested Loop) |
+|  4 | DEPENDENT SUBQUERY | g1    | NULL       | ALL    | NULL          | NULL    | NULL    | NULL                   |  188 |    10.00 | Using where                                        |
+|  3 | DEPENDENT SUBQUERY | p2    | NULL       | ALL    | PRIMARY       | NULL    | NULL    | NULL                   |  144 |     1.00 | Using where                                        |
+|  3 | DEPENDENT SUBQUERY | g2    | NULL       | ALL    | NULL          | NULL    | NULL    | NULL                   |  188 |    10.00 | Using where; Using join buffer (Block Nested Loop) |
+|  2 | DEPENDENT SUBQUERY | g1    | NULL       | ALL    | NULL          | NULL    | NULL    | NULL                   |  188 |    10.00 | Using where                                        |
++----+--------------------+-------+------------+--------+---------------+---------+---------+------------------------+------+----------+----------------------------------------------------+
