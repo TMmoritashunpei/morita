@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  background-color: #FFF;
+  background-image: url(img/space_desktop_wallpaper.jpg);
+  background-repeat: repeat-y;
+}
+h1 {
+  color: darkred;
+  border-bottom: dashed 4px #999;
+}
+p {
+  color: #FFF;
+}
+h1,p {
+  padding: 5px 20px;
+  margin-left: 70px;
+}

@@ -1,3 +1,25 @@
 ID:s.morita
 PW:68916891
 login URL:https://636987423144.signin.aws.amazon.com/console
+
+
+ドメイン
+
+お名前.Com
+お名前ID:8792520
+
+shumpeimorita.work
+
+s.morita@tcmobile.jp
+68916891
+
+ASW
+
+エンドポイント : http://shumpeimorita.work.s3-website-ap-northeast-1.amazonaws.com
+
+IAM
+winscpUSER
+IAM アクセスキー
+AKIAJAVXMYX4FJ3ZCRNQ
+シークレットキー
+KbCHrEPLVvPc2yUw/oz8rDVUMU5Gh1gb4TOV1FrV

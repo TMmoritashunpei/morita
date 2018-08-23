@@ -1,0 +1,29 @@
+{
+
+var google_ads = new Array();
+var google_ad;
+var google_radlinks = new Array();
+var google_radlink;
+var google_info = new Object();
+google_ad = new Object(); 
+google_ad.n = 1; 
+google_ad.type = "image"; 
+google_ad.bidtype = "CPC"; 
+google_ad.targeting_type = ""; 
+google_ad.url = "http://www.googleadservices.com/pagead/aclk?sa=L&amp;ai=C95VwdMHeUICtGYaDkgX21oDwDuvXwaoDs_6k4VPrwpHWjAEQASCmtpIFUP6zgej5_____wFgievEhPQToAG1__LMA8gBAqkCjrVKfE_zSD6oAwGqBH5P0NDmWBL3WFPdSALYTBz4G5TIlLaQ0MjbPX32Zn242w30HvnACRpPSw1byyK_A3OuDSxhkxHXtWZTss1Nrv3nkuQMDtOYN7pFlMu8qQdPCcc81YytaNJ6zFA-eYuF5vrZvuAq4ey6dElPpwKTXefsyhMh2TGMYUMNqfeWnUmIBgGgBgKAB7OAjTM&amp;num=1&amp;cid=5GjPSc7UlcpoPNKFGQnxhcnh&amp;sig=AOD64_3R7YPUM2kX21pWrHxeQ3NDIZGN-g&amp;client=ca-hatena_js&amp;adurl=http://www.ino-inc.com/restore/datacheck.html%3Fcm_id%3D002"; 
+google_ad.visible_url = "www.ino-inc.com"; 
+google_ad.image_url = "http://pagead2.googlesyndication.com/simgad/10860104362634862497";
+google_ad.image_width = "300";
+google_ad.image_height = "250";
+google_ad.image_alt_text = "";
+google_ads[0] = google_ad; 
+google_info.feedback_url = "http://www.google.com/url?ct\x3dabg\x26q\x3dhttps://www.google.com/adsense/support/bin/request.py%3Fcontact%3Dabg_afc%26url%3Dhttp://d.hatena.ne.jp/web-mind/20121222/p1%26gl%3DJP%26hl%3Dja%26client%3Dca-hatena_js%26hideleadgen%3D1%26ai0%3DC95VwdMHeUICtGYaDkgX21oDwDuvXwaoDs_6k4VPrwpHWjAEQASCmtpIFUP6zgej5_____wFgievEhPQToAG1__LMA8gBAqkCjrVKfE_zSD6oAwGqBH5P0NDmWBL3WFPdSALYTBz4G5TIlLaQ0MjbPX32Zn242w30HvnACRpPSw1byyK_A3OuDSxhkxHXtWZTss1Nrv3nkuQMDtOYN7pFlMu8qQdPCcc81YytaNJ6zFA-eYuF5vrZvuAq4ey6dElPpwKTXefsyhMh2TGMYUMNqfeWnUmIBgGgBgKAB7OAjTM\x26usg\x3dAFQjCNEXoUnHjK9GCkzclKVHeMpGl9UYAQ";
+var google_attribution_text = "Ads by Google";
+var google_is_rtl = false;
+if (window.google_ad_request_done) {
+google_ad_request_done(google_ads);
+}
+if (window.google_radlink_request_done) {
+google_radlink_request_done(google_radlinks);
+}
+}
