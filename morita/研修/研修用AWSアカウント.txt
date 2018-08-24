@@ -19,3 +19,7 @@ ASW
 www.shumpeimorita.work
 IAM
 winscpUSER
+IAM アクセスキー
+AKIAJAVXMYX4FJ3ZCRN
+シークレットキー
+KbCHrEPLVvPc2yUw/oz8rDVUMU5Gh1gb4TOV1FrV
