@@ -139,13 +139,15 @@ ec2インスタンス
 
 [   19.400181] bitnami[1165]: #########################################################################
 [   19.409116] bitnami[1165]: #                                                                       #
-[   19.420273] bitnami[1165]: #        Setting Bitnami application password to 'FLY0lE0T3cly'         #
+[   19.420273] bitnami[1165]: #        Setting Bitnami application password to 'B0HQksEcuf60'         #
 [   19.431701] bitnami[1165]: #        (the default application username is 'user')                   #
 [   19.441107] bitnami[1165]: #                                                                       #
 [   19.449565] bitnami[1165]: ########################################################################
 
 ttl
 bitnami
+
+B0HQksEcuf60
 秘密鍵
 
 mysql接続
