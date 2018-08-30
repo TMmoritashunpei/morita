@@ -13,13 +13,11 @@ shumpeimorita.work
 s.morita@tcmobile.jp
 68916891
 
-ASW
+AWS
 
 エンドポイント : http://shumpeimorita.work.s3-website-ap-northeast-1.amazonaws.com
 www.shumpeimorita.work
-IAM
-winscpUSER
-IAM アクセスキー
-AKIAJAVXMYX4FJ3ZCRN
-シークレットキー
-KbCHrEPLVvPc2yUw/oz8rDVUMU5Gh1gb4TOV1FrV
+
+mv アカウント
+morita
+68916891
