@@ -173,7 +173,8 @@ $ 一つ　二個目は評価しないという
 式1が真なら　式２
 違うなら式３
 
-：コマンド
+
+.コマンド
 
 
 #!/bin/bash
@@ -279,3 +280,16 @@ unset　export取消
 ■set
 
 ■tar
+
+
+#!/bin/bash
+func $1
+
+func() {
+	if { ! -f "$1" }; then
+	echo "$1"'ファイルが存在しません'
+	return 1
+fi
+	cp -p "$1" "$1".bak
+	return 0
+}
