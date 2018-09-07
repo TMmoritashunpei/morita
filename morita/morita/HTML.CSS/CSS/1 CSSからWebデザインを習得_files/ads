@@ -1,0 +1,53 @@
+{
+
+var google_ads = new Array();
+var google_ad;
+var google_radlinks = new Array();
+var google_radlink;
+var google_info = new Object();
+google_ad = new Object(); 
+google_ad.n = 1; 
+google_ad.type = "text"; 
+google_ad.bidtype = "CPC"; 
+google_ad.targeting_type = ""; 
+google_ad.url = "http://www.googleadservices.com/pagead/aclk?sa=L&amp;ai=C161rzr_eULyHOMTXkQXC5YC4AePJwaoD85Oam1DrwpHWjAEQASCmtpIFKANQx-zuugRgievEhPQToAG1__LMA8gBAakCjrVKfE_zSD6oAwGqBH9P0LV_Uh0UWYNYD7DvNHZptUxVsCj818mfVvZP6e18ikWpOg4sn9TfNnlTpdFYb1bNgSlC2hBPwGRQpegeCS7m60m2k2t4JJ03NtlBN8RkYPTyZ7FC6IoOdcFDS93noofZLzFnrDPO5i-5yzgHkFvCMk-npHLm7zJGYV00oMO3iAYBgAezgI0z&amp;num=1&amp;cid=5GgAj4MIBkqC2_ZQ6oG-W3eW&amp;sig=AOD64_26o-OV7--fkTGALOq29vFni21nGg&amp;client=ca-hatena_js&amp;adurl=http://www.ino-inc.com/restore/datacheck.html%3Fcm_id%3D001"; 
+google_ad.visible_url = "ino-inc.com"; 
+google_ad.line1 = "\x26#12487;\x26#12540;\x26#12479;\x26#24489;\x26#26087; 3\x26#20998;\x26#33258;\x26#24049;\x26#35386;\x26#26029;"; 
+google_ad.line2 = "\x26#35558;\x26#12417;\x26#12365;\x26#12428;\x26#12394;\x26#12356;\x26#22823;\x26#20999;\x26#12394;\x26#12487;\x26#12540;\x26#12479;"; 
+google_ad.line3 = "\x26#12414;\x26#12378;\x26#12399;\x26#12469;\x26#12452;\x26#12488;\x26#12391;\x26#21407;\x26#22240;\x26#12392;\x26#23550;\x26#20966;\x26#27861;\x26#12434;\x26#12481;\x26#12455;\x26#12483;\x26#12463;"; 
+google_ad.regionname = ""; 
+google_ads[0] = google_ad; 
+google_ad = new Object(); 
+google_ad.n = 2; 
+google_ad.type = "text"; 
+google_ad.bidtype = "CPC"; 
+google_ad.targeting_type = ""; 
+google_ad.url = "http://www.googleadservices.com/pagead/aclk?sa=L&amp;ai=CCW3Fzr_eULyHOMTXkQXC5YC4AeSK1uAChNnXiTi8otWhkQEQAiCmtpIFKANQo9yLof7_____AWCJ68SE9BOgAYS8zPEDyAEBqQKOtUp8T_NIPqgDAaoEe0_QtX8v-AlDumC9A-BePC-8WUS7J7OXwtQS7IVS5kWJReFwCSnw4cafonjnzVhrHNiBYgicGVrRb1_qqBVCavy0EaSUJDggmj19xEM2xmdh9Ppx7gMZCAm8A42w1s6hcpoPMWcP2CVoL6TLtQJlnDcxT2MRYQbp_pxCVogGAYAH5MOzDg&amp;num=2&amp;cid=5GgAj4MIBkqC2_ZQ6oG-W3eW&amp;sig=AOD64_34RHfW5c5DVY-eD1Xfv0wlG4rUig&amp;client=ca-hatena_js&amp;adurl=http://dna2.mookie1.com/n/107599/152616/www.internetacademy.jp/jl6yto%3B11%3B4%3B%3B8%3B%3Bdfi2dx%3B%3B%3B13lu1n%3Bcak%3B1%3B/i/c%3F0%26pq%3D%252f%253futm_source%253dgoogle%2526utm_medium%253dcpc%2526utm_campaign%253dremarketing%26247cr%3D14965589788%26247subproduct%3DCONTENT"; 
+google_ad.visible_url = "www.internetacademy.jp"; 
+google_ad.line1 = "\x26#12452;\x26#12531;\x26#12479;\x26#12540;\x26#12493;\x26#12483;\x26#12488; \x26#12450;\x26#12459;\x26#12487;\x26#12511;\x26#12540;"; 
+google_ad.line2 = "\x26#12304;\x26#31038;\x26#20250;\x26#20154;\x26#21521;\x26#12369;\x26#12305;\x26#33258;\x26#20998;\x26#12398;\x26#12506;\x26#12540;\x26#12473;\x26#12391;\x26#23398;\x26#12409;\x26#12427;"; 
+google_ad.line3 = "Web\x26#12487;\x26#12470;\x26#12452;\x26#12531;\x26#23554;\x26#38272;\x26#12473;\x26#12463;\x26#12540;\x26#12523; \x26#26032;\x26#23487;/\x26#28171;\x26#35895;"; 
+google_ad.regionname = ""; 
+google_ads[1] = google_ad; 
+google_ad = new Object(); 
+google_ad.n = 3; 
+google_ad.type = "text"; 
+google_ad.bidtype = "CPC"; 
+google_ad.targeting_type = ""; 
+google_ad.url = "http://www.googleadservices.com/pagead/aclk?sa=L&amp;ai=C2sW0zr_eULyHOMTXkQXC5YC4Ac6_wYkC_vbakjiWsIyliwEQAyCmtpIFKANQydnntfn_____AWCJ68SE9BOgAaGkkv8DyAEBqQKOtUp8T_NIPqgDAaoEek_Q9XYQnAlCumC9A-BePC-8WUS7J7OXwtQS7IVS5kWJReFwCSnw4cafonjnzVhrHNiBYgicGVrRb1_qqBVCavy0EaSUJDggmj19xEM2xmdh9Ppx7gMZCAm8A7-oy8-hcpoPMWcP2CVoL6TLtQJlnDcxT2MRYQbpoYOxiAYBgAfH220&amp;num=3&amp;cid=5GgAj4MIBkqC2_ZQ6oG-W3eW&amp;sig=AOD64_0iEKDRK4bS8EZHIX0f87ut6KeDVg&amp;client=ca-hatena_js&amp;adurl=http://www.nps.ne.jp/lp/it/%3Fadwords%26adpsp_type%3D300"; 
+google_ad.visible_url = "www.nps.ne.jp"; 
+google_ad.line1 = "\x26#23601;\x26#32887;\x26#12395;\x26#24375;\x26#12356;IT\x26#12473;\x26#12463;\x26#12540;\x26#12523;"; 
+google_ad.line2 = "\x26#20154;\x26#27671;\x26#12398;IT\x26#36039;\x26#26684;\x26#12391;\x26#23601;\x26#32887;\x26#12434;\x26#26377;\x26#21033;\x26#12395;\x26#65281;\x26#12490;\x26#12460;\x26#12475;"; 
+google_ad.line3 = "\x26#12399;\x26#20805;\x26#23455;\x26#12398;\x26#23398;\x26#32722;\x26#29872;\x26#22659;\x26#12391;\x26#21021;\x26#24515;\x26#32773;\x26#12418;\x26#23433;\x26#24515;\x26#12290;"; 
+google_ad.regionname = ""; 
+google_ads[2] = google_ad; 
+google_info.feedback_url = "http://www.google.com/url?ct\x3dabg\x26q\x3dhttps://www.google.com/adsense/support/bin/request.py%3Fcontact%3Dabg_afc%26url%3Dhttp://d.hatena.ne.jp/web-mind/20130119/p1%26gl%3DJP%26hl%3Dja%26client%3Dca-hatena_js%26hideleadgen%3D1%26ai0%3DC161rzr_eULyHOMTXkQXC5YC4AePJwaoD85Oam1DrwpHWjAEQASCmtpIFKANQx-zuugRgievEhPQToAG1__LMA8gBAakCjrVKfE_zSD6oAwGqBH9P0LV_Uh0UWYNYD7DvNHZptUxVsCj818mfVvZP6e18ikWpOg4sn9TfNnlTpdFYb1bNgSlC2hBPwGRQpegeCS7m60m2k2t4JJ03NtlBN8RkYPTyZ7FC6IoOdcFDS93noofZLzFnrDPO5i-5yzgHkFvCMk-npHLm7zJGYV00oMO3iAYBgAezgI0z%26ai1%3DCCW3Fzr_eULyHOMTXkQXC5YC4AeSK1uAChNnXiTi8otWhkQEQAiCmtpIFKANQo9yLof7_____AWCJ68SE9BOgAYS8zPEDyAEBqQKOtUp8T_NIPqgDAaoEe0_QtX8v-AlDumC9A-BePC-8WUS7J7OXwtQS7IVS5kWJReFwCSnw4cafonjnzVhrHNiBYgicGVrRb1_qqBVCavy0EaSUJDggmj19xEM2xmdh9Ppx7gMZCAm8A42w1s6hcpoPMWcP2CVoL6TLtQJlnDcxT2MRYQbp_pxCVogGAYAH5MOzDg%26ai2%3DC2sW0zr_eULyHOMTXkQXC5YC4Ac6_wYkC_vbakjiWsIyliwEQAyCmtpIFKANQydnntfn_____AWCJ68SE9BOgAaGkkv8DyAEBqQKOtUp8T_NIPqgDAaoEek_Q9XYQnAlCumC9A-BePC-8WUS7J7OXwtQS7IVS5kWJReFwCSnw4cafonjnzVhrHNiBYgicGVrRb1_qqBVCavy0EaSUJDggmj19xEM2xmdh9Ppx7gMZCAm8A7-oy8-hcpoPMWcP2CVoL6TLtQJlnDcxT2MRYQbpoYOxiAYBgAfH220\x26usg\x3dAFQjCNFlr5VKzxINFWj9nYBDLWchNq60FQ";
+var google_attribution_text = "Ads by Google";
+var google_is_rtl = false;
+if (window.google_ad_request_done) {
+google_ad_request_done(google_ads);
+}
+if (window.google_radlink_request_done) {
+google_radlink_request_done(google_radlinks);
+}
+}

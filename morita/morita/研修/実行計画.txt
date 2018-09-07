@@ -1,0 +1,128 @@
+mysql> show columns from postal_code;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| postal_id    | int(11)      | NO   | PRI | NULL    | auto_increment |
+| jis_code     | varchar(8)   | NO   | MUL | NULL    |                |
+| postal5      | varchar(8)   | NO   | MUL | NULL    |                |
+| postal7      | varchar(8)   | NO   | MUL | NULL    |                |
+| pref_kana    | varchar(32)  | NO   |     | NULL    |                |
+| city_kana    | varchar(64)  | NO   |     | NULL    |                |
+| address_kana | varchar(128) | NO   |     | NULL    |                |
+| pref         | varchar(8)   | NO   | MUL | NULL    |                |
+| city         | varchar(32)  | NO   | MUL | NULL    |                |
+| address      | varchar(64)  | NO   |     | NULL    |                |
+| flag1        | varchar(8)   | NO   |     | NULL    |                |
+| flag2        | varchar(8)   | NO   |     | NULL    |                |
+| flag3        | varchar(8)   | NO   |     | NULL    |                |
+| flag4        | varchar(8)   | NO   |     | NULL    |                |
+| flag5        | varchar(8)   | NO   |     | NULL    |                |
+| flag6        | varchar(8)   | NO   |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+16 rows in set (0.00 sec)
+
+mysql> show columns from postal_code_base;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| jis_code     | varchar(8)   | NO   | MUL | NULL    |       |
+| postal5      | varchar(8)   | NO   | MUL | NULL    |       |
+| postal7      | varchar(8)   | NO   | MUL | NULL    |       |
+| pref_kana    | varchar(32)  | NO   |     | NULL    |       |
+| city_kana    | varchar(64)  | NO   |     | NULL    |       |
+| address_kana | varchar(128) | NO   |     | NULL    |       |
+| pref         | varchar(8)   | NO   |     | NULL    |       |
+| city         | varchar(32)  | NO   |     | NULL    |       |
+| address      | varchar(64)  | NO   |     | NULL    |       |
+| flag1        | varchar(8)   | NO   |     | NULL    |       |
+| flag2        | varchar(8)   | NO   |     | NULL    |       |
+| flag3        | varchar(8)   | NO   |     | NULL    |       |
+| flag4        | varchar(8)   | NO   |     | NULL    |       |
+| flag5        | varchar(8)   | NO   |     | NULL    |       |
+| flag6        | varchar(8)   | NO   |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+15 rows in set (0.00 sec)
+
+
+
+
+
+
+mysql> explain select * from postal_code where pref = "‹ž“s•{";
++----+-------------+-------------+------------+------+-----------------------+------+---------+-------+-------+----------+-------+
+| id | select_type | table       | partitions | type | possible_keys         | key  | key_len | ref   | rows  | filtered | Extra |
++----+-------------+-------------+------------+------+-----------------------+------+---------+-------+-------+----------+-------+
+|  1 | SIMPLE      | postal_code | NULL       | ref  | IX_postal_code_1,pref | pref | 26      | const | 25040 |   100.00 | NULL  |
++----+-------------+-------------+------------+------+-----------------------+------+---------+-------+-------+----------+-------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> explain select p1.postal_id, p1.jis_code, p1.postal5, p1.postal7, p1.pref, p1.city, p1.address from postal_code p1 left join postal_code_base b1 on b1.postal7 = p1.postal7 where p1.city = "‹ž“sŽsã‹ž‹æ" and p1.postal7 = "6028461";
++----+-------------+-------+------------+------+---------------+---------+---------+-----------------+------+----------+-------------+
+| id | select_type | table | partitions | type | possible_keys | key     | key_len | ref             | rows | filtered | Extra       |
++----+-------------+-------+------------+------+---------------+---------+---------+-----------------+------+----------+-------------+
+|  1 | SIMPLE      | p1    | NULL       | ref  | city,postal7  | postal7 | 26      | const           |    1 |     5.00 | Using where |
+|  1 | SIMPLE      | b1    | NULL       | ref  | postal7       | postal7 | 26      | post.p1.postal7 |    1 |   100.00 | Using index |
++----+-------------+-------+------------+------+---------------+---------+---------+-----------------+------+----------+-------------+
+2 rows in set, 1 warning (0.00 sec)
+
+mysql> explain select p1.postal_id, p1.jis_code, p1.postal5, p1.postal7, p1.pref, p1.city, p1.address from postal_code p1 left join postal_code_base b1 on b1.postal7 = p1.postal7 where p1.city = "‹ž“sŽsã‹ž‹æ";
++----+-------------+-------+------------+------+---------------+---------+---------+-----------------+------+----------+-------------+
+| id | select_type | table | partitions | type | possible_keys | key     | key_len | ref             | rows | filtered | Extra       |
++----+-------------+-------+------------+------+---------------+---------+---------+-----------------+------+----------+-------------+
+|  1 | SIMPLE      | p1    | NULL       | ref  | city          | city    | 98      | const           |  660 |   100.00 | NULL        |
+|  1 | SIMPLE      | b1    | NULL       | ref  | postal7       | postal7 | 26      | post.p1.postal7 |    1 |   100.00 | Using index |
++----+-------------+-------+------------+------+---------------+---------+---------+-----------------+------+----------+-------------+
+2 rows in set, 1 warning (0.00 sec)
+
+
+
+mysql> explain select DISTINCT p1.jis_code,p1.postal_id,p1.postal5,p1.pref_kana,p1.city_kana,p1.pref,p1.city,p1.address,(select flag1 from postal_code_base where postal5 = "64"),(select postal7 from postal_code_base where postal5 = "65") from postal_code p1 left join postal_code_base b1 on p1.jis_code = b1.jis_code left join  postal_code_base b2 on p1.postal7 = b2.postal7 left join postal_code p2 on p1.postal5 = p2.postal5  left join postal_code_base b3 on p2.jis_code = b3.jis_code where p1.postal5 between 64 and 90;
++----+-------------+------------------+------------+------+---------------+----------+---------+------------------+--------+----------+------------------------------+
+| id | select_type | table            | partitions | type | possible_keys | key      | key_len | ref              | rows   | filtered | Extra                        |
++----+-------------+------------------+------------+------+---------------+----------+---------+------------------+--------+----------+------------------------------+
+|  1 | PRIMARY     | p1               | NULL       | ALL  | postal5       | NULL     | NULL    | NULL             | 119361 |    11.11 | Using where; Using temporary |
+|  1 | PRIMARY     | b1               | NULL       | ref  | jis_code      | jis_code | 26      | post.p1.jis_code |     56 |   100.00 | Using index; Distinct        |
+|  1 | PRIMARY     | b2               | NULL       | ref  | postal7       | postal7  | 26      | post.p1.postal7  |      1 |   100.00 | Using index; Distinct        |
+|  1 | PRIMARY     | p2               | NULL       | ref  | postal5       | postal5  | 26      | post.p1.postal5  |     27 |   100.00 | Distinct                     |
+|  1 | PRIMARY     | b3               | NULL       | ref  | jis_code      | jis_code | 26      | post.p2.jis_code |     56 |   100.00 | Using index; Distinct        |
+|  3 | SUBQUERY    | postal_code_base | NULL       | ref  | postal5       | postal5  | 26      | const            |      1 |   100.00 | NULL                         |
+|  2 | SUBQUERY    | postal_code_base | NULL       | ref  | postal5       | postal5  | 26      | const            |      1 |   100.00 | NULL                         |
++----+-------------+------------------+------------+------+---------------+----------+---------+------------------+--------+----------+------------------------------+
+7 rows in set, 2 warnings (0.00 sec)
+
+
+mysql> show index from postal_code_base;
++------------------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+
+| Table            | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible |
++------------------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+
+| postal_code_base |          1 | postal7  |            1 | postal7     | A         |      120945 |     NULL |   NULL |      | BTREE      |         |               | YES     |
+| postal_code_base |          1 | jis_code |            1 | jis_code    | A         |        2164 |     NULL |   NULL |      | BTREE      |         |               | YES     |
+| postal_code_base |          1 | postal5  |            1 | postal5     | A         |        4770 |     NULL |   NULL |      | BTREE      |         |               | YES     |
++------------------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+
+3 rows in set (0.20 sec)
+
+mysql> show index from postal_code;
++-------------+------------+------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+
+| Table       | Non_unique | Key_name         | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible |
++-------------+------------+------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+
+| postal_code |          0 | PRIMARY          |            1 | postal_id   | A         |      256768 |     NULL |   NULL |      | BTREE      |         |               | YES     |
+| postal_code |          1 | IX_postal_code_1 |            1 | pref        | A         |          43 |     NULL |   NULL |      | BTREE      |         |               | YES     |
+| postal_code |          1 | IX_postal_code_1 |            2 | city        | A         |        2163 |     NULL |   NULL |      | BTREE      |         |               | YES     |
+| postal_code |          1 | IX_postal_code_1 |            3 | address     | A         |      136835 |     NULL |   NULL |      | BTREE      |         |               | YES     |
+| postal_code |          1 | IX_postal_code_1 |            4 | postal7     | A         |      120575 |     NULL |   NULL |      | BTREE      |         |               | YES     |
+| postal_code |          1 | IX_postal_code_1 |            5 | jis_code    | A         |      127051 |     NULL |   NULL |      | BTREE      |         |               | YES     |
+| postal_code |          1 | city             |            1 | city        | A         |        1576 |     NULL |   NULL |      | BTREE      |         |               | YES     |
+| postal_code |          1 | postal7          |            1 | postal7     | A         |      113591 |     NULL |   NULL |      | BTREE      |         |               | YES     |
+| postal_code |          1 | pref             |            1 | pref        | A         |          45 |     NULL |   NULL |      | BTREE      |         |               | YES     |
+| postal_code |          1 | pref_2           |            1 | pref        | A         |          45 |     NULL |   NULL |      | BTREE      |         |               | YES     |
+| postal_code |          1 | pref_2           |            2 | city        | A         |        1613 |     NULL |   NULL |      | BTREE      |         |               | YES     |
+| postal_code |          1 | pref_2           |            3 | postal5     | A         |        5362 |     NULL |   NULL |      | BTREE      |         |               | YES     |
+| postal_code |          1 | pref_2           |            4 | address     | A         |      119361 |     NULL |   NULL |      | BTREE      |         |               | YES     |
+| postal_code |          1 | postal5          |            1 | postal5     | A         |        4391 |     NULL |   NULL |      | BTREE      |         |               | YES     |
+| postal_code |          1 | jis_code         |            1 | jis_code    | A         |        1480 |     NULL |   NULL |      | BTREE      |         |               | YES     |
++-------------+------------+------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+
+15 rows in set (0.07 sec)
+
+
+
+

@@ -1,0 +1,35 @@
+header {
+  font-size: 50px;
+  border-bottom: solid 7px #2b7c3d;
+  margin-left: 40px;
+  margin-right: 150px;
+}
+.contents {
+  float: left;
+  margin-left: 40px;
+  padding-top: 10px
+}
+img {
+  width: 220px;
+  height: 180px;
+  margin-top: 10px;
+  border: solid 5px #aaafab;
+}
+.box {
+  float: right;
+  padding-left: 20px;
+}
+footer {
+  float: left;
+  margin-left: 40px;
+}
+footer p {
+  color: #35b752;
+  font-size: 40px;
+}
+.photetop {
+
+}
+.photebottom {
+
+}

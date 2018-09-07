@@ -1,0 +1,27 @@
+h1 {
+  border-bottom: solid 6px rgb(56, 163, 70);
+  margin-left: 30px;
+  padding-bottom: 0px;
+}
+body {
+
+}
+div {
+  margin: 15px 0px 10px 20px;
+  float: right;
+  border: solid 6px rgba(177, 158, 158, 0.55);
+}
+img {
+  height: 150px;
+  margin: 0px;
+}
+footer {
+  font-size: 25px;
+  margin-left: 30px;
+}
+p {
+  color: rgb(59, 180, 86);
+}
+a {
+  text-decoration: none;
+}

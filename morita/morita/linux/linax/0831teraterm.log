@@ -1,0 +1,1363 @@
+[ec2-user@ip-30-0-10-87 ~]$ ll
+total 18372
+-rwxrwxrwx. 1 ec2-user ec2-user       90 Aug 30 07:17 exam.sh
+-rw-r--r--. 1 ec2-user ec2-user 18808790 Jun 11 06:18 KEN_ALL.CSV
+[ec2-user@ip-30-0-10-87 ~]$ rm exam.sh 
+[ec2-user@ip-30-0-10-87 ~]$ ls
+KEN_ALL.CSV
+[ec2-user@ip-30-0-10-87 ~]$ ll
+total 18368
+-rw-r--r--. 1 ec2-user ec2-user 18808790 Jun 11 06:18 KEN_ALL.CSV
+[ec2-user@ip-30-0-10-87 ~]$ mkdir 0831
+[ec2-user@ip-30-0-10-87 ~]$ ls
+0831  KEN_ALL.CSV
+[ec2-user@ip-30-0-10-87 ~]$ cd 0831
+[ec2-user@ip-30-0-10-87 0831]$ ls
+[ec2-user@ip-30-0-10-87 0831]$ ls
+[ec2-user@ip-30-0-10-87 0831]$ ls
+[ec2-user@ip-30-0-10-87 0831]$ pwd
+/home/ec2-user/0831
+[ec2-user@ip-30-0-10-87 0831]$ ^C
+[ec2-user@ip-30-0-10-87 0831]$ 
+[ec2-user@ip-30-0-10-87 0831]$ ls
+if.sh
+[ec2-user@ip-30-0-10-87 0831]$ . sh idf.sh 3
+if.sh: line 2: [3: command not found
+if.sh: line 5: [3: command not found
+引数は3でも5でもありません
+[ec2-user@ip-30-0-10-87 0831]$ . if.sh 1
+-bash: [1: command not found
+-bash: [1: command not found
+引数は3でも5でもありません
+[ec2-user@ip-30-0-10-87 0831]$ ls
+if.sh
+[ec2-user@ip-30-0-10-87 0831]$ sh if.sh 1
+if.sh: line 2: [: missing `]'
+if.sh: line 5: [: missing `]'
+引数は3でも5でもありません
+[ec2-user@ip-30-0-10-87 0831]$ sh if.sh 1
+引数は3でも5でもありません
+[ec2-user@ip-30-0-10-87 0831]$ sh if.sh 13
+引数は3
+[ec2-user@ip-30-0-10-87 0831]$ sh if.sh 35
+引数は5
+[ec2-user@ip-30-0-10-87 0831]$ sh if.sh 57
+引数は3でも5でもありません
+[ec2-user@ip-30-0-10-87 0831]$ sh if.sh 73 5
+引数は3
+[ec2-user@ip-30-0-10-87 0831]$ sh if.sh 3 57
+引数は3
+[ec2-user@ip-30-0-10-87 0831]$ sh if.sh 3 7
+if.sh: line 4: syntax error near unexpected token `then'
+if.sh: line 4: `[ "$2" -eq 5 ]; then'
+[ec2-user@ip-30-0-10-87 0831]$ sh if.sh 3 757
+引数は3
+[ec2-user@ip-30-0-10-87 0831]$ sh if.sh 3 5
+if.sh: line 4: [: : integer expression expected
+引数は3でも5でもありません
+[ec2-user@ip-30-0-10-87 0831]$ sh if.sh 5
+if.sh: line 4: [: : integer expression expected
+引数は3でも5でもありません
+[ec2-user@ip-30-0-10-87 0831]$ sh if.sh 53 
+引数は3
+[ec2-user@ip-30-0-10-87 0831]$ sh if.sh 3 
+引数は3
+[ec2-user@ip-30-0-10-87 0831]$ sh if.sh 3 5
+if.sh: line 4: [: : integer expression expected
+引数は3でも5でもありません
+[ec2-user@ip-30-0-10-87 0831]$ sh if.sh 53 53 7
+引数は3
+[ec2-user@ip-30-0-10-87 0831]$ [ec2-user@ip-30-0-10-87 0831]$ sh if.sh 3 753 
+引数は3
+[ec2-user@ip-30-0-10-87 0831]$ sh if.sh 3 7sh if.sh 3 75
+if.sh: line 4: [: : integer expression expected
+引数は3でも5でもありません
+[ec2-user@ip-30-0-10-87 0831]$ sh if.sh 5sh if.sh 5
+if.sh: line 4: syntax error near unexpected token `then'
+if.sh: line 4: `elif[ "$2" -eq 5 ]; then'
+[ec2-user@ip-30-0-10-87 0831]$ sh case.sh 
+引数にstartかstopをつけてください
+[ec2-user@ip-30-0-10-87 0831]$ sh case.sh start
+開始します
+[ec2-user@ip-30-0-10-87 0831]$ sh case.sh startstop
+停止します
+[ec2-user@ip-30-0-10-87 0831]$ ll
+total 8
+-rw-r--r--. 1 ec2-user ec2-user 172 Aug 31 02:19 case.sh
+-rw-r--r--. 1 ec2-user ec2-user 154 Aug 31 02:11 if.sh
+[ec2-user@ip-30-0-10-87 0831]$ llsh case.sh stop
+-bash: case.sh: command not found
+[ec2-user@ip-30-0-10-87 0831]$  case.sh stop
+-bash: case.sh: command not found
+[ec2-user@ip-30-0-10-87 0831]$ schmod -x case.sh 
+[ec2-user@ip-30-0-10-87 0831]$ ll
+total 8
+-rw-r--r--. 1 ec2-user ec2-user 172 Aug 31 02:19 case.sh
+-rw-r--r--. 1 ec2-user ec2-user 154 Aug 31 02:11 if.sh
+[ec2-user@ip-30-0-10-87 0831]$ llchmod -x case.sh 777
+[ec2-user@ip-30-0-10-87 0831]$ chmod 777 case.sh ll
+total 8
+-rwxrwxrwx. 1 ec2-user ec2-user 172 Aug 31 02:19 case.sh
+-rw-r--r--. 1 ec2-user ec2-user 154 Aug 31 02:11 if.sh
+[ec2-user@ip-30-0-10-87 0831]$ uname -sa
+Linux
+[ec2-user@ip-30-0-10-87 0831]$ Sstring
+-bash: Sstring: command not found
+[ec2-user@ip-30-0-10-87 0831]$ $string
+[ec2-user@ip-30-0-10-87 0831]$ rchorecho $strong
+
+[ec2-user@ip-30-0-10-87 0831]$ echo $strongstring = morita
+-bash: string: command not found
+[ec2-user@ip-30-0-10-87 0831]$ string = moria''moria'
+-bash: string: command not found
+[ec2-user@ip-30-0-10-87 0831]$ string = 'moria'"moria""moria"
+-bash: string: command not found
+[ec2-user@ip-30-0-10-87 0831]$ string = "moria""moria"="moria"
+[ec2-user@ip-30-0-10-87 0831]$ ls
+case.sh  for.sh  if.sh
+[ec2-user@ip-30-0-10-87 0831]$ ls
+case.sh  for.sh  if.sh
+[ec2-user@ip-30-0-10-87 0831]$ ls
+case.sh  for.sh  if.sh
+[ec2-user@ip-30-0-10-87 0831]$ ll
+total 12
+-rwxrwxrwx. 1 ec2-user ec2-user 172 Aug 31 02:19 case.sh
+-rw-r--r--. 1 ec2-user ec2-user  64 Aug 31 02:46 for.sh
+-rw-r--r--. 1 ec2-user ec2-user 154 Aug 31 02:11 if.sh
+[ec2-user@ip-30-0-10-87 0831]$ sh for.sh ls
+cp: cannot stat ‘ls’: No such file or directory
+[ec2-user@ip-30-0-10-87 0831]$ sh for.sh ls
+cp: cannot stat ‘ls’: No such file or directory
+[ec2-user@ip-30-0-10-87 0831]$ sh for s,sh.sh
+cp: cannot stat ‘ls’: No such file or directory
+[ec2-user@ip-30-0-10-87 0831]$ ls
+case.sh  for.sh  if.sh
+[ec2-user@ip-30-0-10-87 0831]$ sh for.sh 
+[ec2-user@ip-30-0-10-87 0831]$ ls
+case.sh  case.sh.bk  for.sh  for.sh.bk  if.sh  if.sh.bk
+[ec2-user@ip-30-0-10-87 0831]$ ls
+case.sh  case.sh.bk  for.sh  for.sh.bk  if.sh  if.sh.bk
+[ec2-user@ip-30-0-10-87 0831]$ rm case.sh.bk for.sh.bk if.sh.bk 
+[ec2-user@ip-30-0-10-87 0831]$ ls
+case.sh  for.sh  if.sh
+[ec2-user@ip-30-0-10-87 0831]$ lsrm case.sh.bk for.sh.bk if.sh.bk lssh for.sh 
+[ec2-user@ip-30-0-10-87 0831]$ ll
+total 24
+-rwxrwxrwx. 1 ec2-user ec2-user 172 Aug 31 02:19 case.sh
+-rwxrwxrwx. 1 ec2-user ec2-user 172 Aug 31 02:19 case.sh.bk
+-rw-r--r--. 1 ec2-user ec2-user  64 Aug 31 02:49 for.sh
+-rw-r--r--. 1 ec2-user ec2-user  64 Aug 31 02:49 for.sh.bk
+-rw-r--r--. 1 ec2-user ec2-user 154 Aug 31 02:11 if.sh
+-rw-r--r--. 1 ec2-user ec2-user 154 Aug 31 02:11 if.sh.bk
+[ec2-user@ip-30-0-10-87 0831]$ llsh for.sh lsrm case.sh.bk for.sh.bk if.sh.bk 
+[ec2-user@ip-30-0-10-87 0831]$ ls
+case.sh  for.sh  if.sh
+[ec2-user@ip-30-0-10-87 0831]$ ls
+case.sh  for.sh  if.sh
+[ec2-user@ip-30-0-10-87 0831]$ chmod for.sh 777 
+[ec2-user@ip-30-0-10-87 0831]$ ls
+case.sh  for.sh  if.sh
+[ec2-user@ip-30-0-10-87 0831]$ sh 10times.sh 
+10times.sh: line 2: syntax error near unexpected token `file'
+10times.sh: line 2: `for j file in '' 1 2 3 4 5 6 76 8 9 10  '
+[ec2-user@ip-30-0-10-87 0831]$ sh 10times.sh 
+10times.sh: line 2: syntax error near unexpected token `file'
+10times.sh: line 2: `for j file in '' 1 2 3'
+[ec2-user@ip-30-0-10-87 0831]$ sh 10times.sh 
+10times.sh: line 2: syntax error near unexpected token `file'
+10times.sh: line 2: `for j file in `` 1 2 3'
+[ec2-user@ip-30-0-10-87 0831]$ [ec2-user@ip-30-0-10-87 0831]$ [ec2-user@ip-30-0-10-87 0831]$ [ec2-user@ip-30-0-10-87 0831]$ [ec2-user@ip-30-0-10-87 0831]$ sh 10times.sh 
+10times.sh: line 2: syntax error near unexpected token `file'
+10times.sh: line 2: `for j file in `` 1 2 3'
+[ec2-user@ip-30-0-10-87 0831]$ [ec2-user@ip-30-0-10-87 0831]$ sh 10times.sh 
+10times.sh: line 2: syntax error near unexpected token `file'
+10times.sh: line 2: `for j file in '' 1 2 3'
+[ec2-user@ip-30-0-10-87 0831]$ [ec2-user@ip-30-0-10-87 0831]$ sh 10times.sh 
+1
+2
+3
+11
+12
+13
+21
+22
+23
+31
+32
+33
+[ec2-user@ip-30-0-10-87 0831]$ sh 10times.sh calc.sh 
+5050
+[ec2-user@ip-30-0-10-87 0831]$ sh while.sh 
+5050
+[ec2-user@ip-30-0-10-87 0831]$ sh select.sh 
+select.sh: line 19: syntax error near unexpected token `;;'
+select.sh: line 19: `		break;;'
+[ec2-user@ip-30-0-10-87 0831]$ sh select.sh 
+1) up
+2) down
+3) left
+4) right
+5) look
+6) quit
+コマンド？up
+upというコマンドはありません
+
+コマンド？1
+上に移動しました
+
+コマンド？2
+下に移動しました
+
+コマンド？3
+左に移動しました
+
+コマンド？4
+右に移動しました
+
+コマンド？5
+アイテムが落ちています
+
+コマンド？6
+終了します
+select.sh: line 26: e: command not found
+[ec2-user@ip-30-0-10-87 0831]$ sh select.sh 
+1) up
+2) down
+3) left
+4) right
+5) look
+6) quit
+コマンド？6
+終了します
+[ec2-user@ip-30-0-10-87 0831]$ lspwd
+/home/ec2-user/0831
+[ec2-user@ip-30-0-10-87 0831]$ pwdsh -x sub.sh 
++ cd /home/ec2-user/0831
++ cp -p '' backup.
+cp: cannot stat ‘’: No such file or directory
+[ec2-user@ip-30-0-10-87 0831]$ sh -x sub.sh select.sh 
++ cd /home/ec2-user/0831
++ cp -p select.sh backup.
+[ec2-user@ip-30-0-10-87 0831]$ ls
+10times.sh  calc.sh  for.sh  select.sh  while.sh
+backup.     case.sh  if.sh   sub.sh
+[ec2-user@ip-30-0-10-87 0831]$ lssh -x sub.sh select.sh 
+[ec2-user@ip-30-0-10-87 0831]$ sh  sub.sh select.sh 
+[ec2-user@ip-30-0-10-87 0831]$ ls
+10times.sh  backup.select.sh  case.sh  if.sh      sub.sh
+backup.     calc.sh           for.sh   select.sh  while.sh
+[ec2-user@ip-30-0-10-87 0831]$ rm buckachkup.select.sh 
+[ec2-user@ip-30-0-10-87 0831]$ lsls
+10times.sh  calc.sh  for.sh  select.sh  while.sh
+backup.     case.sh  if.sh   sub.sh
+[ec2-user@ip-30-0-10-87 0831]$ 
+[ec2-user@ip-30-0-10-87 0831]$ 
+[ec2-user@ip-30-0-10-87 0831]$ 
+[ec2-user@ip-30-0-10-87 0831]$ 
+[ec2-user@ip-30-0-10-87 0831]$ 
+[ec2-user@ip-30-0-10-87 0831]$ 
+[ec2-user@ip-30-0-10-87 0831]$ 
+[ec2-user@ip-30-0-10-87 0831]$ 
+[ec2-user@ip-30-0-10-87 0831]$ 
+[ec2-user@ip-30-0-10-87 0831]$ [ec2-user@ip-30-0-10-87 0831]$ [ec2-user@ip-30-0-10-87 0831]$ p@wpwd
+/home/ec2-user/0831
+[ec2-user@ip-30-0-10-87 0831]$ [ec2-user@ip-30-0-10-87 0831]$  sh reidairect.sh 
+reidairect.sh: line 5: ll: command not found
+[ec2-user@ip-30-0-10-87 0831]$ sh reidairect.sh 
+[ec2-user@ip-30-0-10-87 0831]$ ls
+10times.sh  calc.sh  for.sh  logfile.log    select.sh  while.sh
+backup.     case.sh  if.sh   reidairect.sh  sub.sh
+[ec2-user@ip-30-0-10-87 0831]$ cat logfile.log 
+/home/ec2-user/0831
+total 44
+-rw-r--r--. 1 ec2-user ec2-user  78 Aug 31 03:57 10times.sh
+-rw-r--r--. 1 ec2-user ec2-user 456 Aug 31 04:44 backup.
+-rw-r--r--. 1 ec2-user ec2-user  76 Aug 31 04:10 calc.sh
+-rwxrwxrwx. 1 ec2-user ec2-user 172 Aug 31 02:19 case.sh
+-rwxrwxrwx. 1 ec2-user ec2-user  64 Aug 31 02:49 for.sh
+-rw-r--r--. 1 ec2-user ec2-user 154 Aug 31 02:11 if.sh
+-rw-rw-r--. 1 ec2-user ec2-user  20 Aug 31 05:11 logfile.log
+-rw-r--r--. 1 ec2-user ec2-user  63 Aug 31 05:11 reidairect.sh
+-rw-r--r--. 1 ec2-user ec2-user 456 Aug 31 04:44 select.sh
+-rw-r--r--. 1 ec2-user ec2-user  65 Aug 31 04:59 sub.sh
+-rw-r--r--. 1 ec2-user ec2-user 110 Aug 31 04:24 while.sh
+[ec2-user@ip-30-0-10-87 0831]$ cat logfile.log lssh reidairect.sh -x 
++ cd /home/ec2-user/0831
++ pwd
++ ls -l
+[ec2-user@ip-30-0-10-87 0831]$ sh -x reidairect.sh 
++ cd /home/ec2-user/0831
++ pwd
++ ls -l
+[ec2-user@ip-30-0-10-87 0831]$ ll
+total 44
+-rw-r--r--. 1 ec2-user ec2-user  78 Aug 31 03:57 10times.sh
+-rw-r--r--. 1 ec2-user ec2-user 456 Aug 31 04:44 backup.
+-rw-r--r--. 1 ec2-user ec2-user  76 Aug 31 04:10 calc.sh
+-rwxrwxrwx. 1 ec2-user ec2-user 172 Aug 31 02:19 case.sh
+-rwxrwxrwx. 1 ec2-user ec2-user  64 Aug 31 02:49 for.sh
+-rw-r--r--. 1 ec2-user ec2-user 154 Aug 31 02:11 if.sh
+-rw-rw-r--. 1 ec2-user ec2-user 668 Aug 31 05:16 logfile.log
+-rw-r--r--. 1 ec2-user ec2-user  63 Aug 31 05:11 reidairect.sh
+-rw-r--r--. 1 ec2-user ec2-user 456 Aug 31 04:44 select.sh
+-rw-r--r--. 1 ec2-user ec2-user  65 Aug 31 04:59 sub.sh
+-rw-r--r--. 1 ec2-user ec2-user 110 Aug 31 04:24 while.sh
+[ec2-user@ip-30-0-10-87 0831]$ cat liogfile.log 
+/home/ec2-user/0831
+total 44
+-rw-r--r--. 1 ec2-user ec2-user  78 Aug 31 03:57 10times.sh
+-rw-r--r--. 1 ec2-user ec2-user 456 Aug 31 04:44 backup.
+-rw-r--r--. 1 ec2-user ec2-user  76 Aug 31 04:10 calc.sh
+-rwxrwxrwx. 1 ec2-user ec2-user 172 Aug 31 02:19 case.sh
+-rwxrwxrwx. 1 ec2-user ec2-user  64 Aug 31 02:49 for.sh
+-rw-r--r--. 1 ec2-user ec2-user 154 Aug 31 02:11 if.sh
+-rw-rw-r--. 1 ec2-user ec2-user  20 Aug 31 05:16 logfile.log
+-rw-r--r--. 1 ec2-user ec2-user  63 Aug 31 05:11 reidairect.sh
+-rw-r--r--. 1 ec2-user ec2-user 456 Aug 31 04:44 select.sh
+-rw-r--r--. 1 ec2-user ec2-user  65 Aug 31 04:59 sub.sh
+-rw-r--r--. 1 ec2-user ec2-user 110 Aug 31 04:24 while.sh
+[ec2-user@ip-30-0-10-87 0831]$ cat logfile.log llsh -x reidairect.sh 
++ cd /home/ec2-user/0831
++ pwd
++ ls -l
+[ec2-user@ip-30-0-10-87 0831]$ cat logfile.log 
+/home/ec2-user/0831
+total 44
+-rw-r--r--. 1 ec2-user ec2-user  78 Aug 31 03:57 10times.sh
+-rw-r--r--. 1 ec2-user ec2-user 456 Aug 31 04:44 backup.
+-rw-r--r--. 1 ec2-user ec2-user  76 Aug 31 04:10 calc.sh
+-rwxrwxrwx. 1 ec2-user ec2-user 172 Aug 31 02:19 case.sh
+-rwxrwxrwx. 1 ec2-user ec2-user  64 Aug 31 02:49 for.sh
+-rw-r--r--. 1 ec2-user ec2-user 154 Aug 31 02:11 if.sh
+-rw-rw-r--. 1 ec2-user ec2-user  20 Aug 31 05:16 logfile.log
+-rw-r--r--. 1 ec2-user ec2-user  63 Aug 31 05:11 reidairect.sh
+-rw-r--r--. 1 ec2-user ec2-user 456 Aug 31 04:44 select.sh
+-rw-r--r--. 1 ec2-user ec2-user  65 Aug 31 04:59 sub.sh
+-rw-r--r--. 1 ec2-user ec2-user 110 Aug 31 04:24 while.sh
+/home/ec2-user/0831
+total 44
+-rw-r--r--. 1 ec2-user ec2-user  78 Aug 31 03:57 10times.sh
+-rw-r--r--. 1 ec2-user ec2-user 456 Aug 31 04:44 backup.
+-rw-r--r--. 1 ec2-user ec2-user  76 Aug 31 04:10 calc.sh
+-rwxrwxrwx. 1 ec2-user ec2-user 172 Aug 31 02:19 case.sh
+-rwxrwxrwx. 1 ec2-user ec2-user  64 Aug 31 02:49 for.sh
+-rw-r--r--. 1 ec2-user ec2-user 154 Aug 31 02:11 if.sh
+-rw-rw-r--. 1 ec2-user ec2-user 688 Aug 31 05:20 logfile.log
+-rw-r--r--. 1 ec2-user ec2-user  64 Aug 31 05:20 reidairect.sh
+-rw-r--r--. 1 ec2-user ec2-user 456 Aug 31 04:44 select.sh
+-rw-r--r--. 1 ec2-user ec2-user  65 Aug 31 04:59 sub.sh
+-rw-r--r--. 1 ec2-user ec2-user 110 Aug 31 04:24 while.sh
+[ec2-user@ip-30-0-10-87 0831]$ histry
+-bash: histry: command not found
+[ec2-user@ip-30-0-10-87 0831]$ histhisory
+-bash: hisory: command not found
+[ec2-user@ip-30-0-10-87 0831]$ history
+    1  pwd
+    2  ls-la
+    3  ls -la
+    4  cat .bash_profile 
+    5  ls -la
+    6  sudo yam -y update
+    7  su do yam -y update
+    8  su do yum -y update
+    9  sudo yum -y update
+   10  vi .bash_profile 
+   11  ll
+   12  source .bash_profile
+   13  source  .bash_profile
+   14  source .bash_profile
+   15  ls
+   16  ls -la
+   17  source .bash_profile
+   18  . .bash_profile
+   19  ll
+   20  vi .bash_profile 
+   21  source .bash_profile
+   22  ll
+   23  source .bash_profile
+   24  alias ls
+   25  source ~/.bash_profile
+   26  pwd
+   27  source .bash_profile
+   28  ll
+   29  vi .bash_profile 
+   30  source .bash_profile
+   31  $D
+   32  date
+   33  vi .bash_profile 
+   34  ll
+   35  source .bash_profile
+   36  vi .bash_profile 
+   37  ll
+   38  source .bash_profile
+   39  cat .bash_profile 
+   40  ll
+   41  cd ../
+   42  ls
+   43  cd ../
+   44  ls
+   45  cd lib
+   46  ls
+   47  pwd
+   48  cd ..
+   49  cd /var/lib
+   50  whoami
+   51  pwd
+   52  ls
+   53  sudo yum install whois
+   54  cd
+   55  ls
+   56  cd ~
+   57  cd -
+   58  cd $HOME
+   59  ls
+   60  echo &HOME
+   61  echo ~
+   62  echo $HOME
+   63  ll
+   64  mk
+   65  mkdir tmp
+   66  ll
+   67  mkdir -m 755 maffi
+   68  ll
+   69  cd maffi
+   70  touch ediet.txt
+   71  ls
+   72  ll
+   73  chomd 777 ediet.txt 
+   74  chmod 777 ediet.txt 
+   75  ll
+   76  sudo chown root:ec2-user ./*.txt
+   77  ll
+   78  cp ediet.txt ediet.txt .bk
+   79  cp ediet.txt ediet.txt.bk
+   80  ll
+   81  cp -p ediet.txt ediet.txt.20180830
+   82  ll
+   83  cd ..
+   84  ls
+   85  cd maffi/
+   86  ls
+   87  mv ediet.txt ../tmp/ediet.txt
+   88  ll
+   89  ll ../tmp
+   90  cd ..
+   91  ls
+   92  pwd
+   93  cd ec2-user/
+   94  ls
+   95  l
+   96  ll
+   97  ls
+   98  ll
+   99  ll ./*
+  100  rm -rfi ./
+  101  ll
+  102  rm -rfi ./*
+  103  ll
+  104  ll ./
+  105  ll ./*
+  106  rm -rfi ./*
+  107  ll ./*
+  108  rm -ir tmp
+  109  ll ./
+  110  ll
+  111  ls ./
+  112  ls
+  113  cd ..
+  114  ls
+  115  ls -la
+  116  cd ..
+  117  ls
+  118  pwd
+  119  cd 
+  120  ls
+  121  ls  etc/rc*
+  122  ls /etc/rc*
+  123  ll /etc/rc*
+  124  cat /etc/rc.local 
+  125  cd /etc/rc0.d/
+  126  ls
+  127  cd 
+  128  which whois
+  129  which vim
+  130  which vi
+  131  which awk
+  132  which grep
+  133  echo $SHELL
+  134  ll bin/bash
+  135  cat bin/bash
+  136  printenv SHELL
+  137  finger guest
+  138  ls
+  139  sh exam.sh 
+  140  ll
+  141  chmod 777 exam.sh 
+  142  ll
+  143  sh exam.sh 
+  144  touch def.txt
+  145  . exam.sh def.txt 
+  146  vi exam.sh 
+  147  . exam.sh def.txt 
+  148  vi exam.sh 
+  149  . exam.sh def.txt 
+  150  ll
+  151  vi exam.sh 
+  152  . exam.sh def.txt 
+  153  ls
+  154  sh exam.sh def.txt 
+  155  cat exam.sh 
+  156  ll/var/log
+  157  cd /var/
+  158  ls
+  159  cd lib/
+  160  ls
+  161  cd ..
+  162  ls
+  163  cd log/
+  164  ls
+  165  teil -f secure 
+  166  sudo tail -f secure 
+  167  cd 
+  168  ls
+  169  $?
+  170  ll
+  171  $?
+  172  lll
+  173  $?
+  174  ll
+  175  $?
+  176  echo $?
+  177  ll
+  178  echo $?
+  179  true
+  180  echo $?
+  181  folse
+  182  false
+  183  echo $?
+  184  if true; then echo '新です'; fi
+  185  less KEN_ALL.CSV 
+  186  head -3 KEN_ALL.CSV 
+  187  less K
+  188  less KEN_ALL.CSV 
+  189  more KEN_ALL.CSV 
+  190  head -3 KEN_ALL.CSV 
+  191  teil KEN_ALL.CSV 
+  192  tail KEN_ALL.CSV 
+  193  tail -60000 KEN_ALL.CSV | heaf -3
+  194  tail -60000 KEN_ALL.CSV | head -3
+  195  grep ｵｵﾂﾄﾞｵﾘ KEN_ALL.CSV 
+  196  ll |less KEN_ALL.CSV 
+  197  ll | sort
+  198  ll | sort -r
+  199  ll | more
+  200  iconf
+  201  LANG=C date > timestamp
+  202  ll
+  203  cat timestamp 
+  204  rm -i timestamp def.txt.bak def.txt.bak def.txt
+  205  ls
+  206  ll 
+  207  ll | less 
+  208  less KEN_ALL.CSV 
+  209  ll | less KEN_ALL.CSV 
+  210  ll | less
+  211  ll
+  212  rm exam.sh 
+  213  ls
+  214  ll
+  215  mkdir 0831
+  216  ls
+  217  cd 0831
+  218  ls
+  219  pwd
+  220  ls
+  221  sh if.sh 3
+  222  . if.sh 1
+  223  ls
+  224  sh if.sh 1
+  225  sh if.sh 3
+  226  sh if.sh 5
+  227  sh if.sh 7
+  228  sh if.sh 3 5
+  229  sh if.sh 3 7
+  230  sh if.sh 3 
+  231  sh if.sh 5
+  232  sh if.sh 3 
+  233  sh if.sh 5
+  234  sh if.sh 3 7
+  235  sh if.sh 3 
+  236  sh if.sh 5
+  237  sh case.sh 
+  238  sh case.sh start
+  239  sh case.sh stop
+  240  ll
+  241   case.sh stop
+  242  case.sh stop
+  243  chmod -x case.sh 
+  244  ll
+  245  chmod 777 case.sh 
+  246  ll
+  247  uname -s
+  248  Sstring
+  249  $string
+  250  echo $strong
+  251  string = moria
+  252  string = 'moria'
+  253  string = "moria"
+  254  string="moria"
+  255  ls
+  256  ll
+  257  sh for.sh ls
+  258  sh for.sh 
+  259  sh for.sh
+  260  ls
+  261  sh for.sh 
+  262  ls
+  263  rm case.sh.bk for.sh.bk if.sh.bk 
+  264  ls
+  265  sh for.sh 
+  266  ll
+  267  rm case.sh.bk for.sh.bk if.sh.bk 
+  268  ls
+  269  chmod 777 for.sh 
+  270  ls
+  271  sh 10times.sh 
+  272  sh calc.sh 
+  273  sh while.sh 
+  274  sh select.sh 
+  275  pwd
+  276  sh -x sub.sh 
+  277  sh -x sub.sh select.sh 
+  278  ls
+  279  sh  sub.sh select.sh 
+  280  ls
+  281  rm backup.select.sh 
+  282  ls
+  283  pwd
+  284  sh reidairect.sh 
+  285  ls
+  286  cat logfile.log 
+  287  sh -x reidairect.sh 
+  288  ll
+  289  cat logfile.log 
+  290  sh -x reidairect.sh 
+  291  cat logfile.log 
+  292  histry
+  293  hisory
+  294  history
+[ec2-user@ip-30-0-10-87 0831]$ histryory | grep sgh
+    4  cat .bash_profile 
+   10  vi .bash_profile 
+   12  source .bash_profile
+   13  source  .bash_profile
+   14  source .bash_profile
+   17  source .bash_profile
+   18  . .bash_profile
+   20  vi .bash_profile 
+   21  source .bash_profile
+   23  source .bash_profile
+   25  source ~/.bash_profile
+   27  source .bash_profile
+   29  vi .bash_profile 
+   30  source .bash_profile
+   33  vi .bash_profile 
+   35  source .bash_profile
+   36  vi .bash_profile 
+   38  source .bash_profile
+   39  cat .bash_profile 
+  134  ll bin/bash
+  135  cat bin/bash
+  139  sh exam.sh 
+  141  chmod 777 exam.sh 
+  143  sh exam.sh 
+  145  . exam.sh def.txt 
+  146  vi exam.sh 
+  147  . exam.sh def.txt 
+  148  vi exam.sh 
+  149  . exam.sh def.txt 
+  151  vi exam.sh 
+  152  . exam.sh def.txt 
+  154  sh exam.sh def.txt 
+  155  cat exam.sh 
+  212  rm exam.sh 
+  221  sh if.sh 3
+  222  . if.sh 1
+  224  sh if.sh 1
+  225  sh if.sh 3
+  226  sh if.sh 5
+  227  sh if.sh 7
+  228  sh if.sh 3 5
+  229  sh if.sh 3 7
+  230  sh if.sh 3 
+  231  sh if.sh 5
+  232  sh if.sh 3 
+  233  sh if.sh 5
+  234  sh if.sh 3 7
+  235  sh if.sh 3 
+  236  sh if.sh 5
+  237  sh case.sh 
+  238  sh case.sh start
+  239  sh case.sh stop
+  241   case.sh stop
+  242  case.sh stop
+  243  chmod -x case.sh 
+  245  chmod 777 case.sh 
+  257  sh for.sh ls
+  258  sh for.sh 
+  259  sh for.sh
+  261  sh for.sh 
+  263  rm case.sh.bk for.sh.bk if.sh.bk 
+  265  sh for.sh 
+  267  rm case.sh.bk for.sh.bk if.sh.bk 
+  269  chmod 777 for.sh 
+  271  sh 10times.sh 
+  272  sh calc.sh 
+  273  sh while.sh 
+  274  sh select.sh 
+  276  sh -x sub.sh 
+  277  sh -x sub.sh select.sh 
+  279  sh  sub.sh select.sh 
+  281  rm backup.select.sh 
+  284  sh reidairect.sh 
+  287  sh -x reidairect.sh 
+  290  sh -x reidairect.sh 
+  295  history | grep sh
+[ec2-user@ip-30-0-10-87 0831]$ history | grep shbackup
+  281  rm backup.select.sh 
+  296  history | grep backup
+[ec2-user@ip-30-0-10-87 0831]$ history | grep backup -f
+grep: option requires an argument -- 'f'
+Usage: grep [OPTION]... PATTERN [FILE]...
+Try 'grep --help' for more information.
+[ec2-user@ip-30-0-10-87 0831]$ history[ec2-user@ip-30-0-10-87 0831]$ [ec2-user@ip-30-0-10-87 0831]$ history
+    1  pwd
+    2  ls-la
+    3  ls -la
+    4  cat .bash_profile 
+    5  ls -la
+    6  sudo yam -y update
+    7  su do yam -y update
+    8  su do yum -y update
+    9  sudo yum -y update
+   10  vi .bash_profile 
+   11  ll
+   12  source .bash_profile
+   13  source  .bash_profile
+   14  source .bash_profile
+   15  ls
+   16  ls -la
+   17  source .bash_profile
+   18  . .bash_profile
+   19  ll
+   20  vi .bash_profile 
+   21  source .bash_profile
+   22  ll
+   23  source .bash_profile
+   24  alias ls
+   25  source ~/.bash_profile
+   26  pwd
+   27  source .bash_profile
+   28  ll
+   29  vi .bash_profile 
+   30  source .bash_profile
+   31  $D
+   32  date
+   33  vi .bash_profile 
+   34  ll
+   35  source .bash_profile
+   36  vi .bash_profile 
+   37  ll
+   38  source .bash_profile
+   39  cat .bash_profile 
+   40  ll
+   41  cd ../
+   42  ls
+   43  cd ../
+   44  ls
+   45  cd lib
+   46  ls
+   47  pwd
+   48  cd ..
+   49  cd /var/lib
+   50  whoami
+   51  pwd
+   52  ls
+   53  sudo yum install whois
+   54  cd
+   55  ls
+   56  cd ~
+   57  cd -
+   58  cd $HOME
+   59  ls
+   60  echo &HOME
+   61  echo ~
+   62  echo $HOME
+   63  ll
+   64  mk
+   65  mkdir tmp
+   66  ll
+   67  mkdir -m 755 maffi
+   68  ll
+   69  cd maffi
+   70  touch ediet.txt
+   71  ls
+   72  ll
+   73  chomd 777 ediet.txt 
+   74  chmod 777 ediet.txt 
+   75  ll
+   76  sudo chown root:ec2-user ./*.txt
+   77  ll
+   78  cp ediet.txt ediet.txt .bk
+   79  cp ediet.txt ediet.txt.bk
+   80  ll
+   81  cp -p ediet.txt ediet.txt.20180830
+   82  ll
+   83  cd ..
+   84  ls
+   85  cd maffi/
+   86  ls
+   87  mv ediet.txt ../tmp/ediet.txt
+   88  ll
+   89  ll ../tmp
+   90  cd ..
+   91  ls
+   92  pwd
+   93  cd ec2-user/
+   94  ls
+   95  l
+   96  ll
+   97  ls
+   98  ll
+   99  ll ./*
+  100  rm -rfi ./
+  101  ll
+  102  rm -rfi ./*
+  103  ll
+  104  ll ./
+  105  ll ./*
+  106  rm -rfi ./*
+  107  ll ./*
+  108  rm -ir tmp
+  109  ll ./
+  110  ll
+  111  ls ./
+  112  ls
+  113  cd ..
+  114  ls
+  115  ls -la
+  116  cd ..
+  117  ls
+  118  pwd
+  119  cd 
+  120  ls
+  121  ls  etc/rc*
+  122  ls /etc/rc*
+  123  ll /etc/rc*
+  124  cat /etc/rc.local 
+  125  cd /etc/rc0.d/
+  126  ls
+  127  cd 
+  128  which whois
+  129  which vim
+  130  which vi
+  131  which awk
+  132  which grep
+  133  echo $SHELL
+  134  ll bin/bash
+  135  cat bin/bash
+  136  printenv SHELL
+  137  finger guest
+  138  ls
+  139  sh exam.sh 
+  140  ll
+  141  chmod 777 exam.sh 
+  142  ll
+  143  sh exam.sh 
+  144  touch def.txt
+  145  . exam.sh def.txt 
+  146  vi exam.sh 
+  147  . exam.sh def.txt 
+  148  vi exam.sh 
+  149  . exam.sh def.txt 
+  150  ll
+  151  vi exam.sh 
+  152  . exam.sh def.txt 
+  153  ls
+  154  sh exam.sh def.txt 
+  155  cat exam.sh 
+  156  ll/var/log
+  157  cd /var/
+  158  ls
+  159  cd lib/
+  160  ls
+  161  cd ..
+  162  ls
+  163  cd log/
+  164  ls
+  165  teil -f secure 
+  166  sudo tail -f secure 
+  167  cd 
+  168  ls
+  169  $?
+  170  ll
+  171  $?
+  172  lll
+  173  $?
+  174  ll
+  175  $?
+  176  echo $?
+  177  ll
+  178  echo $?
+  179  true
+  180  echo $?
+  181  folse
+  182  false
+  183  echo $?
+  184  if true; then echo '新です'; fi
+  185  less KEN_ALL.CSV 
+  186  head -3 KEN_ALL.CSV 
+  187  less K
+  188  less KEN_ALL.CSV 
+  189  more KEN_ALL.CSV 
+  190  head -3 KEN_ALL.CSV 
+  191  teil KEN_ALL.CSV 
+  192  tail KEN_ALL.CSV 
+  193  tail -60000 KEN_ALL.CSV | heaf -3
+  194  tail -60000 KEN_ALL.CSV | head -3
+  195  grep ｵｵﾂﾄﾞｵﾘ KEN_ALL.CSV 
+  196  ll |less KEN_ALL.CSV 
+  197  ll | sort
+  198  ll | sort -r
+  199  ll | more
+  200  iconf
+  201  LANG=C date > timestamp
+  202  ll
+  203  cat timestamp 
+  204  rm -i timestamp def.txt.bak def.txt.bak def.txt
+  205  ls
+  206  ll 
+  207  ll | less 
+  208  less KEN_ALL.CSV 
+  209  ll | less KEN_ALL.CSV 
+  210  ll | less
+  211  ll
+  212  rm exam.sh 
+  213  ls
+  214  ll
+  215  mkdir 0831
+  216  ls
+  217  cd 0831
+  218  ls
+  219  pwd
+  220  ls
+  221  sh if.sh 3
+  222  . if.sh 1
+  223  ls
+  224  sh if.sh 1
+  225  sh if.sh 3
+  226  sh if.sh 5
+  227  sh if.sh 7
+  228  sh if.sh 3 5
+  229  sh if.sh 3 7
+  230  sh if.sh 3 
+  231  sh if.sh 5
+  232  sh if.sh 3 
+  233  sh if.sh 5
+  234  sh if.sh 3 7
+  235  sh if.sh 3 
+  236  sh if.sh 5
+  237  sh case.sh 
+  238  sh case.sh start
+  239  sh case.sh stop
+  240  ll
+  241   case.sh stop
+  242  case.sh stop
+  243  chmod -x case.sh 
+  244  ll
+  245  chmod 777 case.sh 
+  246  ll
+  247  uname -s
+  248  Sstring
+  249  $string
+  250  echo $strong
+  251  string = moria
+  252  string = 'moria'
+  253  string = "moria"
+  254  string="moria"
+  255  ls
+  256  ll
+  257  sh for.sh ls
+  258  sh for.sh 
+  259  sh for.sh
+  260  ls
+  261  sh for.sh 
+  262  ls
+  263  rm case.sh.bk for.sh.bk if.sh.bk 
+  264  ls
+  265  sh for.sh 
+  266  ll
+  267  rm case.sh.bk for.sh.bk if.sh.bk 
+  268  ls
+  269  chmod 777 for.sh 
+  270  ls
+  271  sh 10times.sh 
+  272  sh calc.sh 
+  273  sh while.sh 
+  274  sh select.sh 
+  275  pwd
+  276  sh -x sub.sh 
+  277  sh -x sub.sh select.sh 
+  278  ls
+  279  sh  sub.sh select.sh 
+  280  ls
+  281  rm backup.select.sh 
+  282  ls
+  283  pwd
+  284  sh reidairect.sh 
+  285  ls
+  286  cat logfile.log 
+  287  sh -x reidairect.sh 
+  288  ll
+  289  cat logfile.log 
+  290  sh -x reidairect.sh 
+  291  cat logfile.log 
+  292  histry
+  293  hisory
+  294  history
+  295  history | grep sh
+  296  history | grep backup
+  297  history | grep -f
+  298  history
+[ec2-user@ip-30-0-10-87 0831]$ [ec2-user@ip-30-0-10-87 0831]$ 
+[ec2-user@ip-30-0-10-87 0831]$ 
+[ec2-user@ip-30-0-10-87 0831]$ 
+[ec2-user@ip-30-0-10-87 0831]$ 
+[ec2-user@ip-30-0-10-87 0831]$ 
+[ec2-user@ip-30-0-10-87 0831]$ man
+What manual page do you want?
+[ec2-user@ip-30-0-10-87 0831]$ help
+GNU bash, version 4.2.46(2)-release (x86_64-redhat-linux-gnu)
+These shell commands are defined internally.  Type `help' to see this list.
+Type `help name' to find out more about the function `name'.
+Use `info bash' to find out more about the shell in general.
+Use `man -k' or `info' to find out more about commands not in this list.
+
+A star (*) next to a name means that the command is disabled.
+
+ job_spec [&]                          history [-c] [-d offset] [n] or hi>
+ (( expression ))                      if COMMANDS; then COMMANDS; [ elif>
+ . filename [arguments]                jobs [-lnprs] [jobspec ...] or job>
+ :                                     kill [-s sigspec | -n signum | -si>
+ [ arg... ]                            let arg [arg ...]
+ [[ expression ]]                      local [option] name[=value] ...
+ alias [-p] [name[=value] ... ]        logout [n]
+ bg [job_spec ...]                     mapfile [-n count] [-O origin] [-s>
+ bind [-lpvsPVS] [-m keymap] [-f fil>  popd [-n] [+N | -N]
+ break [n]                             printf [-v var] format [arguments]>
+ builtin [shell-builtin [arg ...]]     pushd [-n] [+N | -N | dir]
+ caller [expr]                         pwd [-LP]
+ case WORD in [PATTERN [| PATTERN]..>  read [-ers] [-a array] [-d delim] >
+ cd [-L|[-P [-e]]] [dir]               readarray [-n count] [-O origin] [>
+ command [-pVv] command [arg ...]      readonly [-aAf] [name[=value] ...]>
+ compgen [-abcdefgjksuv] [-o option]>  return [n]
+ complete [-abcdefgjksuv] [-pr] [-DE>  select NAME [in WORDS ... ;] do CO>
+ compopt [-o|+o option] [-DE] [name >  set [-abefhkmnptuvxBCHP] [-o optio>
+ continue [n]                          shift [n]
+ coproc [NAME] command [redirections>  shopt [-pqsu] [-o] [optname ...]
+ declare [-aAfFgilrtux] [-p] [name[=>  source filename [arguments]
+ dirs [-clpv] [+N] [-N]                suspend [-f]
+ disown [-h] [-ar] [jobspec ...]       test [expr]
+ echo [-neE] [arg ...]                 time [-p] pipeline
+ enable [-a] [-dnps] [-f filename] [>  times
+ eval [arg ...]                        trap [-lp] [[arg] signal_spec ...]>
+ exec [-cl] [-a name] [command [argu>  true
+ exit [n]                              type [-afptP] name [name ...]
+ export [-fn] [name[=value] ...] or >  typeset [-aAfFgilrtux] [-p] name[=>
+ false                                 ulimit [-SHacdefilmnpqrstuvx] [lim>
+ fc [-e ename] [-lnr] [first] [last]>  umask [-p] [-S] [mode]
+ fg [job_spec]                         unalias [-a] name [name ...]
+ for NAME [in WORDS ... ] ; do COMMA>  unset [-f] [-v] [name ...]
+ for (( exp1; exp2; exp3 )); do COMM>  until COMMANDS; do COMMANDS; done
+ function name { COMMANDS ; } or nam>  variables - Names and meanings of >
+ getopts optstring name [arg]          wait [id]
+ hash [-lr] [-p pathname] [-dt] [nam>  while COMMANDS; do COMMANDS; done
+ help [-dms] [pattern ...]             { COMMANDS ; }
+[ec2-user@ip-30-0-10-87 0831]$ [ec2-user@ip-30-0-10-87 0831]$ manhelp cd
+cd: cd [-L|[-P [-e]]] [dir]
+    Change the shell working directory.
+    
+    Change the current directory to DIR.  The default DIR is the value of the
+    HOME shell variable.
+    
+    The variable CDPATH defines the search path for the directory containing
+    DIR.  Alternative directory names in CDPATH are separated by a colon (:).
+    A null directory name is the same as the current directory.  If DIR begins
+    with a slash (/), then CDPATH is not used.
+    
+    If the directory is not found, and the shell option `cdable_vars' is set,
+    the word is assumed to be  a variable name.  If that variable has a value,
+    its value is used for DIR.
+    
+    Options:
+        -L	force symbolic links to be followed
+        -P	use the physical directory structure without following symbolic
+    	links
+        -e	if the -P option is supplied, and the current working directory
+    	cannot be determined successfully, exit with a non-zero status
+    
+    The default is to follow symbolic links, as if `-L' were specified.
+    
+    Exit Status:
+    Returns 0 if the directory is changed, and if $PWD is set successfully when
+    -P is used; non-zero otherwise.
+[ec2-user@ip-30-0-10-87 0831]$ [ec2-user@ip-30-0-10-87 0831]$ ssh f-x func.sh 
++ func
++ echo シエルが実行されました
+シエルが実行されました
+[ec2-user@ip-30-0-10-87 0831]$ ^C
+[ec2-user@ip-30-0-10-87 0831]$ sh -x func.sh aaa bbb ccc
+func.sh: line 3: syntax error near unexpected token `arg'
+func.sh: line 3: `func(arg arg2 arg3)'
+[ec2-user@ip-30-0-10-87 0831]$ sh -x func.sh aaa bbb ccc
+func.sh: line 3: syntax error near unexpected token `arg,'
+func.sh: line 3: `func(arg, arg2, arg3)'
+[ec2-user@ip-30-0-10-87 0831]$ sh -x func.sh aaa bbb ccc
++ func
++ echo morimori
+morimori
+[ec2-user@ip-30-0-10-87 0831]$ sh src_test.sh 
+[ec2-user@ip-30-0-10-87 0831]$ echo TEST_VAL
+TEST_VAL
+[ec2-user@ip-30-0-10-87 0831]$ TEST _VALTEST_VAL=
+[ec2-user@ip-30-0-10-87 0831]$ . ./src_test
+-bash: ./src_test: No such file or directory
+[ec2-user@ip-30-0-10-87 0831]$ echo "$TEST_VAL"
+
+[ec2-user@ip-30-0-10-87 0831]$ TEST_VAL=
+[ec2-user@ip-30-0-10-87 0831]$ . ./src_test.sh
+[ec2-user@ip-30-0-10-87 0831]$ echo "$TEST_VAL"
+hello
+[ec2-user@ip-30-0-10-87 0831]$ ^C
+[ec2-user@ip-30-0-10-87 0831]$ echo "$TEST_VAL"
+hello
+[ec2-user@ip-30-0-10-87 0831]$ TEST_VAL=
+[ec2-user@ip-30-0-10-87 0831]$ ./src_test.sh
+-bash: ./src_test.sh: Permission denied
+[ec2-user@ip-30-0-10-87 0831]$ echo "$TEST_VAL"
+
+[ec2-user@ip-30-0-10-87 0831]$ TEST_VAL=
+[ec2-user@ip-30-0-10-87 0831]$ . ./src_test.sh
+[ec2-user@ip-30-0-10-87 0831]$ echo "$TEST_VAL"
+hello
+[ec2-user@ip-30-0-10-87 0831]$ ps
+  PID TTY          TIME CMD
+ 1137 pts/0    00:00:00 bash
+ 4484 pts/0    00:00:00 ps
+[ec2-user@ip-30-0-10-87 0831]$ ps-aux
+-bash: ps-aux: command not found
+[ec2-user@ip-30-0-10-87 0831]$ ps-aux
+-bash: ps-aux: command not found
+[ec2-user@ip-30-0-10-87 0831]$ ps-aux -aux
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.6 127816  6472 ?        Ss   00:59   0:02 /usr/lib/sys
+root         2  0.0  0.0      0     0 ?        S    00:59   0:00 [kthreadd]
+root         3  0.0  0.0      0     0 ?        S    00:59   0:00 [ksoftirqd/0
+root         5  0.0  0.0      0     0 ?        S<   00:59   0:00 [kworker/0:0
+root         7  0.0  0.0      0     0 ?        S    00:59   0:00 [migration/0
+root         8  0.0  0.0      0     0 ?        S    00:59   0:00 [rcu_bh]
+root         9  0.0  0.0      0     0 ?        R    00:59   0:00 [rcu_sched]
+root        10  0.0  0.0      0     0 ?        S<   00:59   0:00 [lru-add-dra
+root        11  0.0  0.0      0     0 ?        S    00:59   0:00 [watchdog/0]
+root        13  0.0  0.0      0     0 ?        S    00:59   0:00 [kdevtmpfs]
+root        14  0.0  0.0      0     0 ?        S<   00:59   0:00 [netns]
+root        15  0.0  0.0      0     0 ?        S    00:59   0:00 [xenwatch]
+root        16  0.0  0.0      0     0 ?        S    00:59   0:00 [xenbus]
+root        18  0.0  0.0      0     0 ?        S    00:59   0:00 [khungtaskd]
+root        19  0.0  0.0      0     0 ?        S<   00:59   0:00 [writeback]
+root        20  0.0  0.0      0     0 ?        S<   00:59   0:00 [kintegrityd
+root        21  0.0  0.0      0     0 ?        S<   00:59   0:00 [bioset]
+root        22  0.0  0.0      0     0 ?        S<   00:59   0:00 [bioset]
+root        23  0.0  0.0      0     0 ?        S<   00:59   0:00 [bioset]
+root        24  0.0  0.0      0     0 ?        S<   00:59   0:00 [kblockd]
+root        25  0.0  0.0      0     0 ?        S<   00:59   0:00 [md]
+root        26  0.0  0.0      0     0 ?        S<   00:59   0:00 [edac-poller
+root        31  0.0  0.0      0     0 ?        S    00:59   0:00 [kswapd0]
+root        32  0.0  0.0      0     0 ?        SN   00:59   0:00 [ksmd]
+root        33  0.0  0.0      0     0 ?        SN   00:59   0:00 [khugepaged]
+root        34  0.0  0.0      0     0 ?        S<   00:59   0:00 [crypto]
+root        42  0.0  0.0      0     0 ?        S<   00:59   0:00 [kthrotld]
+root        43  0.0  0.0      0     0 ?        S    00:59   0:00 [kworker/u30
+root        44  0.0  0.0      0     0 ?        S<   00:59   0:00 [kmpath_rdac
+root        45  0.0  0.0      0     0 ?        S<   00:59   0:00 [kaluad]
+root        46  0.0  0.0      0     0 ?        S<   00:59   0:00 [kpsmoused]
+root        48  0.0  0.0      0     0 ?        S<   00:59   0:00 [ipv6_addrco
+root        61  0.0  0.0      0     0 ?        S<   00:59   0:00 [deferwq]
+root       121  0.0  0.0      0     0 ?        S    00:59   0:00 [kauditd]
+root       213  0.0  0.0      0     0 ?        S    00:59   0:00 [kworker/u30
+root       218  0.0  0.0      0     0 ?        S<   00:59   0:00 [ata_sff]
+root       221  0.0  0.0      0     0 ?        S    00:59   0:00 [scsi_eh_0]
+root       222  0.0  0.0      0     0 ?        S<   00:59   0:00 [scsi_tmf_0]
+root       225  0.0  0.0      0     0 ?        S    00:59   0:00 [scsi_eh_1]
+root       226  0.0  0.0      0     0 ?        S<   00:59   0:00 [scsi_tmf_1]
+root       241  0.0  0.0      0     0 ?        S<   00:59   0:00 [bioset]
+root       242  0.0  0.0      0     0 ?        S<   00:59   0:00 [xfsalloc]
+root       243  0.0  0.0      0     0 ?        S<   00:59   0:00 [xfs_mru_cac
+root       244  0.0  0.0      0     0 ?        S<   00:59   0:00 [xfs-buf/xvd
+root       245  0.0  0.0      0     0 ?        S<   00:59   0:00 [xfs-data/xv
+root       246  0.0  0.0      0     0 ?        S<   00:59   0:00 [xfs-conv/xv
+root       247  0.0  0.0      0     0 ?        S<   00:59   0:00 [xfs-cil/xvd
+root       248  0.0  0.0      0     0 ?        S<   00:59   0:00 [xfs-reclaim
+root       249  0.0  0.0      0     0 ?        S<   00:59   0:00 [xfs-log/xvd
+root       250  0.0  0.0      0     0 ?        S<   00:59   0:00 [xfs-eofbloc
+root       251  0.0  0.0      0     0 ?        S    00:59   0:00 [xfsaild/xvd
+root       252  0.0  0.0      0     0 ?        S<   00:59   0:00 [kworker/0:1
+root       318  0.0  0.2  37228  2364 ?        Ss   00:59   0:00 /usr/lib/sys
+root       358  0.0  0.4  47352  4988 ?        Ss   00:59   0:00 /usr/lib/sys
+root       393  0.0  0.0  55508   892 ?        S<sl 00:59   0:00 /sbin/auditd
+root       438  0.0  0.0      0     0 ?        S<   00:59   0:00 [ttm_swap]
+root       462  0.0  0.1  26376  1764 ?        Ss   00:59   0:00 /usr/lib/sys
+dbus       464  0.0  0.2  66420  2576 ?        Ssl  00:59   0:00 /usr/bin/dbu
+chrony     467  0.0  0.1 117752  1820 ?        S    00:59   0:00 /usr/sbin/ch
+polkitd    473  0.0  1.1 538432 12092 ?        Ssl  00:59   0:00 /usr/lib/pol
+root       528  0.0  1.0 549996 11084 ?        Ssl  00:59   0:00 /usr/sbin/Ne
+root       546  0.0  0.5 107392  5472 ?        S    00:59   0:00 /sbin/dhclie
+root       760  0.0  1.6 573752 17032 ?        Ssl  00:59   0:02 /usr/bin/pyt
+root      1033  0.0  0.2  89624  2188 ?        Ss   00:59   0:00 /usr/libexec
+postfix   1036  0.0  0.4  89796  4076 ?        S    00:59   0:00 qmgr -l -t u
+root      1069  0.0  0.4 112808  4264 ?        Ss   00:59   0:00 /usr/sbin/ss
+root      1073  0.0  0.6 220864  6160 ?        Ssl  00:59   0:01 /usr/sbin/rs
+root      1079  0.0  0.1 126284  1680 ?        Ss   00:59   0:00 /usr/sbin/cr
+root      1080  0.0  0.0 110088   880 ttyS0    Ss+  00:59   0:00 /sbin/agetty
+root      1081  0.0  0.0 110088   864 tty1     Ss+  00:59   0:00 /sbin/agetty
+root      1098  0.0  0.0 107964   572 ?        Ss   00:59   0:00 rhnsd
+root      1133  0.0  0.5 156668  5620 ?        Ss   01:03   0:00 sshd: ec2-us
+ec2-user  1136  0.0  0.2 156668  2592 ?        S    01:03   0:00 sshd: ec2-us
+ec2-user  1137  0.0  0.2 115436  2144 pts/0    Ss   01:03   0:00 -bash
+postfix   4372  0.0  0.3  89728  4052 ?        S    05:59   0:00 pickup -l -t
+root      4481  0.0  0.0      0     0 ?        S    06:42   0:00 [kworker/0:0
+root      4483  0.0  0.0      0     0 ?        S    06:47   0:00 [kworker/0:1
+root      4485  0.0  0.0      0     0 ?        R    06:57   0:00 [kworker/0:2
+ec2-user  4488  0.0  0.1 155324  1864 pts/0    R+   06:57   0:00 ps -aux
+[ec2-user@ip-30-0-10-87 0831]$ echo "$TEST_VAL"
+hello
+[ec2-user@ip-30-0-10-87 0831]$ ][ec2-user@ip-30-0-10-87 0831]$ ][ec2-user@ip-30-0-10-87 0831]$ ][ec2-user@ip-30-0-10-87 0831]$ ][ec2-user@ip-30-0-10-87 0831]$ ]sh continue.sh 1
+-bash: ]sh: command not found
+[ec2-user@ip-30-0-10-87 0831]$ ls
+10times.sh  case.sh      func.sh      reidairect.sh  sub.sh
+backup.     continue.sh  if.sh        select.sh      while.sh
+calc.sh     for.sh       logfile.log  src_test.sh
+[ec2-user@ip-30-0-10-87 0831]$ sh continue.sh 
+expr: non-integer argument
+continue.sh: line 4: [: : integer expression expected
+[ec2-user@ip-30-0-10-87 0831]$ sh continue.sh 
+expr: non-integer argument
+continue.sh: line 4: [: : integer expression expected
+[ec2-user@ip-30-0-10-87 0831]$ sh continue.sh 
+continue.sh: line 6: [: : integer expression expected
+[ec2-user@ip-30-0-10-87 0831]$ sh continue.sh 
+1
+2
+3
+4
+6
+7
+8
+9
+10
+[ec2-user@ip-30-0-10-87 0831]$  sh eval.txt 
+Tuesday
+[ec2-user@ip-30-0-10-87 0831]$ sh eval.txt sh
+Friday
+[ec2-user@ip-30-0-10-87 0831]$ sh -x eval.sh 
++ day0=Sunday
++ day1=Monday
++ day3=Tuesday
++ day4=Thursday
++ day5=Friday
++ day6=Saturday
++ today=day5
++ eval echo '"$day5"'
+++ echo Friday
+Friday
+[ec2-user@ip-30-0-10-87 0831]$ [ec2-user@ip-30-0-10-87 0831]$ [ec2-user@ip-30-0-10-87 0831]$ day0=Sunday day1=Monday day3=Tuesday day4=Thursday day5=Frid ay day6=Saturday
+[ec2-user@ip-30-0-10-87 0831]$ today=day5
+[ec2-user@ip-30-0-10-87 0831]$ echo \"\$$today\"
+"$day5"
+[ec2-user@ip-30-0-10-87 0831]$ ^C
+[ec2-user@ip-30-0-10-87 0831]$ sh return.sh funcsh reeturn.sh func
+return.sh: line 2: $'\r': command not found
+return.sh: line 3: $'func\r': command not found
+return.sh: line 4: $'\r': command not found
+return.sh: line 5: syntax error near unexpected token `$'\r''
+return.sh: line 5: `func()'
+[ec2-user@ip-30-0-10-87 0831]$ [ec2-user@ip-30-0-10-87 0831]$ sh return.sh func
+return.sh: line 2: $'\r': command not found
+return.sh: line 3: $'func\r': command not found
+return.sh: line 4: $'\r': command not found
+return.sh: line 5: syntax error near unexpected token `$'\r''
+return.sh: line 5: `func()'
+[ec2-user@ip-30-0-10-87 0831]$ sh return.sh func
+return.sh: line 2: $'\r': command not found
+return.sh: line 3: $'\r': command not found
+return.sh: line 4: $'\r': command not found
+return.sh: line 5: syntax error near unexpected token `$'\r''
+return.sh: line 5: `func()'
+[ec2-user@ip-30-0-10-87 0831]$ sh return.sh
+return.sh: line 2: $'\r': command not found
+return.sh: line 3: $'func\r': command not found
+return.sh: line 4: $'\r': command not found
+return.sh: line 5: syntax error near unexpected token `$'\r''
+return.sh: line 5: `func()'
+[ec2-user@ip-30-0-10-87 0831]$ sh return.sh
+return.sh: line 2: $'\r': command not found
+return.sh: line 3: $'func\r': command not found
+return.sh: line 4: $'\r': command not found
+return.sh: line 5: syntax error near unexpected token `$'\r''
+return.sh: line 5: `func()'
+[ec2-user@ip-30-0-10-87 0831]$ sh return.sh
+return.sh: line 2: $'\r': command not found
+return.sh: line 3: func: command not found
+return.sh: line 4: $'\r': command not found
+return.sh: line 5: syntax error near unexpected token `$'{\r''
+return.sh: line 5: `func(){'
+[ec2-user@ip-30-0-10-87 0831]$ sh return.sh
+return.sh: line 2: $'\r': command not found
+return.sh: line 3: syntax error near unexpected token `$'\r''
+return.sh: line 3: `func()'
+[ec2-user@ip-30-0-10-87 0831]$ sh return.sh
+return.sh: line 2: func: command not found
+return.sh: line 3: $'\r': command not found
+return.sh: line 4: syntax error near unexpected token `$'\r''
+return.sh: line 4: `func()'
+[ec2-user@ip-30-0-10-87 0831]$ sh return.sh
+return.sh: line 2: func: command not found
+return.sh: line 3: $'\r': command not found
+return.sh: line 4: syntax error near unexpected token `$'\r''
+return.sh: line 4: `func()'
+[ec2-user@ip-30-0-10-87 0831]$ sh return.sh
+return.sh: line 2: $'\r': command not found
+return.sh: line 3: syntax error near unexpected token `$'\r''
+return.sh: line 3: `func()'
+[ec2-user@ip-30-0-10-87 0831]$ sh return.sh
+return.sh: line 2: syntax error near unexpected token `$'\r''
+return.sh: line 2: `func()'
+[ec2-user@ip-30-0-10-87 0831]$ sh return.sh
+return.sh: line 2: syntax error near unexpected token `$'{\r''
+return.sh: line 2: `func() {'
+[ec2-user@ip-30-0-10-87 0831]$ sh return.sh
+return.sh: line 2: syntax error near unexpected token `$'\r''
+return.sh: line 2: `func() '
+[ec2-user@ip-30-0-10-87 0831]$ sh return.sh
+return.sh: line 2: $'func\r': command not found
+return.sh: line 3: syntax error near unexpected token `$'\r''
+return.sh: line 3: `func() '
+[ec2-user@ip-30-0-10-87 0831]$ sh return.sh
+return.sh: line 2: syntax error near unexpected token `$'\r''
+return.sh: line 2: ` func() '
+[ec2-user@ip-30-0-10-87 0831]$ sh return.sh
+return.sh: line 2: fubc: command not found
+return.sh: line 3: $'\r': command not found
+return.sh: line 4: syntax error near unexpected token `$'{\r''
+return.sh: line 4: `func() {'
+[ec2-user@ip-30-0-10-87 0831]$ logout
