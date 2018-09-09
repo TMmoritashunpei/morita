@@ -10,7 +10,7 @@ public class Main1_6 {
       int value = prefs.get(key);
       System.out.println(key + "の人口は" + value);
     }
-
+      System.out.printf("製品番号%s-%02d","SVJ",3);
   }
 }
 
@@ -53,3 +53,4 @@ HashSetは大体同じかを判断するために
 ジェネリクス=　総称型　テンプレートという。
 <>
 ダイヤモンド
+*/
