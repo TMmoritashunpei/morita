@@ -1,0 +1,252 @@
+Twitterで
+プログラマの人フォローして情報を集めている。
+
+キータ
+トップの画面ランキングチェックする
+
+人々に聞く
+情報収集は早い
+
+足元固めないといけない。
+
+
+レッドハット系
+レビアン系で使えるコマンドが違う。
+
+シェルを書くこと
+
+リナックス環境があれば動かく事ができる
+
+OSがあれば動く
+コンピュータの操作で軽くやるくらいなら楽なのでシェル
+で行う
+
+シェル
+種類
+バッシュ
+ズッシュ
+クッシュ
+ｋシェル
+
+一番主流　バッシュ
+
+FreeBSD mac sh
+
+solalis sh
+
+lpic の話題
+資格がある
+サーバーいじるときの資格
+
+分裂する
+試験をやめる
+~
+チルダ
+
+drwx------. 3 ec2-user ec2-user  74 Aug 30 02:40 .
+drwxr-xr-x. 3 root     root      22 Aug 30 02:40 ..
+-rw-r--r--. 1 ec2-user ec2-user  18 Sep 26  2017 .bash_logout
+-rw-r--r--. 1 ec2-user ec2-user 193 Sep 26  2017 .bash_profile
+-rw-r--r--. 1 ec2-user ec2-user 231 Sep 26  2017 .bashrc
+drwx------. 2 ec2-user ec2-user  29 Aug 30 02:40 .ssh
+[ec2-user@ip-30-0-10-87 ~]$ cat .bash
+.bash_logout   .bash_profile  .bashrc
+[ec2-user@ip-30-0-10-87 ~]$ cat .bash_profile
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+
+~/.bashrc　ホームディレクトリにあるbashrc を見に行くという設定
+
+
+PATH=$PATH:$HOME/.local/bin:$HOME/bin
+
+export PATH
+
+export PATH　このパスを使いますよという設定ができる
+
+
+su do yum -y update　
+レッドハットの場合　はyum
+
+sudo ルート権限で実行する為
+
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+PATH=$PATH:$HOME/.local/bin:$HOME/bin
+
+export PATH
+
+eliasll='ls -l'
+スペース開けない
+D=date
+スペース開けない
+
+
+elias で設定する
+
+.bash_profile　にプログラム書くこともできる。
+
+変数＄をつけて実行
+.bash_profileに
+D=date
+記述
+
+$Dを入力をする
+
+
+[ec2-user@ip-30-0-10-87 /
+
+/はルートの事
+
+sudo yum install whois
+
+whois www.shunpeimorita.work
+
+情報見れる
+
+カエルコマンド
+http:で接続できる
+
+
+cd -
+は一個戻れる
+
+cd $HOME
+
+変数の中身を表示
+echo
+
+tmp 作業ホルダ
+755　
+
+
+drwxr-xr-x
+D　ディレクトリ
+R　読み込み
+X実行権限　シェルなどに付ける
+
+
+
+-rwxrwxrwx. 1 ec2-user ec2-user 0 Aug 30 05:47 ediet.txt
+
+最初の三つが所有者
+二つ目がグループ
+三つめがその他
+全部行けるのは
+権限777
+
+5は読むこと実行はできるかけない
+
+chown root:ec2-user ./*
+
+./はここの配下
+＊全て
+
+chown root:ec2-user ./*.txt
+
+[ec2-user@ip-30-0-10-87 maffi]$ sudo chown root:ec2-user ./*.txt
+[ec2-user@ip-30-0-10-87 maffi]$ ll
+total 0
+-rwxrwxrwx. 1 root ec2-user 0 Aug 30 05:47 ediet.txt
+[ec2-user@ip-30-0-10-87 maffi]$
+
+所有者rootになっている
+cp ediet.txt ediet.txt .bk
+
+
+cp -p ediet.txt ediet.txt.20180830
+
+権限もコピーしている
+タイムスタンプもコピーされる
+所有者は実行した人になる
+
+
+mv ediet.txt ../tmp/ediet.txt
+
+絶対してはいけない
+rm -rf --no-preserve-root /
+
+
+全てを消し去る
+バルスみたいなもの
+
+-rf r再帰的　ｆファイル　　root配下にあるもの　消してしまう。
+
+
+ll ./*
+./maffi:
+total 0
+-rwxrwxrwx. 1 ec2-user ec2-user 0 Aug 30 05:47 ediet.txt.20180830
+-rwxrwxr-x. 1 ec2-user ec2-user 0 Aug 30 05:57 ediet.txt.bk
+
+./tmp:
+total 0
+-rwxrwxrwx. 1 root ec2-user 0 Aug 30 05:47 ediet.txt
+[ec2-user@ip-30-0-10-87 ~]$
+
+rm -rfi ./
+
+iは確認するから入れたほうが良い。
+
+インタープリター
+対話型
+
+一行ごとプログラムを実行するから対話型になる
+
+コンパイル方式は早い
+
+
+bin　配下には実行ファイルが置かれてる
+/bin
+/user/bin
+tec/bin
+様々ある
+わからないこともある。
+
+which grep
+どこにダウンロードされているかわかる。
+user/binに
+
+
+移植性の高いプログラム
+
+tail -f
+新しく書き込まれた情報が垂れ流しになる
+head -3 ファイル名でやると
+先頭を見れる
+
+head -X | tail
+
+
+; 改行の代わりになる
+
+if [ -f file]; then
+  echo 'fileが存在します'
+fi
+
+\で改行することもたまにある
+
+$# -ne 1
+
+exit 1
+終了ステータスに1をわたす
+$?で終了ステータス見れる
+$#は
+$?
+$特別な文字
+0が正常終了
+それ以外は失敗
+
+
+
+パイプをいくつも使ってコマンド打つのをワンライナーという

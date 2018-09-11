@@ -50,4 +50,81 @@ String.format("")
 スレッド
 複数処理
 timeAPI
+
+equals オーバーライドするべきメソッド
+
+rimeapi　あいまいな持ち方ができる
+5月5日はこどもの日みたいな使い方ができるようになっている。
+
+パース
+parse
+解析という事
+
+
+コレクションを知らないとダメ
+配列　array　
+
+リスト
+セット
+
+マップ
+キーバリュー方式
+キーが呼び出すと呼ぶ出される
+ハッシュマップ
+二つの値が入る
+map mp = new hashMap
+mpにいくつもキーバリューが入っている
+
+list
+arraylist
+import java.utilArraylist;
+リストはgetで取る
+<>ジェネリクス
+インスタンスがnewしてバラバラに扱うのは面倒なのでリストで取ってくることができる。
+立ち上がったインスタンスをリストに入れる
+new Arraylist<String>()
+add();
+listはインスタンスしか入れられない
+配列はメモリ効率が高い
+<Integer>にすればオートボクシング
+機能使える。
+数値なども扱うことができる。
+ArrayList<>変数名
+イテレータ
+for文のように使える
+何を使うのか組み合わせは性能に直結してくる
+削除する
+clear()すべて削除される。
+remove()要素削除
+for文は遅い
+リストと
+拡張for文
+
+中身を書き換える場合はlinkdlistを使う
+要素の取得はArrylist
+
+set重複許されない
+基本的に順番が関係ない。
+インデックスは使えない
+treeset辞書順になる。
+
+Map
+キーバリュー
+DBにもある
+NOSQL
+モンゴDBダイナモDB
+
+リレーショナルDB
+RDBS
+MYsql
+postgras
+
+
+map
+Map <String Intager>型
+put();
+get();
+size()
+remove()
+値の重複しても許されるがキーの重複は許されない。
 */

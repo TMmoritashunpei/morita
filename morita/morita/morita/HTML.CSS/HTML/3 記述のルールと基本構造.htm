@@ -1,0 +1,1358 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:og="http://ogp.me/ns#"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-JP">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<title>記述のルールと基本構造 - 初心者の勉強法｜Webデザインの勉強</title>
+<link rel="start" href="http://d.hatena.ne.jp/" title="初心者の勉強法｜Webデザインの勉強">
+<link rel="help" href="http://d.hatena.ne.jp/help" title="ヘルプ">
+<link rel="prev" href="http://d.hatena.ne.jp/web-mind/20121223/p1" title="[復習]★１日目の復習">
+<link rel="next" href="http://d.hatena.ne.jp/web-mind/20121225/p1" title="[HTML]画像挿入とリンク">
+
+<link rel="stylesheet" href="3%20%E8%A8%98%E8%BF%B0%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A8%E5%9F%BA%E6%9C%AC%E6%A7%8B%E9%80%A0_files/base.css" type="text/css" media="all">
+<link rel="stylesheet" href="3%20%E8%A8%98%E8%BF%B0%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A8%E5%9F%BA%E6%9C%AC%E6%A7%8B%E9%80%A0_files/headerstyle_bl.css" type="text/css" media="all">
+<link rel="stylesheet" href="3%20%E8%A8%98%E8%BF%B0%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A8%E5%9F%BA%E6%9C%AC%E6%A7%8B%E9%80%A0_files/hatena2-white.css" type="text/css" media="all">
+
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://d.hatena.ne.jp/web-mind/rss">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://d.hatena.ne.jp/web-mind/rss2">
+
+<link rel="meta" type="application/rdf+xml" title="FOAF" href="http://d.hatena.ne.jp/web-mind/foaf">
+<link rel="search" type="application/opensearchdescription+xml" href="http://d.hatena.ne.jp/web-mind/opensearch/diary.xml" title="初心者の勉強法｜Webデザインの勉強内日記検索">
+<link rel="search" type="application/opensearchdescription+xml" href="http://d.hatena.ne.jp/web-mind/opensearch/archive.xml" title="初心者の勉強法｜Webデザインの勉強内一覧検索">
+
+
+
+<link rel="shortcut icon" href="http://d.hatena.ne.jp/images/bl_favicon.ico">
+
+
+
+
+<style type="text/css">
+<!-- 
+/* reset */    
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,
+p,blockquote,table,th,td {
+     margin: 0; 
+     padding: 0;
+}
+ul {
+     list-style-type: none;
+}
+ol li {
+     margin-left: 2em;
+}
+img {
+     border: 0; 
+     vertical-align: top;
+}
+* html body {
+     font-size: small;
+}
+*:first-child+html body {
+     font-size: small;
+}
+.hatena-body {
+     color :#545454; 
+     line-height:1.4; 
+}
+
+/* テキストリンク色 */    
+h1, h1 a:link , h1 a:visited{color: #FFFFFF; }
+.main a:link {color: #008080; text-decoration: none;}
+.main a:visited {color: #008080;}
+.main a:hover {color: #008080; text-decoration: underline;}
+.main a:active {color: #cc3300;}
+.sidebar a:link {color: #222222; text-decoration: none;}
+.sidebar a:visited {color: #222222;}
+.sidebar a:hover {color: #222222; text-decoration: underline;}
+.sidebar a:active {color: #cc3300;}
+
+/* body */  
+body {
+     font-family:
+          "Hiragino Kaku Gothic Pro",
+          "ヒラギノ角ゴ Pro W3",
+          Meiryo,
+          "メイリオ",
+          "MS PGothic",
+          "ＭＳ Ｐゴシック",
+          sans-serif;
+     color: #545454;
+     font-size: 0.95em;
+     background-color: #e4e1d7;
+     background-image: url('');
+     background-repeat: repeat-x;
+}
+
+/* content */  
+h1 {
+    color: #FFF;
+    font-size: 1.3em;
+     font-weight: normal;
+     line-height: 102px; 
+     font-family:
+          "Hiragino Kaku Gothic Pro",
+          "ヒラギノ角ゴ Pro W3",
+          Meiryo,
+          "メイリオ",
+          "MS PGothic",
+          "ＭＳ Ｐゴシック",
+          sans-serif;
+     width: 887px;
+     height: 100px;
+     margin: 0 auto 10px auto;
+     padding: 0 23px 0 0;
+     text-align: right;
+     background: #000 url('http://webizm.jp/hatena/h1_bg.jpg') no-repeat left 0;
+}
+h3.title a {
+     font-size: 1.1em;
+     font-weight: bold;
+}
+.hatena-body .main #days .day .body .section .box h4 {
+     font-size: 1.22em;
+     font-weight: bold;
+     width: 600px;
+     height: 50px;
+     background-image: url('http://webizm.jp/hatena/h4_bgphp.jpg');
+     background-repeat: no-repeat;
+     border: none;
+     margin: 30px 0 10px 0;
+     padding: 10px 0 0 14px;
+}
+.hatena-body .main #days .day .body .section .box h5 {
+     color: #399f8c;
+     font-size: 1.16em;
+     font-weight: bold;
+     height: 34px;
+     background-image: url('http://webizm.jp/hatena/h5_bgphp.jpg');
+     background-repeat: no-repeat;
+     background-position: left 8px;
+     border: none;
+     margin: 20px 0 20px 0;
+     padding: 10px 0 0 33px;
+     border-bottom: 1px dotted #AAA;
+}
+.hatena-body .main #days .day .body .section .box h6 {
+     color: #3e688d;
+     font-size: 1.09em;
+     font-weight: bold;
+     height: 24px;
+     margin: 5px 0 15px 0;
+     padding: 8px 0 0 25px;
+     background-image: url('http://webizm.jp/hatena/h6_bgphp.jpg');
+     background-repeat: no-repeat;
+     background-position: left 8px;
+}
+.hatena-body .main #days .day .body .section .box ul {
+     list-style-type: disc;
+     margin: 10px 0 0 40px;
+}
+.hatena-body .main #days .day .body .section .box li {
+     line-height: 1.4;
+     margin: 0 0 5px 0;
+}
+.hatena-body .main #days .day .body .section .box ol {
+     margin: 0 0 0 42px;
+}
+.hatena-body {
+     width: 990px;
+     margin: 0 auto;
+     padding: 23px 0 0 0;
+     text-align: left;
+     background: #fff url('') repeat-y 0 0;
+     zoom: 1;
+     overflow: hidden;
+}
+.hatena-body:after{
+     content: ""; 
+     display: block; 
+     clear: both;
+}
+.hatena-body .main {
+     float: left;
+     display: inline;
+     width:640px;
+     margin-left: 6px;
+}
+.hatena-body .days {
+	width: 640px;
+}
+.hatena-body .sidebar {
+     float: right;
+     display: inline;
+     width:230px;
+     margin: 0 23px 0 0;
+     border: none;
+}
+.hatena-body .sidebar .hatena-modulebody {
+     border: none;
+}
+.main div.calendar, .main div.day {
+     margin: 0;
+} 
+.hatena-body .main #pager-top {
+	margin: 0px;
+	padding: 0px 23px 0px 0px;
+}
+
+/* sidebar */   
+.sidebar .hatena-module,
+.sidebar .bloglink-body {
+     font-size: 0.95em;
+     margin-bottom: 20px;
+}
+.sidebar .hatena-moduletitle,
+.sidebar .bloglinktitle {
+     font-size: 1.0em;
+     font-family:
+          sans-serif;
+     font-weight: bold;
+     color: #fff;
+     padding: 5px;
+     background: #343434;
+}
+.sidebar .hatena-moduletitle a:link,
+.sidebar .hatena-moduletitle a:visited,
+.sidebar .hatena-moduletitle a:hover, 
+.sidebar .hatena-moduletitle a:active {
+     color: #fff;
+     text-decoration: none;
+}
+.sidebar .hatena-modulebody, .sidebar .bloglink-body {
+     padding: 10px;
+     background: #fff url('http://webizm.jp/hatena/side_bg.jpg') no-repeat bottom;
+}
+.sidebar .hatena-profile .hatena-profile-image {
+     text-align: center;
+}
+
+/* other */  
+.box {
+     margin: 0 0 0 2px;
+     padding: 0 16px 10px 42px;
+     border-width: 1px 1px 1px 0;
+     border-style: solid;
+     border-color: #CCCCCC;
+     background-image: url('http://webizm.jp/hatena/bind.jpg');
+     background-repeat: repeat-y;
+    color: #272727;
+}
+.hatena-body .main #days .day .body .section .box p {
+     margin: 0 0 2px 0;
+     padding: 0;
+     line-height: 1.4;
+}
+.hatena-body .main #days .day h2 a span.date {
+	font-size: 1em;
+}
+.hatena-body .main #days .day h2 .edit {
+	font-size: 12px;
+}
+.main p.header {
+     font-size: 0.8em;
+     margin: 0 0 0 23px;
+}
+hr {
+     height: 1px;
+     border: none;
+     border-bottom: 1px dashed #CCC;
+}
+.hatena-body .main #days .day .body .section blockquote {
+     font-size: 0.87em;
+     margin: 5px 10px 5px 18px;
+     padding: 14px 10px 14px 14px;
+     background-color:#f5f7f7;
+     border-top: 1px dotted #999;
+     border-right:none;
+     border-bottom: 1px dotted #999;
+     border-left:none;
+}
+span.deco {
+     margin: 0 0 4px 0;
+}
+td.calendar-day a {
+     font-weight: bold;
+     background-color: #e4f5f6;
+}
+td.day-today a {
+     background-color: transparent;
+}
+pre.syntax-highlight {
+     width:520px;
+     word-wrap: break-word;
+     white-space: pre-wrap;
+     line-height: 1.6;
+     margin: 12px 0 12px 0;
+}
+.section pre.syntax-highlight {
+     font-size: 0.99em;
+     font-family:
+          Meiryo,
+          "メイリオ",
+          "Hiragino Kaku Gothic Pro",
+          "ヒラギノ角ゴ Pro W3",
+          sans-serif;
+}
+p.share-button sectionfooter {
+     margin: 0 0 0 0;
+}
+div.footnote p.footnote {
+     font-size: 0.875em;
+     margin: 0 0 0 0;
+}
+.hatena-asin-detail-info ul li {
+     list-style-type: none;
+}
+.note {
+     color: #ad1b1b;
+     font-size: 1.0em;
+     font-weight: bold;
+     margin: 0 0 20px 2px;
+     padding: 14px 18px 10px 42px;
+     border-width: 1px 1px 1px 0;
+     border-style: solid;
+     border-color: #CCCCCC;
+     background-image: url('http://webizm.jp/images/bind.gif');
+     background-repeat: repeat-y;
+}
+.note p {
+     margin: 0 0 20px 2px;
+     padding: 14px 18px 10px 42px;;
+}
+.note  ol {
+     margin: 0 0 0 -66px;
+     padding: 0 0 0 -106px;
+}
+.note  ul {
+     margin: 0 0 0 -126px;
+     padding: 0 0 0 -126px;
+}
+.note  li {
+     border-bottom: 1px dotted #464646;
+     margin: 0 0 0 -86px;
+     padding: 0 0 0 -86px;
+}
+.note2 {
+     color: #434343;
+     font-size: 1.0em;
+     font-weight: normal;
+     margin: 0 0 20px 2px;
+     padding: 14px 10px 8px 38px;
+     border-width: 1px 1px 1px 0;
+     border-style: solid;
+     border-color: #CCCCCC;
+     background-image: url('http://webizm.jp/images/bind.gif');
+     background-repeat: repeat-y;
+}
+.note2 p {
+     margin: 0 0 0 50px;
+     padding: 0 0 0 50px;
+}
+.note2 ul {
+     padding: 0 0 0 -60px;
+}
+.note2 ul  li {
+     padding: 0 10px 4px 0;
+}
+.note3 {
+     color: #ad1b1b;
+     font-size: 1.0em;
+     font-weight: bold;
+     margin: 0 0 20px 2px;
+     padding: 14px 18px 10px 22px;
+     border-width: 1px 1px 1px 0;
+     border-style: solid;
+     border-color: #CCCCCC;
+     background-image: url('http://webizm.jp/images/bind.gif');
+     background-repeat: repeat-y;
+}
+
+
+.hatena-body .main #days .day .body .section .box table.gadget , .hatena-body .main #days .day .body .section .box table.gadget th, .hatena-body .main #days .day .body .section .box table.gadget td {
+  margin-left: 5px;
+     border:none !important;
+}
+.box table.pad td {
+  padding: 2px 30px;
+}
+.box table.literal td {
+  padding-right: 40px;
+}
+a.keywordcloud10,a.keywordcloud7,a.keywordcloud5,a.keywordcloud6,a.keywordcloud8 ,a.keywordcloud9, a.keywordcloud4, a.keywordcloud3 {
+     font-size: 1.2em;
+}
+-->
+</style>
+
+
+<script src="3%20%E8%A8%98%E8%BF%B0%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A8%E5%9F%BA%E6%9C%AC%E6%A7%8B%E9%80%A0_files/ga.js" async="" type="text/javascript"></script><script type="text/javascript">if(/[\x3c\x3e\x22]/.test(location.hash))location.hash=location.hash.replace(/[\x3c\x3e\x22]/g,'');if(/[\x3c\x3e]/.test(document.referrer))location.href=location.href;</script>
+
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="記述のルールと基本構造 - 初心者の勉強法｜Webデザインの勉強">
+<meta property="og:image" content="http://cdn-ak.f.st-hatena.com/images/fotolife/w/web-css-design/20110923/20110923135612.jpg">
+<meta property="og:url" content="http://d.hatena.ne.jp/web-mind/20121224/p1">
+<meta property="og:description" content="記述（マークアップ）のルール表示する内容（コンテンツ）は、必ず「開始タグ」と「終了タグ」で囲むすべて..">
+<meta property="og:site_name" content="はてなダイアリー">
+
+
+<!--
+<rdf:RDF
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:foaf="http://xmlns.com/foaf/0.1/">
+<rdf:Description rdf:about="http://d.hatena.ne.jp/web-mind/20121224/p1">
+   <foaf:maker rdf:parseType="Resource">
+     <foaf:holdsAccount>
+       <foaf:OnlineAccount foaf:accountName="web-mind">
+         <foaf:accountServiceHomepage rdf:resource="http://www.hatena.ne.jp/" />
+       </foaf:OnlineAccount>
+     </foaf:holdsAccount>
+   </foaf:maker>
+</rdf:Description>
+</rdf:RDF>
+-->
+
+<link rel="alternate" media="handheld" type="text/html" href="http://d.hatena.ne.jp/web-mind/mobile?date=20121224&amp;section=p1">
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+  rdf:about="http://d.hatena.ne.jp/web-mind/20121224/p1"
+  trackback:ping="http://d.hatena.ne.jp/web-mind/20121224/p1"
+  dc:title="[HTML]記述のルールと基本構造"
+  dc:identifier="http://d.hatena.ne.jp/web-mind/20121224/p1" />
+</rdf:RDF>
+-->
+
+
+
+<link rel="canonical" href="http://d.hatena.ne.jp/web-mind/20121224/p1">
+
+
+
+
+<script type="text/javascript" src="3%20%E8%A8%98%E8%BF%B0%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A8%E5%9F%BA%E6%9C%AC%E6%A7%8B%E9%80%A0_files/HatenaStar.js"></script>
+<script type="text/javascript">
+Hatena.Star.SiteConfig = {
+  entryNodes: {
+    'div.section': {
+      uri: 'h3 a',
+      title: 'h3',
+      container: 'h3'
+    }
+  }
+};
+Hatena.Author  = new Hatena.User('web-mind');
+Hatena.DiaryName  = new Hatena.User('web-mind');
+
+</script>
+
+
+
+
+
+<script type="text/javascript" src="3%20%E8%A8%98%E8%BF%B0%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A8%E5%9F%BA%E6%9C%AC%E6%A7%8B%E9%80%A0_files/adcolor.js"></script>
+
+
+<script type="text/javascript" src="3%20%E8%A8%98%E8%BF%B0%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A8%E5%9F%BA%E6%9C%AC%E6%A7%8B%E9%80%A0_files/quick_pager.js"></script>
+<script type="text/javascript" src="3%20%E8%A8%98%E8%BF%B0%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A8%E5%9F%BA%E6%9C%AC%E6%A7%8B%E9%80%A0_files/diary_utils.js"></script>
+<script type="text/javascript" src="3%20%E8%A8%98%E8%BF%B0%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A8%E5%9F%BA%E6%9C%AC%E6%A7%8B%E9%80%A0_files/max_width_fotolife.js"></script>
+
+
+
+
+
+
+
+
+<meta name="Hatena::Bookmark" content="nocomment">
+
+
+
+<script type="text/javascript" src="3%20%E8%A8%98%E8%BF%B0%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A8%E5%9F%BA%E6%9C%AC%E6%A7%8B%E9%80%A0_files/jquery-1.js"></script>
+<script type="text/javascript">
+  jQuery.noConflict()(function($){
+    var j$ = jQuery;
+  });
+</script>
+
+
+
+
+<script src="3%20%E8%A8%98%E8%BF%B0%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A8%E5%9F%BA%E6%9C%AC%E6%A7%8B%E9%80%A0_files/osd.js" type="text/javascript"></script><script type="text/javascript" src="3%20%E8%A8%98%E8%BF%B0%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A8%E5%9F%BA%E6%9C%AC%E6%A7%8B%E9%80%A0_files/entries.json"></script></head>
+<body>
+
+<div id="simple-header">
+
+  <a href="http://www.hatena.ne.jp/"><img src="3%20%E8%A8%98%E8%BF%B0%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A8%E5%9F%BA%E6%9C%AC%E6%A7%8B%E9%80%A0_files/hatena-simple_bl.gif" alt="Hatena::" title="Hatena::" id="logo-hatena" height="17" width="65"></a><a href="http://d.hatena.ne.jp/"><img src="3%20%E8%A8%98%E8%BF%B0%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A8%E5%9F%BA%E6%9C%AC%E6%A7%8B%E9%80%A0_files/diary-simple_bl.gif" alt="ブログ(Diary)" title="Diary" id="logo-diary" height="17" width="43"></a>
+  <form method="get" action="/search" class="search-form">
+    <input class="search-word" name="word" type="text"><input name="name" value="web-mind" type="hidden"><input name="diary" value="日記" class="search-button" type="submit"><input name="submit" value="検索" class="search-button" type="submit">
+  </form>
+  <ul class="menu">
+    <li><a href="http://d.hatena.ne.jp/web-mind/">ブログトップ</a></li>
+    <li><a href="http://d.hatena.ne.jp/web-mind/archive">記事一覧</a></li>
+
+
+
+    <li><a href="https://www.hatena.ne.jp/login?backurl=http%3A%2F%2Fd.hatena.ne.jp%2Fweb-mind%2F20121224%2Fp1&amp;add_timestamp=1">ログイン</a></li>
+    <li><a href="https://www.hatena.ne.jp/register?location=http://d.hatena.ne.jp/">無料ブログ開設</a></li>
+
+  </ul>
+</div>
+
+
+
+<h1><a href="http://d.hatena.ne.jp/web-mind/">初心者の勉強法｜Webデザインの勉強</a></h1>
+<div class="hatena-body">
+<div class="main">
+<p class="main">
+Webデザインと初心者の勉強法を解説します。<br><br>
+</p>
+
+
+
+
+
+
+
+
+<div class="calendar" id="pager-top">
+  <a rel="prev" href="http://d.hatena.ne.jp/web-mind/20121223/p1" class="prev">&lt;[復習]★１日目の復習</a>&nbsp;<span class="delimiter">|</span>&nbsp;<a rel="next" href="http://d.hatena.ne.jp/web-mind/20121225/p1" class="next">[HTML]画像挿入とリンク&gt;</a><span id="edit-in-place-add"></span>
+</div>
+<div id="days">
+
+<div class="day">
+<h2><a href="http://d.hatena.ne.jp/web-mind/20121224" rel="nofollow"><span class="date">2012-12-24</span></a></h2>
+
+<div class="body">
+
+<!-- google_ad_section_start -->
+
+		<div class="section">
+			<h3 class="title"><a href="http://d.hatena.ne.jp/web-mind/20121224/p1" name="p1">記述のルールと基本構造</a><span class="hatena-star-comment-container"><img class="hatena-star-comment-button" style="cursor: pointer; margin: 0px; padding: 0px; border: medium none; vertical-align: middle; display: none;" title="Comments" alt="Comments" tabindex="0" src="3%20%E8%A8%98%E8%BF%B0%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A8%E5%9F%BA%E6%9C%AC%E6%A7%8B%E9%80%A0_files/comment_dg.gif"></span><span class="hatena-star-star-container"><img class="hatena-star-add-button" style="cursor: pointer; margin: 0px 3px; padding: 0px; border: medium none; vertical-align: middle;" title="Add Star" alt="Add Star" tabindex="0" src="3%20%E8%A8%98%E8%BF%B0%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A8%E5%9F%BA%E6%9C%AC%E6%A7%8B%E9%80%A0_files/add_dg.gif"></span></h3>
+			<p class="sectionheader"><span class="sectioncategory"><a href="http://d.hatena.ne.jp/web-mind/searchdiary?word=%2A%5BHTML%5D" class="sectioncategory">HTML</a></span></p>
+			<p></p><div class="box"><p></p>
+			<h4>記述（マークアップ）のルール</h4>
+
+			<ol>
+				<li>表示する内容（コンテンツ）は、必ず「開始タグ」と「終了タグ」で囲む</li>
+				<li>すべて小文字で記述する</li>
+			</ol>
+			<br>
+
+			<p>以下は、記憶する部分ではなく、入力の経験のみが優先されます。</p>
+			<p>まず、入力してみましょう。</p>
+			<br>
+
+			<h4>HTML基本構造</h4>
+
+			<ul>
+				<li>基本構造は「head部」と「body部」</li>
+			</ul>
+			<br>
+
+			<h5>head部</h5>
+
+			<ul>
+				<li><a class="keyword" href="http://d.hatena.ne.jp/keyword/UA">UA</a>（user agent）が表示するための必要な条件とページの目的、そして外部との関連づけを記述する</li>
+				<li>あくまでもブラウザが理解するための部分</li>
+				<li>不可視（非表示）</li>
+			</ul>
+			<br>
+
+			<h5>body部</h5>
+
+			<ul>
+				<li>閲覧者が内容を確認する部分</li>
+				<li>閲覧者のためだけではなく、検索エンジンに情報が蓄積されるような意味付けも必要</li>
+				<li>可視（表示）</li>
+			</ul>
+			<br>
+
+			<br>
+
+			<p>現在のインターネットの利用の仕方は、ほぼ「検索」から始まります。</p>
+			<p>つまり、検索対象になるWebページを作成しない限り、見られることはないということです。</p>
+			<br>
+
+			<p>では「検索」は、何を検索するのか？</p>
+			<p>検索エンジンのサーバーに記録してあるデーターから検索します。</p>
+			<p>インターネットの世界にある「ありとあらゆるデータ」から検索されるわけではありません。</p>
+			<br>
+
+			<p>この「検索エンジンのサーバーに記録されること」を、<span style="font-weight:bold;" class="deco">インデックス</span>と呼びます。</p>
+			<br>
+
+			<p>では、どうやったら「インデックス」されるのか。</p>
+			<p>その話に入る前に、しばらく準備の時間が必要です。</p>
+			<br>
+
+			<br>
+
+			<h5>その他のmeta</h5>
+
+			<ul>
+				<li>「keywords」は、検索対象ではなくトリガーとしての役割しかありません。Googleは無視されますが「検索エンジンBing」対策として、記述する場合もあります</li>
+			</ul>
+<pre class="syntax-highlight"><span class="synIdentifier">&lt;</span><span class="synStatement">meta</span><span class="synIdentifier"> </span><span class="synType">name</span><span class="synIdentifier">=</span><span class="synConstant">"description"</span><span class="synIdentifier"> </span><span class="synType">content</span><span class="synIdentifier">=</span><span class="synConstant">""</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">meta</span><span class="synIdentifier"> </span><span class="synType">name</span><span class="synIdentifier">=</span><span class="synConstant">"keywords"</span><span class="synIdentifier"> </span><span class="synType">content</span><span class="synIdentifier">=</span><span class="synConstant">""</span><span class="synIdentifier">&gt;</span>
+</pre>
+
+			<br>
+
+			<h5>link要素</h5>
+<pre class="syntax-highlight"><span class="synIdentifier">&lt;</span><span class="synStatement">link</span><span class="synIdentifier"> </span><span class="synType">rel</span><span class="synIdentifier">=</span><span class="synConstant">"stylesheet"</span><span class="synIdentifier"> </span><span class="synType">type</span><span class="synIdentifier">=</span><span class="synConstant">"text/css"</span><span class="synIdentifier"> </span><span class="synType">href</span><span class="synIdentifier">=</span><span class="synConstant">"css/style.css"</span><span class="synIdentifier"> </span><span class="synType">media</span><span class="synIdentifier">=</span><span class="synConstant">"screen, print"</span><span class="synIdentifier">&gt;</span>
+</pre>
+
+			<br>
+
+			<h5>title要素</h5>
+
+			<ul>
+				<li>「title要素」には日本語サイトの場合は、日本語で記述しますが、何を記述すればよいかを答えなさい。</li>
+			</ul>
+			<br>
+
+			<h5>body要素</h5>
+			<p>本来、body内は必要充分なテキストが入力してあるところから進めることが理想です。</p>
+			<p>その内容は「本文（ほんもん）」として、記述します。</p>
+			<p>その中から、内容を一目で把握できるように「見出し」を立ち上げます。</p>
+			<p>つまり、見出しで表すことのできる、文節の塊が「段落」となります。</p>
+			<br>
+
+			<p>この「見出し+段落」で表す内容が「パラグラフ」と呼ばれます。</p>
+			<p>「p要素」そのものも「paragraph」と呼ばれますが、段落要素には見出し要素が不可欠であると考えましょう。</p>
+			<br>
+
+			<p>文章だけが長く続くと、可読性が落ちます。</p>
+			<p>そこで、箇条書きが利用されます。</p>
+			<p>１行で完結に表現できるものは、箇条書きにします。</p>
+			<br>
+
+			<p>特に、Webの表現では「読み物」というよりも「レポート」として読んでもらうことがほとんどです。</p>
+			<p>まず「結論」を読んでもらい、「検証」で納得してもらうという手法です。</p>
+			<p>ですから、それには「箇条書き」が有効です。</p>
+			<br>
+
+			<p>つまりbody内には、常に</p>
+			<br>
+
+
+			<ol>
+				<li>見出し</li>
+				<li>段落</li>
+				<li>箇条書き</li>
+			</ol>
+			<br>
+
+			<p>が記述されることになります。</p>
+			<br>
+
+			<br>
+
+			<p><span style="font-weight:bold;" class="deco">《課題》</span></p>
+			<p>次の内容をマークアップしなさい。</p>
+<pre class="syntax-highlight">今日の献立
+今日は、子供も大人も好きなカレーを作ろうと思います。
+カレーの材料
+カレー・ルー
+豚肉
+じゃがいも
+たまねぎ
+にんじん
+</pre>
+
+			<br>
+
+			<h4>文書構造に必要な要素</h4>
+
+			<ol>
+				<li>タイトル</li>
+				<li>見出しと本文</li>
+				<li>箇条書き（番号つき、番号なし）</li>
+				<li>補足説明の画像</li>
+			</ol>
+			<br>
+
+			<h5>見出し &lt;h1&gt; &lt;h2&gt; &lt;h3&gt;</h5>
+
+			<ul>
+				<li>ページ内容を表す１行</li>
+				<li>優先順位のレベルでマークアップする</li>
+				<li>見出しの拾い読みでも、ページのツリー講座がわかるように</li>
+			</ul>
+			<br>
+
+<pre class="syntax-highlight"><span class="synIdentifier">&lt;</span><span class="synStatement">h1</span><span class="synIdentifier">&gt;</span>アフォーダンス<span class="synIdentifier">&lt;/</span><span class="synStatement">h1</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">h2</span><span class="synIdentifier">&gt;</span>デザインにおけるアフォーダンス<span class="synIdentifier">&lt;/</span><span class="synStatement">h2</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">h3</span><span class="synIdentifier">&gt;</span>本来のアフォーダンス<span class="synIdentifier">&lt;/</span><span class="synStatement">h3</span><span class="synIdentifier">&gt;</span>
+</pre>
+
+			<br>
+
+			<p>見出しは、段落（本文）と組み合わせて記述します。</p>
+			<br>
+
+			<h5>段落 &lt;p&gt;</h5>
+
+			<ul>
+				<li>基本的には、２行以上の文章に指定する（１行でも可）</li>
+				<li>迷ったら、「p要素」にする</li>
+				<li>段落ブロックの下は、必ず１行分の空きができる</li>
+			</ul>
+			<br>
+
+			<h5>箇条書き &lt;ul&gt; &lt;ol&gt; &lt;dl&gt;</h5>
+
+			<ul>
+				<li>必然性のある箇条書きを利用する</li>
+			</ul>
+			<br>
+
+			<p></p><h6>ul（unordered list）</h6><p></p>
+			<p>順序が置き換わっても意味が伝わる並列な内容に使う。</p>
+
+			<ul>
+				<li>行頭マークは「黒丸」</li>
+			</ul>
+<pre class="syntax-highlight"><span class="synIdentifier">&lt;</span><span class="synStatement">ul</span><span class="synIdentifier">&gt;</span>
+  <span class="synIdentifier">&lt;</span><span class="synStatement">li</span><span class="synIdentifier">&gt;</span>私が好きな真っ赤なりんご<span class="synIdentifier">&lt;/</span><span class="synStatement">li</span><span class="synIdentifier">&gt;</span>
+  <span class="synIdentifier">&lt;</span><span class="synStatement">li</span><span class="synIdentifier">&gt;</span>あなたが好きなのはバナナ<span class="synIdentifier">&lt;/</span><span class="synStatement">li</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;/</span><span class="synStatement">ul</span><span class="synIdentifier">&gt;</span>
+</pre>
+
+			<br>
+
+			<p></p><h6>ol（ordered list）</h6><p></p>
+			<p>順序が置き換わっては意味が伝わらない、順序が意味をもつ内容に使う。</p>
+
+			<ul>
+				<li>行頭は数字</li>
+			</ul>
+<pre class="syntax-highlight"><span class="synIdentifier">&lt;</span><span class="synStatement">ol</span><span class="synIdentifier">&gt;</span>
+  <span class="synIdentifier">&lt;</span><span class="synStatement">li</span><span class="synIdentifier">&gt;</span>まず良く洗ってから皮をむき<span class="synIdentifier">&lt;/</span><span class="synStatement">li</span><span class="synIdentifier">&gt;</span>
+  <span class="synIdentifier">&lt;</span><span class="synStatement">li</span><span class="synIdentifier">&gt;</span>それからおもむろに囓りつく<span class="synIdentifier">&lt;/</span><span class="synStatement">li</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;/</span><span class="synStatement">ol</span><span class="synIdentifier">&gt;</span>
+</pre>
+
+			<br>
+
+			<p></p><h6>dl（definition list）</h6><p></p>
+			<p>「名称（用語）」と「その説明文（定義）」をセットにしてリスト化するときに使う。</p>
+
+			<ul>
+				<li>リスト全体に対する dl要素：definition list</li>
+				<li>名称(用語)に対する dt要素：definition term</li>
+				<li>説明文(定義)に対する dd要素：definition description</li>
+			</ul>
+<pre class="syntax-highlight"><span class="synIdentifier">&lt;</span><span class="synStatement">dl</span><span class="synIdentifier">&gt;</span>
+  <span class="synIdentifier">&lt;</span><span class="synStatement">dt</span><span class="synIdentifier">&gt;</span>りんご<span class="synIdentifier">&lt;/</span><span class="synStatement">dt</span><span class="synIdentifier">&gt;</span>
+    <span class="synIdentifier">&lt;</span><span class="synStatement">dd</span><span class="synIdentifier">&gt;</span>赤い色をした丸い果物。<span class="synIdentifier">&lt;/</span><span class="synStatement">dd</span><span class="synIdentifier">&gt;</span>
+  <span class="synIdentifier">&lt;</span><span class="synStatement">dt</span><span class="synIdentifier">&gt;</span>バナナ<span class="synIdentifier">&lt;/</span><span class="synStatement">dt</span><span class="synIdentifier">&gt;</span>
+    <span class="synIdentifier">&lt;</span><span class="synStatement">dd</span><span class="synIdentifier">&gt;</span>黄色い色をした細長い果物。<span class="synIdentifier">&lt;/</span><span class="synStatement">dd</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;/</span><span class="synStatement">dl</span><span class="synIdentifier">&gt;</span>
+</pre>
+
+			<br>
+
+			<p>以下のような場合にも、利用されます。</p>
+			<p>いわゆる日付で明示する更新情報の場合です。</p>
+<pre class="syntax-highlight"><span class="synIdentifier">&lt;</span><span class="synStatement">dl</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">dt</span><span class="synIdentifier">&gt;</span>12月21日<span class="synIdentifier">&lt;/</span><span class="synStatement">dt</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">dd</span><span class="synIdentifier">&gt;</span>フェリカテクニカルアカデミーWebサイト制作科開講<span class="synIdentifier">&lt;/</span><span class="synStatement">dd</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">dt</span><span class="synIdentifier">&gt;</span>12月22日<span class="synIdentifier">&lt;/</span><span class="synStatement">dt</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">dd</span><span class="synIdentifier">&gt;</span>HTMLの基本構造の入力練習<span class="synIdentifier">&lt;/</span><span class="synStatement">dd</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">dt</span><span class="synIdentifier">&gt;</span>12月23日<span class="synIdentifier">&lt;/</span><span class="synStatement">dt</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">dd</span><span class="synIdentifier">&gt;</span>定義型リストと表組みの練習<span class="synIdentifier">&lt;/</span><span class="synStatement">dd</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;/</span><span class="synStatement">dl</span><span class="synIdentifier">&gt;</span>
+</pre>
+
+			<br>
+
+			<h5>表組み</h5>
+			<p>table：table</p>
+			<p>tr：table row</p>
+			<p>th：table head</p>
+			<p>td：table description</p>
+			<br>
+
+<pre class="syntax-highlight"><span class="synIdentifier">&lt;</span><span class="synStatement">table</span><span class="synIdentifier"> </span><span class="synType">border</span><span class="synIdentifier">=</span><span class="synConstant">"1"</span><span class="synIdentifier"> </span><span class="synType">summary</span><span class="synIdentifier">=</span><span class="synConstant">"カリキュラム内容のイメージ"</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">tr</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">th</span><span class="synIdentifier">&gt;</span>科目<span class="synIdentifier">&lt;/</span><span class="synStatement">th</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">td</span><span class="synIdentifier">&gt;</span>内容<span class="synIdentifier">&lt;/</span><span class="synStatement">td</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;/</span><span class="synStatement">tr</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">tr</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">th</span><span class="synIdentifier">&gt;</span>国語<span class="synIdentifier">&lt;/</span><span class="synStatement">th</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">td</span><span class="synIdentifier">&gt;</span>正しい文書構造を理解する（パラグラフの概念）<span class="synIdentifier">&lt;/</span><span class="synStatement">td</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;/</span><span class="synStatement">tr</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">tr</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">th</span><span class="synIdentifier">&gt;</span>算数<span class="synIdentifier">&lt;/</span><span class="synStatement">th</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">td</span><span class="synIdentifier">&gt;</span>JavaScript、ActionScript、PHPなどでプログラミングの考え方を理解する<span class="synIdentifier">&lt;/</span><span class="synStatement">td</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;/</span><span class="synStatement">tr</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">tr</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">th</span><span class="synIdentifier">&gt;</span>理科<span class="synIdentifier">&lt;/</span><span class="synStatement">th</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">td</span><span class="synIdentifier">&gt;</span>力学からコンピュータの描画を理解する<span class="synIdentifier">&lt;/</span><span class="synStatement">td</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;/</span><span class="synStatement">tr</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">tr</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">th</span><span class="synIdentifier">&gt;</span>社会<span class="synIdentifier">&lt;/</span><span class="synStatement">th</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">td</span><span class="synIdentifier">&gt;</span>デザインの歴史、Webの歴史を通じていま必要なことを理解する<span class="synIdentifier">&lt;/</span><span class="synStatement">td</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;/</span><span class="synStatement">tr</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">tr</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">th</span><span class="synIdentifier">&gt;</span>英語<span class="synIdentifier">&lt;/</span><span class="synStatement">th</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">td</span><span class="synIdentifier">&gt;</span>Webのバックグラウンドから理解するために必要な言葉の理解する<span class="synIdentifier">&lt;/</span><span class="synStatement">td</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;/</span><span class="synStatement">tr</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">tr</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">th</span><span class="synIdentifier">&gt;</span>図工<span class="synIdentifier">&lt;/</span><span class="synStatement">th</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">td</span><span class="synIdentifier">&gt;</span>デザインのルールを理解する<span class="synIdentifier">&lt;/</span><span class="synStatement">td</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;/</span><span class="synStatement">tr</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;/</span><span class="synStatement">table</span><span class="synIdentifier">&gt;</span>
+</pre>
+
+			<br>
+
+			<p><a href="http://f.hatena.ne.jp/web-css-design/20110923135612" class="hatena-fotolife" target="_blank"><img src="3%20%E8%A8%98%E8%BF%B0%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A8%E5%9F%BA%E6%9C%AC%E6%A7%8B%E9%80%A0_files/20110923135612.jpg" alt="f:id:web-css-design:20110923135612j:image" title="f:id:web-css-design:20110923135612j:image" class="hatena-fotolife"></a></p>
+			<br>
+
+			<p>文字と枠の修飾は「CSS」でおこないます。</p>
+			<p>ただし、枠線が見えないと表組みが確認できないため、便宜上「border="1"」を指定します。</p>
+			<p>最終的には「CSS」設定後、削除します。</p>
+			<br>
+
+			<h5>アドレス</h5>
+			<p>「住所や電話番号」など、ページ内容の管理者の住所を明示するために使用します。</p>
+			<p>一般的には「著作マーク (c)」を明示する場合にも利用されています。</p>
+			<br>
+
+<pre class="syntax-highlight"><span class="synIdentifier">&lt;</span><span class="synStatement">address</span><span class="synIdentifier">&gt;</span>フェリカテクニカルアカデミー<span class="synIdentifier">&lt;</span><span class="synStatement">br</span><span class="synIdentifier">&gt;</span>
+〒171-0022 東京都豊島区南池袋2-4-3 ホウライビル２F　連絡先： 03-3981-7201<span class="synIdentifier">&lt;/</span><span class="synStatement">address</span><span class="synIdentifier">&gt;</span>
+</pre>
+
+			<br>
+
+			<h5>水平線</h5>
+			<p>hr：horizontal rule</p>
+			<br>
+
+			<p>「キューピー」のページを「表示→スタイルシート→スタイルシートを使用しない」にすると「水平線」が使われているのがわかります。</p>
+			<p>このように現在では、「hr」は「区切り線」として見せるのではなく、「意味を区切る」ことに利用されることが多いようです。</p>
+			<p>※いわゆる水平垂直の目盛りは「ruler：ルーラー」です。</p>
+			<br>
+
+			<h4>リンク</h4>
+			<p>Webは「リンク」こそ命。</p>
+			<p>リンクには３つの使い方があります。</p>
+			<br>
+
+
+			<ol>
+				<li>テキストリンク</li>
+				<li>画像リンク</li>
+				<li>メールリンク</li>
+			</ol>
+			<br>
+
+<pre class="syntax-highlight"><span class="synIdentifier">&lt;</span><span class="synStatement">a</span><span class="synIdentifier"> </span><span class="synType">href</span><span class="synIdentifier">=</span><span class="synConstant">"移動先のアドレス"</span><span class="synIdentifier">&gt;</span><span class="synUnderlined">◎◎◎のページへ移動</span><span class="synIdentifier">&lt;/</span><span class="synStatement">a</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">a</span><span class="synIdentifier"> </span><span class="synType">href</span><span class="synIdentifier">=</span><span class="synConstant">"移動先のアドレス"</span><span class="synIdentifier">&gt;&lt;</span><span class="synStatement">img</span><span class="synIdentifier"> </span><span class="synType">src</span><span class="synIdentifier">=</span><span class="synConstant">"画像の住所"</span><span class="synIdentifier"> </span><span class="synType">width</span><span class="synIdentifier">=</span><span class="synConstant">"幅"</span><span class="synIdentifier"> </span><span class="synType">height</span><span class="synIdentifier">=</span><span class="synConstant">"高さ"</span><span class="synIdentifier"> </span><span class="synType">alt</span><span class="synIdentifier">=</span><span class="synConstant">"代替え文字"</span><span class="synIdentifier">&gt;&lt;/</span><span class="synStatement">a</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">a</span><span class="synIdentifier"> </span><span class="synType">href</span><span class="synIdentifier">=</span><span class="synConstant">"mailto:xxx@xxx.net"</span><span class="synIdentifier">&gt;</span><span class="synUnderlined">お問い合わせ（メールソフトが起動します）</span><span class="synIdentifier">&lt;/</span><span class="synStatement">a</span><span class="synIdentifier">&gt;</span>
+</pre>
+
+			<br>
+
+			<p>a：anchor</p>
+			<p>href：hyper reference</p>
+			<br>
+
+			<h5>新規ウィンドウで開く</h5>
+
+			<ul>
+				<li>target="_blank"</li>
+			</ul>
+			<br>
+
+			<p>この属性は、HTMLの解釈の変遷により、使わないほうが良いといわれたりしましたが、HTML5では使用可能になっています。</p>
+			<br>
+
+<pre class="syntax-highlight"><span class="synIdentifier">&lt;</span><span class="synStatement">html</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">head</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">title</span><span class="synIdentifier">&gt;</span>はじめてのHTML入力練習<span class="synIdentifier">&lt;/</span><span class="synStatement">title</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;/</span><span class="synStatement">head</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">body</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">h1</span><span class="synIdentifier">&gt;</span>結論：大見出し<span class="synIdentifier">&lt;/</span><span class="synStatement">h1</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">p</span><span class="synIdentifier">&gt;</span>要約<span class="synIdentifier">&lt;/</span><span class="synStatement">p</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">h2</span><span class="synIdentifier">&gt;</span>結論：検証<span class="synIdentifier">&lt;/</span><span class="synStatement">h2</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">p</span><span class="synIdentifier">&gt;</span>解説<span class="synIdentifier">&lt;/</span><span class="synStatement">p</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">ul</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">li</span><span class="synIdentifier">&gt;</span>検証の項目<span class="synIdentifier">&lt;/</span><span class="synStatement">li</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">li</span><span class="synIdentifier">&gt;</span>検証の項目<span class="synIdentifier">&lt;/</span><span class="synStatement">li</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">li</span><span class="synIdentifier">&gt;</span>検証の項目<span class="synIdentifier">&lt;/</span><span class="synStatement">li</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;/</span><span class="synStatement">ul</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">p</span><span class="synIdentifier">&gt;</span>解説<span class="synIdentifier">&lt;/</span><span class="synStatement">p</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">ol</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">li</span><span class="synIdentifier">&gt;</span>順序のある検証の項目<span class="synIdentifier">&lt;/</span><span class="synStatement">li</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">li</span><span class="synIdentifier">&gt;</span>順序のある検証の項目<span class="synIdentifier">&lt;/</span><span class="synStatement">li</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">li</span><span class="synIdentifier">&gt;</span>順序のある検証の項目<span class="synIdentifier">&lt;/</span><span class="synStatement">li</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;/</span><span class="synStatement">ol</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">dl</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">dt</span><span class="synIdentifier">&gt;</span>12月21日<span class="synIdentifier">&lt;/</span><span class="synStatement">dt</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">dd</span><span class="synIdentifier">&gt;</span>フェリカテクニカルアカデミーWebサイト制作科開講<span class="synIdentifier">&lt;/</span><span class="synStatement">dd</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">dt</span><span class="synIdentifier">&gt;</span>12月22日<span class="synIdentifier">&lt;/</span><span class="synStatement">dt</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">dd</span><span class="synIdentifier">&gt;</span>HTMLの基本構造の入力練習<span class="synIdentifier">&lt;/</span><span class="synStatement">dd</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">dt</span><span class="synIdentifier">&gt;</span>12月23日<span class="synIdentifier">&lt;/</span><span class="synStatement">dt</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">dd</span><span class="synIdentifier">&gt;</span>定義型リストと表組みの練習<span class="synIdentifier">&lt;/</span><span class="synStatement">dd</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;/</span><span class="synStatement">dl</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">table</span><span class="synIdentifier"> </span><span class="synType">border</span><span class="synIdentifier">=</span><span class="synConstant">"1"</span><span class="synIdentifier"> </span><span class="synType">summary</span><span class="synIdentifier">=</span><span class="synConstant">"カリキュラム内容のイメージ"</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">tr</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">th</span><span class="synIdentifier">&gt;</span>科目<span class="synIdentifier">&lt;/</span><span class="synStatement">th</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">td</span><span class="synIdentifier">&gt;</span>内容<span class="synIdentifier">&lt;/</span><span class="synStatement">td</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;/</span><span class="synStatement">tr</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">tr</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">th</span><span class="synIdentifier">&gt;</span>国語<span class="synIdentifier">&lt;/</span><span class="synStatement">th</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">td</span><span class="synIdentifier">&gt;</span>正しい文書構造を理解する（パラグラフの概念）<span class="synIdentifier">&lt;/</span><span class="synStatement">td</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;/</span><span class="synStatement">tr</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">tr</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">th</span><span class="synIdentifier">&gt;</span>算数<span class="synIdentifier">&lt;/</span><span class="synStatement">th</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">td</span><span class="synIdentifier">&gt;</span>JavaScript、ActionScript、PHPなどでプログラミングの考え方を理解する<span class="synIdentifier">&lt;/</span><span class="synStatement">td</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;/</span><span class="synStatement">tr</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">tr</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">th</span><span class="synIdentifier">&gt;</span>理科<span class="synIdentifier">&lt;/</span><span class="synStatement">th</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">td</span><span class="synIdentifier">&gt;</span>力学からコンピュータの描画を理解する<span class="synIdentifier">&lt;/</span><span class="synStatement">td</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;/</span><span class="synStatement">tr</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">tr</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">th</span><span class="synIdentifier">&gt;</span>社会<span class="synIdentifier">&lt;/</span><span class="synStatement">th</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">td</span><span class="synIdentifier">&gt;</span>デザインの歴史、Webの歴史を通じていま必要なことを理解する<span class="synIdentifier">&lt;/</span><span class="synStatement">td</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;/</span><span class="synStatement">tr</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">tr</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">th</span><span class="synIdentifier">&gt;</span>英語<span class="synIdentifier">&lt;/</span><span class="synStatement">th</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">td</span><span class="synIdentifier">&gt;</span>Webのバックグラウンドから理解するために必要な言葉の理解する<span class="synIdentifier">&lt;/</span><span class="synStatement">td</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;/</span><span class="synStatement">tr</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">tr</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">th</span><span class="synIdentifier">&gt;</span>図工<span class="synIdentifier">&lt;/</span><span class="synStatement">th</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">td</span><span class="synIdentifier">&gt;</span>デザインのルールを理解する<span class="synIdentifier">&lt;/</span><span class="synStatement">td</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;/</span><span class="synStatement">tr</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;/</span><span class="synStatement">table</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;</span><span class="synStatement">address</span><span class="synIdentifier">&gt;</span>フェリカテクニカルアカデミー<span class="synIdentifier">&lt;</span><span class="synStatement">br</span><span class="synIdentifier">&gt;</span>
+〒171-0022 東京都豊島区南池袋2-4-3 ホウライビル２F　連絡先： 03-3981-7201<span class="synIdentifier">&lt;/</span><span class="synStatement">address</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;/</span><span class="synStatement">body</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;/</span><span class="synStatement">html</span><span class="synIdentifier">&gt;</span>
+</pre>
+
+			<br>
+
+			<br>
+
+			<p></p></div><p></p>
+			<p class="sectionfooter"><a href="http://d.hatena.ne.jp/web-mind/20121224/p1">Permalink</a> | <a href="http://d.hatena.ne.jp/web-mind/20121224/p1#c">コメント(0)</a> | <a href="http://d.hatena.ne.jp/web-mind/20121224/p1#tb">トラックバック(0)</a></p>
+
+		</div>
+
+<div id="google_afc_user" class="section afc_a">
+<div id="google_afc_user_container" class="google_afc_blocklink2_5 google_afc_boder"> <div class="google_afc_image"><div class="google_afc_image_item"><table style="width: 300;" class="afc_footer" border="0" cellpadding="0" cellspacing="0" height="11" width="300"><tbody><tr><td><span class="google_ads_by"><a href="https://www.google.com/adsense/support/bin/request.py?contact=abg_afc">Ads by Google</a></span></td><td align="right"><span class="visible_url"><a href="http://www.googleadservices.com/pagead/aclk?sa=L&amp;ai=CI7LdXb3eUKu7KIbEkAWFxYHgAZONy_sCo-30glvz2ZiNjgEQASCmtpIFUPuLhaT5_____wFgievEhPQToAG10J7eA8gBAqkCjrVKfE_zSD6oAwGqBHdP0JK0v-Ensc7dXwc9a0jj9Cfy7ezicKw2nX4h2ckIEnxPsusrbs8H-Vyfv3Rg8h-HebcwBJQYbENIwk7lRVzlJ_R5fdAzgzdT8sjqHxPN89yc1zwh0T3M5r9npdvXDq3ilauj4L9yH_8afrASLY5PYWxj89Y_H4gGAaAGAoAHs6_hIQ&amp;num=1&amp;cid=5GjNULTbQKwDWXZ_mCe0bFUa&amp;sig=AOD64_0WYfMBIux5Z9qiJsewoZxgelrnVg&amp;client=ca-hatena_js&amp;adurl=http://r.ca-mpr.jp/s/153/%3Fi4a%3D1115599">nexon.co.jp</a></span></td></tr></tbody></table><a href="http://www.googleadservices.com/pagead/aclk?sa=L&amp;ai=CI7LdXb3eUKu7KIbEkAWFxYHgAZONy_sCo-30glvz2ZiNjgEQASCmtpIFUPuLhaT5_____wFgievEhPQToAG10J7eA8gBAqkCjrVKfE_zSD6oAwGqBHdP0JK0v-Ensc7dXwc9a0jj9Cfy7ezicKw2nX4h2ckIEnxPsusrbs8H-Vyfv3Rg8h-HebcwBJQYbENIwk7lRVzlJ_R5fdAzgzdT8sjqHxPN89yc1zwh0T3M5r9npdvXDq3ilauj4L9yH_8afrASLY5PYWxj89Y_H4gGAaAGAoAHs6_hIQ&amp;num=1&amp;cid=5GjNULTbQKwDWXZ_mCe0bFUa&amp;sig=AOD64_0WYfMBIux5Z9qiJsewoZxgelrnVg&amp;client=ca-hatena_js&amp;adurl=http://r.ca-mpr.jp/s/153/%3Fi4a%3D1115599" title="Go to nexon.co.jp" target="_blank"><img src="3%20%E8%A8%98%E8%BF%B0%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A8%E5%9F%BA%E6%9C%AC%E6%A7%8B%E9%80%A0_files/4763438775306304595.jpeg" alt="nexon.co.jp" height="250" width="300"></a></div></div> </div>
+
+</div>
+
+
+<!-- google_ad_section_end -->
+
+</div>
+
+<form id="comment-form" method="post" action="/web-mind/comment#c" class="comment">
+<input name="mode" value="enter" type="hidden">
+<input name="rkm" value="" type="hidden">
+<input name="date" value="2012-12-24" type="hidden">
+<div class="comment">
+  <div class="caption"><a name="c">コメントを書く</a></div>
+  <div class="commentshort">
+    
+    
+
+    <a name="error-message"></a>
+    <p class="message" style="display: none; padding: 3px;"></p>
+
+    
+
+    
+            
+        
+          <p class="commentmessage">投稿したコメントは管理者が承認するまで公開されません。</p>
+        
+      
+    <p class="commentform">
+      <span class="commentator">
+        <span class="usermailconfirm"><input name="usermail" size="1"><input name="userurl" size="1">スパム対策のためのダミーです。もし見えても何も入力しないでください<br></span>
+        <span class="username">
+        <img src="3%20%E8%A8%98%E8%BF%B0%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A8%E5%9F%BA%E6%9C%AC%E6%A7%8B%E9%80%A0_files/guest_icon.gif" class="hatena-id-icon" alt="ゲスト" title="ゲスト" height="16" width="16">
+        <input name="section" value="p1" type="hidden">
+        
+          <input value="なまえ" style="color: rgb(170, 170, 170);" id="comment-username" name="username" size="15">
+        
+        </span>
+        
+          <span class="usermail"><img src="3%20%E8%A8%98%E8%BF%B0%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A8%E5%9F%BA%E6%9C%AC%E6%A7%8B%E9%80%A0_files/icon-usermail.gif" style="vertical-align:middle;margin-right:3px;"><input style="color: rgb(170, 170, 170);" id="comment-usermail" name="useremail" size="15" value="メール(非公開)"></span>
+          <span class="userurl"><img src="3%20%E8%A8%98%E8%BF%B0%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A8%E5%9F%BA%E6%9C%AC%E6%A7%8B%E9%80%A0_files/icon-userurl.gif" style="vertical-align:middle;margin-right:3px;"><input style="color: rgb(170, 170, 170);" id="comment-userurl" name="useruri" size="15" value="URL"></span>
+        
+      </span>
+<br>
+      <!-- NOT_VERIFIED_COMMENT_AUTH -->
+      <textarea style="color: rgb(170, 170, 170);" id="comment-textarea" name="body" value="" cols="60" rows="3"></textarea><br>
+      
+          </p><div class="captcha">
+            <img src="3%20%E8%A8%98%E8%BF%B0%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A8%E5%9F%BA%E6%9C%AC%E6%A7%8B%E9%80%A0_files/captcha.gif" class="captcha-image">
+            <span class="captcha-message">画像認証</span><br>
+            <input value="画像内の文字列を入力して下さい" style="color: rgb(170, 170, 170);" name="captcha_code" size="10" class="captcha-string" id="comment-captcha" type="text">
+          </div>
+      
+      <span class="comment-submit"><input id="comment-form-button" value="投稿" type="submit"></span>
+    <p></p>
+
+      <script type="text/javascript" src="3%20%E8%A8%98%E8%BF%B0%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A8%E5%9F%BA%E6%9C%AC%E6%A7%8B%E9%80%A0_files/diary_comment_edit_form.js"></script>
+    
+
+  </div>
+</div>
+
+</form>
+
+
+
+
+
+  
+  <div class="refererlist">
+    <div class="caption">
+      <a name="tb">トラックバック</a> - http://d.hatena.ne.jp/web-mind/20121224/p1
+    </div>
+    
+  </div>
+  
+  
+
+
+
+
+
+
+
+
+</div>
+
+
+
+</div>
+<div class="calendar" id="pager-bottom">
+  <a rel="prev" href="http://d.hatena.ne.jp/web-mind/20121223/p1" class="prev">&lt;[復習]★１日目の復習</a><img src="3%20%E8%A8%98%E8%BF%B0%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A8%E5%9F%BA%E6%9C%AC%E6%A7%8B%E9%80%A0_files/icon-quickpager.gif" style="vertical-align: middle; margin-left: 3px; cursor: pointer;">&nbsp;<span class="delimiter">|</span>&nbsp;<a rel="next" href="http://d.hatena.ne.jp/web-mind/20121225/p1" class="next">[HTML]画像挿入とリンク&gt;</a>
+</div>
+</div>
+<div class="sidebar">
+<div class="hatena-module hatena-module-searchform">
+<div class="hatena-moduletitle">日記の検索</div>
+<div class="hatena-modulebody">
+<form method="GET" action="/web-mind/searchdiary" class="hatena-searchform"><input name="word" class="hatena-searchform searchform-word" type="text"><input name=".submit" value="検索" class="hatena-searchform searchform-button" type="submit"><br><label class="searchform-label-detail"><input name="type" value="detail" checked="checked" class="searchform-radio" type="radio">詳細</label> <label class="searchform-label-list"><input name="type" value="list" class="searchform-radio" type="radio">一覧</label></form>
+
+</div>
+</div>
+
+     <div class="hatena-module">
+     <div class="hatena-moduletitle">解説ブログ</div>
+     <div class="hatena-modulebody">
+     <ul class="hatena-urllist">
+     <li><a target="_blank" href="http://d.hatena.ne.jp/web-images/">Illustrator/
+Photoshop・Fireworksの勉強</a></li>
+     <li><a target="_blank" href="http://d.hatena.ne.jp/web-javascript/">JavaScriptの勉強</a></li>
+     <li><a target="_blank" href="http://d.hatena.ne.jp/web-actionscript/">ActionScriptの勉強</a></li>
+     <li><a target="_blank" href="http://d.hatena.ne.jp/web-excel/">Excel・Word・PowerPointの勉強</a></li>
+
+
+     </ul>
+     </div>
+     </div>
+<div class="hatena-module hatena-module-section">
+<div class="hatena-moduletitle"><a href="http://d.hatena.ne.jp/web-mind/archive">最新タイトル</a></div>
+<div class="hatena-modulebody">
+<ul class="hatena-section">
+<li><a href="http://d.hatena.ne.jp/web-mind/20130206/p1">[CSS]floatを使ったレイアウトギャラリー</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130205/p1">[色彩]16進数で色を決める</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130204/p1">[色彩]色とは</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130203/p1">[補足]愚直に、ただひたすら愚直に</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130202/p1">[CSS]CSSまとめ</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130201/p1">[CSS]企業系サイトレイアウト実践課題</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130131/p1">[CSS]floatを使ったレイアウト実践課題</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130130/p1">[CSS]positionを使ったレイアウト</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130129/p1">[CSS]CSS Spriteでボタン作成</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130128/p1">[CSS]リストをナビゲーションに</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130127/p1">[CSS]IE6・7・8チェック</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130126/p1">[CSS]CSS Sprite</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130125/p1">[CSS]floatを使ったレイアウト</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130124/p1">[CSS]CSSによるページデザイン</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130123/p1">[CSS]擬似クラスとリセットCSS</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130122/p1">[CSS]文字色と背景色と囲み</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130121/p1">[CSS]ボックスモデル</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130120/p1">[CSS]セレクタの種類</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130119/p1">[CSS]CSSからWebデザインを習得</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130118/p1">[Illustrator]Web用に保存</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130117/p1">[Illustrator]ボタン</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130116/p1">[Illustrator]ライブトレース</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130115/p1">[Illustrator]線のバリエーション</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130114/p1">[Illustrator]楕円形だけでロゴを描く</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130113/p1">[Illustrator]長方形だけでロゴを描く</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130112/p1">[Illustrator]地図を描く</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130111/p1">[Illustrator]複合パスとクリッピングマスク</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130110/p1">[Illustrator]グラデーションとブレンド</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130109/p1">[Illustrator]かにをトレース</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130108/p1">[Illustrator]コーナーの練習</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130107/p1">[Illustrator]曲線の練習</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130106/p1">[Illustrator]直線の練習</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130105/p1">[Illustrator]線の修正</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130104/p1">[Illustrator]形の変形</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130103/p1">[Illustrator]描画</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130102/p1">[Illustrator]目的と使い方</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20130101/p1">[Illustrator]Illustratorの基礎</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20121231/p1">[HTML]入力データの検証</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20121230/p1">[HTML]フォームの基本構造</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20121229/p1">[HTML]body要素の中に何を書くか？</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20121228/p1">[HTML]head要素の中に何を書くか？</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20121227/p1">[HTML]入力演習</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20121226/p1">[HTML]Webページを表示する仕組み</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20121225/p1">[HTML]画像挿入とリンク</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20121224/p1">[HTML]記述のルールと基本構造</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20121223/p1">[復習]★１日目の復習</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20121222/p1">[HTML]HTMLの入力</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20121221/p1">[準備]いま始めるべきこと</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20121220/p1">[準備]ものを作るということ</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20121219/p1">[準備]Webの勉強で必須ツール：テキストエディター</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20121218/p1">[準備]Webの勉強で必須ツール：ブラウザー</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20121217/p1">[準備]Webの仕事</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20121216/p1">[準備]インターネットとは</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20121215/p1">[準備]ファイル・フォルダーの操作と入力の練習</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20121214/p1">[準備]パソコンの使い方</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20121213/p1">[準備]トラブルシューティング</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20121212/p1">[準備]パソコン内部の処理</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20121211/p1">[準備]パソコンのハードウェアと用語</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20121210/p1">[準備]コンピューターとパソコン</a></li>
+<li><a href="http://d.hatena.ne.jp/web-mind/20121209/p1">[準備]心構え</a></li>
+</ul>
+</div>
+</div>
+
+
+     <div class="hatena-module">
+     <div class="hatena-moduletitle">受講生ブログ</div>
+     <div class="hatena-modulebody">
+     <ul class="hatena-urllist">
+     <li><a target="_blank" href="http://d.hatena.ne.jp/web_dooby/">Webデザイン｜Webのあしあと</a></li>
+     <li><a target="_blank" href="http://d.hatena.ne.jp/hukumarukun/">WEBのべんきょう</a></li>
+     <li><a target="_blank" href="http://d.hatena.ne.jp/miweb1010/">Webノート</a></li>
+     <li><a target="_blank" href="http://d.hatena.ne.jp/tomohiro1221/">tomohiro1221の日記</a></li>
+     <li><a target="_blank" href="http://d.hatena.ne.jp/michelle-tanner/">きろく</a></li> 
+     </ul>
+     </div>
+     </div>
+
+
+
+	<div class="hatena-module">
+	<div class="hatena-moduletitle">参考サイト</div>
+	<div class="hatena-modulebody">
+	<ul class="hatena-urllist">
+<li><a target="_blank" href="http://www.ikesai.com/">イケサイ</a></li>
+
+	</ul>
+	</div>
+
+<div class="hatena-module hatena-module-calendar2">
+<div class="hatena-moduletitle">カレンダー</div>
+<div class="hatena-modulebody">
+<table class="calendar" summary="calendar">
+<tbody><tr>
+<td class="calendar-prev-month" colspan="2"><a href="http://d.hatena.ne.jp/web-mind/201211" title="201211" rel="nofollow">&lt;&lt;</a></td>
+<td class="calendar-current-month" colspan="3"><a href="http://d.hatena.ne.jp/web-mind/archive/201212" rel="nofollow">2012/12</a></td>
+<td class="calendar-next-month" colspan="2"><a href="http://d.hatena.ne.jp/web-mind/201301" title="201301" rel="nofollow">&gt;&gt;</a></td>
+</tr>
+<tr>
+<td class="calendar-sunday">日</td>
+<td class="calendar-weekday">月</td>
+<td class="calendar-weekday">火</td>
+<td class="calendar-weekday">水</td>
+<td class="calendar-weekday">木</td>
+<td class="calendar-weekday">金</td>
+<td class="calendar-saturday">土</td>
+</tr>
+	<tr>
+		<td class="calendar-day"></td>
+		<td class="calendar-day"></td>
+		<td class="calendar-day"></td>
+		<td class="calendar-day"></td>
+		<td class="calendar-day"></td>
+		<td class="calendar-day"></td>
+		<td class="calendar-day">1</td>
+	</tr>
+	<tr>
+		<td class="calendar-day">2</td>
+		<td class="calendar-day">3</td>
+		<td class="calendar-day">4</td>
+		<td class="calendar-day">5</td>
+		<td class="calendar-day">6</td>
+		<td class="calendar-day">7</td>
+		<td class="calendar-day">8</td>
+	</tr>
+	<tr>
+		<td class="calendar-day"><a href="http://d.hatena.ne.jp/web-mind/20121209" title="9">9</a></td>
+		<td class="calendar-day"><a href="http://d.hatena.ne.jp/web-mind/20121210" title="10">10</a></td>
+		<td class="calendar-day"><a href="http://d.hatena.ne.jp/web-mind/20121211" title="11">11</a></td>
+		<td class="calendar-day"><a href="http://d.hatena.ne.jp/web-mind/20121212" title="12">12</a></td>
+		<td class="calendar-day"><a href="http://d.hatena.ne.jp/web-mind/20121213" title="13">13</a></td>
+		<td class="calendar-day"><a href="http://d.hatena.ne.jp/web-mind/20121214" title="14">14</a></td>
+		<td class="calendar-day"><a href="http://d.hatena.ne.jp/web-mind/20121215" title="15">15</a></td>
+	</tr>
+	<tr>
+		<td class="calendar-day"><a href="http://d.hatena.ne.jp/web-mind/20121216" title="16">16</a></td>
+		<td class="calendar-day"><a href="http://d.hatena.ne.jp/web-mind/20121217" title="17">17</a></td>
+		<td class="calendar-day"><a href="http://d.hatena.ne.jp/web-mind/20121218" title="18">18</a></td>
+		<td class="calendar-day"><a href="http://d.hatena.ne.jp/web-mind/20121219" title="19">19</a></td>
+		<td class="calendar-day"><a href="http://d.hatena.ne.jp/web-mind/20121220" title="20">20</a></td>
+		<td class="calendar-day"><a href="http://d.hatena.ne.jp/web-mind/20121221" title="21">21</a></td>
+		<td class="calendar-day"><a href="http://d.hatena.ne.jp/web-mind/20121222" title="22">22</a></td>
+	</tr>
+	<tr>
+		<td class="calendar-day"><a href="http://d.hatena.ne.jp/web-mind/20121223" title="23">23</a></td>
+		<td class="calendar-day day-selected"><a href="http://d.hatena.ne.jp/web-mind/20121224" title="24">24</a></td>
+		<td class="calendar-day"><a href="http://d.hatena.ne.jp/web-mind/20121225" title="25">25</a></td>
+		<td class="calendar-day"><a href="http://d.hatena.ne.jp/web-mind/20121226" title="26">26</a></td>
+		<td class="calendar-day"><a href="http://d.hatena.ne.jp/web-mind/20121227" title="27">27</a></td>
+		<td class="calendar-day"><a href="http://d.hatena.ne.jp/web-mind/20121228" title="28">28</a></td>
+		<td class="calendar-day day-today"><a href="http://d.hatena.ne.jp/web-mind/20121229" title="29">29</a></td>
+	</tr>
+	<tr>
+		<td class="calendar-day"><a href="http://d.hatena.ne.jp/web-mind/20121230" title="30">30</a></td>
+		<td class="calendar-day"><a href="http://d.hatena.ne.jp/web-mind/20121231" title="31">31</a></td>
+		<td class="calendar-day"></td>
+		<td class="calendar-day"></td>
+		<td class="calendar-day"></td>
+		<td class="calendar-day"></td>
+		<td class="calendar-day"></td>
+	</tr>
+</tbody></table>
+	</div>
+</div>
+
+<div class="hatena-module hatena-module-keywordcloud">
+
+<div class="hatena-moduletitle"><a href="http://d.hatena.ne.jp/web-mind/keywordcloud">最近言及したキーワード</a></div>
+
+<div class="hatena-modulebody">
+<ul class="keywordcloud">
+
+<li><a href="http://d.hatena.ne.jp/web-mind/searchdiary?word=CSS" class="keywordcloud0">CSS</a></li>
+
+<li><a href="http://d.hatena.ne.jp/web-mind/searchdiary?word=DTD" class="keywordcloud0">DTD</a></li>
+
+<li><a href="http://d.hatena.ne.jp/web-mind/searchdiary?word=Facebook" class="keywordcloud0">Facebook</a></li>
+
+<li><a href="http://d.hatena.ne.jp/web-mind/searchdiary?word=Gmail" class="keywordcloud0">Gmail</a></li>
+
+<li><a href="http://d.hatena.ne.jp/web-mind/searchdiary?word=Google" class="keywordcloud0">Google</a></li>
+
+<li><a href="http://d.hatena.ne.jp/web-mind/searchdiary?word=HTML5" class="keywordcloud0">HTML5</a></li>
+
+<li><a href="http://d.hatena.ne.jp/web-mind/searchdiary?word=Illustrator" class="keywordcloud0">Illustrator</a></li>
+
+<li><a href="http://d.hatena.ne.jp/web-mind/searchdiary?word=%A5%A2%A5%D5%A5%A9%A1%BC%A5%C0%A5%F3%A5%B9" class="keywordcloud0">アフォーダンス</a></li>
+
+<li><a href="http://d.hatena.ne.jp/web-mind/searchdiary?word=%A5%A8%A5%F3%A5%B3%A1%BC%A5%C9" class="keywordcloud10">エンコード</a></li>
+
+<li><a href="http://d.hatena.ne.jp/web-mind/searchdiary?word=%A5%AC%A5%E9%A5%D1%A5%B4%A5%B9" class="keywordcloud0">ガラパゴス</a></li>
+
+<li><a href="http://d.hatena.ne.jp/web-mind/searchdiary?word=%A5%AE%A5%D6%A5%BD%A5%F3" class="keywordcloud0">ギブソン</a></li>
+
+<li><a href="http://d.hatena.ne.jp/web-mind/searchdiary?word=%A5%B9%A5%AD%A1%BC%A5%DE%B8%C0%B8%EC" class="keywordcloud0">スキーマ言語</a></li>
+
+<li><a href="http://d.hatena.ne.jp/web-mind/searchdiary?word=%A5%B9%A5%BF%A5%A4%A5%EB%A5%B7%A1%BC%A5%C8" class="keywordcloud0">スタイルシート</a></li>
+
+<li><a href="http://d.hatena.ne.jp/web-mind/searchdiary?word=%A5%CF%A5%A4%A5%D1%A1%BC%A5%EA%A5%F3%A5%AF" class="keywordcloud10">ハイパーリンク</a></li>
+
+<li><a href="http://d.hatena.ne.jp/web-mind/searchdiary?word=%A5%DE%A1%BC%A5%AF%A5%A2%A5%C3%A5%D7" class="keywordcloud0">マークアップ</a></li>
+
+<li><a href="http://d.hatena.ne.jp/web-mind/searchdiary?word=%B8%C0%B8%EC%A5%B3%A1%BC%A5%C9" class="keywordcloud0">言語コード</a></li>
+
+<li><a href="http://d.hatena.ne.jp/web-mind/searchdiary?word=%C0%E4%C2%D0%A5%D1%A5%B9" class="keywordcloud5">絶対パス</a></li>
+
+<li><a href="http://d.hatena.ne.jp/web-mind/searchdiary?word=%C1%EA%C2%D0%A5%D1%A5%B9" class="keywordcloud5">相対パス</a></li>
+
+<li><a href="http://d.hatena.ne.jp/web-mind/searchdiary?word=%CC%BE%C1%B0%B6%F5%B4%D6" class="keywordcloud0">名前空間</a></li>
+
+<li><a href="http://d.hatena.ne.jp/web-mind/searchdiary?word=%CC%C0%C4%AB%C2%CE" class="keywordcloud0">明朝体</a></li>
+
+</ul>
+</div>
+</div>
+
+
+
+
+</div>
+</div>
+
+
+
+
+
+<script type="text/javascript">
+<!--
+    google_ad_channel = 'd_user_point';
+    google_max_num_ads = '3';
+    google_encoding = 'euc-jp';
+    hatena_afc_lazy_load = 1;
+    hatena_afc_lazy_load_id = 'google_afc_user_container';
+    google_ad_type     = 'text,image';
+    document.write('<scri' + 'pt charset="utf-8" type="text/javascript" src="http://ad.hatena.ne.jp/js/hatena_afc-compiled.js"></scri' + 'pt>');
+// -->
+</script><script charset="utf-8" type="text/javascript" src="3%20%E8%A8%98%E8%BF%B0%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A8%E5%9F%BA%E6%9C%AC%E6%A7%8B%E9%80%A0_files/hatena_afc-compiled.js"></script><script type="text/javascript" src="3%20%E8%A8%98%E8%BF%B0%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A8%E5%9F%BA%E6%9C%AC%E6%A7%8B%E9%80%A0_files/show_ads.js"></script><script src="3%20%E8%A8%98%E8%BF%B0%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A8%E5%9F%BA%E6%9C%AC%E6%A7%8B%E9%80%A0_files/show_ads_impl.js"></script><script>google_protectAndRun("ads_core.google_render_ad", google_handleError, google_render_ad);</script><script language="JavaScript1.1" src="3%20%E8%A8%98%E8%BF%B0%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A8%E5%9F%BA%E6%9C%AC%E6%A7%8B%E9%80%A0_files/ads"></script>
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  var days = document.getElementById('days');
+  if (days && days.innerHTML.indexOf("今週のお題") != -1) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'odai', 3]);
+  }
+
+  if (days && /\u6d77\u5916\u30c9\u30e9\u30de\u300e\u30e9\u30a4\u30fb\u30c8\u30a5\u30fb\u30df\u30fc \u5618\u306e\u77ac\u9593\u300f\u89b3\u305f\u3044\uff01|\u300e\u30e9\u30a4\u30fb\u30c8\u30a5\u30fb\u30df\u30fc \u5618\u306e\u77ac\u9593\u300f\u7b2c1\u8a71\u306e\u611f\u60f3\u3092\u6559\u3048\u3066\u304f\u3060\u3055\u3044|\u4eca\u3060\u304b\u3089\u8a00\u3048\u308b\u300c\u5618\u3092\u3064\u3044\u3066\u3057\u307e\u3063\u305f\u30a8\u30d4\u30bd\u30fc\u30c9\u300d\u3092\u6559\u3048\u3066\u304f\u3060\u3055\u3044|\u3060\u307e\u3055\u308c\u305f\u3051\u3069\u3001\u8a31\u305b\u3066\u3057\u307e\u3063\u305f\u5618\u3092\u6559\u3048\u3066\u304f\u3060\u3055\u3044/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'lietome', 3]);
+  }
+
+  if (days && /Visa\u30d7\u30ea\u30da\u30a4\u30c9\u300cV\u30d7\u30ea\u30ab\u300d\u8a66\u3057\u305f\u3044\uff01|Visa\u30d7\u30ea\u30da\u30a4\u30c9\u300cV\u30d7\u30ea\u30ab\u300d\u3001\u81ea\u5206\u306a\u3089\u3053\u3046\u4f7f\u3046\uff01|V\u30d7\u30ea\u30ab\u304c1\u4e07\u5186\u5206\u3042\u3063\u305f\u3089\u3001\u30cd\u30c3\u30c8\u3067\u4f55\u3092\u8cb7\u3044\u307e\u3059\u304b\uff1f/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'vpreca', 3]);
+  }
+
+  if (days && /\u30a2\u30a4\u30c7\u30e0 \u30a8\u30f3\u30b8\u30cb\u30a2\u30ad\u30e3\u30ea\u30a2Hacks\u5171\u6709\u30d7\u30ed\u30b8\u30a7\u30af\u30c8|\u30a8\u30f3\u30b8\u30cb\u30a2\u3068\u3057\u3066\u306e\u3001\u3068\u3063\u3066\u304a\u304d\u306e\u30ad\u30e3\u30ea\u30a2Hacks\u3092\u6559\u3048\u3066\u304f\u3060\u3055\u3044|\u3042\u306a\u305f\u304c\u30a8\u30f3\u30b8\u30cb\u30a2\u8ee2\u8077\u30b5\u30a4\u30c8\u3092\u4f5c\u308b\u306a\u3089\u3001\u3069\u3093\u306a\u30b5\u30a4\u30c8\u306b\u3057\u307e\u3059\u304b\uff1f|5\u5e74\u5f8c\u306e\u300c\u30a8\u30f3\u30b8\u30cb\u30a2\u306e\u50cd\u304d\u65b9\u300d\u306f\u3001\u3069\u3046\u5909\u308f\u3063\u3066\u3044\u3066\u307b\u3057\u3044\u3067\u3059\u304b\uff1f/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'aidemcareer', 3]);
+  }
+
+  _gaq.push(
+  ['_setAccount', 'UA-441387-31'],
+  ['_setCustomVar', 1, 'afc_type', 'point', 3],
+  ['_setCustomVar', 3, 'theme', 'hatena2-white', 3],
+  ['_setCustomVar', 4, 'usertype', 'guest', 1],
+  ['_trackPageview'],
+  ['b._setAccount', 'UA-7855606-1'],
+  ['b._setDomainName', '.hatena.ne.jp'],
+  ['b._trackPageview']
+  
+  );
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<!-- CG:1,CH:0,ICG:1,ICH:0,T:a -->
+
+
+</div><div style="color: rgb(0, 0, 0); position: absolute; display: none; z-index: 10002; left: 0px; top: 0px; background-color: rgb(255, 255, 255); border: 0px none; padding: 0px; text-align: center;"><div style="text-align: left; margin: 0px; padding: 0px;"></div></div></body></html>
