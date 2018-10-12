@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Book implements Comparabele<Book>, Cloneble {
+public class Book implements Comparable<Book>, Cloneble {
   public void main(String[] args) {
   private String title;
   private Date publishDate;
