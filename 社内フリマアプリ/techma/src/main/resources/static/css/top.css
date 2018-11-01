@@ -1,0 +1,43 @@
+.search{
+	margin-top: 30px;
+	margin-bottom: 30px;
+	height: 80px;
+	padding: 15px;
+	background-color:#EEEEEE;
+}
+
+#contents{
+	height: 600px;
+}
+
+.pic{
+	height: 150px;
+	width:150px;
+}
+
+.item{
+	display: inline-block;
+}
+.content{
+	height: 60%;
+	background-color:#EEEEEE;
+}
+
+.pagenation{
+	height: 50px;
+	text-align:center;
+}
+
+#title{
+	text-align:center;
+}
+
+.search-group{
+	margin:0 auto;
+}
+
+.picture{
+	width:200px;
+	height:150px;
+	margin: 15px 30px;
+}

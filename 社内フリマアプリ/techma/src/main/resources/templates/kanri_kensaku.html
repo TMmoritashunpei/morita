@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>商品検索</title><!-- (1) -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/kanri_kensaku.css"/>
+    
+</head>
+<body>
+	<!-- KeywordSearch -->
+<div class="container">
+	<div class="row row-eq-height">
+        <div class="col-xs-2 float">
+	         <ul class="nav nav-pills nav-stacked">
+	            <li><a th:href="@{/admin}"><font color=white> 商品検索</font></a></li>
+	            <!--  <li><a th:href="@{/}"><font color=white> パスワード変更</font></a></li>-->
+	            <li><a th:href="@{/categories}"><font color=white> 機能選択</font></a></li>
+	         </ul>
+        </div>
+		<!-- KeywordSearch -->
+	    <div class="col-sm-10">
+	    	<h1>商品検索</h1>
+			<form class="form-horizontal" th:action="@{/admin/search}" th:object="${item}" method="get">
+				<div class="col-sm-8 input_keyword">
+					<input type="text" class="form-control" name="keyword" placeholder="キーワードを入力">
+				</div>
+				<div class="col-sm-8 input_category">
+					<select name="category" class="form-control">
+						<option value="-1" label="カテゴリー">---</option>
+						<option th:each="category : ${categories}" th:text="${category.name}" th:value="${category.id}">pulldown</option>
+					</select>
+				</div>
+				<br>
+				<div class="form-group">
+					<div class="col-sm-10 kensaku_btn">
+						<button type="submit" class="btn btn-primary">検索</button>
+					</div>
+				</div>
+			</form>
+			<div class="form-group item_list_title">商品一覧</div>
+		</div>
+		<div class="form-group float" th:each="item : ${value}">
+			<div class="col-sm-10 item_kanri">		
+				<p class="col-sm-2" th:text="${item.name}">1</p>
+				<form class="col-sm-2" th:action="@{/admin/detail}" method="get">
+			  		<input type="submit" name="detail" value="詳細" />
+		        	<input type="hidden" name="id" th:value="${item.id}"/>
+		      	</form>
+		    </div>	      	
+		</div>
+	</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+        th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+</body>
+</html>

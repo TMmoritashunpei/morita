@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Layout</title><!-- (1) -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/style.css"/>
+</head>
+<body>
+
+<div class="row row-eq-height">
+	<div class="col-xs-2">
+		<ul class="nav nav-pills nav-stacked">
+			<li><a th:href="@{/admin}"><font color=white> 商品検索</font></a></li>
+			<!-- <li><a th:href="@{/}"><font color=white> パスワード変更</font></a></li> -->
+			<li><a th:href="@{/categories}"><font color=white> 機能選択</font></a></li>
+		</ul>
+	</div>
+
+
+	<div class="col-xs-9 "><!-- (2) -->
+			<br>
+			  <div th:object="${itemDetailForm}" class="detail-head">
+			      <h2 class="bg-color">商品名：
+			      <span class="item_detail" th:text="*{name}"></span>
+			      </h2>
+			  </div>
+			
+			  <div class="item col-sm-12">
+			    <div class="row">
+			      <div class="col-sm-6">
+			          <div th:object="${itemDetailForm}">
+			          	<div class="picture"><img th:src="@{'..' + *{picture_main}}" alt="picture_main" /></div>
+					    <div class="picture"><img th:src="@{'..' + *{picture_sub1}}" alt="picture_sub1" /></div>
+					    <div class="picture"><img th:src="@{'..' + *{picture_sub2}}" alt="picture_sub2" /></div>
+					    <div class="picture"><img th:src="@{'..' + *{picture_sub3}}" alt="picture_sub3" /></div>
+			          </div>
+			      </div>
+			 <!--    </div> -->
+			
+			<br>
+			<br>
+				<div class="col-sm-5">
+			      <div th:object="${itemDetailForm}" class="picutures">
+			      	<div class="bg-color">
+				    	<p class="detail">価格　　　　：</p>
+				    	<p class="item_detail" th:text="'&yen;' + *{price}"></p>
+				    </div>
+			      	<div class="bg-color">
+				    	<p class="detail">カテゴリー　：    </p>
+				    	<p class="item_detail" th:text="*{category.name}"></p>
+				    </div>
+			      	<div class="bg-color">
+				    	<p class="detail">支払方法　　：</p>
+				    	<p class="item_detail" th:text="*{payment}"></p>
+				    </div>
+			      	<div class="bg-color">
+				    	<p class="detail">状態　　　　：</p>
+				    	<p class="item_detail" th:text="*{item_condition}"></p>
+				    </div>
+				    <div class="bg-color">
+				    	<p class="detail">出品者　　　：</p>
+				    	<p class="item_detail" th:text="*{user.username}"></p>
+				    </div>
+			      </div>
+				</div>
+				</div>
+			</div>
+			
+			<br>
+			<div class="text col-sm-12">
+				<div th:object="${itemDetailForm}"  class="bg-color">
+					<p class="detail">商品説明　　：</p>
+					<p class="item_detail" th:text="*{comments}"></p>
+				</div>
+			</div>
+			
+			<div th:object="${itemDetailForm}" class="btn-group col-sm-10">
+			
+				<a href="/admin"><button type="button" class="btn btn-primary col-sm-offset-1 col-sm-2">戻る</button></a>
+				<form th:action="@{/admin/detail/delete}" method="post">
+					<input type="submit" value="削除" class="btn btn-primary col-sm-offset-1 col-sm-2"/>
+					<input type="hidden" name="id" th:value="*{id}"/>
+				</form>
+				
+				<form th:action="@{/admin/detail/hide}" method="post">
+					<input type="submit" value="非表示" class="btn btn-primary col-sm-offset-1 col-sm-2"/>
+					<div th:each="item : ${item}" th:if="${item.display_flg == false}" class="alert alert-danger">非表示です。</div>
+					<input type="hidden" th:name="*{display_flg}" value="false"/>
+					<input type="hidden" name="id" th:value="*{id}"/>
+				</form>
+			</div>
+	</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+        th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+</body>
+</html>

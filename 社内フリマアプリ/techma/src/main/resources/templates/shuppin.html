@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+	<meta charset="UTF-8"/>
+    <title>出品</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="../static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/css/shuppin.css"/>
+</head>
+<body>
+	<div th:substituteby="./layout :: common_header"></div>
+	<div class="container">		
+		<div class="contents_shuppin col-sm-12">
+			
+			<div class="col-sm-offset-3 col-sm-10">
+			<form th:action="@{/item/exhibit/create}" method="post" th:object="${itemForm}" enctype="multipart/form-data">
+				<div>
+				<input name="file" type="file" />
+				<input type="hidden" th:field="*{picture_main}" value="送信する"/>
+		   		</div>
+				<div>
+				<input name="file" type="file" />
+				<input type="hidden" th:field="*{picture_sub1}" value="送信する"/>
+		   		</div>
+		   		<div>
+				<input name="file" type="file" />
+				<input type="hidden" th:field="*{picture_sub2}" value="送信する"/>
+		   		</div>
+		   		<div>
+				<input name="file" type="file" />
+				<input type="hidden" th:field="*{picture_sub3}" value="送信する"/>
+				</div>
+				<div class=image>
+					<img src = "/image_main/*{picture_main}" alt="main">
+				</div>
+				
+				<div class="main col-sm-6">
+					<p>商品名 <input type="text" id="name"class="form-control" name="name" th:field="*{name}" th:errorclass="error-input" value="商品名">
+						<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+							class="error-messages">入力してください
+						</span>
+					</p>
+					
+					<div class="form-group">
+						<p>カテゴリ</p>
+							<select name="category" th:field="*{category}" th:errorclass="error-input" value="カテゴリー名">
+								<option value="-" label="カテゴリー">---</option>
+								<option th:each="category : ${categories}" th:text="${category.name}" th:value="${category.id}">pulldown</option>
+							</select>
+							<span th:if="${#fields.hasErrors('category')}" th:errors="*{category}"
+									class="error-messages">カテゴリを選択してください</span>
+					</div>
+					
+					<p>価格 <input type="text" name="price" placeholder="円" class="form-control" th:field="*{price}" th:errorclass="error-input" value="価格">
+						<span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"
+							class="error-messages">入力してください
+						</span>
+					</p>
+					
+					<div class="form-group">
+						<p>状態
+							<label for="category"></label>
+							<select name="condition" class="form-control" th:field="*{item_condition}" th:errorclass="error-input" value="状態">
+								<option value="">選択してください</option>
+								<option value="新品、未使用">新品、未使用</option>
+								<option value="未使用に近い">未使用に近い</option>
+								<option value="目立った傷や汚れなし">目立った傷や汚れなし</option>
+								<option value="やや傷や汚れあり">やや傷や汚れあり</option>
+								<option value="傷や汚れあり">傷や汚れあり</option>
+								<option value="全体的に状態が悪い">全体的に状態が悪い</option>
+							</select>
+						</p>
+						<span th:if="${#fields.hasErrors('item_condition')}" th:errors="*{item_condition}"
+						class="error-messages">入力してください</span>
+					</div>
+					
+					<div class="form-group">
+						<p>希望支払方法
+							<label for="category"></label>
+							<select name="payment" class="form-control" th:field="*{payment}" th:errorclass="error-input" value="希望支払い方法">
+								<option value="">選択してください</option>
+								<option value="手渡し">手渡し</option>
+								<option value="銀行振込">銀行振込</option>
+								<option value="LINE Pay">LINE Pay</option>
+								<option value="物々交換">物々交換</option>
+							</select>
+						</p>
+						<span th:if="${#fields.hasErrors('payment')}" th:errors="*{payment}"
+						class="error-messages">入力してください</span>
+					</div>
+					
+					<p>商品説明
+						<textarea name="description" class="form-control" th:field="*{comments}" th:errorclass="error-input" value="商品説明">
+						</textarea>
+						<span th:if="${#fields.hasErrors('comments')}" th:errors="*{comments}"
+							class="error-messages">入力してください
+						</span>
+					</p>
+					<p th:text="${#dates.format(new java.util.Date(),'yyyy/MM/dd')}" th:field="*{date}" th:value="${date}"></p>
+				</div>
+				</div>
+				
+				<div class="btn col-sm-offset-2 col-sm-3">
+					<div class="form-check">
+						<input type="submit" class="btn btn-info" value="出品">
+						 <input type="hidden" name="id" th:value="${user}">
+					</div>
+				</div>
+			</form>
+		
+		<div class="btn col-sm-4">
+			<form th:action="@{/item}" method="get">
+				<div class="form-check">
+					<input type="submit" class="btn btn-info" value="戻る">
+				</div>
+			</form>
+		</div>
+		</div>
+		
+		</div>
+		
+		
+</body>
