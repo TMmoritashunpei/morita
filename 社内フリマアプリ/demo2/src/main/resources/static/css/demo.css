@@ -17,18 +17,18 @@ a {
 .top-wrapper {
 	padding: 180px 0 100px 0;
 	background-image: url("/image/demo.jpg");
-	color: #4ac44a;
+	color: #08513c;
 	background-size: cover;
-	opacity: 0.9;
+	opacity: 0.8;
 	text-align: center;
 }
-.top-wrapper h1{
-	opacity: 0.8;
+.top-wrapper h1 {
+	opacity: 1;
 	font-size: 45px;
 	letter-spacing: 5px;
 }
 .top-wrapper p {
-	opacity: 0.8;
+	opacity: 1;
 }
 
 .btn {
@@ -37,7 +37,16 @@ a {
 	display: inline-block;
 	opacity: 0.8;
 	border-radius: 4px;
+	cursor: pointer;
+	box-shadow: 0px 7px #526059;	
 }
+
+.btn:active {
+	box-shadow: none;
+	posotion: relative;
+	top: 7px;
+}
+
 .btn:hover {
 	opacity: 1;
 }
@@ -60,4 +69,74 @@ a {
 
 .btn-wrapper p {
 	margin: 10px;
+}
+
+.contents-wrapper {
+	height: 500px;
+	padding-bottom: 80px;
+	background-color: #eff2d5;
+	text-align: center;
+}
+
+.heading {
+	padding-top: 60px;
+	padding-bottom: 30px;
+	coler: #5f5d60;
+	
+}
+
+.heading h2 {
+	font-weight: normal;
+	display: inline-block;
+	padding: 10px;
+	background-color: #2cd302;
+	color: white;
+	border-radius: 8px;
+}
+
+.service {
+	float: left;
+	width: 33%;
+}
+
+.service-icon {
+	position: relative;
+}
+
+.service-icon p {
+	position: absolute;
+	top: 90px;
+	width: 100%;
+	color: #e29218;
+}
+
+.text-contents {
+	width: 80%;
+	display: inline-block;
+	mergin-top: 20px;
+	font-size: 12px;
+	coler: #b3aeb5;
+}
+
+.message {
+	background-color: #5dca88;
+	padding: 15px 40px;
+	cursor: pointer;
+	box-shadow: 0px 7px #1a7940;
+}
+
+.message:active {
+	box-shadow: none;
+	posotion: relative;
+	top: 7px;
+}
+
+.heading h3 {
+	font-weight: normal;
+}
+
+.message-wrapper {
+	border-bottom: 1px solid #eee;
+	padding-bottom: 80px;
+	text-align: center;
 }
