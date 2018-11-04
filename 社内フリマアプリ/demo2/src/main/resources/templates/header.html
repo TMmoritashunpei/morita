@@ -2,7 +2,9 @@
 <html>
 	<head>
 	<meta charset="utf-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
 		<link rel="stylesheet" type="text/css" href="/css/header.css"></link>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	</head>
 	<body>
 	<div  th:fragment="header">
@@ -12,10 +14,65 @@
 					<img class="logo" src="/image/techma.png"></img>
 				</div>
 				<div class="header-right">
-					<a class="login" href="#">Login</a>
+					<div class="contact" id="contact-show">Contact</div>
+					
+					<a href="#">Serch</a>
+					<a href="#">Put Up</a>
+					<a href="#">Buy</a>
+					<div class="login" id="login-show">Login</div>
 				</div>
 			</div>
 		</header>
+		<!--modalをJSで表示させるsignupformここから-->
+		<div class="singup-modal-wrapper" id="signup-modal">
+			<div class="modal">
+				<div id="signup-form">
+					<h2>新規登録</h2>
+					<form action="#">
+						<input class="form-control" type="text" placeholder="UserName"></input>
+						<input class="form-control" type="email" placeholder="Email"></input>
+						<input class="form-control" type="text" placeholder="tel"></input>
+						<input class="form-control" type="password" placeholder="Password"></input>
+						<input class="form-control" type="password" placeholder="Password"></input>
+						<div id="submit-btn">登録</div>
+						<div id="submit-btn">取消</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!--modalをJSで表示させるsignupformここまで-->
+		<!--modalをJSで表示させるcontacrformここから-->
+		<div class="modal-wrapper" id="contact-modal">
+			<div class="modal">
+				<div id="contact-form">
+					<h2>お問い合わせ</h2>
+					<form action="#">
+						<input class="form-control" type="email" placeholder="Email"></input>
+						<input class="form-control" type="text" placeholder="UserName"></input>
+						<input class="form-control" type="password" placeholder="Password"></input>
+						<div id="submit-btn">送信</div>
+						<div id="submit-btn">取消</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!--modalをJSで表示させるcontacrformここまで-->
+		<!--modalをJSで表示させるloginformここから-->
+		<div class="modal-wrapper" id="login-modal">
+			<div class="modal">
+				<div id="login-form">
+					<h2>LoginForm</h2>
+					<form action="#">
+						<input class="form-control" type="text" placeholder="UserName"></input>
+						<input class="form-control" type="password" placeholder="Password"></input>
+						<div id="submit-btn">Login</div>
+						<div id="submit-btn">Return</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!--modalをJSで表示させるloginformここまで-->
 	</div>
+	<script src="/js/header.js"></script>
 	</body>
 </html>

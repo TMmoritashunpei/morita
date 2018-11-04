@@ -1,0 +1,37 @@
+@media (max-width: 1000px ) {
+	.service {
+		width: 50%; 
+   		margin-bottom:50px;
+	}
+	.top-rapper h1 {
+	font-size: 32px;
+	}
+	.heaging h2 {
+	font-size: 20px;
+	}
+}
+
+@media (max-width: 670px ) {
+	.service {
+	width: 100%;
+	}
+	footer {
+	text-aligin: center;
+	}
+	.btn {
+	width: 100%;
+	}
+	.facebook {
+	margin-bottom: 10px;
+	}
+	.top-wrapper {
+	text-aligin: left;
+	padding-top: 130px;
+	}
+	.top-wrapper h1 {
+	font-size: 24px;
+	}
+	.top-wrapper p {
+	font-size: 14px;
+	}
+}

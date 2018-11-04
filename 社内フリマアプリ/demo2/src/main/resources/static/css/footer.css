@@ -1,0 +1,46 @@
+footer {
+	width: 100%;
+	background-color: #76a1e8;
+}
+
+.logo {
+	width: 124px;
+	margin-top: 20px;
+}
+
+.footer-left {
+	float: left;
+}
+
+.footer-right {
+	float: right;
+	background-color: rgba(255, 255, 255, 0.3); 
+	transition: all 0.5s;
+	mergin-bottom: 10px;
+	box-shadow: 0px 10px 20px #526059;
+}
+
+.footer-right:active {
+box-shadow: none;
+	posotion: relative;
+	top: 7px;
+	
+}
+
+.footer-right :hover {
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-right a {
+	line-height: 65px;
+	padding-right: 25px;
+	padding-left: 15px;
+	coler: white;
+	display: block;
+}
+
+.coments {
+	display: inline-block;
+	padding-top: 10px;
+	padding-left: 10px;
+}

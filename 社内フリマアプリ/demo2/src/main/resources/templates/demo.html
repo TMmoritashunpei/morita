@@ -3,20 +3,40 @@
 <html>
 <head>
 	<meta charset="utf-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
 	<title>techma</title>
 <link rel="stylesheet" type="text/css" href="/css/demo.css"></link>
+<link rel="stylesheet" type="text/css" href="/css/responsive.css"></link>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"></link>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
 	<!--header.htmlの情報を読み込む-->
 	<div th:replace="header"></div>
+	<!--modalをJSで表示させるsignupformここから-->
+		<div class="modal-wrapper" id="signup-modal">
+			<div class="modal">
+				<div id="contact-form">
+					<h2>新規登録</h2>
+					<form action="#">
+						<input class="form-control" type="text" placeholder="UserName"></input>
+						<input class="form-control" type="email" placeholder="Email"></input>
+						<input class="form-control" type="text" placeholder="tel"></input>
+						<input class="form-control" type="password" placeholder="Password"></input>
+						<input class="form-control" type="password" placeholder="Password"></input>
+						<div id="submit-btn">登録</div>
+						<div id="submit-btn">取消</div>
+					</form>
+				</div>
+			</div>
+		</div>
 	<div class="top-wrapper">
 		<div class="container">
-			<h1>Any Good Items</h1>
+			<h1>More Good Items</h1>
 			<h1>Something</h1>
-			<p>techmaは手軽にフリマができるサービスです</p>
+			<p>techmaは社内で商品の取引ができるサービスです</p>
 			<div class="btn-wrapper">
-				<a class="btn signup" href="#">新規登録</a>
+				<div class="btn message signup-show">新規登録</div>
 				<p>or sign up with</p>
 				<a class="btn facebook" href="#">
 					<span class="fa fa-facebook"></span>
@@ -56,6 +76,14 @@
 				</div>
 				<p class="text-contents">商品の検索ができます</p>
 			</div>
+			<div class="service">
+				<div class="service-icon">
+					<img src="/image/syuppin.png"></img>
+					<p>準備中</p>
+				</div>
+				<p class="text-contents">準備中</p>
+			</div>
+			<div class="clear"></div>
 		</div>
 		</div>
 	</div>
@@ -68,6 +96,8 @@
 			<a class="btn message" href="#">利用する</a>
 		</div>
 	</div>
-	<footer></footer>
+	<!--footer.htmlの情報を読み込む-->
+	<div th:replace="footer"></div>
+	<script src="script.js"></script>
 </body>	
 </html>

@@ -2,6 +2,9 @@ header {
 	height:65px;
 	width: 100%;
 	background-color: rgba(14, 29, 42, 0.9);
+	position: fixed;
+	top: o;
+	z-index: 10;
 }
 .logo {
 	width: 124px;
@@ -15,11 +18,26 @@ header {
 .header-right {
 	float: right;
 	background-color: rgba(255, 255, 255, 0.3); 
-	transition: all 0.5s;
-	box-shadow: 7px 0px #526059;
+	margin-right: -25px;
 }
 
-.header-right:active {
+.header-right a {
+	line-height: 65px;
+	padding-left: 10px;
+	padding: 0 25px;
+	display:block;
+	float: left;
+	transition: all 0.5s;
+	box-shadow: 0px 7px #526059;
+}
+
+.header-right a:active {
+box-shadow: none;
+	posotion: relative;
+	top: 7px;
+}
+
+.contact, .login:active {
 box-shadow: none;
 	posotion: relative;
 	top: 7px;
@@ -29,6 +47,21 @@ box-shadow: none;
 	background-color: rgba(255, 255, 255, 0.5);
 }
 
+.contact , .login{
+	line-height: 65px;
+	padding-right: 25px;
+	padding-left: 25px;
+	coler: white;
+	display: inline-block;
+	flort: left;
+	box-shadow: 0px 7px #526059;
+} 
+
+.login {
+	margin-left: -6px;
+}
+
+
 .header-right a {
 	line-height: 65px;
 	padding-right: 25px;
@@ -36,4 +69,73 @@ box-shadow: none;
 	coler: white;
 	display: block;
 }
+.singup-modal-wrapper {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.6);
+	z-index: 100;
+	display: none;
+}
 
+.modal-wrapper {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.6);
+	z-index: 100;
+	display: none;
+}
+.modal {
+	position: absolute;
+	top: 20%;
+	left: 34%;
+	background-color: #e6ecf0;
+	padding: 20px 0 40px;
+	border-radius: 10px;
+	width: 450px;
+	height: auto;
+	text-align: center;
+}
+
+.fa-times {
+	postition: absolute;
+	top: 12px;
+	right: 12px;
+	color: rgba(128, 128, 128, 0.46);
+	cursol: pointer;
+}
+
+#contact-form, #login-form, #signup-form {
+  width: 100%;
+}
+
+#contact-form h2, #login-form h2, #signup-form h2 {
+  color: #5f5d60;
+  letter-spacing: 1px;
+  margin-bottom: 40px;
+}
+
+#contact-form input, #login-form input, #signup-form input {
+  width: 320px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  padding: 12px 12px;
+  border: 1px solid #d0d5d8;
+  border-radius: 5px;
+}
+
+#submit-btn {
+  display: inline-block;
+  padding: 14px 140px;
+  background-color: #5dca88;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  margin: 10px auto;
+  cursor: pointer;
+}

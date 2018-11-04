@@ -1,3 +1,7 @@
+* {
+	box-sizing: border-box;
+}
+
 body {
 	margin: 0;
 	font-family: "Hiragino Kaku Gothic Prow";
@@ -7,8 +11,12 @@ a {
 	text-decoration: none;
 }
 
+.clear {
+	clear: left;	
+}
+
 .container {
-	width: 1170px;
+	width: 100%;
 	padding-left: 15px;
 	padding-right: 15px;
 	margin: 0 outo;
@@ -17,7 +25,7 @@ a {
 .top-wrapper {
 	padding: 180px 0 100px 0;
 	background-image: url("/image/demo.jpg");
-	color: #08513c;
+	color: #050705;
 	background-size: cover;
 	opacity: 0.8;
 	text-align: center;
@@ -29,6 +37,7 @@ a {
 }
 .top-wrapper p {
 	opacity: 1;
+	font-size: 25px;
 }
 
 .btn {
@@ -72,8 +81,10 @@ a {
 }
 
 .contents-wrapper {
-	height: 500px;
+	
 	padding-bottom: 80px;
+	padding-left: 5%;
+	padding-right: 5%;
 	background-color: #eff2d5;
 	text-align: center;
 }
@@ -96,7 +107,7 @@ a {
 
 .service {
 	float: left;
-	width: 33%;
+	width: 25%;
 }
 
 .service-icon {
