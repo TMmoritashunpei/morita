@@ -127,6 +127,7 @@ a {
 	mergin-top: 20px;
 	font-size: 12px;
 	coler: #b3aeb5;
+	display: none;
 }
 
 .message {
@@ -150,4 +151,8 @@ a {
 	border-bottom: 1px solid #eee;
 	padding-bottom: 80px;
 	text-align: center;
+}
+
+.text-active {
+	display: block;
 }

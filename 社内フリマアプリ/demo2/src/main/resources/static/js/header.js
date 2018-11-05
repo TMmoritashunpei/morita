@@ -8,4 +8,10 @@ $(function() {
 	$('.signup-show').click(function() {
 		$('#signup-modal').fadeIn();
 	});
+	//モーダルをクローズさせる
+	$('.close-modal').click(function(){
+		$('#login-modal').fadeOut();
+		$('#contact-modal').fadeOut();
+		$('#signup-modal').fadeOut();
+	});
 });
