@@ -14,4 +14,14 @@ $(function() {
 		$('#contact-modal').fadeOut();
 		$('#signup-modal').fadeOut();
 	});
+	$('.ctagory-items').click(function(){
+		var $nest = $(this).find('.nest');
+		if($nest.hasClass('open')) {
+			$nest.removeClass('open');
+			$nest.slideUp();
+		} else {
+			$nest.addClass('open');
+			$nest.slideDown();
+		}
+	});
 });

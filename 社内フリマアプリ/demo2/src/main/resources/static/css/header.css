@@ -58,15 +58,19 @@ header {
 }
 .login {
 	margin-right: -5px;
-	margin-left: -5px;
+	margin-left: -6px;
 }
 
 .accordion {
-	width: 111px;
+	width: 119px;
 	list-style: none;
 	margin: auto;
 	padding-left: 0;
 	float: left;
+}
+
+.nest {
+	display: none;
 }
 
 ul {
