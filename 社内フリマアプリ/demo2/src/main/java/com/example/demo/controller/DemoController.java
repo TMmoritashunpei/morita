@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("top")
+@RequestMapping("techma")
 public class DemoController {
 	@GetMapping
 	public String index() {
@@ -22,5 +22,13 @@ public String goToBuy() {
 @RequestMapping("itemserch")
 public String goToSerch() {
 	return "itemserch";
+	}
+@RequestMapping("item")
+public String goToItem() {
+	return "item";
+	}
+@RequestMapping("user")
+public String goToUser() {
+	return "user";
 	}
 }

@@ -6,6 +6,12 @@
 	.top-rapper h1 {
 	font-size: 32px;
 	}
+	
+	.pic-item {
+	width: 90%;
+	margin: auto;
+	text-aligin: center;
+	
 	.heaging h2 {
 	font-size: 20px;
 	}
@@ -16,6 +22,9 @@
 	width: 90%;
 	margin: auto;
 	text-aligin: center;
+	}
+	.item {
+	width: 90%;
 	}
 	.contains-form {
 	text-aligin: center;
@@ -46,5 +55,11 @@
 	}
 	.top-wrapper p {
 	font-size: 14px;
+	}
+	.form-check-top {
+	margin-right: 45px;
+	}
+	.btn-info {
+	margin-right: 45px;
 	}
 }

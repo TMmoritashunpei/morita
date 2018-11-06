@@ -36,6 +36,7 @@ header {
 }
 
 .header-right a {
+	margin-right: 3px;
 	line-height: 65px;
 	padding-left: 15px;
 	padding: 0 25px;
@@ -45,6 +46,11 @@ header {
 	background-color: rgba(255, 255, 255, 0.3); 
 	box-shadow: 0px 7px #526059;
 	cursol: pointer;
+}
+
+.contact {
+	margin-right: 3px;
+	margin-left: 3px;
 }
 
 .contact, .login, .ctegory{
@@ -61,12 +67,13 @@ header {
 }
 
 .ctagory-items {
+	margin-right: 3px;
+	margin-lrft: 3px;
 	cursol: pointer;
 }
 
 .login {
-	margin-right: -5px;
-	margin-left: -5px;
+	margin-left: -6px;
 }
 
 .accordion {

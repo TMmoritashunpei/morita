@@ -45,7 +45,7 @@ body {
 	height: 250px;
 	border: double 5px #008080;
 	background-color: #c4f2dd;
-	opacity: 0.7;
+	opacity: 0.8;
 }
 
 #pic-submit {
@@ -130,13 +130,12 @@ ul {
     cursor: pointer;
     width: 40%;
     padding-right: 100px;
-    padding-left: 250px;
+    padding-left: 100px;
 }
 
 .form-check a {
 	padding: 10px 37px 13px 37px;
 	background-color:white;
-	float: left;
 	text-decoration: none;
 	cursol: pointer;
 }
@@ -149,6 +148,6 @@ ul {
 }
 
 .form-check-top {
-	float: right;
+	
 }
 
