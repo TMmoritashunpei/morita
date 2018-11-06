@@ -21,10 +21,12 @@ header {
 
 .user a {
 	background-color: rgba(200, 100, 200, 0.8);
+	cursol: pointer;
 }
 
 .header-left {
 	float: left;
+	cursol: pointer;
 }
 
 .header-right {
@@ -42,6 +44,7 @@ header {
 	transition: all 0.5s;
 	background-color: rgba(255, 255, 255, 0.3); 
 	box-shadow: 0px 7px #526059;
+	cursol: pointer;
 }
 
 .contact, .login, .ctegory{
@@ -56,9 +59,14 @@ header {
 	box-shadow: 0px 7px #526059;
 	list-style: none;
 }
+
+.ctagory-items {
+	cursol: pointer;
+}
+
 .login {
 	margin-right: -5px;
-	margin-left: -6px;
+	margin-left: -5px;
 }
 
 .accordion {
@@ -126,6 +134,8 @@ ul {
 	padding-left: 25px;
 	coler: white;
 	display: block;
+	text-decoration: none;
+	cursol: pointer;
 }
 
 .singup-modal-wrapper {
@@ -229,5 +239,11 @@ i {
   border-radius: 3px;
   color: white;
   margin: 10px auto;
-  cursor: pointer;
+  cursol: pointer;
+}
+
+#submit-btn a {
+	color: white;
+	text-decoration: none;
+	cursol: pointer;
 }

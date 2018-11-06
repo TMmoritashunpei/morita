@@ -14,26 +14,38 @@
 	<div th:replace="header"></div>
 	<div class="top-wrapper">
 		<div class="container">
-			<h1>Put Up item</h1>
+			<h1>Put Up Your Item</h1>
 			<div class="item-form">
 				<form action="#" method="post" enctype="multipart/form-data">
 				<div class="pic-add">
-					<input class="form-control" name="file" type="file" />
-					<input type="submit" value="写真を登録する"/>
-					<input class="form-control" name="file" type="file" />
-					<input type="submit" value="写真を登録する"/>
-					<input class="form-control" name="file" type="file" />
-					<input type="submit" value="写真を登録する"/>
-					<input class="form-control" name="file" type="file" />
-					<input type="submit" value="写真を登録する"/>
+				<ul>
+					<li><div class="pic-item">
+						<input class="pic-control" name="file" type="file" />
+						<input class="pic-control" id="pic-submit" type="submit" value="写真を登録する"/>
+					</div></li>
+					<li><div class="pic-item">
+						<input class="pic-control" name="file" type="file" />
+						<input class="pic-control" id="pic-submit" type="submit" value="写真を登録する"/>
+					</div></li>
+					<li><div class="pic-item">
+						<input class="pic-control" name="file" type="file" />
+						<input class="pic-control" id="pic-submit" type="submit" value="写真を登録する"/>
+					</div></li>
+					<li><div class="pic-item">
+						<input class="pic-control" name="file" type="file" />
+						<input class="pic-control" id="pic-submit" type="submit" value="写真を登録する"/>
+					</div></li>
+				</ul>
 				</div>
+				<div class="contains-form">
 					<div class="itemname">
+					<p>Item Name</p>
 						<input class="form-control" type="text" placeholder="ItemName"></input>
 					</div>
 					<div class="ctegory-select">
 					<p>Select Category</p>
 						<select name="category" value="select ctegory">
-							<option value="-" label="Select Ctegory">---</option>
+							<option value="-" label="Categoryを選択してください">---</option>
 							<option value="ctegory1">ctegory1</option>
 							<option value="ctegory1">ctegory2</option>
 							<option value="ctegory1">ctegory3</option>
@@ -42,7 +54,7 @@
 					<div class="condition-select">
 					<p>Select Condition</p>
 						<select name="condition" class="form-control" value="状態">
-							<option value="">Select Condition</option>
+							<option value="">Conditionを選択してください</option>
 							<option value="新品、未使用">新品、未使用</option>
 							<option value="未使用に近い">未使用に近い</option>
 							<option value="目立った傷や汚れなし">目立った傷や汚れなし</option>
@@ -54,21 +66,22 @@
 					<div class="payment">
 					<p>希望支払い方法</p>
 						<select name="payment" class="form-control" value="希望支払い方法">
-							<option value="">選択してください</option>
+							<option value="">取引方法を選択してください</option>
 							<option value="手渡し">手渡し</option>
 							<option value="銀行振込">銀行振込</option>
 							<option value="LINE Pay">LINE Pay</option>
 							<option value="物々交換">物々交換</option>
 						</select>
 					</div>
-					<div class="coments">
+					<div class="coments" id="item">
 					<p>Coments</p>
 					<textarea name="description" class="form-control" value="商品説明"></textarea>
 					</div>
+				</div>
 					<div class="form-check">
 						<input type="submit" class="btn btn-info" value="Put Up"></input>
 						<input type="hidden" name="id"></input>
-						<a href="#">Top</a>
+						<div class="form-check-top"><a href="/top">Top</a></div>
 					</div>
 				</form>
 			</div>

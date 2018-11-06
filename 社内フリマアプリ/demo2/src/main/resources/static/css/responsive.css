@@ -12,6 +12,16 @@
 }
 
 @media (max-width: 670px ) {
+	.pic-item {
+	width: 90%;
+	margin: auto;
+	text-aligin: center;
+	}
+	.contains-form {
+	text-aligin: center;
+	width: 70%;
+	margin: auto;
+	}
 	.service {
 	width: 100%;
 	}

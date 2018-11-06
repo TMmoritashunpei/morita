@@ -1,0 +1,97 @@
+body {
+	background-image: url("/image/login2.jpg");
+	
+}
+
+#login-form {
+	display: inline-block;
+	margin: 0 outo;
+	text-align: center;
+	opacity: 0.9;
+}
+h2 {
+	color: #276abc;
+	font-size:40px;
+	width: 50%;
+	margin-left	:300px;
+	background-color: #cce8d6;
+}
+
+p {
+	color: #276abc; 
+	font-size:20px;
+}	
+
+form {
+	width: 50%;
+	margin-left	:300px;
+	border: 2px solid #d0d5d8;
+	background-color: #cce8d6;
+}
+
+ {
+	width: 80%;
+}
+
+.modal-wrapper {
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.6);
+	z-index: 100;
+}
+
+.modal {
+	margin: auto;
+	margin-top: 70px;
+	top: 20%;
+	left: 34%;
+	background-color: #e6ecf0;
+	padding: 20px 0 40px;
+	border-radius: 10px;
+	max-width: 450px;
+	width: auto;
+	height: auto;
+	text-align: center;
+}
+
+.modal h2 {
+	padding-left: 30px;
+}
+
+#contact-form, #login-form, #signup-form {
+  width: 100%;
+}
+
+#contact-form h2, #login-form h2, #signup-form h2 {
+  color: #5f5d60;
+  letter-spacing: 1px;
+  margin-bottom: 40px;
+}
+
+#contact-form input, #login-form input, #signup-form input {
+  width: 420px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  padding: 12px 12px;
+  border: 1px solid #d0d5d8;
+  border-radius: 5px;
+}
+
+#submit-btn {
+  display: inline-block;
+  padding: 14px 140px;
+  background-color: #5dca88;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  margin: 10px auto;
+  cursol: pointer;
+}
+
+#submit-btn a {
+	color: white;
+	text-decoration: none;
+	cursol: pointer;
+}
