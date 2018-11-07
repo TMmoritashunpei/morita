@@ -1,6 +1,5 @@
 body {
 	margin: 0 auto;
-	background-color: #e8e8ea;
 	
 }
 
@@ -15,8 +14,8 @@ body {
 	margin-left: 160px;
 	width: 65%;
 	padding-right:60px;
-	background-color: white;
-	border: solid 1px #95959b;
+	background-color: #F1F46C;;
+	border: double 5px #60CDB8;
 }
 
 .item-item h1 {
@@ -24,46 +23,42 @@ body {
 	font-size: 50px;
 	width: 100%;
 	margin-left: 30px;
-	background-color: #F1F46C;
+	background-color: #60CDB8;
 	color: white;
 }
 
 h2 {
+	font-size: 40px;
 	color: #60CDB8;
 }
 
 .item-item-image {
 	height:200px;
 	width: 35%;
-	border: double 5px #95959b;
-}
-
-.item-status-wrapper a {
-	border-bottom: solid 2px #95959b;
+	border: double 5px #60CDB8;
 }
 
 .item-item-status {
-	border: solid 1px #95959b;
+	border-top: double 5px #545153;
 	margin-bottom:10px;
+	width: 80%;
+	word-wrap: break-word;
 }
 
 .item-item-status a {
-	border: solid 1px #95959b;
+	display: inline-block;
 }
 
 .coments-wrapper {
 	height: outo;
 	word-wrap: break-word;
-	width: 100%;
-	border-top: solid 2px #95959b;
+	border-top: double 5px #545153;
+	border-bottom: double 5px #545153;
 	margin-bottom: 60px;
 }
 
 p {
-	white-space: nowrap;
-	margin-bottom: 0px;
-	margin-left:10px;
-	
+	word-wrap: break-word;
 }
 
 .buy {
@@ -111,4 +106,7 @@ a {
 	transition: all 0.5s;
 	border-radius: 8px;
 	mergin-left: 70px;
+}
+.container {
+	padding-bottom:20px;
 }

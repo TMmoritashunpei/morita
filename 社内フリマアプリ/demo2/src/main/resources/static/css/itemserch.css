@@ -5,19 +5,19 @@ body {
 }
 
 h1 {
-	color: WHITE;
+	color: #60CDB8;
 	padding-top: 80px;
 	font-size: 50px;
 	text-align: center;
-	background-color: #F1F46C;
+	background-color: #DBDBDB;
 	margin-bottom:30px;
 }
 
 .serch-form {
 	height: 300px;
 	margin: 40px 80px 80px 80px;
-	background-color: #60CDB8;
-	border: double 5px #60CDB8;
+	background-color: #F1F46C;
+	border: double 5px #DBDBDB;
 }
 
 input {
@@ -79,6 +79,7 @@ p {
 }
 
 .gototop {
+	border: solid 1px #95959b;
 	background-color: #60CDB8;
 	display: inline-block;
 	font-size:25px;

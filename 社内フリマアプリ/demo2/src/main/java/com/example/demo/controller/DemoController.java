@@ -43,4 +43,8 @@ public String goToItemResult() {
 public String goTobuyResult() {
 	return "itemresult";
 	}
+@RequestMapping("exhibitor")
+public String exhibitor() {
+	return "exhibitor";
+	}
 }

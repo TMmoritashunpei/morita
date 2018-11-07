@@ -1,3 +1,18 @@
+@media (max-width: 2000px ) {
+	.item-form {
+	max-width: 1400px;
+	margin-left: 250px;
+	}
+	.items {
+	max-width:1800px;
+	margin-right: 45px;
+	}
+	.item {
+	margin-left:80px;
+	max-width: 315px;
+	}
+}	
+
 @media (max-width: 1000px ) {
 	.service {
 	width: 50%; 
@@ -20,7 +35,7 @@
 	width: 50%;
 	}
 	.item-item h1 {
-	margin-top: 200px;
+	margin-top: 100px;
 	width: 100%;
 	}
 	.user-user h1 {
@@ -29,10 +44,11 @@
 	}
 	.items {
 	width: 100%;
+	float:left;
 	}
 	.item img {
-	width: 92%;
-	height: 100%;
+	width: 88%;
+	height: 200px;
 	margin-right:40px;
 	}
 	.item {
@@ -63,6 +79,9 @@
 	margin:0 auto;
 	width: 60%;
 	margin-left:20px;
+	}
+	gototop {
+	float: left;
 	}
 }
 
