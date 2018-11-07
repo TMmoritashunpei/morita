@@ -3,6 +3,7 @@
 }
 
 body {
+	margin: 0 auto;
 	font-family: "Hiragino Kaku Gothic Prow";
 }
 
@@ -16,15 +17,13 @@ a {
 
 .container {
 	width: 100%;
-	padding-left: 15px;
-	padding-right: 15px;
 	margin: 0 outo;
 }
 
 .top-wrapper {
 	padding: 180px 0 100px 0;
 	background-image: url("/image/demo.jpg");
-	color: #050705;
+	color: white;
 	background-size: cover;
 	opacity: 0.8;
 	text-align: center;
@@ -84,7 +83,7 @@ a {
 	padding-bottom: 80px;
 	padding-left: 5%;
 	padding-right: 5%;
-	background-color: #eff2d5;
+	background-color:  #F1F46C;
 	text-align: center;
 }
 
@@ -97,9 +96,8 @@ a {
 
 .heading h2 {
 	font-weight: normal;
-	display: inline-block;
 	padding: 10px;
-	background-color: #2cd302;
+	background-color: #60CDB8;
 	color: white;
 	border-radius: 8px;
 }
@@ -143,6 +141,7 @@ a {
 }
 
 .heading h3 {
+	color: #60CDB8;
 	font-weight: normal;
 }
 

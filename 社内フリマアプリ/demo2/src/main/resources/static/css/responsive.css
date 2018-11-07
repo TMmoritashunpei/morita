@@ -1,7 +1,7 @@
 @media (max-width: 1000px ) {
 	.service {
-		width: 50%; 
-   		margin-bottom:50px;
+	width: 50%; 
+   	margin-bottom:50px;
 	}
 	.top-rapper h1 {
 	font-size: 32px;
@@ -11,9 +11,58 @@
 	width: 90%;
 	margin: auto;
 	text-aligin: center;
-	
+	}
 	.heaging h2 {
 	font-size: 20px;
+	}
+	.item h1,h2 {
+	margin-top: 80px;
+	width: 50%;
+	}
+	.item-item h1 {
+	margin-top: 200px;
+	width: 100%;
+	}
+	.user-user h1 {
+	margin-top: 200px;
+	width: 100%;
+	}
+	.items {
+	width: 100%;
+	}
+	.item img {
+	width: 92%;
+	height: 100%;
+	margin-right:40px;
+	}
+	.item {
+	width: 50%;
+	text-aligin: center;
+	margin: auto;
+	margin-left:80px;
+	}
+	.item-item-image {
+	width: 90%;
+	margin: auto;
+	text-aligin: center;
+	}
+	.item-item {
+	width: 50%;
+	}
+	.buy, .gototop {
+	float: left;
+	margin:10px;
+	}
+	.user-image {
+	width: 70%;
+	height: 70%;
+	margin: auto;
+	text-aligin: center;
+	}
+	.user-user {
+	margin:0 auto;
+	width: 60%;
+	margin-left:20px;
 	}
 }
 
@@ -61,5 +110,45 @@
 	}
 	.btn-info {
 	margin-right: 45px;
+	}
+	.item {
+	width: 80%;
+	margin-left:35px;
+	margin-bottom: 10px;
+	}
+	.item-image {
+	width: 100%;
+	height: 100px;
+	}
+	.item-status-wrapper {
+	width: 80%
+	}
+	.item p {
+	width: 70%
+	}
+	.item h1 {
+	padding-top:120px;
+	width:50%%;
+	}
+	.serch-form {
+	margin: 0;
+	margin-bottom:20px;
+	}
+	.item-item-image {
+	width:50%%;
+	}
+	.buy, .gototop {
+	float: left;
+	margin:10px;
+	}
+	.item-item {
+	margin:0 auto;
+	width: 40%;
+	margin-left:20px;
+	}
+	.user-user {
+	margin:0 auto;
+	width: 40%;
+	margin-left:20px;
 	}
 }

@@ -1,0 +1,65 @@
+body {
+	background-image: url("/image/login2.jpg");
+	background-color:black;
+	opacity: 0.7;
+}
+
+#login-form {
+	display: inline-block;
+	margin: 0 outo;
+	text-align: center;
+	
+}
+h2 {
+	color: white;
+	font-size:50px;
+	width: 50%;
+	margin-left	:300px;
+}
+
+p {
+	color: white; 
+	font-size:20px;
+}	
+
+form {
+	width: 50%;
+	margin-left	:300px;
+	border: 2px solid #d0d5d8;
+	background-color: #cce8d6;
+}
+
+.modal-wrapper {
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.6);
+	z-index: 100;
+}
+
+#contact-form, #login-form, #signup-form {
+  width: 100%;
+}
+
+#contact-form h2, #login-form h2, #signup-form h2 {
+  letter-spacing: 1px;
+  margin-bottom: 40px;
+}
+
+#submit-btn {
+  display: inline-block;
+  padding: 14px 140px;
+  background-color: #5dca88;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  margin: 10px auto;
+  cursol: pointer;
+}
+
+#submit-btn a {
+	color: white;
+	text-decoration: none;
+	cursol: pointer;
+}

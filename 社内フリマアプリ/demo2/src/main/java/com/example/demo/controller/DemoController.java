@@ -31,4 +31,16 @@ public String goToItem() {
 public String goToUser() {
 	return "user";
 	}
+@RequestMapping("userresult")
+public String goToUserResult() {
+	return "userresult";
+	}
+@RequestMapping("itemresult")
+public String goToItemResult() {
+	return "itemresult";
+	}
+@RequestMapping("buyresult")
+public String goTobuyResult() {
+	return "itemresult";
+	}
 }
