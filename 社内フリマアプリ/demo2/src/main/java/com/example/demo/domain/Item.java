@@ -13,6 +13,6 @@ public class Item implements Serializable {
 	//praivate Ctegory ctegory;
 	private String condition;
 	private String payment;
-	private Integer Stock;
+	private Integer stock;
 	private String coments;
 }
