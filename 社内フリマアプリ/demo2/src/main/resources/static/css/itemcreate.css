@@ -133,6 +133,8 @@ ul {
 
 .item-form {
 	background-color: #e8e8ea;
+	width: 1200px;
+	padding-right: 30px;
 }
 
 .form-check input {

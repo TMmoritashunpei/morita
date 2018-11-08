@@ -1,7 +1,6 @@
 @media (max-width: 2000px ) {
 	.item-form {
 	max-width: 1400px;
-	margin-left: 250px;
 	}
 	.items {
 	max-width:1800px;
@@ -43,11 +42,9 @@
 	width: 100%;
 	}
 	.items {
-	width: 100%;
-	float:left;
+
 	}
 	.item img {
-	width: 88%;
 	height: 200px;
 	margin-right:40px;
 	}

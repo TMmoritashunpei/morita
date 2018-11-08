@@ -8,11 +8,11 @@ body {
 }
 
 .item-item {
-	padding-left:10px;
+	padding-left: 100px;
 	margin-top: 60px;
 	display: inline-block;
-	margin-left: 160px;
-	width: 65%;
+	margin-left: 200px;
+	width: 55%;
 	padding-right:60px;
 	background-color: #F1F46C;;
 	border: double 5px #60CDB8;
@@ -39,22 +39,20 @@ h2 {
 }
 
 .item-item-status {
-	border-top: double 5px #545153;
+	border-top: 1px solid #a5aaa5;
 	margin-bottom:10px;
 	width: 80%;
 	word-wrap: break-word;
 }
 
-.item-item-status a {
-	display: inline-block;
+.item-item-status p {
+	border-bottom: 1px dotted #a5aaa5;
 }
 
 .coments-wrapper {
 	height: outo;
 	word-wrap: break-word;
-	border-top: double 5px #545153;
-	border-bottom: double 5px #545153;
-	margin-bottom: 60px;
+	margin-bottom: 20px;
 }
 
 p {
