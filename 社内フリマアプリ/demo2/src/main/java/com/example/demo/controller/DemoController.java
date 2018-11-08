@@ -11,6 +11,10 @@ public class DemoController {
 	public String index() {
 		return "demo";
 	}
+@RequestMapping("login")
+	public String goToLogin() {
+	return "login";
+	}	
 @RequestMapping("itemcreate")
 	public String goToCreate() {
 		return "itemcreate";
@@ -42,5 +46,13 @@ public String goToItemResult() {
 @RequestMapping("buyresult")
 public String goTobuyResult() {
 	return "itemresult";
+	}
+@RequestMapping("itemresultcheck")
+public String goToItemresultcheck() {
+	return "itemresultcheck";
+	}
+@RequestMapping("itembuycheck")
+public String goToItembuycheck() {
+	return "itembuycheck";
 	}
 }

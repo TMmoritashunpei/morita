@@ -62,7 +62,7 @@ input {
 }
 
 p {
-	border-bottom: 1px solid #564e4d;
+	border-bottom: 1px dotted #564e4d;
 	max-width: 1200px;
 	padding-left: 10px;
 	white-space: nowrap;
