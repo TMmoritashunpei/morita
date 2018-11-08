@@ -140,6 +140,7 @@ ul {
 }
 
 .create-btn {
+	border: solid 1px #95959b;
 	margin-right: 60px;
 	padding-right: 30px;
 	background-color: #60CDB8;
@@ -153,6 +154,7 @@ ul {
 }
 
 .gototop {
+	border: solid 1px #95959b;
 	float:left;
 	background-color: #60CDB8;
 	display: inline-block;

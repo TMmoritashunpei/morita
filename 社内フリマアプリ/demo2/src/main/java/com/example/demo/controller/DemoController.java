@@ -55,4 +55,8 @@ public String goToItemresultcheck() {
 public String goToItembuycheck() {
 	return "itembuycheck";
 	}
+@RequestMapping("exhibitor")
+public String exhibitor() {
+	return "exhibitor";
+	}
 }
