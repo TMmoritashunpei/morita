@@ -6,11 +6,12 @@ CREATE TABLE IF NOT EXISTS items (
 
 CREATE TABLE IF NOT EXISTS users (
 	username VARCHAR(30) NOT NULL PRIMARY KEY,
- 	passworld VARCHAR(255), tel VARCHAR(20), mail VARCHAR(50)
+ 	password VARCHAR(255), tel VARCHAR(20), mail VARCHAR(50), comments text
  );
 
-CREATE TABLE IF NOT EXISTS categories (
+CREATE TABLE IF NOT EXISTS ctegorys (
 	id int(10)  auto_increment,
-	name VARCHAR(20) ,
+	ctegory_name VARCHAR(20) ,
 	PRIMARY KEY(id)
 );
+

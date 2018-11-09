@@ -1,18 +1,32 @@
 package com.example.demo.domain;
 
 import java.io.Serializable;
+
+import javax.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
-public class Item implements Serializable {
+@Entity
+@Table(name = "items")
+public class Item {
+	@Id
+	@GeneratedValue
 	private Integer itemId;
-	private String itemName;
+	private String itemname;
 	private Integer price;
-	//praivate Ctegory ctegory;
 	private String condition;
 	private String payment;
 	private Integer stock;
 	private String coments;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(nullable = true, name = "username")
+	private User user; 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(nullable = true, name = "ctegoryId")
+	private Ctegory ctegory; 
 }

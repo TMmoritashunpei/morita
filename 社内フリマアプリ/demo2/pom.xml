@@ -26,6 +26,10 @@
 
 	<dependencies>
 		<dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
+		<dependency>
             <groupId>org.lazyluke</groupId>
             <artifactId>log4jdbc-remix</artifactId>
             <version>0.2.7</version>

@@ -1,23 +1,15 @@
 package com.example.demo.repository;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.domain.Page;
 import com.example.demo.domain.Item;
+import org.springframework.data.domain.Pageable;
 
-public class ItemRepository {
-	private final ConcurrentMap<Integer, Item> ItemMap = new ConcurrentHashMap<>();
-	
-	public List<Item> findAll() {
-		return new ArrayList<>(ItemMap.values());
-	}
-	
-	public Item findOne(Integer itemId) {
-		return ItemMap.get(itemId);
-	}
-	
-	public void delete(Integer itemId) {
-		
-	}
+public interface ItemRepository extends JpaRepository<Item, Integer> {
+	@Query("SELECT x FROM Item x ORDER BY x.itemname")
+	List<Item> findAllOrderByName();
+	@Query("SELECT x FROM Item x ORDER BY x.itemname")
+    Page<Item> findAllOrderByName(Pageable pageable);
 }
