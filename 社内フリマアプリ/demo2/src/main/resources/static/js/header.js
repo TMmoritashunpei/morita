@@ -14,7 +14,7 @@ $(function() {
 		$('#contact-modal').fadeOut();
 		$('#signup-modal').fadeOut();
 	});
-	$('.ctagory-items').click(function(){
+	$('.catagory-items').click(function(){
 		var $nest = $(this).find('.nest');
 		if($nest.hasClass('open')) {
 			$nest.removeClass('open');

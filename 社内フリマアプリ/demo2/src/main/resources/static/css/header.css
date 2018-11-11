@@ -51,10 +51,10 @@ header {
 
 .contact {
 	margin-right: 3px;
-	margin-left: 3px;
+	margin-left: 12px;
 }
 
-.contact, .login, .ctegory{
+.contact, .login, .category{
 	line-height: 65px;
 	padding-right: 25px;
 	padding-left: 25px;
@@ -69,7 +69,7 @@ header {
 
 .ctagory-items {
 	margin-right: 3px;
-	margin-lrft: 3px;
+	margin-left: 3px;
 	cursol: pointer;
 }
 
@@ -114,7 +114,7 @@ ul {
 	top: 7px;
 }
 
-.ctegory:active {
+.category:active {
 	box-shadow: none;
 	posotion: relative;
 	top: 7px;
@@ -124,7 +124,7 @@ ul {
 	background-color: rgba(255, 255, 255, 0.5);
 }
 
-.ctegory:hover {
+.category:hover {
 	background-color: rgba(255, 255, 255, 0.5);
 }
 

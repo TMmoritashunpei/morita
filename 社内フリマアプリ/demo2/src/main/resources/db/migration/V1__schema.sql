@@ -9,9 +9,9 @@ CREATE TABLE IF NOT EXISTS users (
  	password VARCHAR(255), tel VARCHAR(20), mail VARCHAR(50), comments text
  );
 
-CREATE TABLE IF NOT EXISTS ctegorys (
+CREATE TABLE IF NOT EXISTS categorys (
 	id int(10)  auto_increment,
-	ctegory_name VARCHAR(20) ,
+	category_name VARCHAR(20) ,
 	PRIMARY KEY(id)
 );
 

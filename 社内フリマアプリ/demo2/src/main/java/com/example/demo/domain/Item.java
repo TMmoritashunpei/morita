@@ -1,9 +1,6 @@
 package com.example.demo.domain;
 
-import java.io.Serializable;
-
 import javax.persistence.*;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,6 +24,6 @@ public class Item {
 	@JoinColumn(nullable = true, name = "username")
 	private User user; 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(nullable = true, name = "ctegoryId")
-	private Ctegory ctegory; 
+	@JoinColumn(nullable = true, name = "categoryId")
+	private Category category; 
 }

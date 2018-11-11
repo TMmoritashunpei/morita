@@ -9,7 +9,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface ItemRepository extends JpaRepository<Item, Integer> {
 	@Query("SELECT x FROM Item x ORDER BY x.itemname")
-	List<Item> findAllOrderByName();
+	List<Item> findAllItemOrderByName();
 	@Query("SELECT x FROM Item x ORDER BY x.itemname")
-    Page<Item> findAllOrderByName(Pageable pageable);
+    Page<Item> findAllItemOrderByName(Pageable pageable);
 }

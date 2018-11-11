@@ -1,7 +1,6 @@
 package com.example.demo.domain;
 
 import java.util.List;
-
 import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,13 +11,13 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "ctegorys")
+@Table(name = "categorys")
 @ToString(exclude ="items")
-public class Ctegory {
+public class Category {
 	@Id
 	@GeneratedValue
-	private Integer ctegoryId;
-	private String ctegoryname;
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "ctegory")
+	private Integer categoryId;
+	private String categoryname;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "category")
 	private List<Item> items;
 }
