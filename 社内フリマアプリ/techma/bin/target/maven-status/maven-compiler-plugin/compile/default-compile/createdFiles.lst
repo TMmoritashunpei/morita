@@ -1,6 +1,0 @@
-techma\domain\users\User.class
-techma\domain\items\Item.class
-techma\TechmaApplication.class
-techma\service\userService\UserService.class
-techma\repository\repositoryUser\RepositoryUser.class
-techma\service\exhibit\ExhibitService.class

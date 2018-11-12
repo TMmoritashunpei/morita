@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>test</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}"/>
+</head>
+<body>
+<div class="container">
+<div th:substituteby="./layout :: common_header"></div>
+	
+	<div class="center-block col-sm-5">
+			<h3>ログイン</h3>
+    		<form class="form-signin" method="post" th:action="@{/item/login}">
+    			<div th:if="${param.error}" class="alert alert-danger">
+    				ユーザー名またはパスワードが正しくありません。
+    			</div>
+                   <div class="form-group">
+                        <label for="username">UserName</label>
+                        <input type="text" class="form-control" name="username" id="username" placeholder="username" required="required" autofocus="autofocus"/>
+                </div>
+                    <div class="form-group">
+                        <label for="userPassword">Password</label>
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Password" required="required" autofocus="autofocus"/>
+                    </div>
+                   
+                    <div class="form-check">
+                        <button type="submit" class="btn btn-info">login</button> 
+                   </div>
+    		</form>
+    				 <div class="form-group">
+    				  <div class="form-check">
+                       <form class="form-signin" method="get" th:action="@{/item}">
+                        <button type="submit" class="btn btn-primary">キャンセル</button>
+                       </form>
+                      </div>
+                    </div>  
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+        th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Layout</title><!-- (1) -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/style.css"/>
+</head>
+<body>
+
+<div class="row row-eq-height">
+        <div class="col-xs-2">
+         <ul class="nav nav-pills nav-stacked">
+            <li><a th:href="@{/admin}"><font color=white> 商品検索</font></a></li>
+            <!-- <li><a th:href="@{/}"><font color=white> パスワード変更</font></a></li> -->
+            <li><a th:href="@{/categories}"><font color=white> 機能選択</font></a></li>
+         </ul>
+        </div>    
+    <div class="col-xs-8 "><!-- (2) -->
+    	<div layout:replace="content">
+	<div class="container">
+		<h1>機能編集画面</h1>
+		<div>
+		<form th:action="@{/categories/edit}" th:object="${categoryForm}" method="post" class="form-horizontal">
+			<h3>■カテゴリー編集</h3>
+			<input type="text" id="name"class="form-control" name="name" th:field="*{name}" th:errorclass="error-input" value="カテゴリー">
+			<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+			class="text-danger">入力してください</span>
+			<br>
+			<input type="submit" class="btn btn-warning" name="edit" value="保存"/>
+			<input type="submit" class="btn btn-info" name="goToTop" value="戻る"/>
+     		<input type="hidden" name="id" th:value="${param.id[0]}"/>
+		</form>
+		</div>
+	</div>
+    	</div>
+    </div>
+    
+    
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+        th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+</body>
+</html>

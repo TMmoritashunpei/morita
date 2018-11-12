@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<title>login</title>
+	<meta charset="utf-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+		<link rel="stylesheet" type="text/css" href="/css/login.css"></link>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	</head>
+	<body>
+		<div id="login-form">
+			<h2>techma Login</h2>
+			<form method="post" th:action="@{/login}">
+			  <div th:if="${param.error}" class="alert alert-danger">
+            	ユーザー名またはパスワードが正しくありません。
+        	 </div>
+				<p>UserName</p>
+				<input class="form-control" type="text" name="username" placeholder="UserName" required="required"></input>
+				<p>Password</p>
+				<input class="form-control" type="password" name="password" placeholder="Password" required="required"></input>
+				<div id="submit-btn"><button type="submit">Login</button></div>
+				<div id="submit-btn"><a href="/techma">TOP</a></div>
+			</form>
+		</div>
+	</body>
+</html>
+	

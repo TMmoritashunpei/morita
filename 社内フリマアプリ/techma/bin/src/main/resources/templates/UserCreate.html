@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:substituteby="./layout :: common_link">
+    <meta charset="UTF-8"/>
+    <title>test</title>
+    <script src="/js/password.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}"/>
+          <link rel="stylesheet" type="text/css" media="screen" href="../static/css/style.css" />
+</head>
+
+<body>
+<div class="container">
+<div th:substituteby="./layout :: common_header"></div>
+	<div class="center-block col-sm-6">
+	<h3>ユーザー登録</h3>
+    		<form class="form-signin" method="post" th:action="@{/item/user/create}" th:object="${userForm}">
+    
+    			<div th:if="${param.error}" class="alert alert-danger">
+    				ユーザー名またはパスワードが正しくありません。
+    			</div>
+
+                <div class="form-group">
+                        <label for="username">ユーザー名</label>
+                        <input type="text" class="form-control" id="name" placeholder="name" required="required" autofocus="autofocus" th:field="*{username}"/>
+                </div>
+                
+                <div class="form-group">
+                        <label for="username">社員ID</label>
+                        <input type="text" class="form-control" id="name" placeholder="name" required="required" autofocus="autofocus" th:field="*{employee_id}"/>
+                </div>
+                                
+                <div class="form-group">
+                	<label for="userPassword">Password</label>
+                	<input type="password" class="form-control" name="password" id="password_addr" placeholder="Password" required="required" autofocus="autofocus"th:field="*{password}"/>
+                	<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+					class="error-messages">入力してください</span>
+                </div>
+                
+                <div class="form-group">
+                	<label for="userPassword">Password（確認）</label>
+                	<input type="password" class="form-control" name="password" id="password_addr_repeat" placeholder="Password" required="required" autofocus="autofocus" />
+                	<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+					class="error-messages">入力してください</span>
+                </div>
+                
+                <div class="form-group">
+                        <label for="userPassword">MailAddress</label>
+                        <input type="text" class="form-control" name="mail" id="mail" placeholder="E-mail" required="required" autofocus="autofocus" th:field="*{mail}"/>
+                        <span th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}"
+						class="error-messages">入力してください</span>
+                </div>
+                
+                <div class="form-check">
+                	<button type="submit" class="btn btn-info">登録</button> 
+                </div>
+    		</form>
+    		
+    		<div class="form-group">
+    			<div class="form-check">
+                	<form class="form-signin" method="get" th:action="@{/item}">
+                    	<button type="submit" class="btn btn-primary">キャンセル</button>
+                    </form>
+                </div>
+            </div>  
+            
+    </div>
+</div>
+<script src="/js/password.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+        th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+</body>
+</html>

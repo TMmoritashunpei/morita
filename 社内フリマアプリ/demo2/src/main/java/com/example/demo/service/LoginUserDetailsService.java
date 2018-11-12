@@ -11,16 +11,18 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class LoginUserDetailsService {
+public class LoginUserDetailsService implements UserDetailsService {
 	@Autowired
 	UserRepository userRepository;
 	
-	public UserDetails loadUserByUserName(String username) throws UsernameNotFoundException {
-		User user = userRepository.findOne(username);
-		if (user == null) {
-			throw new UsernameNotFoundException("ユーザーがいません");
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
+			System.out.println("ユーザーがいません");
+			throw new UsernameNotFoundException("The requested user is not found.");
 		}
-		return new LoginUserDetails(user);
+        return new LoginUserDetails(user);
 	}
 
 }

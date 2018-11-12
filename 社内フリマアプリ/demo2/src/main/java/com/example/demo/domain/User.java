@@ -15,14 +15,18 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString(exclude = "items")
 public class User {
-	private Integer userId;
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
+	private Integer id;
+	@Column(name="username", nullable = false)
 	private String username;
 	@JsonIgnore
 	private String password;
 	private String tel;
 	private String mail;
-	private String coments;
+	@Column(name="comments")
+	private String comments;
 	/*itemと一対多の関係にする*/
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
 	private List<Item> items;

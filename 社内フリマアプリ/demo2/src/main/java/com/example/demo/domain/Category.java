@@ -16,7 +16,9 @@ import lombok.ToString;
 public class Category {
 	@Id
 	@GeneratedValue
+	@Column(name="id")
 	private Integer categoryId;
+	@Column(name="category_name")
 	private String categoryname;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "category")
 	private List<Item> items;

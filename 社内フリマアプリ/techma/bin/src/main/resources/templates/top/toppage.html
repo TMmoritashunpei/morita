@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head lang="en" th:substituteby="./layout :: common_link">
+<link rel="stylesheet" type="text/css" href="/css/top.css"/>
+    <meta charset="UTF-8"/>
+    <title>test</title>
+</head>
+<body>
+
+<div class="container">
+<div th:substituteby="./layout :: common_header"></div>
+    
+    <div class="search col-sm-12">
+    		
+    		<!-- Category Search -->
+    	<div class="dropdown col-sm-offset-3 col-sm-3">
+   			<form th:action="@{/item/search/category}" method="get">
+				<select name="search" onChange="this.form.submit()" class="form-control">
+					<option value="-1" label="カテゴリー">---</option>
+					<option th:each="category : ${categories}" th:text="${category.name}" th:value="${category.id}">pulldown</option>
+				</select>
+			</form>
+		</div>
+
+		<!-- KeywordSearch -->
+		<div>
+			<form th:action="@{/item/search/keyword}" th:object="${item}" method="get" name="form">
+        		<div class="input-group col-sm-3">
+					<input type="text" class="form-control" name="keyword" placeholder="キーワード入力">
+					<span class="input-group-btn">
+						<button type="submit" class="btn btn-default">検索</button>
+					</span>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div id="contents" class="contents ">  
+		<h3 id="title" th:if="${title == null}">商品一覧</h3>
+		<h3 id="title" th:if="${title != null}">商品検索一覧</h3>
+		<h5 id="title" th:text="${msg}">メッセージ</h5>
+		
+		<div class="content">
+		
+   		<div th:each="item : ${itemList}" th:if="${item.display_flg == true && itemListFlg == 1}" class="item">
+	      <form th:action="@{/item/detail}" method="get">
+	        <input type="image" name="form" th:src="@{'..' + ${item.picture_main}}" alt="picture_main" class="picture">
+	        <input type="hidden" name="id" th:value="${item.id}"/>
+	      </form>
+	    </div>
+	     
+	    <div th:each="item : ${value}" th:if="${item.display_flg == true && itemListFlg == 0}" class="item">
+	      <form th:action="@{/item/detail}" method="get">
+	        <input type="image" name="form" th:src="@{'..' + ${item.picture_main}}" alt="picture_main">
+	        <input type="hidden" name="id" th:value="${item.id}"/>
+	      </form>
+	    </div>
+	    
+	    </div>
+	    
+	    <div th:fragment='paginationbar' th:if="${itemListFlg == 1}" class="pagenation">
+            <ul>
+                <li th:class="${itemList.first} ? 'disabled':''" style="display:inline">
+                    <span th:if="${itemList.first}">←先頭</span>
+                    <a th:if="${not itemList.first}" th:href="@{${url}(page=0)}">←先頭</a>
+                </li>
+                <li th:each='i : ${#numbers.sequence(0, itemList.totalPages-1)}' th:class="(${i}==${itemList.number})? 'active' : ''" style="display:inline">
+                    <span th:if='${i}==${itemList.number}' th:text='${i+1}'>1</span>
+                    <a th:if='${i}!=${itemList.number}' th:href="@{${url}(page=${i})}">
+                        <span th:text='${i+1}'>1</span>
+                    </a>
+                </li>
+                <li th:class="${itemList.last} ? 'disabled':''" style="display:inline">
+                    <span th:if="${itemList.last}">末尾➝</span>
+                    <a th:if="${not itemList.last}" th:href="@{${url}(page=(${itemList.totalPages}-1))}">末尾➝</a>
+                </li>
+            </ul>
+       	</div>
+    
+	</div>
+
+</div>
+</body>
+</html>
