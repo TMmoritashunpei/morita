@@ -15,7 +15,7 @@ public class LoginUserDetailsService {
 	@Autowired
 	UserRepository userRepository;
 	
-	public UserDetails loadIserByUserName(String username) throws UsernameNotFoundException {
+	public UserDetails loadUserByUserName(String username) throws UsernameNotFoundException {
 		User user = userRepository.findOne(username);
 		if (user == null) {
 			throw new UsernameNotFoundException("ユーザーがいません");

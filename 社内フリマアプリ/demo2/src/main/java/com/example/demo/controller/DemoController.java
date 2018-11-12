@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,6 +24,7 @@ import com.example.demo.domain.Item;
 import com.example.demo.domain.User;
 import com.example.demo.service.CategoryService;
 import com.example.demo.service.ItemService;
+import com.example.demo.service.LoginUserDetails;
 import com.example.demo.service.UserService;
 import com.example.demo.web.CategoryForm;
 import com.example.demo.web.ItemForm;
@@ -115,13 +117,14 @@ public class DemoController {
 	}
 	
 	@PostMapping(path = "exhibit")
-	String ItemExhibit(@Validated ItemForm form, BindingResult result, Model model) {
+	String ItemExhibit(@Validated ItemForm form, BindingResult result, Model model,
+			@AuthenticationPrincipal LoginUserDetails userDatails) {
 		if (result.hasErrors()) {
 			 return itemcreate(model);
 		}
 		Item item  = new Item();
-		BeanUtils.copyProperties(form, item);
-		itemService.create(item);
+		BeanUtils.copyProperties(form, item );
+		itemService.create(item, userDatails.getUser());
 			return "redairect:/itemresult";
 	}
 	
@@ -157,7 +160,8 @@ public class DemoController {
 		}
 	
 	@PostMapping(path = "itemedit")
-	String ItemEdit(@RequestParam Integer id,@Validated ItemForm form, BindingResult result) {
+	String ItemEdit(@RequestParam Integer id,@Validated ItemForm form, BindingResult result,
+			@AuthenticationPrincipal LoginUserDetails userDatails) {
 		if (result.hasErrors()) {
 			/*＠後で繊維先変える*/
 			return ItemEditForm(id, form);
@@ -165,7 +169,7 @@ public class DemoController {
 		Item item = new Item();
 		BeanUtils.copyProperties(form, item);
 		item.setItemId(id);
-		itemService.update(item);
+		itemService.update(item, userDatails.getUser());
 		return "redirect:/item";
 	}
 	
@@ -227,10 +231,6 @@ public class DemoController {
 		return "redirect:/ctegory";
 	}
 	
-@RequestMapping("login")
-	public String goToLogin() {
-	return "login";
-	}
 
 @RequestMapping("itembuy")
 public String goToBuy() {

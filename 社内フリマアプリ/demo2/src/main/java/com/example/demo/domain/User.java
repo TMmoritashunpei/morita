@@ -15,6 +15,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString(exclude = "items")
 public class User {
+	private Integer userId;
 	@Id
 	private String username;
 	@JsonIgnore

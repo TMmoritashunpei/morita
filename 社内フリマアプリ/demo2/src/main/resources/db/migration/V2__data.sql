@@ -6,7 +6,7 @@ INSERT INTO items(item_name, price, condition, payment, stock, comments)
 VALUES('item3', 1000, 'good', 'pay', 3, 'nice');
 
 INSERT INTO users(username, password, tel, mail, comments) 
-VALUES('techma', 'techma', '080-3663-8899', 'techma@i.softbank.jp', 'こんにちは');
+VALUES('techma', '649593f8c545fbc74dd84564f358a427bcc55337444b3d804f0aaf511478ae939eb0b16f2621fa14'/*techma*/, '080-3663-8899', 'techma@i.softbank.jp', 'こんにちは');
 
 INSERT INTO users(username, password, tel, mail, comments) 
 VALUES('test', 'test', '080-3663-8899', 'techma@i.softbank.jp', 'おはよう');

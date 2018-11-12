@@ -21,9 +21,9 @@ public class Item {
 	private Integer stock;
 	private String coments;
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(nullable = true, name = "username")
+	@JoinColumn(nullable = true, name = "user_id")
 	private User user; 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(nullable = true, name = "categoryId")
+	@JoinColumn(nullable = true, name = "category_Id")
 	private Category category; 
 }

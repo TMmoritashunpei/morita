@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import com.example.demo.repository.ItemRepository;
 import com.example.demo.domain.Item;
+import com.example.demo.domain.User;
 
 @Service
 @Transactional
@@ -26,11 +26,13 @@ public class ItemService {
 		return itemRepository.findOne(id);
 	}
 	
-	public Item create(Item item) {
+	public Item create(Item item, User user) {
+		item.setUser(user);
 		return itemRepository.save(item);
 	}
 	
-	public Item update(Item item) {
+	public Item update(Item item, User user) {
+		item.setUser(user);
 		return itemRepository.save(item);
 	}
 	
