@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 	<head>
 	<meta charset="utf-8"></meta>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
@@ -12,7 +13,8 @@
 			<div class="container">
 				<div class="header-left">
 					<a href="/techma"><img class="logo" src="/image/techma.png"></img></a>
-					<div class="user"><a href="/techma/user">LoginUser:Guest</a></div>	
+					<div class="user" th:object="${userDatails}"><a href="/techma/user">LoginUser:<span sec:authentication="principal.username">Guest</span></a></div>	
+					<p><span sec:authentication="principal.user.username">Guest</span></p>				
 				</div>
 				<div class="header-right">				
 					<a href="/techma/itemserch">Serch</a>

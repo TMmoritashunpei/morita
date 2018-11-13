@@ -4,6 +4,7 @@ body {
 
 .item-wrapper {
 	display: inline-block;
+	
 }
 
 .user-user {
@@ -11,15 +12,15 @@ body {
 	display: inline-block;
 	margin-left: 200px;
 	width: 80%;
-	
+	background-color: white;
 }
 
 .user-user h1 {
 	text-align: center;	
 	font-size: 50px;
 	width: 100%;
-	background-color: #DBDBDB;
-	color: #60CDB8;
+	background-color: #0f8453;
+	color: white;
 	border: solid 2px #DBDBDB;
 }
 
@@ -80,7 +81,7 @@ a {
 
 .gototop {
 	border: solid 1px #95959b;
-	background-color: #60CDB8;
+	background-color: #0f8453;
 	display: inline-block;
 	font-size:25px;
 	padding: 10px;
@@ -90,4 +91,8 @@ a {
 	border-radius: 8px;
 	margin-left: 70px;
 	margin-bottom: 70px;
+}
+
+.gototop a {
+	color: white;
 }

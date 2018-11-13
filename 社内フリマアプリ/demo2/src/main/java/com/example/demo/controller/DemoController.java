@@ -40,7 +40,7 @@ public class DemoController {
 	CategoryService categoryService;
 	@Autowired
 	UserService userService;
-	
+		
 	@ModelAttribute
 	ItemForm setUpItemForm() {
 		return new ItemForm();
@@ -57,7 +57,7 @@ public class DemoController {
 	}
 	
 	@GetMapping
-	public String techmaController(Model model) {
+	public String techmaController(Model model, @AuthenticationPrincipal LoginUserDetails userDatails) {
 		/*item全件取得*/
 			List<Item> items = itemService.findAll();
 			model.addAttribute("items", items);
@@ -129,9 +129,9 @@ public class DemoController {
 	}
 	
 	@PostMapping(path = "usercreate")
-	String UserCreate(@Validated UserForm form, BindingResult result, Model model) {
+	String UserCreate(@Validated UserForm form, BindingResult result, Model model, @AuthenticationPrincipal LoginUserDetails userDatails) {
 		if (result.hasErrors()) {
-			 return techmaController(model);
+			 return techmaController(model, userDatails);
 		}
 		User user  = new User();
 		BeanUtils.copyProperties(form, user);
@@ -140,10 +140,10 @@ public class DemoController {
 	}
 	
 	@PostMapping(path = "categorycreate")
-	String CtegoryCreate(@Validated CategoryForm form, BindingResult result, Model model) {
+	String CtegoryCreate(@Validated CategoryForm form, BindingResult result, Model model, @AuthenticationPrincipal LoginUserDetails userDatails) {
 		if (result.hasErrors()) {
 			/*＠後で繊維先変える*/
-			 return techmaController(model);
+			 return techmaController(model, userDatails);
 		}
 		Category category  = new Category();
 		BeanUtils.copyProperties(form, category);

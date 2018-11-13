@@ -1,6 +1,6 @@
 body {
 	margin: 0 auto;
-	
+	background-color: #caf7e4;
 }
 
 .item-wrapper {
@@ -22,8 +22,7 @@ body {
 	text-align: center;	
 	font-size: 50px;
 	width: 100%;
-	margin-left: 30px;
-	background-color: #60CDB8;
+	background-color: #0f8453;
 	color: white;
 }
 
@@ -65,13 +64,18 @@ p {
 	padding: 10px;
 	float: right;
 	font-size:40px;
-	background-color: #60CDB8;
+	background-color: #0f8453;
 	box-shadow: 0px 7px #526059;
 	cursol: pointer;
 	transition: all 0.5s;
 	border-radius: 8px;
 	margin-top: 10px;
 	margin-bottom: 10px;
+	color: white;
+}
+
+.buy a {
+	color: white;
 }
 
 .buy:active {
@@ -95,7 +99,7 @@ a {
 	margin-right: 20px;
 	margin-top: 10px;
 	float: right;
-	background-color: #60CDB8;
+	background-color: #0f8453;
 	display: inline-block;
 	font-size:40px;
 	padding: 10px;
@@ -105,6 +109,11 @@ a {
 	border-radius: 8px;
 	mergin-left: 70px;
 }
+
+.gototop a {
+	color: white;
+}
+
 .container {
 	padding-bottom:20px;
 }

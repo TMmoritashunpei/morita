@@ -13,7 +13,9 @@
 					<img class="logo" src="/image/techma.png"></img>
 				</div>
 				<div class="footer-right">
-					<a class="logout" href="#">Logout</a>
+				<form th:action="@{/logout}" method="post">
+					<div class="logout" type="submit"><button>Logout</button></div>
+				</form>
 				</div>
 				<div class="coments">
 					<p>enjoy! techma</p>

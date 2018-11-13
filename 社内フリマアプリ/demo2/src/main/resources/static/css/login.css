@@ -10,15 +10,13 @@ body {
 	opacity: 0.9;
 }
 h2 {
-	color: #276abc;
 	font-size:40px;
 	width: 50%;
 	margin-left	:300px;
-	background-color: #cce8d6;
 }
 
 p {
-	color: #276abc; 
+	color: white; 
 	font-size:20px;
 }	
 
@@ -26,11 +24,7 @@ form {
 	width: 50%;
 	margin-left	:300px;
 	border: 2px solid #d0d5d8;
-	background-color: #cce8d6;
-}
-
- {
-	width: 80%;
+	background-color: rgba(0, 0, 0, 0.6);
 }
 
 .modal-wrapper {
@@ -47,7 +41,6 @@ form {
 	margin-top: 70px;
 	top: 20%;
 	left: 34%;
-	background-color: #e6ecf0;
 	padding: 20px 0 40px;
 	border-radius: 10px;
 	max-width: 450px;
@@ -58,6 +51,7 @@ form {
 
 .modal h2 {
 	padding-left: 30px;
+	color:;
 }
 
 #contact-form, #login-form, #signup-form {
@@ -65,7 +59,7 @@ form {
 }
 
 #contact-form h2, #login-form h2, #signup-form h2 {
-  color: #5f5d60;
+  color: white;
   letter-spacing: 1px;
   margin-bottom: 40px;
 }
@@ -90,8 +84,17 @@ form {
   cursol: pointer;
 }
 
+button {
+	background-color: #5dca88;
+	cursol: pointer;
+}
+
 #submit-btn a {
 	color: white;
 	text-decoration: none;
 	cursol: pointer;
+}
+
+.yubi {
+  cursor : pointer;
 }
