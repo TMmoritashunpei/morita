@@ -13,20 +13,19 @@
 			<div class="container">
 				<div class="header-left">
 					<a href="/techma"><img class="logo" src="/image/techma.png"></img></a>
-					<div class="user" th:object="${userDatails}"><a href="/techma/user">LoginUser:<span sec:authentication="principal.user.username">Guest</span></a></div>				
+					<div class="user" th:object="${userDatails}"><a href="/techmatop/techma/user">LoginUser:<span sec:authentication="principal.user.username">Guest</span></a></div>				
 				</div>
 				<div class="header-right">				
 					<a href="/techmatop/techma/itemserch">Serch</a>
 					<a href="/techmatop/techma/itemcreate">Put Up</a>
 					<div class="contact" id="contact-show">Contact</div>
-					<div class="login" id="login-show">Login</div>
 					<ul class="accordion">
 						<li class="catagory-items">
 							<div class="category">Categorys</div>
 							<div class="nest">
-								<a href="../techmatop/techma/itemserch">categorys1</a>
-								<a href="../techma/itemserch">categorys2</a>
-								<a href="../techma/itemserch">categorys3</a>
+								<a href="../../techmatop/techma/itemserch">categorys1</a>
+								<a href="../../techmatop/techma/itemserch">categorys2</a>
+								<a href="../../techmatop/techma/itemserch">categorys3</a>
 							</div>
 						</li>
 					</ul>
@@ -41,13 +40,13 @@
 				</div>
 				<div id="signup-form">
 					<h2>新規登録</h2>
-					<form action="#">
-						<input class="form-control" type="text" placeholder="UserName"></input>
-						<input class="form-control" type="email" placeholder="Email"></input>
-						<input class="form-control" type="text" placeholder="tel"></input>
-						<input class="form-control" type="password" placeholder="Password"></input>
+					<form th:action="@{techma/usercreate}" th:object="${userForm}" method="post">
+						<input class="form-control" type="text" id="username" placeholder="UserName" th:field="*{username}" required="required"></input>
+						<input class="form-control" type="email" placeholder="Email" id="mail" th:field="*{mail}" required="required"></input>
+						<input class="form-control" type="text" placeholder="tel" id="tel" th:field="*{tel}" required="required"></input>
+						<input class="form-control" type="password" placeholder="Password" id="password" th:field="*{password}" required="required"></input>
 						<input class="form-control" type="password" placeholder="Password(確認)"></input>
-						<div id="submit-btn">登録</div>
+						<div><button id="submit-btn" type="submit" class="yubi">登録</button></div>
 					</form>
 				</div>
 			</div>

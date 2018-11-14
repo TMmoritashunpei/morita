@@ -13,7 +13,7 @@
 			<div class="container">
 				<div class="header-left">
 					<a href="/techma"><img class="logo" src="/image/techma.png"></img></a>
-					<div class="user" th:object="${userDatails}"><a href="/techma/user">LoginUser:<span>Guest</span></a></div>				
+					<div class="user">LoginUser:Guest</div>				
 				</div>
 				<div class="header-right">				
 					<a href="/techmatop/itemserch">Serch</a>
@@ -41,13 +41,13 @@
 				</div>
 				<div id="signup-form">
 					<h2>新規登録</h2>
-					<form action="#">
-						<input class="form-control" type="text" placeholder="UserName"></input>
-						<input class="form-control" type="email" placeholder="Email"></input>
-						<input class="form-control" type="text" placeholder="tel"></input>
-						<input class="form-control" type="password" placeholder="Password"></input>
+					<form th:action="@{/techmatop/usercreate}" th:object="${userForm}" method="post">
+						<input class="form-control" type="text" id="username" placeholder="UserName" th:field="*{username}" required="required"></input>
+						<input class="form-control" type="email" placeholder="Email" id="mail" th:field="*{mail}" required="required"></input>
+						<input class="form-control" type="text" placeholder="tel" id="tel" th:field="*{tel}" required="required"></input>
+						<input class="form-control" type="password" placeholder="Password" id="password" th:field="*{password}" required="required"></input>
 						<input class="form-control" type="password" placeholder="Password(確認)"></input>
-						<div id="submit-btn">登録</div>
+						<div><button id="submit-btn" type="submit" class="yubi">登録</button></div>
 					</form>
 				</div>
 			</div>
@@ -79,10 +79,13 @@
 			</div>
 				<div id="login-form">
 					<h2>LoginForm</h2>
-					<form action="#">
-						<input class="form-control" type="text" placeholder="UserName"></input>
-						<input class="form-control" type="password" placeholder="Password"></input>
-						<div id="submit-btn">Login</div>
+					<form method="post" th:action="@{/login}">
+					<div th:if="${param.error}" class="alert alert-danger">
+            			ユーザー名またはパスワードが正しくありません。
+        	 		</div>
+						<input class="form-control" type="text" name="username" placeholder="UserName" required="required"></input>
+						<input class="form-control" type="password" name="password" placeholder="Password" required="required"></input>
+						<div><button id="submit-btn" type="submit" class="yubi">Login</button></div>
 					</form>
 				</div>
 			</div>

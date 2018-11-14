@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -145,15 +146,18 @@ public class DemoController {
 			return "redairect:/itemresult";
 	}
 	
-	@PostMapping(path = "techma/usercreate")
-	String UserCreate(@Validated UserForm form, BindingResult result, Model model, @AuthenticationPrincipal LoginUserDetails userDatails) {
+	@PostMapping(path = "**/usercreate")
+	String UserCreate(@Validated UserForm form, BindingResult result, Model model, @AuthenticationPrincipal LoginUserDetails userDatails ,String password) {
 		if (result.hasErrors()) {
 			 return techmaController(model, userDatails);
 		}
 		User user  = new User();
 		BeanUtils.copyProperties(form, user);
+		password = user.getPassword();
+		password = new Pbkdf2PasswordEncoder().encode(password);
+		user.setPassword(password);
 		userService.create(user);
-			return "redairect:/techma/itemresult";
+			return "userresult";
 	}
 	
 	@PostMapping(path = "techma/categorycreate")
