@@ -21,13 +21,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                    .antMatchers("/loginForm").permitAll()
+                    .antMatchers("/loginForm", "/techmatop").permitAll()
                     .anyRequest().authenticated()
             .and()
             .formLogin().loginProcessingUrl("/login")
                     .loginPage("/loginForm")
                     .failureUrl("/loginForm?error")
-                    .defaultSuccessUrl("/techma", true)
+                    .defaultSuccessUrl("/techmatop/techma", true)
                     .usernameParameter("username").passwordParameter("password")
             .and()
             .logout()

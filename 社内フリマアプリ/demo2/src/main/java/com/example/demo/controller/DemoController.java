@@ -31,7 +31,7 @@ import com.example.demo.web.ItemForm;
 import com.example.demo.web.UserForm;
 
 @Controller
-@RequestMapping("techma")
+@RequestMapping("techmatop")
 public class DemoController {
 
 	@Autowired
@@ -56,8 +56,25 @@ public class DemoController {
 		return new CategoryForm();
 	}
 	
+	
 	@GetMapping
 	public String techmaController(Model model, @AuthenticationPrincipal LoginUserDetails userDatails) {
+		/*item全件取得*/
+			List<Item> items = itemService.findAll();
+			model.addAttribute("items", items);
+		
+		/*user全件取得*/
+			List<User> users = userService.findAll();
+			model.addAttribute("users", users);
+		
+		/*ctegory全件取得*/
+			List<Category> categories = categoryService.findAll();
+			 model.addAttribute("categories", categories);
+			return "techmatop";
+			}
+	
+	@RequestMapping("techma")
+	public String techmaloginController(Model model, @AuthenticationPrincipal LoginUserDetails userDatails) {
 		/*item全件取得*/
 			List<Item> items = itemService.findAll();
 			model.addAttribute("items", items);
@@ -97,26 +114,26 @@ public class DemoController {
 		
 	}
 	
-	@GetMapping(path = "user/{page}")
+	@GetMapping(path = "techma/user/{page}")
 	Page<User> getUsers(@PageableDefault Pageable pageable) {
 		Page<User> users = userService.findAll(pageable);
 			return users;
 	}
 	
-	@GetMapping(path = "category/{page}")
+	@GetMapping(path = "techma/category/{page}")
 	Page<Category> getcategorys(@PageableDefault Pageable pageable) {
 		Page<Category> categorys = categoryService.findAll(pageable);
 			return categorys;
 	}
 	
-	@GetMapping(path = "itemcreate")
+	@GetMapping(path = "techma/itemcreate")
 	public String itemcreate(Model model) {
 	List<Category> categorys = categoryService.findAll();
 	model.addAttribute("categorys", categorys);
 			return "itemcreate";
 	}
 	
-	@PostMapping(path = "exhibit")
+	@PostMapping(path = "techma/exhibit")
 	String ItemExhibit(@Validated ItemForm form, BindingResult result, Model model,
 			@AuthenticationPrincipal LoginUserDetails userDatails) {
 		if (result.hasErrors()) {
@@ -128,7 +145,7 @@ public class DemoController {
 			return "redairect:/itemresult";
 	}
 	
-	@PostMapping(path = "usercreate")
+	@PostMapping(path = "techma/usercreate")
 	String UserCreate(@Validated UserForm form, BindingResult result, Model model, @AuthenticationPrincipal LoginUserDetails userDatails) {
 		if (result.hasErrors()) {
 			 return techmaController(model, userDatails);
@@ -136,10 +153,10 @@ public class DemoController {
 		User user  = new User();
 		BeanUtils.copyProperties(form, user);
 		userService.create(user);
-			return "redairect:/itemresult";
+			return "redairect:/techma/itemresult";
 	}
 	
-	@PostMapping(path = "categorycreate")
+	@PostMapping(path = "techma/categorycreate")
 	String CtegoryCreate(@Validated CategoryForm form, BindingResult result, Model model, @AuthenticationPrincipal LoginUserDetails userDatails) {
 		if (result.hasErrors()) {
 			/*＠後で繊維先変える*/
@@ -149,17 +166,17 @@ public class DemoController {
 		BeanUtils.copyProperties(form, category);
 		categoryService.create(category);
 		/*＠後で繊維先変える*/
-			return "redairect:/itemresult";
+			return "redairect:/techma/itemresult";
 	}
 	
-	@GetMapping(path = "itemedit",params = "form")
+	@GetMapping(path = "techma/itemedit",params = "form")
 	String ItemEditForm(@RequestParam Integer id,@Validated ItemForm form) {
 		Item item = itemService.findOne(id);
 		BeanUtils.copyProperties(item, form);
 			return "itemedit";
 		}
 	
-	@PostMapping(path = "itemedit")
+	@PostMapping(path = "techma/itemedit")
 	String ItemEdit(@RequestParam Integer id,@Validated ItemForm form, BindingResult result,
 			@AuthenticationPrincipal LoginUserDetails userDatails) {
 		if (result.hasErrors()) {
@@ -170,17 +187,17 @@ public class DemoController {
 		BeanUtils.copyProperties(form, item);
 		item.setItemId(id);
 		itemService.update(item, userDatails.getUser());
-		return "redirect:/item";
+		return "redirect:/techma/item";
 	}
 	
-	@GetMapping(path = "useredit",params = "form")
+	@GetMapping(path = "techma/useredit",params = "form")
 	String UserEditForm(@RequestParam String name,@Validated UserForm form) {
 		User user = userService.findOne(name);
 		BeanUtils.copyProperties(user, form);
 			return "useredit";
 		}
 	
-	@PostMapping(path = "useredit")
+	@PostMapping(path = "techma/useredit")
 	String UserEdit(@RequestParam String name,@Validated UserForm form, BindingResult result) {
 		if (result.hasErrors()) {
 			/*＠後で繊維先変える*/
@@ -193,14 +210,14 @@ public class DemoController {
 		return "redirect:/item";
 	}
 	
-	@GetMapping(path = "categoryedit",params = "form")
+	@GetMapping(path = "techma/categoryedit",params = "form")
 	String CategoryEditForm(@RequestParam Integer id,@Validated CategoryForm form) {
 		Category category = categoryService.findOne(id);
 		BeanUtils.copyProperties(category, form);
 			return "itemedit";
 		}
 	
-	@PostMapping(path = "categoryedit")
+	@PostMapping(path = "techma/categoryedit")
 	String CategoryEdit(@RequestParam Integer id,@Validated CategoryForm form, BindingResult result) {
 		if (result.hasErrors()) {
 			/*＠後で繊維先変える*/
@@ -210,72 +227,76 @@ public class DemoController {
 		BeanUtils.copyProperties(form, category);
 		category.setCategoryId(id);
 		categoryService.update(category);
-		return "redirect:/item";
+		return "redirect:/techma/item";
 	}
 	
-	@PostMapping(path = "itemdalete")
+	@PostMapping(path = "techma/itemdalete")
 	String ItemDelete(@RequestParam Integer id) {
 		itemService.dalete(id);
-		return "redirect:/item";
+		return "redirect:/techma/item";
 	}
 	
-	@PostMapping(path = "userdalete")
+	@PostMapping(path = "techma/userdalete")
 	String UserDelete(@RequestParam String name) {
 		userService.dalete(name);
-		return "redirect:/user";
+		return "redirect:/techma/user";
 	}
 	
-	@PostMapping(path = "categorydalete")
+	@PostMapping(path = "techma/categorydalete")
 	String CategoryDelete(@RequestParam Integer id) {
 		categoryService.dalete(id);
-		return "redirect:/ctegory";
+		return "redirect:/techma/ctegory";
 	}
 	
-
-@RequestMapping("itembuy")
+	@RequestMapping("techmatop")
+	public String techmatop() {
+		return "techmatop";
+		}
+	
+@RequestMapping("techma/itembuy")
 public String goToBuy() {
 	return "itembuy";
 	}
 
-@RequestMapping("itemserch")
+@RequestMapping("techma/itemserch")
 public String goToSerch() {
 	return "itemserch";
 	}
 
-@RequestMapping("item")
+@RequestMapping("techma/item")
 public String goToItem() {
 	return "item";
 	}
-@RequestMapping("user")
+@RequestMapping("techma/user")
 public String goToUser() {
 	return "user";
 	}
 
-@RequestMapping("userresult")
+@RequestMapping("techma/userresult")
 public String goToUserResult() {
 	return "userresult";
 	}
 
-@RequestMapping("itemresult")
+@RequestMapping("techma/itemresult")
 public String goToItemResult() {
 	return "itemresult";
 	}
 
-@RequestMapping("buyresult")
+@RequestMapping("techma/buyresult")
 public String goTobuyResult() {
 	return "itemresult";
 	}
 
-@RequestMapping("itemresultcheck")
+@RequestMapping("techma/itemresultcheck")
 public String goToItemresultcheck() {
 	return "itemresultcheck";
 	}
-@RequestMapping("itembuycheck")
+@RequestMapping("techma/itembuycheck")
 public String goToItembuycheck() {
 	return "itembuycheck";
 	}
 
-@RequestMapping("exhibitor")
+@RequestMapping("techma/exhibitor")
 public String exhibitor() {
 	return "exhibitor";
 	}
