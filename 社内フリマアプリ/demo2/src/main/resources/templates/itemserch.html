@@ -20,103 +20,16 @@
 				<input class="form-control" type="text" placeholder="item-serch"></input>
 			</form>
 		<div class="items">
-			<div class="item">
+			<div class="item" th:each="item : ${items}">
 			<a href="/techmatop/techma/item">
 				<img class="item-image" src="/image/techma.png"></img>
 			</a>
 				<div class="status">
-				<p>name:</p>
-				<p>price:</p>
-				<p>stock:</p>
-				<p>coments:ああああああああああああああああああああ</p>
-				</div>
-			</div>
-			<div class="item">
-			<a href="/techmatop/techma/item">
-				<img class="item-image" src="/image/demo.jpg"></img>
-			</a>
-				<div class="status">
-				<p>name:</p>
-				<p>price:</p>
-				<p>stock:</p>
-				<p>coments:ああああああああああああああああああああ</p>
-				</div>
-			</div>
-			<div class="item">
-			<a href="/techmatop/techma/item">
-				<img class="item-image" src="/image/images.jpg"></img>
-			</a>
-				<div class="status">
-				<p>name:</p>
-				<p>price:</p>
-				<p>stock:</p>
-				<p>coments:</p>
-				</div>
-			</div>
-			<div class="item">
-			<a href="/techmatop/techma/item">
-				<img class="item-image" src="/image/login2.jpg"></img>
-			</a>
-				<div class="status">
-				<p>name:</p>
-				<p>price:</p>
-				<p>stock:</p>
-				<p>coments:</p>
-				</div>
-			</div>
-			<div class="item">
-			<a href="/techmatop/techma/item">
-				<img class="item-image" src="/image/images.jpg"></img>
-			</a>
-				<div class="status">
-				<p>name:</p>
-				<p>price:</p>
-				<p>stock:</p>
-				<p>coments:</p>
-				</div>
-			</div>
-			<div class="item">
-			<a href="/techmatop/techma/item">
-				<img class="item-image" src="/image/images.jpg"></img>
-			</a>
-				<div class="status">
-				<p>name:</p>
-				<p>price:</p>
-				<p>stock:</p>
-				<p>coments:</p>
-				</div>
-			</div>
-			<div class="item">
-			<a href="/techmatop/techma/item">
-				<img class="item-image" src="/image/images.jpg"></img>
-			</a>
-				<div class="status">
-				<p>name:</p>
-				<p>price:</p>
-				<p>stock:</p>
-				<p>coments:</p>
-				</div>
-			</div>
-			<div class="item">
-			<a href="/techmatop/techma/item">
-				<img class="item-image" src="/image/images.jpg"></img>
-			</a>
-				<div class="status">
-				<p>name:</p>
-				<p>price:</p>
-				<p>stock:</p>
-				<p>coments:</p>
-				</div>
-			</div>
-			<div class="item">
-			<a href="/techmatop/techma/item">
-				<img class="item-image" src="/image/images.jpg"></img>
-			</a>
-				<div class="status">
-				<p>name:</p>
-				<p>price:</p>
-				<p>stock:</p>
-				<p>coments:</p>
+				<p>name:<span th:text="${item.itemname}"></span></p>
+				<p>price:<span th:text="${item.price}"></span></p>
+				<p>stock:<span th:text="${item.stock}"></span></p>
+				<p>category:</p>
+				<p>comments:<span th:text="${item.comments}"></span></p>
 				</div>
 			</div>
 		</div>				

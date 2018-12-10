@@ -263,8 +263,15 @@ public String goToBuy() {
 	}
 
 @RequestMapping("techma/itemserch")
-public String goToSerch() {
+public String goToSerch(Model model) {
+	/*item全件取得*/
+	List<Item> items = itemService.findAll();
+	model.addAttribute("items", items);
+	/*ctegory全件取得*/
+	List<Category> categories = categoryService.findAll();
+	 model.addAttribute("categories", categories);
 	return "itemserch";
+	
 	}
 
 @RequestMapping("techma/item")

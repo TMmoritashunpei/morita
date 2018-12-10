@@ -88,6 +88,11 @@ header {
 .nest {
 	display: none;
 }
+.nest a {
+	width:200px;
+	padding: 0;
+	height: 50px;
+}
 
 ul {
 	height: auto;

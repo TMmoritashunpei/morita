@@ -12,7 +12,7 @@
 		<header>
 			<div class="container">
 				<div class="header-left">
-					<a href="/techma"><img class="logo" src="/image/techma.png"></img></a>
+					<a href="/techmatop/techma"><img class="logo" src="/image/techma.png"></img></a>
 					<div class="user" th:object="${userDatails}"><a href="/techmatop/techma/user">LoginUser:<span sec:authentication="principal.user.username">Guest</span></a></div>				
 				</div>
 				<div class="header-right">				
@@ -22,10 +22,8 @@
 					<ul class="accordion">
 						<li class="catagory-items">
 							<div class="category">Categorys</div>
-							<div class="nest">
-								<a href="../../techmatop/techma/itemserch">categorys1</a>
-								<a href="../../techmatop/techma/itemserch">categorys2</a>
-								<a href="../../techmatop/techma/itemserch">categorys3</a>
+							<div class="nest" th:each="category : ${categories}">
+								<a href="../../techmatop/techma/itemserch" th:text="${category.categoryname}">categorys1</a>
 							</div>
 						</li>
 					</ul>
