@@ -11,8 +11,8 @@ body {
 }
 h2 {
 	font-size:40px;
-	width: 50%;
-	margin-left	:300px;
+	text-align: center;
+	
 }
 
 p {
@@ -21,8 +21,9 @@ p {
 }	
 
 form {
-	width: 50%;
-	margin-left	:300px;
+	
+	margin-right: 400px;
+	margin-left: 400px;
 	border: 2px solid #d0d5d8;
 	background-color: rgba(0, 0, 0, 0.6);
 }

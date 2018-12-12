@@ -1,8 +1,9 @@
 body {
-	margin-top: -40px;
-	font-family: "Hiragino Kaku Gothic Prow";
-	background-color: #caf7e4;
 	
+	font-family: "Hiragino Kaku Gothic Prow";
+	background-color: #caf7e4;	
+	margin:0 auto;
+	margin-top: -40px;
 }
 
 h1 {
@@ -37,14 +38,16 @@ input {
 }
 
 .items {
-	background-color: #e8e8ea;
+	background-color: white;
+	width: 100%;
+	padding: 50px;
 }
 
 .item {
 	float: left;
 	display:inline-bloc;
-	width: 22%;
-	margin:10px;
+	width: 20%;
+	margin:5px;
 	border: double 5px #60CDB8;
 	background-color: #F1F46C;
 }
@@ -77,6 +80,7 @@ p {
 	margin:10px;
 	background-color: #F1F46C;
 	border: 1px solid #564e4d;
+	height: 206px;
 }
 
 .gototop {

@@ -6,9 +6,10 @@ body {
 
 .container {
 	width: 100%;
-	padding-left: 15px;
-	padding-right: 15px;
+	padding-left: 0px;
+	padding-right: 5px;
 	margin: 0 outo;
+	
 }
 .top-wrapper {
 	padding: 180px 0 100px 0;
@@ -133,9 +134,9 @@ ul {
 }
 
 .item-form {
-	background-color: #e8e8ea;
-	width: 1200px;
-	padding-right: 30px;
+	wwidth: 100%;
+	background-color: white;
+	margin:0 auto;
 }
 
 .form-check input {

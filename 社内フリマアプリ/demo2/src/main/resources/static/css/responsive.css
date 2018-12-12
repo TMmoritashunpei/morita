@@ -3,12 +3,13 @@
 	max-width: 1400px;
 	}
 	.items {
+	text-aligin: center;
 	max-width:1800px;
-	margin-right: 45px;
 	}
 	.item {
-	margin-left:80px;
-	max-width: 315px;
+	margin-left: 70px;
+	margin-right: -10px;
+	max-width: 265px;
 	}
 }	
 
@@ -42,7 +43,7 @@
 	width: 100%;
 	}
 	.items {
-
+	margin-right: 0px;
 	}
 	.item img {
 	height: 200px;
@@ -87,6 +88,9 @@
 	width: 90%;
 	margin: auto;
 	text-aligin: center;
+	}
+	.items {
+	padding-right:0px;
 	}
 	.item {
 	width: 90%;
