@@ -23,10 +23,8 @@
 					<ul class="accordion">
 						<li class="catagory-items">
 							<div class="category">Categorys</div>
-							<div class="nest">
-								<a href="../techmatop/itemserch">categorys1</a>
-								<a href="../techmatop/itemserch">categorys2</a>
-								<a href="../techmatop/itemserch">categorys3</a>
+							<div class="nest" th:each="category : ${categories}">
+								<a href="../../techmatop/techma/itemserch" th:text="${category.categoryname}">categorys1</a>
 							</div>
 						</li>
 					</ul>

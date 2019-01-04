@@ -129,14 +129,18 @@ public class DemoController {
 	
 	@GetMapping(path = "techma/itemcreate")
 	public String itemcreate(Model model) {
-	List<Category> categorys = categoryService.findAll();
-	model.addAttribute("categorys", categorys);
+		/*ctegory全件取得*/
+		List<Category> categories = categoryService.findAll();
+		 model.addAttribute("categories", categories);
 			return "itemcreate";
 	}
 	
 	@PostMapping(path = "techma/exhibit")
 	String ItemExhibit(@Validated ItemForm form, BindingResult result, Model model,
 			@AuthenticationPrincipal LoginUserDetails userDatails) {
+		List<Category> categories = categoryService.findAll();
+		 model.addAttribute("categories", categories);
+		 
 		if (result.hasErrors()) {
 			 return itemcreate(model);
 		}

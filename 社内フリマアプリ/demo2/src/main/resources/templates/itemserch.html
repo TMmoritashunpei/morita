@@ -21,7 +21,7 @@
 			</form>
 		<div class="items">
 			<div class="item" th:each="item : ${items}">
-			<a href="/techmatop/techma/item">
+			<a href="/techmatop/techma/item/" th:href="@{/techmatop/techma/item/(id=${item.itemId})}">
 				<img class="item-image" src="/image/techma.png"></img>
 			</a>
 				<div class="status">
