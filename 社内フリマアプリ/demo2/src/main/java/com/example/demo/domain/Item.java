@@ -18,8 +18,11 @@ public class Item {
 	@Column(name="item_name")
 	private String itemname;
 	private Integer price;
+	@Column(name="conditions")
 	private String condition;
+	@Column(name="payment")
 	private String payment;
+	@Column(name="stock")
 	private Integer stock;
 	@Column(name="comments")
 	private String comments;
