@@ -11,6 +11,6 @@ public class ItemForm {
 	private String condition;
 	private String payment;
 	private Integer stock;
-	private String coments;
-	private Category ctegory; 
+	private String comments;
+	private Category category; 
 }

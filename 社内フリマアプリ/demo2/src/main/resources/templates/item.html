@@ -14,43 +14,52 @@
 	<!--header.htmlの情報を読み込む-->
 	<div th:replace="header"></div>
 	<!--modalをJSで表示させるsignupformここから-->
-		<div class="item-wrapper">
+	<div class="item-wrapper">
 		<div class="item-container">
 			<div class="item-item">
 				<h1>Item Status</h1>
-				<h2>Item Name：</h2>
+			<form action="#" th:action="@{/techmatop/techma/buyresult/itemId(itemId=${item.itemId})}" method="post">
+				
+				<h2>Item Name： <span th:text="${item.itemname}"></span></h2>
 				<div class="item-pic">
 					<img class="item-item-image" src="/image/demo.jpg"></img>
 					<img class="item-item-image" src="/image/demo.jpg"></img>
 					<img class="item-item-image" src="/image/demo.jpg"></img>
 					<img class="item-item-image" src="/image/demo.jpg"></img>
 				</div>
+				
 				<div class="item-item-status">
 				<div class="item-status-wrapper">
-					<p>価格:&nbsp;&nbsp;</p>
-					<p>カテゴリー:&nbsp;&nbsp;</p>
-					<p>状態:&nbsp;&nbsp;</p>
-					<p>支払方法:&nbsp;&nbsp;</p>
-					<p>在庫:&nbsp;&nbsp;</p>
-					<a href="/techma/exhibitor"><p>出品者:&nbsp;&nbsp;</p></a>
+					<p>価格:&nbsp;&nbsp; <span th:text="${item.price}"></span>￥</p>
+					<p>カテゴリー:&nbsp;&nbsp;<span th:text="${item.category.categoryname}"></span></p>
+					<p>状態:&nbsp;&nbsp;　<span th:text="${item.condition}"></span></p>
+					<p>支払方法:&nbsp;&nbsp; <span th:text="${item.payment}"></span></p>
+					<p>在庫:&nbsp;&nbsp; <span th:text="${item.stock}"></span></p>
+					<a href="/techmatop/techma/exhibitor"><p>出品者:&nbsp;&nbsp; <span th:text="${item.user.username}"></span></p></a>
 				</div>
 				<div class="coments-wrapper">
-					<p>coments:<br></br>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+					<p>coments:<br></br><span th:text="${item.comments}"></span></p>
 				</div>
+					<div class="purchasenumber">
+					<select required="required">
+						<option></option>
+					</select>
+					</div>
 				</div>
+			<div class="item-btn">
+				<div class="gototop">
+					<div class="form-check-top"><a href="/techmatop/techma">Top</a></div>
+				</div>
+				<div class="buy">
+					<div class="buy-btn" th:if="${item.stock != 0}">
+						<input type="submit" value="Buy"></input>		
+					</div>
+				</div>	
 			</div>
-		<div class="item-btn">
-			<div class="gototop">
-				<div class="form-check-top"><a href="/techmatop/techma">Top</a></div>
+			</form>
 			</div>
-			<div class="buy">
-				<div class="buy-btn">
-					<a href="/techmatop/techma/buyresult">Buy</a>
-				</div>
-			</div>	
 		</div>
-		</div>
-		</div>	
+	</div>	
 	<!--footer.htmlの情報を読み込む-->
 	<div th:replace="footer"></div>
 	<script src="/js/demo.js"></script>

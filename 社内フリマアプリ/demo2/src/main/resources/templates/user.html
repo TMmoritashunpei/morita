@@ -17,21 +17,20 @@
 		<div class="item-wrapper">
 		<div class="item-container">
 			<div class="user-user">
-				<h1>User</h1>
+				<h1>マイページ</h1>
 				<div class="item-pic">
 					<img class="user-image" src="/image/demo.jpg"></img>
 				</div>
 				<div class="item-status-wrapper">
-					<p>User Name</p>
-					<p>mail</p>
+					<p>User Name : <span th:text="${user.username}"></span></p>
+					<p>mail : <span th:text="${user.mail}"></span></p>
 					<p><a href="/techma">購入履歴&nbsp;&nbsp;</a></p>
 					<p><a href="/techma">出品履歴&nbsp;&nbsp;</a></p>
 					<p><a href="/techma">お気に入り&nbsp;&nbsp;</a></p>
-					<p><a href="">パスワード変更&nbsp;&nbsp;</a></p>
-					<p><a href="">coments編集&nbsp;&nbsp;</a></p>
+					<p><a href="">アカウント情報変更&nbsp;&nbsp;</a></p>
 				</div>
 				<div class="coments-wrapper">
-					<p>coments:<br></br>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+					<p>コメント:<br></br><span th:text="${user.comments}"></span></p>
 				</div>
 			</div>
 		<div class="item-btn">

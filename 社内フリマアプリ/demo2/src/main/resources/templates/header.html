@@ -13,7 +13,10 @@
 			<div class="container">
 				<div class="header-left">
 					<a href="/techmatop/techma"><img class="logo" src="/image/techma.png"></img></a>
-					<div class="user" th:object="${userDatails}"><a href="/techmatop/techma/user">LoginUser:<span sec:authentication="principal.user.username">Guest</span></a></div>				
+					<div class="user" th:object="${userDatails}">
+					<a href="/techmatop/techma/user" th:href="@{/techmatop/techma/user/}">LoginUser:
+					<span sec:authentication="principal.user.username">Guest</span>
+					</a></div>				
 				</div>
 				<div class="header-right">				
 					<a href="/techmatop/techma/itemserch">Serch</a>

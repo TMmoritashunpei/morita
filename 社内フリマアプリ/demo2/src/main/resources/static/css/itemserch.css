@@ -50,6 +50,7 @@ input {
 	margin:5px;
 	border: double 5px #60CDB8;
 	background-color: #F1F46C;
+	cursor: pointer !important;
 }
 
 .items {

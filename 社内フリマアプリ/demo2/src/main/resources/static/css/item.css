@@ -58,7 +58,8 @@ p {
 	word-wrap: break-word;
 }
 
-.buy {
+input {
+	height: 82px;
 	border: solid 1px #95959b;
 	margin-right:80px;
 	padding: 10px;
@@ -66,15 +67,11 @@ p {
 	font-size:40px;
 	background-color: #0f8453;
 	box-shadow: 0px 7px #526059;
-	cursol: pointer;
+	cursor: pointer !important;
 	transition: all 0.5s;
 	border-radius: 8px;
 	margin-top: 10px;
 	margin-bottom: 10px;
-	color: white;
-}
-
-.buy a {
 	color: white;
 }
 
@@ -90,7 +87,7 @@ p {
 	top: 7px;
 }
 
-a {
+a ,input{
 	text-decoration: none;
 }
 

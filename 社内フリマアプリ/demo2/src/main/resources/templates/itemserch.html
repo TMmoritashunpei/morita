@@ -21,16 +21,16 @@
 			</form>
 		<div class="items">
 			<div class="item" th:each="item : ${items}">
-			<a href="/techmatop/techma/item/" th:href="@{/techmatop/techma/item/(id=${item.itemId})}">
+			<a href="/techmatop/techma/item/" th:href="@{/techmatop/techma/item/itemId(itemId=${item.itemId})}">
 				<img class="item-image" src="/image/techma.png"></img>
-			</a>
 				<div class="status">
-				<p>name:<span th:text="${item.itemname}"></span></p>
-				<p>price:<span th:text="${item.price}"></span></p>
-				<p>stock:<span th:text="${item.stock}"></span></p>
-				<p>category:</p>
-				<p>comments:<span th:text="${item.comments}"></span></p>
+					<p>name:<span th:text="${item.itemname}"></span></p>
+					<p>price:<span th:text="${item.price}"></span></p>
+					<p>stock:<span th:text="${item.stock}"></span></p>
+					<p>category:<span th:text="${item.category.categoryname}"></span></p>
+					<p>comments:<span th:text="${item.comments}"></span></p>
 				</div>
+			</a>
 			</div>
 		</div>				
 	</div>

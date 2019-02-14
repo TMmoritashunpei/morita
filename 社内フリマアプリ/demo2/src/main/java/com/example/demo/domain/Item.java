@@ -27,9 +27,9 @@ public class Item {
 	@Column(name="comments")
 	private String comments;
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(nullable = true, name = "user_id")
+	@JoinColumn(nullable = true, name = "user_id", updatable=false)
 	private User user; 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(nullable = true, name = "category_Id")
+	@JoinColumn(nullable = true, name = "category_Id", updatable=false)
 	private Category category; 
 }
