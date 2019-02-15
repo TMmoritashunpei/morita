@@ -13,4 +13,5 @@ public class ItemForm {
 	private Integer stock;
 	private String comments;
 	private Category category; 
+	private Integer purchasenumber;
 }

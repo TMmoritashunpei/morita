@@ -18,7 +18,7 @@
 		<div class="item-container">
 			<div class="item-item">
 				<h1>Item Status</h1>
-			<form action="#" th:action="@{/techmatop/techma/buyresult/itemId(itemId=${item.itemId})}" method="post">
+			<form action="#" th:action="@{/techmatop/techma/buyresult/itemId(itemId=${item.itemId})}" th:object="${itemForm}" method="post">
 				
 				<h2>Item Name： <span th:text="${item.itemname}"></span></h2>
 				<div class="item-pic">
@@ -40,9 +40,10 @@
 				<div class="coments-wrapper">
 					<p>coments:<br></br><span th:text="${item.comments}"></span></p>
 				</div>
-					<div class="purchasenumber">
-					<select required="required">
-						<option></option>
+					<div class="purchasenumber" th:with="x=${item.stock}" th:if="${item.stock!=0}">
+					<p>購入数</p>
+					<select name="purchasenumber" th:field="*{purchasenumber}">
+						<option th:each="i : ${#numbers.sequence(1, x)}" th:text="${i}" th:value="${i}"></option>
 					</select>
 					</div>
 				</div>

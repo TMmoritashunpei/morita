@@ -90,7 +90,7 @@ public class DemoController {
 			}
 	//アイテム詳細画面遷移
 	@RequestMapping({"techma/item","techma/item/itemId{itemId}"})
-	public String goToItem(@RequestParam Integer itemId ,Model model) {
+	public String goToItem(@RequestParam Integer itemId ,Model model, ItemForm form) {
 		Item item = itemService.findOne(itemId);
 		model.addAttribute("item",item);
 		return "item";
@@ -284,12 +284,12 @@ public class DemoController {
 	}
 //購入完了
 	@PostMapping("techma/buyresult/itemId{itemId}")
-	public String goTobuyResult(Model model, Integer itemId) {
+	public String goTobuyResult(Model model, Integer itemId, ItemForm form) {
 		Item item = itemService.findOne(itemId);
 		if (item.getStock()==0) {
-			return goToItem(itemId, model);
+			return goToItem(itemId, model,form);
 		}
-		item.setStock(0);
+		item.setStock(form.getPurchasenumber());
 		itemService.update(item, item.getUser());
 		return "itembuyresult";
 	}
