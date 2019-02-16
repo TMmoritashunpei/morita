@@ -15,9 +15,10 @@
 	<!--header.htmlの情報を読み込む-->
 	<div th:replace="header"></div>
 	<div class="item-serch-list">
-			<form  class="serch-form" action="#">
+			<form class="serch-form" action="#" accept-charset="UTF-8" th:action="@{/techmatop/techma/itemserch/itemname}" method="get">
 				<h1>Item Serch</h1>
-				<input class="form-control" type="text" placeholder="item-serch"></input>
+				<input name="itemname" class="form-control" type="text" placeholder="item-serch"></input>
+				<button type="submit"  placeholder="Item検索"></button>
 			</form>
 		<div class="items">
 			<div class="item" th:each="item : ${items}">

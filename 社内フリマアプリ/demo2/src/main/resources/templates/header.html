@@ -26,7 +26,7 @@
 						<li class="catagory-items">
 							<div class="category">Categorys</div>
 							<div class="nest" th:each="category : ${categories}">
-								<a href="../../techmatop/techma/itemserch" th:text="${category.categoryname}">categorys1</a>
+								<a href="../../techmatop/techma/itemserch" th:href="@{/techmatop/techma/category(category=${category.categoryId})}" th:text="${category.categoryname}">categorys1</a>
 							</div>
 						</li>
 					</ul>

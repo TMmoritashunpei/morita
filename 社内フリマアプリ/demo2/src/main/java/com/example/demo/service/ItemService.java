@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.example.demo.repository.ItemRepository;
+import com.example.demo.domain.Category;
 import com.example.demo.domain.Item;
 import com.example.demo.domain.User;
 
@@ -43,4 +44,11 @@ public class ItemService {
 	public Page<Item> findAll(Pageable pageable) {
 		return itemRepository.findAllItemOrderByName(pageable);
 	}
+	public List<Item> findCategoryInItem(Category category) {
+		return itemRepository.itemInCategory(category);
+	}
+	public List<Item> findItemNameSerch(String itemname) {
+		return itemRepository.itemNameSerch(itemname);
+	}
 }
+	

@@ -96,7 +96,7 @@ public class DemoController {
 		return "item";
 	}
 	//カテゴリー検索
-	@GetMapping(path = "category/{id}")
+	@GetMapping(path = "/techma/category/{id}")
 	Category getCategory(@PathVariable Integer id) {
 		Category category = categoryService.findOne(id);
 		return category;
@@ -255,16 +255,41 @@ public class DemoController {
 	public String goToBuy() {
 		return "itembuy";
 	}
-	//アイテム検索
+	//アイテム検索画面
 	@RequestMapping("techma/itemserch")
-	public String goToSerch(Model model) {
+	public String goToSerch(Model model, String itemname) {
 		/*item　全件取得*/
+		model.addAttribute("itemname", itemname);
 		List<Item> items = itemService.findAll();
 		model.addAttribute("items", items);
 		/*ctegory　全件取得*/
-		
+		List<Category> categories = categoryService.findAll();
+		model.addAttribute("categories", categories);
 		return "itemserch";
 	}
+	//アイテム検索機能
+	@GetMapping("techma/itemserch/itemname")
+	public String itemNameSerch(Model model, @RequestParam("itemname") String itemname, ItemForm form) {
+		model.addAttribute("itemForm", form);
+		model.addAttribute("itemname", itemname);
+		List<Item> items = itemService.findItemNameSerch(itemname);
+		model.addAttribute("items", items);	
+		List<Category> categories = categoryService.findAll();
+		model.addAttribute("categorys", categories);
+		return "itemserch";
+		//return "redirect:/techmatop/techma/itemserch";
+	}
+	//カテゴリ検索
+		@RequestMapping("techma/category{category}")
+		public String goToItemInCategory(Model model, Category category) {
+			/*item　全件取得*/
+			List<Item> items = itemService.findCategoryInItem(category);
+			model.addAttribute("items", items);
+			/*ctegory全件取得*/
+			List<Category> categories = categoryService.findAll();
+			model.addAttribute("categories", categories);
+			return "itemserch";
+		}
 	 //マイページに遷移
 	@RequestMapping("techma/user")
 	public String goToUser(@AuthenticationPrincipal LoginUserDetails userDatails , Model model , Integer id) {
@@ -286,10 +311,11 @@ public class DemoController {
 	@PostMapping("techma/buyresult/itemId{itemId}")
 	public String goTobuyResult(Model model, Integer itemId, ItemForm form) {
 		Item item = itemService.findOne(itemId);
+		model.addAttribute("itemForm", form);
 		if (item.getStock()==0) {
 			return goToItem(itemId, model,form);
 		}
-		item.setStock(form.getPurchasenumber());
+		item.setStock(item.getStock() - form.getPurchasenumber());
 		itemService.update(item, item.getUser());
 		return "itembuyresult";
 	}
