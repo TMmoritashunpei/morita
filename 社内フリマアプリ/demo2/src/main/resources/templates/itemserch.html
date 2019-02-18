@@ -18,6 +18,7 @@
 			<form class="serch-form" action="#" accept-charset="UTF-8" th:action="@{/techmatop/techma/itemserch/itemname}" method="get">
 				<h1>Item Serch</h1>
 				<input name="itemname" class="form-control" type="text" placeholder="item-serch"></input>
+				<input th:if="${category.categoryId != null}" name="category" class="form-control" type="hidden" th:value="${category.categoryId}" placeholder="item-serch"></input>
 				<button type="submit"  placeholder="Item検索"></button>
 			</form>
 		<div class="items">

@@ -257,7 +257,7 @@ public class DemoController {
 	}
 	//アイテム検索画面
 	@RequestMapping("techma/itemserch")
-	public String goToSerch(Model model, String itemname) {
+	public String goToSerch(Model model, String itemname, Category category) {
 		/*item　全件取得*/
 		model.addAttribute("itemname", itemname);
 		List<Item> items = itemService.findAll();
@@ -269,13 +269,14 @@ public class DemoController {
 	}
 	//アイテム検索機能
 	@GetMapping("techma/itemserch/itemname")
-	public String itemNameSerch(Model model, @RequestParam("itemname") String itemname, ItemForm form) {
+	public String itemNameSerch(Model model, @RequestParam("itemname") String itemname, Category category, ItemForm form) {
 		model.addAttribute("itemForm", form);
 		model.addAttribute("itemname", itemname);
+		model.addAttribute("category", category);
 		List<Item> items = itemService.findItemNameSerch(itemname);
 		model.addAttribute("items", items);	
 		List<Category> categories = categoryService.findAll();
-		model.addAttribute("categorys", categories);
+		model.addAttribute("categories", categories);
 		return "itemserch";
 		//return "redirect:/techmatop/techma/itemserch";
 	}
