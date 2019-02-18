@@ -19,7 +19,7 @@
 				<h1>Item Serch</h1>
 				<input name="itemname" class="form-control" type="text" placeholder="item-serch"></input>
 				<input th:if="${category.categoryId != null}" name="category" class="form-control" type="hidden" th:value="${category.categoryId}" placeholder="item-serch"></input>
-				<button type="submit"  placeholder="Item検索"></button>
+				<button type="submit"  placeholder="Item検索">検索</button>
 			</form>
 		<div class="items">
 			<div class="item" th:each="item : ${items}">

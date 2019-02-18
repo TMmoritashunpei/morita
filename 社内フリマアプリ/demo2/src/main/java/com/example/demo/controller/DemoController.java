@@ -28,6 +28,7 @@ import com.example.demo.service.ItemService;
 import com.example.demo.service.LoginUserDetails;
 import com.example.demo.service.UserService;
 import com.example.demo.web.CategoryForm;
+import com.example.demo.web.FileUploadSampleForm;
 import com.example.demo.web.ItemForm;
 import com.example.demo.web.UserForm;
 
@@ -56,6 +57,12 @@ public class DemoController {
 	CategoryForm setUpCategoryForm() {
 	return new CategoryForm();
 	}
+	
+	@ModelAttribute
+	FileUploadSampleForm setUpFileUploadSampleForm() {
+	return new FileUploadSampleForm();
+	}
+	
 	//top画面に遷移
 	@GetMapping
 	public String techmaController(Model model, @AuthenticationPrincipal LoginUserDetails userDatails) {
@@ -122,7 +129,7 @@ public class DemoController {
 	}
 	//出品画面遷移
 	@GetMapping(path = "techma/itemcreate")
-	public String itemcreate(Model model) {
+	public String itemcreate(Model model, ItemForm form) {
 		/*ctegory全件取得*/
 		List<Category> categories = categoryService.findAll();
 		model.addAttribute("categories", categories);
@@ -136,7 +143,7 @@ public class DemoController {
 		model.addAttribute("categories", categories);
 		 
 		if (result.hasErrors()) {
-		 return itemcreate(model);
+		 return itemcreate(model, form);
 		}
 		
 		Item item  = new Item();
@@ -178,6 +185,12 @@ public class DemoController {
 		BeanUtils.copyProperties(item, form);
 		return "itemedit";
 		}
+	//アイテム画像送信
+	@PostMapping("techma/uproadfile")
+	String ItemUproadFile(FileUploadSampleForm fileUploadSampleForm, Model model ,ItemForm form) {
+	    //fileUploadSampleForm.getUploadedFile().getOriginalFilename();
+		return itemcreate(model, form);
+	}
 	//アイテム作成
 	@PostMapping(path = "techma/itemedit")
 	String ItemEdit(@RequestParam Integer id,@Validated ItemForm form, BindingResult result,

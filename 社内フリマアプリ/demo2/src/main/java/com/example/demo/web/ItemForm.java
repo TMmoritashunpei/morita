@@ -14,4 +14,5 @@ public class ItemForm {
 	private String comments;
 	private Category category; 
 	private Integer purchasenumber;
+	private String filename;
 }

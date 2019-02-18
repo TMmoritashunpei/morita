@@ -74,7 +74,10 @@ p {
   	overflow: hidden;
   	text-overflow: ellipsis;
 }
-
+button {
+	height: 56px;
+	width: 60px;
+}
 
 
 .status {
