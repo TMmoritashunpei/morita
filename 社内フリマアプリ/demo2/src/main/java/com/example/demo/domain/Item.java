@@ -26,6 +26,8 @@ public class Item {
 	private Integer stock;
 	@Column(name="comments")
 	private String comments;
+	@Column(name="filename")
+	private String filename;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(nullable = true, name = "user_id", updatable=false)
 	private User user; 

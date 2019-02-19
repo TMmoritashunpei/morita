@@ -129,7 +129,7 @@ public class DemoController {
 	}
 	//出品画面遷移
 	@GetMapping(path = "techma/itemcreate")
-	public String itemcreate(Model model, ItemForm form) {
+	public String itemcreate(Model model, ItemForm form, FileUploadSampleForm fileUploadSampleForm) {
 		/*ctegory全件取得*/
 		List<Category> categories = categoryService.findAll();
 		model.addAttribute("categories", categories);
@@ -138,15 +138,16 @@ public class DemoController {
 	//アイテム出品処理
 	@PostMapping(path = "techma/exhibit")
 	String ItemExhibit(@Validated ItemForm form, BindingResult result, Model model,
-			@AuthenticationPrincipal LoginUserDetails userDatails) {
+			@AuthenticationPrincipal LoginUserDetails userDatails,FileUploadSampleForm fileUploadSampleForm) {
 		List<Category> categories = categoryService.findAll();
 		model.addAttribute("categories", categories);
 		 
 		if (result.hasErrors()) {
-		 return itemcreate(model, form);
+		 return itemcreate(model, form, fileUploadSampleForm);
 		}
 		
 		Item item  = new Item();
+		form.setFilename(fileUploadSampleForm.getUploadedFile().getName());
 		BeanUtils.copyProperties(form, item );
 		itemService.create(item, userDatails.getUser());
 		return "itemresult";
@@ -189,7 +190,7 @@ public class DemoController {
 	@PostMapping("techma/uproadfile")
 	String ItemUproadFile(FileUploadSampleForm fileUploadSampleForm, Model model ,ItemForm form) {
 	    //fileUploadSampleForm.getUploadedFile().getOriginalFilename();
-		return itemcreate(model, form);
+		return itemcreate(model, form, fileUploadSampleForm);
 	}
 	//アイテム作成
 	@PostMapping(path = "techma/itemedit")
