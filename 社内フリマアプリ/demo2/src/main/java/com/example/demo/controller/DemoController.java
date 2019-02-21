@@ -1,5 +1,14 @@
 package com.example.demo.controller;
 
+import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -18,8 +27,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.example.demo.domain.Category;
 import com.example.demo.domain.Item;
 import com.example.demo.domain.User;
@@ -28,7 +37,6 @@ import com.example.demo.service.ItemService;
 import com.example.demo.service.LoginUserDetails;
 import com.example.demo.service.UserService;
 import com.example.demo.web.CategoryForm;
-import com.example.demo.web.FileUploadSampleForm;
 import com.example.demo.web.ItemForm;
 import com.example.demo.web.UserForm;
 
@@ -56,11 +64,6 @@ public class DemoController {
 	@ModelAttribute
 	CategoryForm setUpCategoryForm() {
 	return new CategoryForm();
-	}
-	
-	@ModelAttribute
-	FileUploadSampleForm setUpFileUploadSampleForm() {
-	return new FileUploadSampleForm();
 	}
 	
 	//top画面に遷移
@@ -129,7 +132,7 @@ public class DemoController {
 	}
 	//出品画面遷移
 	@GetMapping(path = "techma/itemcreate")
-	public String itemcreate(Model model, ItemForm form, FileUploadSampleForm fileUploadSampleForm) {
+	public String itemcreate(Model model, ItemForm form) {
 		/*ctegory全件取得*/
 		List<Category> categories = categoryService.findAll();
 		model.addAttribute("categories", categories);
@@ -138,16 +141,44 @@ public class DemoController {
 	//アイテム出品処理
 	@PostMapping(path = "techma/exhibit")
 	String ItemExhibit(@Validated ItemForm form, BindingResult result, Model model,
-			@AuthenticationPrincipal LoginUserDetails userDatails,FileUploadSampleForm fileUploadSampleForm) {
+			@AuthenticationPrincipal LoginUserDetails userDatails) {
 		List<Category> categories = categoryService.findAll();
 		model.addAttribute("categories", categories);
-		 
+		if (form.getUploadedFile().isEmpty()) {
+			return "itemcreate";
+		}
+		Path path = Paths.get("src/main/resources/static/itemimage/");
+		if (!Files.exists(path)) {
+			try {
+				Files.createDirectory(path);
+			} catch (NoSuchFileException ex) {
+				System.out.println(ex);
+				} catch (IOException ex) {
+				System.out.println(ex);
+			}
+			
+		}
+		int dot = form.getUploadedFile().getOriginalFilename().lastIndexOf(".");
+		  String extention = "";
+		  if (dot > 0) {
+		    extention = form.getUploadedFile().getOriginalFilename().substring(dot).toLowerCase();
+		  }
+		  String filename = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS").format(LocalDateTime.now());
+		  form.setFilename(filename + extention);
+		  Path uploadfile = Paths
+		      .get("src/main/resources/static/itemimage/" + filename + extention);
+
+		  try (OutputStream os = Files.newOutputStream(uploadfile, StandardOpenOption.CREATE)) {
+		    byte[] bytes = form.getUploadedFile().getBytes();
+		    os.write(bytes);
+		  } catch (IOException ex) {
+		    System.err.println(ex);
+		  }
 		if (result.hasErrors()) {
-		 return itemcreate(model, form, fileUploadSampleForm);
+		 return itemcreate(model, form);
 		}
 		
 		Item item  = new Item();
-		form.setFilename(fileUploadSampleForm.getUploadedFile().getName());
 		BeanUtils.copyProperties(form, item );
 		itemService.create(item, userDatails.getUser());
 		return "itemresult";
@@ -187,10 +218,11 @@ public class DemoController {
 		return "itemedit";
 		}
 	//アイテム画像送信
-	@PostMapping("techma/uproadfile")
-	String ItemUproadFile(FileUploadSampleForm fileUploadSampleForm, Model model ,ItemForm form) {
+	@RequestMapping(path ="techma/uproadfile",method = RequestMethod.POST)
+	String ItemUproadFile(Model model ,ItemForm form) {
+		
 	    //fileUploadSampleForm.getUploadedFile().getOriginalFilename();
-		return itemcreate(model, form, fileUploadSampleForm);
+		return itemcreate(model, form);
 	}
 	//アイテム作成
 	@PostMapping(path = "techma/itemedit")

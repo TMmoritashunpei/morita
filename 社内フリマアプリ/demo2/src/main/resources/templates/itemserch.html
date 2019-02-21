@@ -24,7 +24,8 @@
 		<div class="items">
 			<div class="item" th:each="item : ${items}">
 			<a href="/techmatop/techma/item/" th:href="@{/techmatop/techma/item/itemId(itemId=${item.itemId})}">
-				<img class="item-image" src="/image/techma.png"></img>
+				<img class="item-image" th:if="${item.stock != 0}" th:src="|/itemimage/${item.filename}|"></img>
+				<img class="item-image" th:if="${item.stock == 0}" src="/image/sould-out.png"></img>
 				<div class="status">
 					<p>name:<span th:text="${item.itemname}"></span></p>
 					<p>price:<span th:text="${item.price}"></span></p>

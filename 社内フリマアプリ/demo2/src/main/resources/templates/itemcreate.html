@@ -18,12 +18,11 @@
 		<div class="container">
 			<h1>Put Up Your Item</h1>
 			<div class="item-form">
-				<form th:action="@{/techmatop/techma/uproadfile}" th:object="${fileUploadSampleForm}" method="post" enctype="multipart/form-data">
+				<form th:action="@{/techmatop/techma/exhibit}" th:object="${itemForm}" method="post" enctype="multipart/form-data">
 				<div class="pic-add">
 				<ul>
 					<li><div class="pic-item">
-						<input class="pic-control" name="file" type="file" />
-						<input class="pic-control" id="pic-submit" type="submit"  th:field="*{uploadedFile}" th:value="写真を登録する"/>
+						<input class="pic-control" name="file" type="file" th:field="*{uploadedFile}"/>
 					</div></li>
 					<li><div class="pic-item">
 						<input class="pic-control" name="file" type="file" />
@@ -39,8 +38,6 @@
 					</div></li>
 				</ul>
 				</div>
-				</form>
-				<form th:action="@{/techmatop/techma/exhibit}" th:object="${itemForm}" method="post" enctype="multipart/form-data">
 				<div class="contains-form">
 					<div class="itemname">
 					<p>Item Name</p>
