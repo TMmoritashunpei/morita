@@ -19,5 +19,12 @@ public class ItemForm implements Serializable{
 	private Category category; 
 	private Integer purchasenumber;
 	private String filename;
+	
+	private String filename2;
+	private String filename3;
+	private String filename4;
 	private MultipartFile uploadedFile;
+	private MultipartFile uploadedFile2;
+	private MultipartFile uploadedFile3;
+	private MultipartFile uploadedFile4;
 }

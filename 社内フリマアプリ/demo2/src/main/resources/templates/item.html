@@ -22,13 +22,17 @@
 				
 				<h2>Item Name： <span th:text="${item.itemname}"></span></h2>
 				<div class="item-pic">
-					<img class="item-item-image" th:if="${item.stock != 0}" th:src="|/itemimage/${item.filename}|"></img>
+					<img class="item-item-image" th:if="${item.filename == null}" src="/image/No_Image_Available.jpg"></img>
+					<img class="item-item-image" th:if="${item.stock != 0 and item.filename != null}" th:src="|/itemimage/${item.filename}|"></img>
 					<img class="item-item-image" th:if="${item.stock == 0}" src="/image/sould-out.png"></img>
-					<img class="item-item-image" th:if="${item.stock != 0}" th:src="|/itemimage/${item.filename}|"></img>
+					<img class="item-item-image" th:if="${item.filename2 == null}" src="/image/No_Image_Available.jpg"></img>
+					<img class="item-item-image" th:if="${item.stock != 0 and item.filename2 != null}" th:src="|/itemimage/${item.filename2}|"></img>
 					<img class="item-item-image" th:if="${item.stock == 0}" src="/image/sould-out.png"></img>
-					<img class="item-item-image" th:if="${item.stock != 0}" th:src="|/itemimage/${item.filename}|"></img>
+					<img class="item-item-image" th:if="${item.filename3 == null}" src="/image/No_Image_Available.jpg"></img>
+					<img class="item-item-image" th:if="${item.stock != 0 and item.filename3 != null}" th:src="|/itemimage/${item.filename3}|"></img>
 					<img class="item-item-image" th:if="${item.stock == 0}" src="/image/sould-out.png"></img>
-					<img class="item-item-image" th:if="${item.stock != 0}" th:src="|/itemimage/${item.filename}|"></img>
+					<img class="item-item-image" th:if="${item.filename4 == null}" src="/image/No_Image_Available.jpg"></img>
+					<img class="item-item-image" th:if="${item.stock != 0 and item.filename4 != null}" th:src="|/itemimage/${item.filename4}|"></img>
 					<img class="item-item-image" th:if="${item.stock == 0}" src="/image/sould-out.png"></img>
 				</div>
 				

@@ -103,6 +103,8 @@ public class DemoController {
 	public String goToItem(@RequestParam Integer itemId ,Model model, ItemForm form) {
 		Item item = itemService.findOne(itemId);
 		model.addAttribute("item",item);
+		List<Category> categories = categoryService.findAll();
+		model.addAttribute("categories", categories);
 		return "item";
 	}
 	//カテゴリー検索
@@ -177,7 +179,69 @@ public class DemoController {
 		if (result.hasErrors()) {
 		 return itemcreate(model, form);
 		}
-		
+		//2つ目の画像処理
+		int dot2 = form.getUploadedFile2().getOriginalFilename().lastIndexOf(".");
+		  String extention2 = "";
+		  if (dot2 > 0) {
+		    extention2 = form.getUploadedFile2().getOriginalFilename().substring(dot2).toLowerCase();
+		  }
+		  String filename2 = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS").format(LocalDateTime.now());
+		  form.setFilename2(filename2 + extention2);
+		  Path uploadfile2 = Paths
+		      .get("src/main/resources/static/itemimage/" + filename2 + extention2);
+		  if(dot2 < 0) {
+			 form.setFilename2(null);
+		  }
+		  try (OutputStream os = Files.newOutputStream(uploadfile2, StandardOpenOption.CREATE)) {
+		    byte[] bytes = form.getUploadedFile2().getBytes();
+		    os.write(bytes);
+		  } catch (IOException ex) {
+		    System.err.println(ex);
+		  }
+		 //3つ目の画像処理
+		 int dot3 = form.getUploadedFile3().getOriginalFilename().lastIndexOf(".");
+		  String extention3 = "";
+		  if (dot3 > 0) {
+		    extention3 = form.getUploadedFile3().getOriginalFilename().substring(dot3).toLowerCase();
+		  }
+		  String filename3 = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS").format(LocalDateTime.now());
+		  form.setFilename3(filename3 + extention3);
+		  Path uploadfile3 = Paths
+		      .get("src/main/resources/static/itemimage/" + filename3 + extention3);
+		  if(dot3 < 0) {
+				 form.setFilename3(null);
+			  }
+		  try (OutputStream os = Files.newOutputStream(uploadfile3, StandardOpenOption.CREATE)) {
+		    byte[] bytes = form.getUploadedFile3().getBytes();
+		    os.write(bytes);
+		  } catch (IOException ex) {
+		    System.err.println(ex);
+		  }
+		if (result.hasErrors()) {
+		 return itemcreate(model, form);
+		}
+		int dot4 = form.getUploadedFile4().getOriginalFilename().lastIndexOf(".");
+		  String extention4 = "";
+		  if (dot4 > 0) {
+		    extention4 = form.getUploadedFile4().getOriginalFilename().substring(dot4).toLowerCase();
+		  }
+		  String filename4 = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS").format(LocalDateTime.now());
+		  form.setFilename4(filename4 + extention4);
+		  Path uploadfile4 = Paths
+		      .get("src/main/resources/static/itemimage/" + filename4 + extention4);
+		  if(dot4 < 0) {
+				 form.setFilename4(null);
+			  }
+		  try (OutputStream os = Files.newOutputStream(uploadfile4, StandardOpenOption.CREATE)) {
+		    byte[] bytes = form.getUploadedFile4().getBytes();
+		    os.write(bytes);
+		  } catch (IOException ex) {
+		    System.err.println(ex);
+		  }
+		if (result.hasErrors()) {
+		 return itemcreate(model, form);
+		}
+		//アイテム作成
 		Item item  = new Item();
 		BeanUtils.copyProperties(form, item );
 		itemService.create(item, userDatails.getUser());

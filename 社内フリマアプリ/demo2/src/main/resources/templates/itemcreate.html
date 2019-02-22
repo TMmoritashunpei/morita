@@ -22,19 +22,24 @@
 				<div class="pic-add">
 				<ul>
 					<li><div class="pic-item">
-						<input class="pic-control" name="file" type="file" th:field="*{uploadedFile}"/>
+						<input class="pic-control" id="file" name="file" type="file" th:field="*{uploadedFile}" accept="image/*" required="required"/>
+						<img  class="noimg" src="/image/No_Image_Available.jpg"></img>
+						<div class="preview"><input id="cancel" class="cansel" type="button" value="cancel"></input></div>
 					</div></li>
-					<li><div class="pic-item">
-						<input class="pic-control" name="file" type="file" />
-						<input class="pic-control" id="pic-submit" type="submit" value="写真を登録する"/>
+					<li><div class="pic-item2">
+						<input class="pic-control2" id="file2" name="file2" type="file" th:field="*{uploadedFile2}" accept="image/*"/>
+						<img  class="noimg" src="/image/No_Image_Available.jpg"></img>
+						<div class="preview"><input id="cancel2" class="cansel" type="button" value="cancel"></input></div>
 					</div></li>
-					<li><div class="pic-item">
-						<input class="pic-control" name="file" type="file" />
-						<input class="pic-control" id="pic-submit" type="submit" value="写真を登録する"/>
+					<li><div class="pic-item3">
+						<input class="pic-control3" id="file3" name="file3" type="file" th:field="*{uploadedFile3}" accept="image/*"/>
+						<div class="preview"><input id="cancel3" class="cansel" type="button" value="cancel"></input></div>
+						<div class="preview3"></div>
 					</div></li>
-					<li><div class="pic-item">
-						<input class="pic-control" name="file" type="file" />
-						<input class="pic-control" id="pic-submit" type="submit" value="写真を登録する"/>
+					<li><div class="pic-item4">
+						<input class="pic-control4" id="file4" name="file4" type="file" th:field="*{uploadedFile4}" accept="image/*"/>
+						<div class="preview"><input id="cancel4" class="cansel" type="button" value="cancel"></input></div>
+						<div class="preview4"></div>
 					</div></li>
 				</ul>
 				</div>
@@ -104,5 +109,6 @@
 	<!--footer.htmlの情報を読み込む-->
 	<div th:replace="footer"></div>
 	<script src="/js/demo.js"></script>
+	<script src="/js/itemcreate.js"></script>
 </body>	
 </html>

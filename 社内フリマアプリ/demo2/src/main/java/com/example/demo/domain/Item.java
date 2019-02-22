@@ -28,6 +28,12 @@ public class Item {
 	private String comments;
 	@Column(name="filename")
 	private String filename;
+	@Column(name="filename2")
+	private String filename2;
+	@Column(name="filename3")
+	private String filename3;
+	@Column(name="filename4")
+	private String filename4;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(nullable = true, name = "user_id", updatable=false)
 	private User user; 
