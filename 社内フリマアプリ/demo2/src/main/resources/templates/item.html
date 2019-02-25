@@ -49,7 +49,7 @@
 					<p>coments:<br></br><span th:text="${item.comments}"></span></p>
 				</div>
 					<div class="purchasenumber" th:with="x=${item.stock}" th:if="${item.stock!=0}">
-					<p>購入数</p>
+					<p>購入数を選択してください</p>
 					<select name="purchasenumber" th:field="*{purchasenumber}">
 						<option th:each="i : ${#numbers.sequence(1, x)}" th:text="${i}" th:value="${i}"></option>
 					</select>

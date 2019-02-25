@@ -40,7 +40,7 @@
 					<i class="fa fa-2x fa-times"></i>
 				</div>
 				<div id="signup-form">
-					<h2>新規登録</h2>
+					<h2>新規アカウント作成</h2>
 					<form th:action="@{techma/usercreate}" th:object="${userForm}" method="post">
 						<input class="form-control" type="text" id="username" placeholder="UserName" th:field="*{username}" required="required"></input>
 						<input class="form-control" type="email" placeholder="Email" id="mail" th:field="*{mail}" required="required"></input>

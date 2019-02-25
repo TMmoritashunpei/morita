@@ -1,9 +1,8 @@
 $(function() {
   $('input[type=file]').after('<span></span>');
   
-  // アップロードするファイルを選択
+  // ‘アップロードするファイルを選択
   $('input[type=file]').change(function(e) {
-	  $('.noimg').remove()
     var file = $(this).prop('files')[0];
     
     // 画像以外は処理を停止
@@ -22,28 +21,43 @@ $(function() {
       img_src.css('height','170px');
       $(e.target).next().html(img_src);
     }
-    
     reader.readAsDataURL(file);
   });
+  $('.pic-control').click(function() {
+	  $('.pic-item .noimg').hide();
+  }) 
+  $('.pic-control2').click(function() {
+	  $('.pic-item2 .noimg').hide();
+  }) 
+  $('.pic-control3').click(function() {
+	  $('.pic-item3 .noimg').hide();
+  }) 
+  $('.pic-control4').click(function() {
+	  $('.pic-item4 .noimg').hide();
+  }) 
   $('#cancel').click(function() {
-	  $('.pic-item img').remove()
+	  $('.pic-item img').hide();
 	  $('.pic-control').val("");
-	 
+	  $('.pic-item .noimg').show();
   })
   $('#cancel2').click(function() {
-	  $('.pic-item2 img').remove()
+	  $('.pic-item2 img').hide();
 	  $('.pic-control2').val("");
+	  $('.pic-item2 .noimg').show();
   })
   $('#cancel3').click(function() {
-	  $('.pic-item3 img').remove()
+	  $('.pic-item3 img').hide();
 	  $('.pic-control3').val("");
+	  $('.pic-item3 .noimg').show();
   })
    $('#cancel4').click(function() {
-	  $('.pic-item4 img').remove()
+	  $('.pic-item4 img').hide();
 	  $('.pic-control4').val("");
+	  $('.pic-item4 .noimg').show();
   })
    $('input[type=button]#cansel2').click(function() {
 	  $('img').remove()
 	  $('#file2').val("");
+	  $('.pic-control').append('<img src="/image/No_Image_Available.jpg">')
   })
 });

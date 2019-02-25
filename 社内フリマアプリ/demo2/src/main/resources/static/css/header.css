@@ -140,7 +140,12 @@ ul {
 .login:hover {
 	background-color: rgba(255, 255, 255, 0.5);
 }
-
+.user a:hover {
+	background-color: rgba(255, 255, 255, 0.5);
+}
+.logo:hover {
+	background-color: rgba(255, 255, 255, 0.5);
+}
 .header-right a {
 	line-height: 65px;
 	padding-right: 25px;
@@ -261,6 +266,7 @@ i {
 	cursol: pointer;
 }
 
-.yubi {
+.yubi,input {
   cursor : pointer;
 }
+

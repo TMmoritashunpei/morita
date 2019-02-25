@@ -21,6 +21,10 @@
 				<input th:if="${category.categoryId != null}" name="category" class="form-control" type="hidden" th:value="${category.categoryId}" placeholder="item-serch"></input>
 				<button type="submit"  placeholder="Item検索">検索</button>
 			</form>
+			<div class="error">
+				<div th:if="${noitem}"><span >ご指定の名称ではアイテムが見つかりませんでした。</span></div>
+				<div th:if="${categorynoitem}"><span>選択したカテゴリーにアイテムがありません</span></div>
+			</div>
 		<div class="items">
 			<div class="item" th:each="item : ${items}">
 			<a href="/techmatop/techma/item/" th:href="@{/techmatop/techma/item/itemId(itemId=${item.itemId})}">

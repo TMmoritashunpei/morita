@@ -384,11 +384,14 @@ public class DemoController {
 		model.addAttribute("itemname", itemname);
 		model.addAttribute("category", category);
 		List<Item> items = itemService.findItemNameSerch(itemname);
+		//item検索で見つからない場合
+		if (itemService.findItemNameSerch(itemname).size() == 0) {
+			model.addAttribute("noitem","ご指定の検索条件でアイテムが見つかりませんでした。");
+		}
 		model.addAttribute("items", items);	
 		List<Category> categories = categoryService.findAll();
 		model.addAttribute("categories", categories);
 		return "itemserch";
-		//return "redirect:/techmatop/techma/itemserch";
 	}
 	//カテゴリ検索
 		@RequestMapping("techma/category{category}")
@@ -396,6 +399,9 @@ public class DemoController {
 			/*item　全件取得*/
 			List<Item> items = itemService.findCategoryInItem(category);
 			model.addAttribute("items", items);
+			if (itemService.findCategoryInItem(category).size() == 0) {
+				model.addAttribute("categorynoitem","ご指定の検索条件でアイテムが見つかりませんでした。");
+			}
 			/*ctegory全件取得*/
 			List<Category> categories = categoryService.findAll();
 			model.addAttribute("categories", categories);
@@ -406,6 +412,8 @@ public class DemoController {
 	public String goToUser(@AuthenticationPrincipal LoginUserDetails userDatails , Model model , Integer id) {
 		User user = userDatails.getUser();
 		model.addAttribute("user", user);
+		List<Category> categories = categoryService.findAll();
+		model.addAttribute("categories", categories);
 		return "user";
 	}
 //アカウント作成完了

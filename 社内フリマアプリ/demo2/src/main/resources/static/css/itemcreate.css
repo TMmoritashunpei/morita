@@ -191,8 +191,44 @@ a {
 	posotion: relative;
 	top: 7px;
 }
+
+.create-btn:hover {
+	background-color: rgba(150, 100, 100, 0.6);
+}
 img {
 	width: "220px";	
 	height: "160px";
 	padding: "60px";
+}
+
+.noimg {
+	width: 200px;
+}
+
+.contains-form:hover {
+	background-color: rgba(150, 160, 160, 0.5);
+}
+
+.gototop:hover {
+	background-color: rgba(150, 100, 100, 0.6);
+}
+
+.pic-item:hover {
+	background-color: rgba(150, 100, 100, 0.3);
+}
+
+.pic-item2:hover {
+	background-color: rgba(150, 100, 100, 0.3);
+}
+
+.pic-item3:hover {
+	background-color: rgba(150, 100, 100, 0.3);
+}
+
+.pic-item4:hover {
+	background-color: rgba(150, 100, 100, 0.3);
+}
+
+input, select, textarea {
+	cursor: pointer !important;
 }

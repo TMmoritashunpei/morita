@@ -96,3 +96,7 @@ a {
 .gototop a {
 	color: white;
 }
+
+.gototop:hover {
+	background-color: rgba(150, 100, 100, 0.6);
+}

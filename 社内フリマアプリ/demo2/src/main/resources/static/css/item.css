@@ -58,7 +58,7 @@ p {
 	word-wrap: break-word;
 }
 
-input {
+.buy-btn input {
 	height: 82px;
 	border: solid 1px #95959b;
 	margin-right:80px;
@@ -111,6 +111,14 @@ a ,input{
 	color: white;
 }
 
-.container {
-	padding-bottom:20px;
+.gototop:hover {
+	background-color: rgba(150, 100, 100, 0.6);
+}
+
+.buy-btn input:hover {
+	background-color: rgba(150, 100, 100, 0.6);
+}
+
+select {
+	cursor: pointer !important;
 }
