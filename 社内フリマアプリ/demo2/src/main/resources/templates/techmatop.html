@@ -12,6 +12,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
+<canvas class="background"></canvas>
 	<!--header.htmlの情報を読み込む-->
 	<div th:replace="headernologin"></div>
 	<!--modalをJSで表示させるsignupformここから-->
@@ -96,8 +97,16 @@
 			<a class="btn message" href="#">利用する</a>
 		</div>
 	</div>
+	<div class='box'>
+  		<div class='wave -one'></div>
+  		<div class='wave -two'></div>
+  		<div class='wave -three'></div>
+  		<div class='title'>techma</div>
+	</div>
 	<!--footer.htmlの情報を読み込む-->
 	<div th:replace="footernologin"></div>
 	<script src="/js/demo.js"></script>
+	<script src="/js/particles.min.js"></script>
+	<script src="/js/itemserch.js"></script>
 </body>	
 </html>

@@ -1,3 +1,9 @@
+var particles = Particles.init({
+  selector: '.background',
+  sizeVariations: 30,
+  color: ['#aaa6a0', '#073d0c', '#d5edd7','#efd1ac','#f28f4d'],
+});
+
 $(function() {
   $('input[type=file]').after('<span></span>');
   

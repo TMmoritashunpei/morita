@@ -12,6 +12,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
+<div class="canvas">
+<canvas class="background"></canvas>
+</div>
 	<!--header.htmlの情報を読み込む-->
 	<div th:replace="header"></div>
 	<div class="top-wrapper">
@@ -45,7 +48,7 @@
 				</div>
 				<div class="contains-form">
 					<div class="itemname">
-					<p>Item Name</p>
+					<p>商品名を入力してください</p>
 						<input class="form-control" type="text" placeholder="ItemName" th:field="*{itemname}" required="required"></input>
 					</div>
 					<div class="itemprice">
@@ -53,14 +56,14 @@
 						<input class="form-control" type="tel" placeholder="price" th:field="*{price}" required="required"></input>
 					</div>
 					<div class="Category-select">
-					<p>Select Category</p>
+					<p>カテゴリーを選択してください</p>
 						<select name="category" value="select Category" th:field="*{category}" required="required">
 							<option value="">---</option>
 							<option th:each="category : ${categories}" th:value="${category.categoryId}" th:text="${category.categoryname}">Category1</option>
 						</select>
 					</div>
 					<div class="condition-select" th:field="*{condition}" required="required">
-					<p>Select Condition</p>
+					<p>商品の状態を選択してください</p>
 						<select name="condition" class="form-control" value="状態">
 							<option value="">Conditionを選択してください</option>
 							<option value="新品、未使用">新品、未使用</option>
@@ -93,7 +96,7 @@
 						</select>
 					</div>
 					<div class="coments" id="item">
-					<p>Coments</p>
+					<p>商品説明を入力してください</p>
 					<textarea name="coments" class="form-control" value="商品説明" th:field="*{comments}" ></textarea>
 					</div>
 				</div>
@@ -109,6 +112,7 @@
 	<!--footer.htmlの情報を読み込む-->
 	<div th:replace="footer"></div>
 	<script src="/js/demo.js"></script>
+	<script src="/js/particles.min.js"></script>
 	<script src="/js/itemcreate.js"></script>
 </body>	
 </html>

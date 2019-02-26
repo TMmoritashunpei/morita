@@ -22,7 +22,6 @@ a {
 
 .top-wrapper {
 	padding: 180px 0 100px 0;
-	background-image: url("/image/demo.jpg");
 	color: white;
 	background-size: cover;
 	opacity: 0.8;
@@ -72,6 +71,22 @@ a {
 
 .btn-wrapper {
 	margin: 20px;
+	
+}
+
+.btn:hover {
+	background-color: rgba(205, 205, 200, 0.8);
+	box-shadow: 0 0 40px gray;
+	transition: all 0.5s;
+	border-radius: 8px;
+	margin:1px;
+}
+
+img:hover {
+	background-color: rgba(205, 205, 200, 0.8);
+	box-shadow: 0 0 40px gray;
+	transition: all 0.5s;
+	border-radius: 8px;
 }
 
 .btn-wrapper p {
@@ -149,8 +164,88 @@ a {
 	border-bottom: 1px solid #eee;
 	padding-bottom: 80px;
 	text-align: center;
+	background-color: #fafafa;
 }
 
 .text-active {
 	display: block;
+}
+
+.background {
+  background-color: #b8f2d7;
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  z-index:-1;
+}
+
+.box {
+  width: 100%;
+  height: 300px;
+  border-radius: 5px;
+  box-shadow: 0 2px 30px rgba(black, .2);
+  background: lighten(#f0f4c3, 10%);
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.wave {
+  opacity: .4;
+  position: absolute;
+  top: 3%;
+  left: 50%;
+  background: #0af;
+  width: 80%;
+  height: 500px;
+  margin-left: -250px;
+  margin-top: -250px;
+  transform-origin: 50% 48%;
+  border-radius: 43%;
+  animation: drift 3000ms infinite linear;
+}
+
+.wave.-three {
+  animation: drift 5000ms infinite linear;
+}
+
+.wave.-two {
+  animation: drift 7000ms infinite linear;
+  opacity: .1;
+  background: yellow;
+}
+
+.box:after {
+  content: '';
+  display: block;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(#e8a, 1), rgba(#def, 0) 80%, rgba(white, .5));
+  z-index: 11;
+  transform: translate3d(0, 0, 0);
+}
+
+.title {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50%;
+  z-index: 1;
+  text-align: center;
+  transform: translate3d(0, 0, 0);
+  color: white;
+  text-transform: uppercase;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: .4em;
+  font-size: 24px;
+  text-shadow: 0 1px 0 rgba(black, .1);
+  text-indent: .3em;
+  width:100%;
+}
+@keyframes drift {
+  from { transform: rotate(0deg); }
+  from { transform: rotate(360deg); }
 }

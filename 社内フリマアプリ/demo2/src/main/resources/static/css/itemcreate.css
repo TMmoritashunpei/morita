@@ -1,30 +1,25 @@
 body {
 	margin: 0;
 	font-family: "Hiragino Kaku Gothic Prow";
-	background-color: #caf7e4;
 }
 
 .container {
 	width: 100%;
 	padding-left: 0px;
 	padding-right: 5px;
-	margin: 0 outo;
-	
 }
 .top-wrapper {
-	padding: 180px 0 100px 0;
-	background-image: url("");
+	padding-top: 57px;
 	color: #050705;
-	background-size: cover;
-	text-align: center;
 }
+
 .top-wrapper h1 {
-	z-index: 10;
-	font-size: 45px;
+	font-size: 10px;
 	letter-spacing: 5px;
-	background-color: #0f8453;
-	color: white;
-	
+	background-color: #006c61;
+	color: white;	
+	height: 50px;
+	opacity: 0.7;
 }
 
 .pic-control, .pic-control2, .pic-control3, .pic-control4{
@@ -33,6 +28,7 @@ body {
 	height: 30px;
 	border: double 1px #60CDB8;
 	margin-bottom:20px;
+	font-size: 10px;
 }
 
 .pic-control input {
@@ -47,13 +43,11 @@ body {
 	width: 23%;
 	margin: 5px;
 	height: 250px;
-	border: double 5px #60CDB8;
-	background-color: #F1F46C;
+	background-color: white;
 }
 
 #pic-submit {
 	width: 70%;
-	
 }
 
 ul {
@@ -62,7 +56,6 @@ ul {
 
 .itemname {
 	margin: 10px;
-	border: solid 1px #60CDB8;
 }
 
 .itemname input {
@@ -74,13 +67,12 @@ ul {
 .contains-form {
 	display:inline-block;
 	width :60%;
-	background-color: #F1F46C;
-	border: double 5px #60CDB8;
+	text-align: center;
+	font-size: 10px;
 }
 
 .category-select {
 	margin: 10px;
-	border: solid 1px #60CDB8;
 }
 
 .category-select select{
@@ -92,7 +84,6 @@ ul {
 
 .condition-select {
 	margin: 10px;
-	border: solid 1px #60CDB8;
 }
 
 .condition-select select {
@@ -102,7 +93,6 @@ ul {
 }
 
 .payment {
-	border: solid 1px #60CDB8;
 	margin: 10px;
 }
 
@@ -117,6 +107,7 @@ ul {
 	height: 40px;
 	margin-bottom: 10px;
 	margin-right: 40px;
+	
 }
 
 .coments textarea {
@@ -130,12 +121,11 @@ ul {
     color: white;
     margin: 10px 10px;
     cursor: pointer;
-    width: 60%;   
+    width: 60%;
 }
 
 .item-form {
 	wwidth: 100%;
-	background-color: white;
 	margin:0 auto;
 }
 
@@ -143,12 +133,21 @@ ul {
 	cursol: pointer;
 }
 
+.canvas {
+	height: 100%;
+}
+
+form {
+	text-align: center;
+	background-color: transparent;
+}
+
 .create-btn {
 	color: white;
 	border: solid 1px #95959b;
 	margin-right: 60px;
 	padding-right: 30px;
-	background-color: #0f8453;
+	background-color: #006c61;
 	display: inline-block;
 	font-size:25px;
 	padding: 12px;
@@ -156,12 +155,13 @@ ul {
 	cursol: pointer;
 	transition: all 0.5s;
 	border-radius: 8px;
+	opacity: 0.7;
 }
 
 .gototop {
 	border: solid 1px #95959b;
 	float:left;
-	background-color: #0f8453;
+	background-color: #006c61;
 	display: inline-block;
 	font-size:25px;
 	box-shadow: 0px 7px #526059;
@@ -171,6 +171,7 @@ ul {
 	height: 50px;
 	padding-right: 10px;
 	padding-left: 10px;
+	opacity: 0.7;
 }
 
 .gototop a {
@@ -206,7 +207,11 @@ img {
 }
 
 .contains-form:hover {
-	background-color: rgba(150, 160, 160, 0.5);
+	background-color: rgba(235, 235, 255, 0.7);
+	box-shadow: 0 0 40px gray;
+	transition: all 0.5s;
+	border-radius: 8px;
+	padding:3px;
 }
 
 .gototop:hover {
@@ -214,21 +219,53 @@ img {
 }
 
 .pic-item:hover {
-	background-color: rgba(150, 100, 100, 0.3);
+	background-color: rgba(235, 255, 250, 0.5);
+	box-shadow: 0 0 40px gray;
+	transition: all 0.5s;
+	border-radius: 8px;
+	margin:3px;
 }
 
 .pic-item2:hover {
-	background-color: rgba(150, 100, 100, 0.3);
+	background-color: rgba(255, 235, 250, 0.5);
+	box-shadow: 0 0 40px gray;
+	transition: all 0.5s;
+	border-radius: 8px;
+	margin:3px;
 }
 
 .pic-item3:hover {
-	background-color: rgba(150, 100, 100, 0.3);
+	background-color: rgba(255, 255, 235, 0.5);
+	box-shadow: 0 0 40px gray;
+	transition: all 0.5s;
+	border-radius: 8px;
+	margin:3px;
 }
 
 .pic-item4:hover {
-	background-color: rgba(150, 100, 100, 0.3);
+	background-color: rgba(255, 235, 230, 0.5);
+	box-shadow: 0 0 40px gray;
+	transition: all 0.5s;
+	border-radius: 8px;
+	margin:3px;
 }
 
 input, select, textarea {
 	cursor: pointer !important;
+}
+
+.item:hover {
+	background-color: rgba(255, 255, 250, 0.5);
+	box-shadow: 0 0 40px gray;
+	transition: all 0.5s;
+	border-radius: 8px;
+	padding:3px;
+}
+
+.background {
+  background-color: #fafafa;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index:-10;
 }

@@ -12,11 +12,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
+<canvas class="background"></canvas>
 	<!--header.htmlの情報を読み込む-->
 	<div th:replace="header"></div>
 	<div class="item-serch-list">
-			<form class="serch-form" action="#" accept-charset="UTF-8" th:action="@{/techmatop/techma/itemserch/itemname}" method="get">
-				<h1>Item Serch</h1>
+		<h1>Item Serch</h1>
+			<form class="serch-form" action="#" accept-charset="UTF-8" th:action="@{/techmatop/techma/itemserch/itemname}" method="get">				
 				<input name="itemname" class="form-control" type="text" placeholder="item-serch"></input>
 				<input th:if="${category.categoryId != null}" name="category" class="form-control" type="hidden" th:value="${category.categoryId}" placeholder="item-serch"></input>
 				<button type="submit"  placeholder="Item検索">検索</button>
@@ -32,11 +33,10 @@
 				<img class="item-image" th:if="${item.stock != 0 and item.filename != null}" th:src="|/itemimage/${item.filename}|"></img>
 				<img class="item-image" th:if="${item.stock == 0}" src="/image/sould-out.png"></img>
 				<div class="status">
-					<p>name:<span th:text="${item.itemname}"></span></p>
+					<p><span th:text="${item.itemname}"></span></p>
 					<p>price:<span th:text="${item.price}"></span></p>
 					<p>stock:<span th:text="${item.stock}"></span></p>
-					<p>category:<span th:text="${item.category.categoryname}"></span></p>
-					<p>comments:<span th:text="${item.comments}"></span></p>
+					<p><span th:text="${item.category.categoryname}"></span></p>
 				</div>
 			</a>
 			</div>
@@ -48,5 +48,7 @@
 	<div th:replace="footer"></div>
 	</div>
 	<script src="/js/demo.js"></script>
+	<script src="/js/particles.min.js"></script>
+	<script src="/js/itemserch.js"></script>
 </body>	
 </html>

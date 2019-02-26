@@ -75,6 +75,7 @@ header {
 
 .login {
 	margin-left: -6px;
+	height: 70px;
 }
 
 .accordion {
@@ -127,24 +128,48 @@ ul {
 
 .header-right a:hover {
 	background-color: rgba(255, 255, 255, 0.5);
+	box-shadow: 0 0 40px #000000;
+	transition: all 0.5s;
+	border-radius: 8px;
+	margin: 3px;
 }
 
 .category:hover {
 	background-color: rgba(255, 255, 255, 0.5);
+	box-shadow: 0 0 40px #000000;
+	transition: all 0.5s;
+	border-radius: 8px;
+	margin: 3px;
 }
 
 .contact:hover {
 	background-color: rgba(255, 255, 255, 0.5);
+	box-shadow: 0 0 40px #000000;
+	transition: all 0.5s;
+	border-radius: 8px;
+	margin: 3px;
 }
 
 .login:hover {
 	background-color: rgba(255, 255, 255, 0.5);
+	box-shadow: 0 0 40px #000000;
+	transition: all 0.5s;
+	border-radius: 8px;
+	padding: 1px;
 }
 .user a:hover {
 	background-color: rgba(255, 255, 255, 0.5);
+	box-shadow: 0 0 40px #000000;
+	transition: all 0.5s;
+	border-radius: 8px;
+	padding: 1px;
 }
 .logo:hover {
 	background-color: rgba(255, 255, 255, 0.5);
+	box-shadow: 0 0 40px #000000;
+	transition: all 0.5s;
+	border-radius: 8px;
+	padding: 1px;
 }
 .header-right a {
 	line-height: 65px;

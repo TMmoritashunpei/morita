@@ -1,33 +1,33 @@
-body {
-	
+body {	
 	font-family: "Hiragino Kaku Gothic Prow";
-	background-color: #caf7e4;	
 	margin:0 auto;
-	margin-top: -40px;
+	margin-top: -20px;
 }
 
 h1 {
 	color: white;
 	padding-top: 80px;
-	font-size: 50px;
-	text-align: center;
-	background-color: #0f8453;
-	margin-bottom:30px;
+	font-size: 20px;
+	margin: 0px;
+	background-color: #006c61;
+	opacity: 0.7;
 }
 
 .serch-form {
-	height: 300px;
-	margin: 40px 80px 80px 80px;
-	background-color: #F1F46C;
-	border: double 5px #DBDBDB;
+	padding-top: 150px;
+	height: 100px;
+}
+
+form {
+	margin-top: 0px;
 }
 
 input {
+	margin-top: 50px;
 	border: solid 2px BLACK;
 	cursor: pointer !important;
-	height: 50px;
-	width: 50%;	
-	margin-top: 10px;
+	height: 30px;
+	width: 30%;	
 }
 
 .input {
@@ -35,11 +35,10 @@ input {
 	background-color: #60CDB8;
 	border: 3px solid #564e4d;
 	float: right;
-	
 }
 
 .items {
-	background-color: white;
+	
 	width: 100%;
 	padding: 50px;
 }
@@ -49,8 +48,7 @@ input {
 	display:inline-bloc;
 	width: 20%;
 	margin:5px;
-	border: double 5px #60CDB8;
-	background-color: #F1F46C;
+	background-color:white;
 	cursor: pointer !important;
 }
 
@@ -64,11 +62,9 @@ input {
 	margin-top: 10px;
 	width: 86%;
 	height: 150px;
-	border: double 5px #60CDB8;
 }
 
 p {
-	border-bottom: 1px dotted #564e4d;
 	max-width: 1200px;
 	padding-left: 10px;
 	white-space: nowrap;
@@ -76,21 +72,19 @@ p {
   	text-overflow: ellipsis;
 }
 button {
-	height: 56px;
-	width: 60px;
+	height: 35px;
+	width: 50px;
 	cursor: pointer !important;
 }
 
 
 .status {
-	margin:10px;
-	border: 1px solid #564e4d;
-	height: 206px;
+	font-size:9px;
 }
 
 .gototop {
 	border: solid 1px #95959b;
-	background-color: #0f8453;
+	background-color: #006c61;
 	display: inline-block;
 	font-size:25px;
 	padding: 10px;
@@ -122,11 +116,16 @@ a {
 }
 
 .error {
-	font-size: 25px;
+	font-size: 15px;
 	text-align: center;
+	background-color: white;
 }
 .item:hover {
-	background-color: rgba(255, 255, 50, 0.5);
+	background-color: rgba(255, 255, 250, 0.5);
+	box-shadow: 0 0 40px gray;
+	transition: all 0.5s;
+	border-radius: 8px;
+	padding:3px;
 }
 input:hover {
 	background-color: rgba(255, 255, 255, 0.7);
@@ -137,4 +136,13 @@ input:hover {
 
 button:hover {
 	background-color: rgba(55, 255, 255, 0.5);
+}
+
+.background {
+  background-color: #fafafa;
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  z-index:-1;
 }
