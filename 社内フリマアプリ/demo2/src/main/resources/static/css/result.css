@@ -1,45 +1,28 @@
 body {
-	background-image: url("/image/login2.jpg");
-	background-color:black;
-	opacity: 0.7;
+	
 }
 
 #login-form {
-	display: inline-block;
-	margin: 0 outo;
 	text-align: center;
-	
+	margin-top:300px;
 }
+
 h2 {
-	color: white;
-	font-size:50px;
-	width: 50%;
-	margin-left	:300px;
+	font-size:30px;
+	text-align: center;
 }
 
 p {
-	color: white; 
 	font-size:20px;
+	text-align: center;
 }	
-
-form {
-	width: 50%;
-	margin-left	:300px;
-	border: 2px solid #d0d5d8;
-	background-color: #cce8d6;
-}
 
 .modal-wrapper {
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background-color: rgba(0, 0, 0, 0.6);
 	z-index: 100;
-}
-
-#contact-form, #login-form, #signup-form {
-  width: 100%;
 }
 
 #contact-form h2, #login-form h2, #signup-form h2 {
@@ -62,4 +45,27 @@ form {
 	color: white;
 	text-decoration: none;
 	cursol: pointer;
+}
+
+.background {
+  background-color: #8782af;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index:-10;
+}
+
+#submit-btn:hover {
+	background-color: rgba(235, 220, 255, 0.7);
+	box-shadow: 0 0 40px gray;
+	transition: all 0.5s;
+	border-radius: 8px;
+	margin:1px;
+}
+
+#login-form:hover {
+	background-color: rgba(235, 220, 255, 0.7);
+	box-shadow: 0 0 40px gray;
+	transition: all 0.5s;
+	border-radius: 8px;
 }

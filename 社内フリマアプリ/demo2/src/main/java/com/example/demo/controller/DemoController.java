@@ -450,7 +450,9 @@ public class DemoController {
 	}
 //出品者画面遷移
 	@RequestMapping("techma/exhibitor")
-	public String exhibitor() {
+	public String exhibitor(Model model) {
+		List<Category> categories = categoryService.findAll();
+		model.addAttribute("categories", categories);
 		return "exhibitor";
 	}
 
