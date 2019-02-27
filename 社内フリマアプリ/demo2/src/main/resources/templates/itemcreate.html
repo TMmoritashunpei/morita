@@ -87,17 +87,22 @@
 					<div class="stock">
 					<p>数量選択</p>
 						<select name="stock" class="form-control" value="数量" th:field="*{stock}" required="required">
-							<option value="0">数量</option>
+							<option value="">数量</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
 							<option value="4">4</option>
 							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
 						</select>
 					</div>
 					<div class="coments" id="item">
 					<p>商品説明を入力してください</p>
-					<textarea name="coments" class="form-control" value="商品説明" th:field="*{comments}" ></textarea>
+					<textarea name="coments" class="form-control" value="商品説明" th:field="*{comments}" required="required"></textarea>
 					</div>
 				</div>
 					<div class="form-check">
