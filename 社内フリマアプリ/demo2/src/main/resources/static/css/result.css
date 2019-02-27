@@ -1,12 +1,12 @@
 body {
-	background-color: #F6EAFF;
+	background-color: #DFD8F3;
 }
 
 #login-form {
 	text-align: center;
 	display: inline-block;
 	width: 30%;
-	background-color: #F0DDFF;
+	background-color: #D5CCF3;
 	opacity: 0.9;
 	transition: all 0.5s;
 	border-radius: 8px;
@@ -58,7 +58,7 @@ p {
 }
 
 .background {
-  background-color: #8782af;
+  background-color: #9277F3;
   position: absolute;
   top: 0;
   left: 0;

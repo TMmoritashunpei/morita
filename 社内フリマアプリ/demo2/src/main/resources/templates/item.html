@@ -17,6 +17,11 @@
 	<!--modalをJSで表示させるsignupformここから-->
 	<div class="item-wrapper">
 	<h1>Item Status</h1>
+	<div class="error-massage">
+	<span th:if="${userDatailscheck}">こちらの商品はご自身で出品されたアイテムの為購入できません。</span>
+	<br></br>
+	<span th:if="${item.stock == 0}">こちらの商品は商品の在庫がないため購入できません。</span>
+	</div>
 		<div class="item-container">
 			<div class="item-item">			
 			<form action="#" th:action="@{/techmatop/techma/buyresult/itemId(itemId=${item.itemId})}" th:object="${itemForm}" method="post">
@@ -37,6 +42,7 @@
 				<div class="item-item-status">
 				<div class="coments-wrapper">
 					<p>商品説明:<br></br><span th:text="${item.comments}"></span></p>
+					<p>出品時間:<br></br><span th:text="${str}"></span></p>
 				</div>
 				<div class="item-status-wrapper">
 					<p>価格:&nbsp;&nbsp; <span th:text="${item.price}"></span>￥</p>
@@ -44,7 +50,7 @@
 					<p>状態:&nbsp;&nbsp;　<span th:text="${item.condition}"></span></p>
 					<p>支払方法:&nbsp;&nbsp; <span th:text="${item.payment}"></span></p>
 					<p>在庫:&nbsp;&nbsp; <span th:text="${item.stock}"></span></p>
-					<a href="/techmatop/techma/exhibitor"><p>出品者:&nbsp;&nbsp; <span th:text="${item.user.username}"></span></p></a>
+					<a href="/techmatop/techma/exhibitor/"><p>出品者:&nbsp;&nbsp; <span th:text="${item.user.username}"></span></p></a>
 				</div>		
 					<div class="purchasenumber" th:with="x=${item.stock}" th:if="${item.stock!=0}">
 					<p>購入数を選択してください</p>
@@ -55,9 +61,9 @@
 				</div>
 			<div class="item-btn">
 				<div class="gototop">
-					<div class="form-check-top"><a href="/techmatop/techma">Top</a></div>
+					<div class="form-check-top"><a href="/techmatop/techma/itemserch">戻る</a></div>
 				</div>
-				<div class="buy">
+				<div class="buy" th:if="${userDatailscheck == fals}">
 					<div class="buy-btn" th:if="${item.stock != 0}">
 						<input type="submit" value="Buy"></input>		
 					</div>

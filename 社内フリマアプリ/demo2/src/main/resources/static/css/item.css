@@ -3,6 +3,9 @@ body {
 	padding:opx;
 	background-color: #F3F1F0;
 }
+.error-massage {
+	color :red;
+}
 
 .item-wrapper {
 	padding-top: 55px;

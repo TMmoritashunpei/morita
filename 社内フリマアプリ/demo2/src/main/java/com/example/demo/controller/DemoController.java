@@ -7,6 +7,7 @@ import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -100,9 +101,17 @@ public class DemoController {
 			}
 	//アイテム詳細画面遷移
 	@RequestMapping({"techma/item","techma/item/itemId{itemId}"})
-	public String goToItem(@RequestParam Integer itemId ,Model model, ItemForm form) {
+	public String goToItem(@RequestParam Integer itemId ,Model model, ItemForm form, 
+			@AuthenticationPrincipal LoginUserDetails userDatails, java.sql.Timestamp created_at) {
 		Item item = itemService.findOne(itemId);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		sdf.setLenient(false);
+		String str = sdf.format(item.getCreated_at());
+		model.addAttribute("str", str);
 		model.addAttribute("item",item);
+		if (userDatails.getUser().getId() == item.getUser().getId()) {
+			model.addAttribute("userDatailscheck", "この商品はご自身で出品されたアイテムの為購入できません。");
+		}
 		List<Category> categories = categoryService.findAll();
 		model.addAttribute("categories", categories);
 		return "item";
@@ -428,11 +437,12 @@ public class DemoController {
 	}
 //購入完了
 	@PostMapping("techma/buyresult/itemId{itemId}")
-	public String goTobuyResult(Model model, Integer itemId, ItemForm form) {
+	public String goTobuyResult(Model model, Integer itemId, ItemForm form, 
+			@AuthenticationPrincipal LoginUserDetails userDatails, java.sql.Timestamp created_at) {
 		Item item = itemService.findOne(itemId);
 		model.addAttribute("itemForm", form);
 		if (item.getStock()==0) {
-			return goToItem(itemId, model,form);
+			return goToItem(itemId, model,form, userDatails, created_at);
 		}
 		item.setStock(item.getStock() - form.getPurchasenumber());
 		itemService.update(item, item.getUser());
@@ -450,9 +460,11 @@ public class DemoController {
 	}
 //出品者画面遷移
 	@RequestMapping("techma/exhibitor")
-	public String exhibitor(Model model) {
+	public String exhibitor(Model model, Integer itemId) {
 		List<Category> categories = categoryService.findAll();
 		model.addAttribute("categories", categories);
+		//Item item = itemService.findOne(itemId);
+		//model.addAttribute("item",item);
 		return "exhibitor";
 	}
 

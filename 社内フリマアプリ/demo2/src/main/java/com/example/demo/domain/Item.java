@@ -1,5 +1,4 @@
 package com.example.demo.domain;
-
 import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -39,5 +38,9 @@ public class Item {
 	private User user; 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(nullable = true, name = "category_Id", updatable=false)
-	private Category category; 
+	private Category category;
+	@Column(name="created_at")
+	java.sql.Timestamp created_at;
+	@Column(name="updated_at")
+	java.sql.Timestamp updated_at;
 }
