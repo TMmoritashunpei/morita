@@ -1,3 +1,4 @@
+/*mysql
 CREATE TABLE IF NOT EXISTS items (
 	id INT PRIMARY KEY AUTO_INCREMENT, 
 	item_name VARCHAR(30), price INT, conditions VARCHAR(30), 
@@ -22,8 +23,8 @@ CREATE TABLE IF NOT EXISTS categorys (
 	created_at timestamp not null default current_timestamp,
   	updated_at timestamp not null default current_timestamp on update current_timestamp
 ) character set 'utf8';
+*/
 
-/*h2
 CREATE TABLE IF NOT EXISTS items (
 	id INT PRIMARY KEY AUTO_INCREMENT, 
 	item_name VARCHAR(30), price INT, conditions VARCHAR(30), 
@@ -48,4 +49,3 @@ CREATE TABLE IF NOT EXISTS categorys (
 	created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
-*/
