@@ -197,13 +197,13 @@ img:hover {
   top: 3%;
   left: 50%;
   background: #0af;
-  width: 80%;
+  width: 500px;
   height: 500px;
   margin-left: -250px;
   margin-top: -250px;
-  transform-origin: 50% 48%;
-  border-radius: 43%;
-  animation: drift 3000ms infinite linear;
+  transform-origin: 80% 98%;
+  border-radius: 93%;
+  animation: drift 4000ms infinite linear;
 }
 
 .wave.-three {
@@ -232,8 +232,9 @@ img:hover {
   position: absolute;
   left: 0;
   top: 0;
-  width: 50%;
+  width: 100%;
   z-index: 1;
+  line-height: 300px;
   text-align: center;
   transform: translate3d(0, 0, 0);
   color: white;
@@ -243,9 +244,11 @@ img:hover {
   font-size: 24px;
   text-shadow: 0 1px 0 rgba(black, .1);
   text-indent: .3em;
-  width:100%;
 }
 @keyframes drift {
   from { transform: rotate(0deg); }
   from { transform: rotate(360deg); }
+}
+View Compiled 
+Resources
 }

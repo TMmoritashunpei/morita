@@ -1,6 +1,7 @@
 body {	
 	font-family: "Hiragino Kaku Gothic Prow";
 	margin:0 auto;
+	background-color: #F3F2F0;
 }
 
 h1 {
@@ -38,7 +39,7 @@ input {
 .items {
 	
 	width: 100%;
-	padding: 50px;
+	padding: 10px;
 }
 
 .item {
@@ -46,7 +47,7 @@ input {
 	display:inline-bloc;
 	width: 20%;
 	margin:5px;
-	background-color:white;
+	background-color: white;
 	cursor: pointer !important;
 }
 
@@ -119,19 +120,17 @@ a {
 	background-color: white;
 }
 .item:hover {
-	background-color: rgba(245, 245, 230, 0.5);
+	background-color: rgba(245, 255, 250, 0.5);
 	box-shadow: 0 0 40px gray;
 	transition: all 0.5s;
 	border-radius: 8px;
-	padding:8px;
 }
 
 .item img:hover {
 	background-color: rgba(255, 255, 250, 0.5);
-	box-shadow: 10px 10px 10px gray;
+	box-shadow: 3px 3px 3px gray;
 	transition: all 0.5s;
 	border-radius: 8px;
-	padding:1px;
 }
 
 input:hover {
