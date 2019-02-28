@@ -41,8 +41,9 @@
 				
 				<div class="item-item-status">
 				<div class="coments-wrapper">
-					<p>商品説明:<br></br><span th:text="${item.comments}"></span></p>
 					<p>出品時間:<br></br><span th:text="${str}"></span></p>
+					<p>商品説明:<br></br><span th:text="${item.comments}"></span></p>
+					
 				</div>
 				<div class="item-status-wrapper">
 					<p>価格:&nbsp;&nbsp; <span th:text="${item.price}"></span>￥</p>
@@ -59,17 +60,12 @@
 					</select>
 					</div>
 				</div>
-			<div class="item-btn">
-				<div class="gototop">
-					<div class="form-check-top"><a HREF="javascript:history.back()">戻る</a></div>
-				</div>
-				<div class="buy" th:if="${userDatailscheck == fals}">
-					<div class="buy-btn" th:if="${item.stock != 0}">
-						<input type="submit" value="Buy"></input>		
-					</div>
-				</div>	
+			<div class="btn">
+				<button th:if="${item.stock != 0} and ${userDatailscheck == fals}" class="cp_button04" type="submit"><span>購入へ</span></button>	
+				<button class="cp_button04" type="button" onclick="location.href='javascript:history.back()'"><span>前のページへ</span></button>
 			</div>
 			</form>
+			
 			</div>
 		</div>
 	</div>	

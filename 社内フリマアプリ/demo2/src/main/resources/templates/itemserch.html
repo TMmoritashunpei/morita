@@ -20,7 +20,7 @@
 			<form class="serch-form" action="#" accept-charset="UTF-8" th:action="@{/techmatop/techma/itemserch/itemname}" method="get">				
 				<input name="itemname" class="form-control" type="text" placeholder="item-serch"></input>
 				<input th:if="${category.categoryId != null}" name="category" class="form-control" type="hidden" th:value="${category.categoryId}" placeholder="item-serch"></input>
-				<button type="submit"  placeholder="Item検索">検索</button>
+				<button class="cp_button04" type="submit"><span>検索</span></button>
 			</form>
 			<div class="error">
 				<div th:if="${noitem}"><span >ご指定の名称ではアイテムが見つかりませんでした。</span></div>
@@ -42,8 +42,9 @@
 			</div>
 		</div>				
 	</div>
-	<div class="gototop"><a HREF="javascript:history.back()">戻る</a></div>
-	<!--footer.htmlの情報を読み込む-->
+	<div class="btn">
+		<button class="cp_button04" onclick="location.href='javascript:history.back()'"><span>前のページへ</span></button>
+	</div>
 	<div class="footer">
 	<div th:replace="footer"></div>
 	</div>
