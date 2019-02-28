@@ -23,17 +23,17 @@
 					<img class="user-image" src="/image/demo.jpg"></img>
 				</div>
 				<div class="item-status-wrapper">
-					<p>User Name</p>
-					<p>mail</p>
+					<p>User Name：<span th:text="${item.user.username}"></span></p>
+					<p>mail：<span th:text="${item.user.mail}"></span></p>
 					<p><a href="/techma">お気に入り&nbsp;&nbsp;</a></p>
 				</div>
 				<div class="coments-wrapper">
-					<p>coments:<br></br></p>
+					<p>coments：<br></br><span th:text="${item.user.comments}"></span></p>
 				</div>
 			</div>
 		<div class="item-btn">
 			<div class="gototop">
-				<div class="form-check-top"><a href="/techmatop/techma">Top</a></div>
+				<div class="form-check-top"><a HREF="javascript:history.back()">戻る</a></div>
 			</div>
 		</div>
 		</div>

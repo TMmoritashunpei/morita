@@ -459,12 +459,12 @@ public class DemoController {
 		return "itembuycheck";
 	}
 //出品者画面遷移
-	@RequestMapping("techma/exhibitor")
-	public String exhibitor(Model model, Integer itemId) {
+	@RequestMapping("techma/exhibitor/itemId{itemId}")
+	public String exhibitor(Model model, @RequestParam Integer itemId) {
+		Item item = itemService.findOne(itemId);
+		model.addAttribute("item",item);
 		List<Category> categories = categoryService.findAll();
 		model.addAttribute("categories", categories);
-		//Item item = itemService.findOne(itemId);
-		//model.addAttribute("item",item);
 		return "exhibitor";
 	}
 
