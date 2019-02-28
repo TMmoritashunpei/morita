@@ -9,7 +9,7 @@ body {
 	opacity: 0.9;
 }
 h2 {
-	font-size:30px;
+	font-size:25px;
 	text-align: center;
 	
 }
@@ -23,12 +23,10 @@ form {
 	background-color: #D5CCF3;
 	margin: 0px;
 	display: inline-block;
-	width: 40%;
+	width: 33%;
 	transition: all 0.5s;
 	border-radius: 8px;
-}
-
-.modal-wrapper {
+	font-size:12px;
 }
 
 .modal {
@@ -58,18 +56,28 @@ form {
 
 #submit-btn {
   display: inline-block;
-  padding: 14px 140px;
+  padding: 14px 60px;
   background-color: #5dca88;
   border: none;
   border-radius: 3px;
   color: white;
   margin: 10px auto;
-  cursol: pointer;
+  cursor: pointer !important;
+  margin:25px;
+  box-shadow: 3px 3px 3px gray;
 }
 
 button {
 	background-color: #5dca88;
 	cursol: pointer;
+	float: left;
+	margin-right: 40px;
+	height:46px;
+	width: 144px;
+}
+
+.btn-center {
+	text-align: center;
 }
 
 #submit-btn a {
@@ -83,7 +91,7 @@ button {
 }
 
 #submit-btn:hover {
-	background-color: rgba(150, 100, 100, 0.6);
+	background-color: rgba(180, 100, 90, 0.6);
 }
 
 input {
@@ -177,4 +185,33 @@ form:hover {
 }
 View Compiled 
 Resources
+}
+
+.cp_btn {
+	display: block;
+	text-decoration:none;
+	width: 160px;
+	padding: 0.8em;
+	text-align: center;
+	color: #FFF;
+	border-radius: 4px;
+	background: #4DD0E1;
+	overflow: hidden;
+}
+.cp_btn span {
+	display:inline-block;
+	transition: .5s
+}
+.cp_btn:hover span {
+	transform: rotateX(360deg);
+}
+
+#submit-btn:hover {
+	
+}
+
+#submit-btn:active {
+	box-shadow: none;
+	posotion: relative;
+	top: 7px;
 }
