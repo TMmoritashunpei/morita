@@ -32,13 +32,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.domain.Category;
 import com.example.demo.domain.Item;
+import com.example.demo.domain.Purchase;
 import com.example.demo.domain.User;
 import com.example.demo.service.CategoryService;
 import com.example.demo.service.ItemService;
 import com.example.demo.service.LoginUserDetails;
+import com.example.demo.service.PurchaseService;
 import com.example.demo.service.UserService;
 import com.example.demo.web.CategoryForm;
 import com.example.demo.web.ItemForm;
+import com.example.demo.web.PurchaseForm;
 import com.example.demo.web.UserForm;
 
 @Controller
@@ -51,6 +54,8 @@ public class DemoController {
 	CategoryService categoryService;
 	@Autowired
 	UserService userService;
+	@Autowired
+	PurchaseService purchaseService;
 		
 	@ModelAttribute
 	ItemForm setUpItemForm() {
@@ -65,6 +70,11 @@ public class DemoController {
 	@ModelAttribute
 	CategoryForm setUpCategoryForm() {
 	return new CategoryForm();
+	}
+	
+	@ModelAttribute
+	PurchaseForm setUpPurchaseForm() {
+	return new PurchaseForm();
 	}
 	
 	//top画面に遷移
@@ -97,8 +107,13 @@ public class DemoController {
 		/*ctegory全件取得*/
 		List<Category> categories = categoryService.findAll();
 		model.addAttribute("categories", categories);
+		
+		/*purchase全件取得*/
+		List<Purchase> purchases = purchaseService.findAll();
+		model.addAttribute("purchases", purchases);
 		return "demo";
-			}
+		}
+	
 	//アイテム詳細画面遷移
 	@RequestMapping({"techma/item","techma/item/itemId{itemId}"})
 	public String goToItem(@RequestParam Integer itemId ,Model model, ItemForm form, 
@@ -126,8 +141,7 @@ public class DemoController {
 	@GetMapping(path = "item/{page}")
 	Page<Item> getItems(@PageableDefault Pageable pageable) {
 		Page<Item> items = itemService.findAll(pageable);
-		return items;
-		
+		return items;	
 	}
 	//ページャー
 	@GetMapping(path = "techma/user/{page}")
@@ -149,6 +163,27 @@ public class DemoController {
 		model.addAttribute("categories", categories);
 		return "itemcreate";
 	}
+	//アイテム画像送信
+		@RequestMapping(path ="techma/uproadfile",method = RequestMethod.POST)
+	String ItemUproadFile(Model model ,ItemForm form) {
+			
+		    //fileUploadSampleForm.getUploadedFile().getOriginalFilename();
+			return itemcreate(model, form);
+	}
+	//アイテム作成
+	@PostMapping(path = "techma/itemedit")
+	String ItemEdit(@RequestParam Integer id,@Validated ItemForm form, BindingResult result,
+			@AuthenticationPrincipal LoginUserDetails userDatails) {
+		if (result.hasErrors()) {
+			/*＠後で繊維先変える*/
+		return ItemEditForm(id, form);
+		}
+		Item item = new Item();
+		BeanUtils.copyProperties(form, item);
+		item.setItemId(id);
+		itemService.update(item, userDatails.getUser());
+		return "redirect:/techma/item";
+		}
 	//アイテム出品処理
 	@PostMapping(path = "techma/exhibit")
 	String ItemExhibit(@Validated ItemForm form, BindingResult result, Model model,
@@ -200,12 +235,13 @@ public class DemoController {
 		      .get("src/main/resources/static/itemimage/" + filename2 + extention2);
 		  if(dot2 < 0) {
 			 form.setFilename2(null);
-		  }
+		  } else {
 		  try (OutputStream os = Files.newOutputStream(uploadfile2, StandardOpenOption.CREATE)) {
 		    byte[] bytes = form.getUploadedFile2().getBytes();
 		    os.write(bytes);
 		  } catch (IOException ex) {
 		    System.err.println(ex);
+		  		}
 		  }
 		 //3つ目の画像処理
 		 int dot3 = form.getUploadedFile3().getOriginalFilename().lastIndexOf(".");
@@ -219,12 +255,13 @@ public class DemoController {
 		      .get("src/main/resources/static/itemimage/" + filename3 + extention3);
 		  if(dot3 < 0) {
 				 form.setFilename3(null);
-			  }
+		  } else {
 		  try (OutputStream os = Files.newOutputStream(uploadfile3, StandardOpenOption.CREATE)) {
 		    byte[] bytes = form.getUploadedFile3().getBytes();
 		    os.write(bytes);
 		  } catch (IOException ex) {
 		    System.err.println(ex);
+		  		}
 		  }
 		if (result.hasErrors()) {
 		 return itemcreate(model, form);
@@ -240,20 +277,26 @@ public class DemoController {
 		      .get("src/main/resources/static/itemimage/" + filename4 + extention4);
 		  if(dot4 < 0) {
 				 form.setFilename4(null);
-			  }
+		  } else {
 		  try (OutputStream os = Files.newOutputStream(uploadfile4, StandardOpenOption.CREATE)) {
 		    byte[] bytes = form.getUploadedFile4().getBytes();
 		    os.write(bytes);
 		  } catch (IOException ex) {
 		    System.err.println(ex);
+		  		}
 		  }
 		if (result.hasErrors()) {
 		 return itemcreate(model, form);
 		}
-		//アイテム作成
+		//アイテム作成後にDB登録
 		Item item  = new Item();
 		BeanUtils.copyProperties(form, item );
 		itemService.create(item, userDatails.getUser());
+		return "itemresult";
+	}
+		//出品完了画面遷移
+	@RequestMapping("techma/itemresult")
+	public String goToItemResult() {
 		return "itemresult";
 	}
 	//ユーザー作成
@@ -270,12 +313,17 @@ public class DemoController {
 		userService.create(user);
 		return "userresult";
 	}
+	//アカウント作成完了
+	@RequestMapping("techma/userresult")
+	public String goToUserResult() {
+			return "userresult";
+	}
 	//category カテゴリー作成　管理画面用
 	@PostMapping(path = "techma/categorycreate")
 	String CtegoryCreate(@Validated CategoryForm form, BindingResult result, Model model, @AuthenticationPrincipal LoginUserDetails userDatails) {
 		if (result.hasErrors()) {
 			/*＠後で繊維先変える*/
-		return techmaController(model, userDatails);
+			return techmaController(model, userDatails);
 		}
 		Category category  = new Category();
 		BeanUtils.copyProperties(form, category);
@@ -289,35 +337,16 @@ public class DemoController {
 		Item item = itemService.findOne(id);
 		BeanUtils.copyProperties(item, form);
 		return "itemedit";
-		}
-	//アイテム画像送信
-	@RequestMapping(path ="techma/uproadfile",method = RequestMethod.POST)
-	String ItemUproadFile(Model model ,ItemForm form) {
-		
-	    //fileUploadSampleForm.getUploadedFile().getOriginalFilename();
-		return itemcreate(model, form);
 	}
-	//アイテム作成
-	@PostMapping(path = "techma/itemedit")
-	String ItemEdit(@RequestParam Integer id,@Validated ItemForm form, BindingResult result,
-			@AuthenticationPrincipal LoginUserDetails userDatails) {
-		if (result.hasErrors()) {
-		/*＠後で繊維先変える*/
-		return ItemEditForm(id, form);
-		}
-		Item item = new Item();
-		BeanUtils.copyProperties(form, item);
-		item.setItemId(id);
-		itemService.update(item, userDatails.getUser());
-		return "redirect:/techma/item";
-	}
+	
+	
 	//ユーザー更新
 	@GetMapping(path = "techma/useredit",params = "form")
 	String UserEditForm(@RequestParam String name,@Validated UserForm form) {
 		User user = userService.findOne(name);
 		BeanUtils.copyProperties(user, form);
 		return "useredit";
-		}
+	}
 	//ユーザー更新
 	@PostMapping(path = "techma/useredit")
 	String UserEdit(@RequestParam String name,@Validated UserForm form, BindingResult result) {
@@ -404,18 +433,18 @@ public class DemoController {
 	}
 	//カテゴリ検索
 		@RequestMapping("techma/category{category}")
-		public String goToItemInCategory(Model model, Category category) {
+	public String goToItemInCategory(Model model, Category category) {
 			/*item　全件取得*/
-			List<Item> items = itemService.findCategoryInItem(category);
-			model.addAttribute("items", items);
-			if (itemService.findCategoryInItem(category).size() == 0) {
-				model.addAttribute("categorynoitem","ご指定の検索条件でアイテムが見つかりませんでした。");
-			}
-			/*ctegory全件取得*/
-			List<Category> categories = categoryService.findAll();
-			model.addAttribute("categories", categories);
-			return "itemserch";
+		List<Item> items = itemService.findCategoryInItem(category);
+		model.addAttribute("items", items);
+		if (itemService.findCategoryInItem(category).size() == 0) {
+			model.addAttribute("categorynoitem","ご指定の検索条件でアイテムが見つかりませんでした。");
 		}
+			/*ctegory全件取得*/
+		List<Category> categories = categoryService.findAll();
+		model.addAttribute("categories", categories);
+		return "itemserch";
+	}
 	 //マイページに遷移
 	@RequestMapping("techma/user")
 	public String goToUser(@AuthenticationPrincipal LoginUserDetails userDatails , Model model , Integer id) {
@@ -425,19 +454,11 @@ public class DemoController {
 		model.addAttribute("categories", categories);
 		return "user";
 	}
-//アカウント作成完了
-	@RequestMapping("techma/userresult")
-	public String goToUserResult() {
-		return "userresult";
-	}
-//出品完了
-	@RequestMapping("techma/itemresult")
-	public String goToItemResult() {
-		return "itemresult";
-	}
-//購入完了
+
+
+	//購入処理
 	@PostMapping("techma/buyresult/itemId{itemId}")
-	public String goTobuyResult(Model model, Integer itemId, ItemForm form, 
+	public String goTobuyResult(Model model, Integer itemId, ItemForm form, BindingResult result,
 			@AuthenticationPrincipal LoginUserDetails userDatails, java.sql.Timestamp created_at) {
 		Item item = itemService.findOne(itemId);
 		model.addAttribute("itemForm", form);
@@ -445,20 +466,27 @@ public class DemoController {
 			return goToItem(itemId, model,form, userDatails, created_at);
 		}
 		item.setStock(item.getStock() - form.getPurchasenumber());
+		//購入履歴作成
+		//商品名と購入数を取得しpurchaseインスタンスにセットする
+		Purchase purchase = new Purchase();
+		purchase.setPurchasename(item.getItemname());
+		purchase.setStock(form.getPurchasenumber());
+		purchase.setFilename(item.getFilename());
+		purchaseService.create(purchase, userDatails.getUser(), item);
 		itemService.update(item, item.getUser());
 		return "itembuyresult";
 	}
-//購入確認
+	//購入確認
 	@RequestMapping("techma/itemresultcheck")
 	public String goToItemresultcheck() {
 		return "itemresultcheck";
 	}
-//アイテム購入チェック
+	//アイテム購入チェック
 	@RequestMapping("techma/itembuycheck")
 	public String goToItembuycheck() {
 		return "itembuycheck";
 	}
-//出品者画面遷移
+	//出品者画面遷移
 	@RequestMapping("techma/exhibitor/itemId{itemId}")
 	public String exhibitor(Model model, @RequestParam Integer itemId) {
 		Item item = itemService.findOne(itemId);
@@ -467,5 +495,14 @@ public class DemoController {
 		model.addAttribute("categories", categories);
 		return "exhibitor";
 	}
-
+	//購入履歴画面遷移
+	@RequestMapping("techma/user/purchase")
+	public String purchaseIndex(Model model,  Integer purchaseId) {
+		List<Purchase> purchases = purchaseService.findAll();
+		model.addAttribute("purchases",purchases);
+		if (purchaseService.findAll().size() == 0) {
+			model.addAttribute("noperchase","購入商品がありません");
+		}
+		return "purchaseindex";
+	}
 }

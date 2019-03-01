@@ -26,6 +26,12 @@ CREATE TABLE IF NOT EXISTS categorys (
 CREATE TABLE IF NOT EXISTS purchases (
 	id INT(10) PRIMARY KEY AUTO_INCREMENT,
 	purchase_name VARCHAR(20),
+	stock INT,
+	cansellflg BOOLEAN,
+	purchaseflg BOOLEAN,
+	filename VARCHAR(30),
+	item_id INT(10),
+	user_id INT(10),
 	created_at timestamp not null default current_timestamp,
   	updated_at timestamp not null default current_timestamp on update current_timestamp
 ) character set 'utf8';
@@ -60,7 +66,13 @@ CREATE TABLE IF NOT EXISTS categorys (
 CREATE TABLE IF NOT EXISTS purchases (
 	id INT(10) PRIMARY KEY AUTO_INCREMENT,
 	purchase_name VARCHAR(20),
+	stock INT,
+	cansellflg BOOLEAN,
+	purchaseflg BOOLEAN,
+	filename VARCHAR(30),
+	item_id INT(10),
+	user_id INT(10),
 	created_at timestamp not null default current_timestamp,
-  	updated_at timestamp not null default current_timestamp on update current_timestamp
+  	updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 */

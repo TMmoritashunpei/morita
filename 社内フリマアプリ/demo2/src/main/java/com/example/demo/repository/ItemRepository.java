@@ -14,13 +14,16 @@ public interface ItemRepository extends JpaRepository<Item, Integer> {
 	@Query("SELECT x FROM Item x ORDER BY x.itemname")
 	List<Item> findAllItemOrderByName();
 	
+	//@Query("SELECT x FROM Item x JOIN FETCH x.item ORDER BY x.itemId, x.itemname")
+	//List<Item> findAllWithItemOrderByname();
+	
 	@Query("SELECT x FROM Item x ORDER BY x.itemname")
     Page<Item> findAllItemOrderByName(Pageable pageable);
 	
 	@Query("SELECT x FROM Item x where x.itemId = :itemId")
 	Item findByItem(@Param("itemId") Integer itemId);
 	
-	@Query("SELECT x FROM Item x where x.category =  :category")
+	@Query("SELECT x FROM Item x where x.category = :category")
 	List<Item> itemInCategory(@Param("category") Category category);
 	
 	@Query("SELECT x FROM Item x where x.itemname like  %:itemname%")

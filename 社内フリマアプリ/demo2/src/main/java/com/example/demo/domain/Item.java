@@ -1,12 +1,16 @@
 package com.example.demo.domain;
+import java.util.List;
+
 import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = "purchases")
 @Entity
 @Table(name = "items")
 public class Item {
@@ -39,6 +43,8 @@ public class Item {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(nullable = true, name = "category_Id", updatable=false)
 	private Category category;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "item")
+	private List<Purchase> purchases;
 	@Column(name="created_at")
 	java.sql.Timestamp created_at;
 	@Column(name="updated_at")
