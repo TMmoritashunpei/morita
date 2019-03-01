@@ -30,5 +30,9 @@ public class Purchase {
 	private Item item;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(nullable = true, name = "user_id", updatable=false)
-	private User user; 
+	private User user;
+	@Column(name="created_at")
+	java.sql.Timestamp created_at;
+	@Column(name="updated_at")
+	java.sql.Timestamp updated_at;
 }

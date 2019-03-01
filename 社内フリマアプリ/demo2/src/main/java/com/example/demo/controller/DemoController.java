@@ -497,9 +497,14 @@ public class DemoController {
 	}
 	//購入履歴画面遷移
 	@RequestMapping("techma/user/purchase")
-	public String purchaseIndex(Model model,  Integer purchaseId) {
+	public String purchaseIndex(Model model,  Integer purchaseId, Purchase purchase) {
 		List<Purchase> purchases = purchaseService.findAll();
 		model.addAttribute("purchases",purchases);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		sdf.setLenient(false);
+		model.addAttribute("sdf", sdf);
+		String str = sdf.format(purchase.getCreated_at());
+		model.addAttribute("str", str);
 		if (purchaseService.findAll().size() == 0) {
 			model.addAttribute("noperchase","購入商品がありません");
 		}
