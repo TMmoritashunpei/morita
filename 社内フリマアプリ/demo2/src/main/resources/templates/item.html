@@ -53,7 +53,7 @@
 					<p>在庫:&nbsp;&nbsp; <span th:text="${item.stock}"></span></p>
 					<a href="/techmatop/techma/exhibitor/" th:href="@{/techmatop/techma/exhibitor/itemId(itemId=${item.itemId})}"><p>出品者:&nbsp;&nbsp; <span th:text="${item.user.username}"></span></p></a>
 				</div>		
-					<div class="purchasenumber" th:with="x=${item.stock}" th:if="${item.stock!=0}">
+					<div class="purchasenumber" th:with="x=${item.stock}" th:if="${item.stock != 0} and ${userDatailscheck == fals}">
 					<p>購入数を選択してください</p>
 					<select name="purchasenumber" th:field="*{purchasenumber}">
 						<option th:each="i : ${#numbers.sequence(1, x)}" th:text="${i}" th:value="${i}"></option>
