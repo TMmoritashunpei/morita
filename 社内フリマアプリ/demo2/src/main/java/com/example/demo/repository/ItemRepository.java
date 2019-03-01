@@ -8,11 +8,16 @@ import org.springframework.data.domain.Page;
 
 import com.example.demo.domain.Category;
 import com.example.demo.domain.Item;
+import com.example.demo.domain.User;
+
 import org.springframework.data.domain.Pageable;
 
 public interface ItemRepository extends JpaRepository<Item, Integer> {
 	@Query("SELECT x FROM Item x ORDER BY x.itemname")
 	List<Item> findAllItemOrderByName();
+	
+	@Query("SELECT x FROM Item x where x.user = :user")
+	List<Item> findAllExhibitList(@Param("user") User user);
 	
 	//@Query("SELECT x FROM Item x JOIN FETCH x.item ORDER BY x.itemId, x.itemname")
 	//List<Item> findAllWithItemOrderByname();

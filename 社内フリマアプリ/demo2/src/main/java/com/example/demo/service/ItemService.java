@@ -23,6 +23,10 @@ public class ItemService {
 		return itemRepository.findAllItemOrderByName();
 	}
 	
+	public List<Item> findEhibitList(User user) {
+		return itemRepository.findAllExhibitList(user);
+	}
+	
 	public Item findOne(Integer id) {
 		return itemRepository.findOne(id);
 	}

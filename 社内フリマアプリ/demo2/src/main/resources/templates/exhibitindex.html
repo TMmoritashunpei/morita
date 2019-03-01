@@ -6,7 +6,7 @@
 	<meta charset="utf-8"></meta>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
 	<title>techma</title>
-<link rel="stylesheet" type="text/css" href="/css/purchaseindex.css"></link>
+<link rel="stylesheet" type="text/css" href="/css/exhibitindex.css"></link>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"></link>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
@@ -15,37 +15,35 @@
 	<!--header.htmlの情報を読み込む-->
 	<div th:replace="header"></div>
 	<div class="item-serch-list">
-		<h1>購入履歴一覧</h1>
+		<h1>出品履歴一覧</h1>
 			<div class="error">
-				<div th:if="${noperchase}"><span>購入商品がありません</span></div>
+				<div><span th:if="${noexhibit}">出品商品がありません</span></div>
 			</div>
 		<div class="items">
-			<div class="item" th:each="purchase : ${purchases}">
+			<div class="item" th:each="item : ${items}">
 			<!--<a href="/techmatop/techma/item/" th:href="@{/techmatop/techma/item/itemId(itemId=${item.itemId})}">-->
-				<img class="item-item-image" th:if="${purchase.filename == null and purchase.stock != 0}" src="/image/No_Image_Available.jpg"></img>
-				<img class="item-image" th:if="${purchase.stock != 0 and purchase.filename != null}" th:src="|/itemimage/${purchase.filename}|"></img>
+				<img class="item-item-image" th:if="${item.filename == null and item.stock != 0}" src="/image/No_Image_Available.jpg"></img>
+				<img class="item-image" th:if="${item.stock != 0 and item.filename != null}" th:src="|/itemimage/${purchase.filename}|"></img>
 				<div class="status">
-					<p>商品名：<span th:text="${purchase.purchasename}"></span></p>
-					<p>購入数:<span th:text="${purchase.stock}"></span></p>	
+					<p>商品名：<span th:text="${item.itemname}"></span></p>
+					<p>購入数:<span th:text="${item.stock}"></span></p>	
 				</div>
 				<div class="status">
-					<p>金額:<span th:text="${purchase.item.price}+￥"></span></p>
-					<p th:if="${purchase.cansellflg == true}"><span>ステータス：キャンセル</span></p>
-					<p th:if="${purchase.cansellflg == false} and ${purchase.purchaseflg == false}"><span>ステータス：購入中</span></p>
-					<p th:if="${purchase.purchaseflg == true}"><span>ステータス：購入済み</span></p>
+					<p>金額:<span th:text="${item.price}+￥"></span></p>
+					<p>カテゴリー:<span th:text="${item.category.categoryname}"></span></p>
 				</div>
 				<div class="status">
 					<p>申し込み日:&nbsp;&nbsp;<span th:text="${str}"></span></p>
-					<p>カテゴリー:<span th:text="${purchase.item.category.categoryname}"></span></p>
+					<p>購入者:&nbsp;&nbsp;<span th:text="${pur}+人"></span></p>
 				</div>
 				<div class="status">
 					<button class="cp_button01" onclick="location.href='javascript:history.back()'"><span>商品詳細へ</span></button>
 				</div>
 				<div class="status">
-					<button class="cp_button01" onclick="location.href='javascript:history.back()'"><span>出品者へ連絡</span></button>
+					<button class="cp_button01" onclick="location.href='javascript:history.back()'"><span>購入者一覧</span></button>
 				</div>
 				<div class="status">
-					<button class="cp_button01" onclick="location.href='javascript:history.back()'"><span>購入キャンセル</span></button>
+					<button class="cp_button01" onclick="location.href='javascript:history.back()'"><span>出品キャンセル</span></button>
 				</div>
 			</div>
 		</div>				

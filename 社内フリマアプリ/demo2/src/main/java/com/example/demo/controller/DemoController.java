@@ -496,18 +496,38 @@ public class DemoController {
 		return "exhibitor";
 	}
 	//購入履歴画面遷移
-	@RequestMapping("techma/user/purchase")
-	public String purchaseIndex(Model model,  Integer purchaseId, Purchase purchase) {
-		List<Purchase> purchases = purchaseService.findAll();
+	@RequestMapping("techma/user/purchaseindex")
+	public String purchaseIndex(Model model,  Integer purchaseId, Purchase purchase, @AuthenticationPrincipal LoginUserDetails userDatails) {
+		List<Purchase> purchases = purchaseService.findPurchaseList(userDatails.getUser());
 		model.addAttribute("purchases",purchases);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		sdf.setLenient(false);
-		model.addAttribute("sdf", sdf);
-		String str = sdf.format(purchase.getCreated_at());
-		model.addAttribute("str", str);
-		if (purchaseService.findAll().size() == 0) {
+		for (int i = 0; i < purchases.size(); i++) {
+			String str = sdf.format(purchases.get(i).getCreated_at());
+			model.addAttribute("str", str);
+		}
+		if (purchaseService.findPurchaseList(userDatails.getUser()).size() == 0) {
 			model.addAttribute("noperchase","購入商品がありません");
 		}
 		return "purchaseindex";
+	}
+	//出品履歴画面遷移
+	@RequestMapping("techma/user/exhibitindex")
+	public String exhibitIndex(Model model,@AuthenticationPrincipal LoginUserDetails userDatails) {
+		List<Item> items = itemService.findEhibitList(userDatails.getUser());
+		model.addAttribute("items", items);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		sdf.setLenient(false);
+		for (int i = 0; i < items.size(); i++) {
+			String str = sdf.format(items.get(i).getCreated_at());
+			model.addAttribute("str", str);
+		} for (int i = 0; i < items.size(); i++) {
+			int pur = items.size();
+			model.addAttribute("pur", pur);
+		}
+		if (itemService.findEhibitList(userDatails.getUser()).size() == 0) {
+			model.addAttribute("noexhibit","出品商品がありません");
+		}
+		return "exhibitindex";
 	}
 }
