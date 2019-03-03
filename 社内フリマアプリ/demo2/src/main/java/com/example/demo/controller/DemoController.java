@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import org.riversun.slacklet.SlackletService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -187,7 +188,7 @@ public class DemoController {
 	//アイテム出品処理
 	@PostMapping(path = "techma/exhibit")
 	String ItemExhibit(@Validated ItemForm form, BindingResult result, Model model,
-			@AuthenticationPrincipal LoginUserDetails userDatails) {
+			@AuthenticationPrincipal LoginUserDetails userDatails) throws IOException {
 		List<Category> categories = categoryService.findAll();
 		model.addAttribute("categories", categories);
 		if (form.getUploadedFile().isEmpty()) {
@@ -292,6 +293,19 @@ public class DemoController {
 		Item item  = new Item();
 		BeanUtils.copyProperties(form, item );
 		itemService.create(item, userDatails.getUser());
+		//slackのAPI送信
+		String botToken ="xoxb-566853536343-566110452773-hm55lF7Ti1gaTBSpVFuoBLLF"; 
+
+		SlackletService slackService = new SlackletService(botToken);
+		slackService.start();
+
+		//slackダイレクトメッセージを送る
+		String userName = "shunpei5555";
+		slackService.sendDirectMessageTo(userName, userName+"さん！商品の出品が完了しました。出品履歴画面で商品の確認が可能です。  商品名:  "
+		+form.getItemname()+"  数量:  "+ form.getStock()+"点"+"  カテゴリー:   "+form.getCategory().getCategoryname()+"  http://localhost:8080/techmatop/techma/user/exhibitindex/");
+
+		// slackとの接続を終了
+		slackService.stop();
 		return "itemresult";
 	}
 		//出品完了画面遷移
@@ -301,7 +315,7 @@ public class DemoController {
 	}
 	//ユーザー作成
 	@PostMapping(path = "**/usercreate")
-	String UserCreate(@Validated UserForm form, BindingResult result, Model model, @AuthenticationPrincipal LoginUserDetails userDatails ,String password) {
+	String UserCreate(@Validated UserForm form, BindingResult result, Model model, @AuthenticationPrincipal LoginUserDetails userDatails ,String password) throws IOException {
 		if (result.hasErrors()) {
 		 return techmaController(model, userDatails);
 		}
@@ -311,6 +325,18 @@ public class DemoController {
 		password = new Pbkdf2PasswordEncoder().encode(password);
 		user.setPassword(password);
 		userService.create(user);
+		//slackのAPI送信
+		String botToken ="xoxb-566853536343-566110452773-hm55lF7Ti1gaTBSpVFuoBLLF"; 
+
+        SlackletService slackService = new SlackletService(botToken);
+        slackService.start();
+
+        //slackダイレクトメッセージを送る
+        String userName = "shunpei5555";
+        slackService.sendDirectMessageTo(userName, userName+"さんのアカウント作成が完了しました。ログインしてtechmaをお楽しみください。  http://localhost:8080/techmatop");
+
+        // slackとの接続を終了
+        slackService.stop();
 		return "userresult";
 	}
 	//アカウント作成完了
@@ -459,7 +485,7 @@ public class DemoController {
 	//購入処理
 	@PostMapping("techma/buyresult/itemId{itemId}")
 	public String goTobuyResult(Model model, Integer itemId, ItemForm form, BindingResult result,
-			@AuthenticationPrincipal LoginUserDetails userDatails, java.sql.Timestamp created_at) {
+			@AuthenticationPrincipal LoginUserDetails userDatails, java.sql.Timestamp created_at) throws IOException {
 		Item item = itemService.findOne(itemId);
 		model.addAttribute("itemForm", form);
 		if (item.getStock()==0) {
@@ -474,6 +500,24 @@ public class DemoController {
 		purchase.setFilename(item.getFilename());
 		purchaseService.create(purchase, userDatails.getUser(), item);
 		itemService.update(item, item.getUser());
+		//slackのAPI送信
+		String botToken ="xoxb-566853536343-566110452773-hm55lF7Ti1gaTBSpVFuoBLLF"; 
+
+		SlackletService slackService = new SlackletService(botToken);
+		slackService.start();
+
+		//slackダイレクトメッセージを送る
+		String purchaseName = "shunpei5555";
+		slackService.sendDirectMessageTo(purchaseName, purchaseName+"さん！商品の購入が完了致しました。購入履歴画面で商品の確認が可能です。  商品名:"
+		+ item.getItemname() + "  購入数:  " + form.getPurchasenumber() + "  出品者  " + item.getUser().getUsername() + "  http://localhost:8080/techmatop/techma/user/purchaseindex/ ");
+
+		//slackダイレクトメッセージを送る
+		String exhibitName = "shunpei5555";
+		slackService.sendDirectMessageTo(exhibitName, exhibitName+"さん！出品した商品の購入申し込みが行われました。出品履歴画面で商品の確認が可能です。  商品名:"
+		+ item.getItemname() + "  購入数:  " + form.getPurchasenumber() + "  購入者  " + userDatails.getUser().getUsername() + "  http://localhost:8080/techmatop/techma/user/purchaseindex/ ");
+
+		// slackとの接続を終了
+		slackService.stop();
 		return "itembuyresult";
 	}
 	//購入確認
