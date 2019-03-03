@@ -35,7 +35,7 @@
 					<p th:if="${purchase.purchaseflg == true}"><span>ステータス：購入済み</span></p>
 				</div>
 				<div class="status">
-					<p>申し込み日:&nbsp;&nbsp;<span th:text="${str}"></span></p>
+					<p>申し込み日:&nbsp;&nbsp;<span th:text="${#dates.format(purchase.created_at, 'yyyy/MM/dd HH:mm:ss')}"></span></p>
 					<p>カテゴリー:<span th:text="${purchase.item.category.categoryname}"></span></p>
 				</div>
 				<div class="status">

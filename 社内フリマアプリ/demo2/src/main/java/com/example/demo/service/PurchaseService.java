@@ -26,6 +26,10 @@ public class PurchaseService {
 		return purchaseRepository.findUserPurchasList(user);
 	}
 	
+	public List<Purchase> findItemPurchaseList(Item item) {
+		return purchaseRepository.findItemPurchasList(item);
+	}
+	
 	public Purchase findOne(Integer id) {
 		return purchaseRepository.findOne(id);
 	}
