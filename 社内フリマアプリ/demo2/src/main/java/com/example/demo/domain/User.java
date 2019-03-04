@@ -28,6 +28,8 @@ public class User {
 	private String mail;
 	@Column(name="comments")
 	private String comments;
+	@Column(name="slackname")
+	private String slackname;
 	/*itemと一対多の関係にする*/
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
 	private List<Item> items;

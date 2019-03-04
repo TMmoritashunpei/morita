@@ -35,6 +35,7 @@ import com.example.demo.domain.Category;
 import com.example.demo.domain.Item;
 import com.example.demo.domain.Purchase;
 import com.example.demo.domain.User;
+import com.example.demo.service.BotService;
 import com.example.demo.service.CategoryService;
 import com.example.demo.service.ItemService;
 import com.example.demo.service.LoginUserDetails;
@@ -57,6 +58,9 @@ public class DemoController {
 	UserService userService;
 	@Autowired
 	PurchaseService purchaseService;
+	
+	@Autowired
+	BotService botService;
 		
 	@ModelAttribute
 	ItemForm setUpItemForm() {
@@ -293,19 +297,10 @@ public class DemoController {
 		Item item  = new Item();
 		BeanUtils.copyProperties(form, item );
 		itemService.create(item, userDatails.getUser());
-		//slackのAPI送信
-		String botToken ="xoxb-566853536343-566110452773-hm55lF7Ti1gaTBSpVFuoBLLF"; 
-
-		SlackletService slackService = new SlackletService(botToken);
-		slackService.start();
-
-		//slackダイレクトメッセージを送る
-		String userName = "shunpei5555";
-		slackService.sendDirectMessageTo(userName, userName+"さん！商品の出品が完了しました。出品履歴画面で商品の確認が可能です。  商品名:  "
-		+form.getItemname()+"  数量:  "+ form.getStock()+"点"+"  カテゴリー:   "+form.getCategory().getCategoryname()+"  http://localhost:8080/techmatop/techma/user/exhibitindex/");
-
-		// slackとの接続を終了
-		slackService.stop();
+		//slackapi呼び出し
+		if (userDatails.getUser().getSlackname() != null) {
+			botService.ExhibitBot(form, userDatails);
+		}
 		return "itemresult";
 	}
 		//出品完了画面遷移
@@ -313,7 +308,7 @@ public class DemoController {
 	public String goToItemResult() {
 		return "itemresult";
 	}
-	//ユーザー作成
+	//＠ユーザー作成
 	@PostMapping(path = "**/usercreate")
 	String UserCreate(@Validated UserForm form, BindingResult result, Model model, @AuthenticationPrincipal LoginUserDetails userDatails ,String password) throws IOException {
 		if (result.hasErrors()) {
@@ -325,18 +320,10 @@ public class DemoController {
 		password = new Pbkdf2PasswordEncoder().encode(password);
 		user.setPassword(password);
 		userService.create(user);
-		//slackのAPI送信
-		String botToken ="xoxb-566853536343-566110452773-hm55lF7Ti1gaTBSpVFuoBLLF"; 
-
-        SlackletService slackService = new SlackletService(botToken);
-        slackService.start();
-
-        //slackダイレクトメッセージを送る
-        String userName = "shunpei5555";
-        slackService.sendDirectMessageTo(userName, userName+"さんのアカウント作成が完了しました。ログインしてtechmaをお楽しみください。  http://localhost:8080/techmatop");
-
-        // slackとの接続を終了
-        slackService.stop();
+		//slackapi呼び出し
+		if (form.getSlackname() != null) {
+			botService.UsercreateBot(form);
+		}
 		return "userresult";
 	}
 	//アカウント作成完了
@@ -500,24 +487,14 @@ public class DemoController {
 		purchase.setFilename(item.getFilename());
 		purchaseService.create(purchase, userDatails.getUser(), item);
 		itemService.update(item, item.getUser());
-		//slackのAPI送信
-		String botToken ="xoxb-566853536343-566110452773-hm55lF7Ti1gaTBSpVFuoBLLF"; 
-
-		SlackletService slackService = new SlackletService(botToken);
-		slackService.start();
-
-		//slackダイレクトメッセージを送る
-		String purchaseName = "shunpei5555";
-		slackService.sendDirectMessageTo(purchaseName, purchaseName+"さん！商品の購入が完了致しました。購入履歴画面で商品の確認が可能です。  商品名:"
-		+ item.getItemname() + "  購入数:  " + form.getPurchasenumber() + "  出品者  " + item.getUser().getUsername() + "  http://localhost:8080/techmatop/techma/user/purchaseindex/ ");
-
-		//slackダイレクトメッセージを送る
-		String exhibitName = "shunpei5555";
-		slackService.sendDirectMessageTo(exhibitName, exhibitName+"さん！出品した商品の購入申し込みが行われました。出品履歴画面で商品の確認が可能です。  商品名:"
-		+ item.getItemname() + "  購入数:  " + form.getPurchasenumber() + "  購入者  " + userDatails.getUser().getUsername() + "  http://localhost:8080/techmatop/techma/user/purchaseindex/ ");
-
-		// slackとの接続を終了
-		slackService.stop();
+		//slackapi呼び出し
+		if (userDatails.getUser().getSlackname() != null) {
+			botService.purchaseBot(item, form, userDatails);
+		}
+		//slackapi呼び出し
+		if (item.getUser().getSlackname() != null) {
+			botService.ExhibitPurchaseBot(item, form, userDatails);
+		}
 		return "itembuyresult";
 	}
 	//購入確認

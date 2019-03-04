@@ -47,6 +47,10 @@
 						<input class="form-control" type="text" placeholder="tel" id="tel" th:field="*{tel}" required="required"></input>
 						<input class="form-control" type="password" placeholder="Password" id="password" th:field="*{password}" required="required"></input>
 						<input class="form-control" type="password" placeholder="Password(確認)"></input>
+						<p>slackと連携する方はslackアカウントの名前を入れてください</p>
+						<p>登録ボタン先のリンクにてslackの登録が可能です。</p>
+						<p>名前は後で変更することが可能です。</p>
+						<input class="form-control" type="text" placeholder="slackname（任意）" id="slackname" th:field="*{slackname}"></input>
 						<div><button id="submit-btn" type="submit" class="yubi">登録</button></div>
 					</form>
 				</div>

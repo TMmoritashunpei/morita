@@ -78,6 +78,10 @@ header {
 	height: 65px;
 }
 
+p {
+	font-size:7px;
+}
+
 .accordion {
 	width: 119px;
 	list-style: none;

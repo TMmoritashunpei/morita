@@ -9,4 +9,5 @@ public class UserForm {
 	private String tel;
 	private String mail;
 	private String coments;
+	private String slackname;
 }

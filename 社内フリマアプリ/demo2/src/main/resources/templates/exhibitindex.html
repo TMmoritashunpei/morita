@@ -35,7 +35,7 @@
 				</div>
 				<div class="status">
 					<p>出品日:&nbsp;&nbsp;<span th:text="${#dates.format(item.created_at, 'yyyy/MM/dd HH:mm:ss')}"></span></p>
-					<p>購入申し込み数:&nbsp;&nbsp;<span th:text="${#lists.size(item.purchases)}"></span></p>
+					<p>購入取引数:&nbsp;&nbsp;<span th:text="${#lists.size(item.purchases)}"></span></p>
 				</div>
 				<div class="status">
 					<button class="cp_button01" onclick="location.href='javascript:history.back()'"><span>商品詳細へ</span></button>
