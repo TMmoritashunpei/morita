@@ -93,6 +93,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+  			<groupId>org.riversun</groupId>
+  			<artifactId>slacklet</artifactId>
+  			<version>1.0.4</version>
+		</dependency>
 	</dependencies>
 
 	<build>
