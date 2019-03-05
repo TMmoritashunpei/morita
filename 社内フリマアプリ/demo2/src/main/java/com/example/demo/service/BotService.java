@@ -18,9 +18,14 @@ import com.example.demo.web.UserForm;
 public class BotService {
 	@Autowired
     private Settings settings;
+	
+	public String getKey() {
+		return settings.getSlackbotAccessKey();
+	}
+	
 	public void ExhibitBot(ItemForm form, @AuthenticationPrincipal LoginUserDetails userDatails) throws IOException {
 		//slackのAPI送信
-		String botToken = settings.getStringKey(); 
+		String botToken = getKey(); 
 
 		SlackletService slackService = new SlackletService(botToken);
 		slackService.start();
@@ -28,7 +33,7 @@ public class BotService {
 		//slackダイレクトメッセージを送る
 		String userName = userDatails.getUser().getSlackname();
 		slackService.sendDirectMessageTo(userName, userName+"さん！商品の出品が完了しました。出品履歴画面で商品の確認が可能です。  商品名:  "
-		+form.getItemname()+"  数量:  "+ form.getStock()+"点"+"  カテゴリー:   "+form.getCategory().getCategoryname());
+		+form.getItemname()+"  数量:  "+ form.getStock()+"点"+"  カテゴリー:   "+form.getCategory().getCategoryname() + "  techmaのtopはこちら http://localhost:8080/techmatop/techma/" );
 
 		// slackとの接続を終了
 		slackService.stop();
@@ -36,21 +41,21 @@ public class BotService {
 	
 	public void UsercreateBot(UserForm form) throws IOException {
 		//slackのAPI送信
-		String botToken = settings.getStringKey(); ; 
+		String botToken = getKey();
 
 		SlackletService slackService = new SlackletService(botToken);
 		slackService.start();
 
 		//slackダイレクトメッセージを送る
 		String userName = form.getSlackname();
-		slackService.sendDirectMessageTo(userName, userName+"さんのアカウント作成が完了しました。ログインしてtechmaをお楽しみください。");
+		slackService.sendDirectMessageTo(userName, userName+"さんのアカウント作成が完了しました。ログインしてtechmaをお楽しみください。 techmaのtopはこちら http://localhost:8080/techmatop/techma/");
 
 		// slackとの接続を終了
 		slackService.stop();
 	}
 	public void purchaseBot(Item item, ItemForm form, @AuthenticationPrincipal LoginUserDetails userDatails) throws IOException {
 		//slackのAPI送信
-		String botToken = settings.getStringKey(); ; 
+		String botToken = getKey();
 
 		SlackletService slackService = new SlackletService(botToken);
 		slackService.start();
@@ -58,12 +63,12 @@ public class BotService {
 		//slackダイレクトメッセージを送る
 		String purchaseName = userDatails.getUser().getSlackname();
 		slackService.sendDirectMessageTo(purchaseName, purchaseName+"さん！商品の購入が完了致しました。購入履歴画面で商品の確認が可能です。  商品名:"
-		+ item.getItemname() + "  購入数:  " + form.getPurchasenumber() + "  出品者  " + item.getUser().getUsername());
+		+ item.getItemname() + "  購入数:  " + form.getPurchasenumber() + "  出品者  " + item.getUser().getUsername()+"  techmaのtopはこちら http://localhost:8080/techmatop/techma/");
 
 				
 	}
 	public void ExhibitPurchaseBot(Item item, ItemForm form, @AuthenticationPrincipal LoginUserDetails userDatails) throws IOException {
-		String botToken = settings.getStringKey(); ; 
+		String botToken = getKey(); 
 
 		SlackletService slackService = new SlackletService(botToken);
 		slackService.start();

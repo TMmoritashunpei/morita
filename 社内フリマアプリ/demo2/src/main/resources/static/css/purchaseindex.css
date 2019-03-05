@@ -45,8 +45,16 @@ form {
 .status {
 	font-size:10px;
 	float: left;
-	margin-left:4%;
+	margin-left:3%;
 	margin-top: 2%;
+}
+
+.status-btn  button {
+	margin-left:30px;
+}
+
+.status-btn {
+	float: right;
 }
 
 .error {
@@ -230,4 +238,46 @@ input:hover {
 }
 .cp_button01:focus:before {
 	background-color: rgba(38,198,218,0.5);
+}
+
+.status-btn p {
+	background-color: #8eb9ff;
+}
+
+#switchstatus {
+	margin-left: 80px;
+}
+
+input {
+    display: none;
+}
+label{
+  position:relative;
+    display: block;
+    cursor: pointer;
+    width: 60px;
+    height: 30px;
+    margin: 0;
+    background: #cccccc;
+    transition: .2s;
+  border-radius:15px;
+}
+label:after
+{
+  position:absolute;
+  display:block;
+  content:"";
+  width:26px;
+  height:26px;
+  border-radius:50%;
+  background-color:#fff;
+  top:2px;
+  left:32px;
+    transition: .15s;
+}
+input[type="checkbox"]:checked + label {
+    background-color: #0099ff;
+}
+input[type="checkbox"]:checked + label:after {
+  left:2px;
 }

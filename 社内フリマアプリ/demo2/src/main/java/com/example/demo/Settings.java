@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "ymlSetting")
 public class Settings {
 	private String slackbotAccessKey;
-	public void setSlackbotKey(String slackbotAccessKey){
+	public void setSlackbotAccessKey(String slackbotAccessKey){
         this.slackbotAccessKey = slackbotAccessKey;
     }
-	public String getStringKey(){
+	public String getSlackbotAccessKey(){
         return slackbotAccessKey;
     }
 }

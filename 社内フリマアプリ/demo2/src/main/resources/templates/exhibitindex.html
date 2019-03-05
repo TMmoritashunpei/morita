@@ -37,14 +37,19 @@
 					<p>出品日:&nbsp;&nbsp;<span th:text="${#dates.format(item.created_at, 'yyyy/MM/dd HH:mm:ss')}"></span></p>
 					<p>購入取引数:&nbsp;&nbsp;<span th:text="${#lists.size(item.purchases)}"></span></p>
 				</div>
+				<div class="status-btn">
 				<div class="status">
-					<button class="cp_button01" onclick="location.href='javascript:history.back()'"><span>商品詳細へ</span></button>
+					<a href="/techmatop/techma/item/" th:href="@{/techmatop/techma/item/itemId(itemId=${item.itemId})}"><button class="cp_button01"><span>商品詳細へ</span></button></a>
 				</div>
 				<div class="status">
 					<button class="cp_button01" onclick="location.href='javascript:history.back()'"><span>購入者一覧</span></button>
 				</div>
 				<div class="status">
 					<button class="cp_button01" onclick="location.href='javascript:history.back()'"><span>出品キャンセル</span></button>
+				</div>
+				<div class="status">
+					<button class="cp_button01" onclick="location.href='javascript:history.back()'"><span>キャンセル取消</span></button>
+				</div>
 				</div>
 			</div>
 		</div>				
