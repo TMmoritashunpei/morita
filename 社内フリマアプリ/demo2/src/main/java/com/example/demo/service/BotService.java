@@ -3,11 +3,12 @@ package com.example.demo.service;
 import java.io.IOException;
 
 import javax.transaction.Transactional;
-
 import org.riversun.slacklet.SlackletService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.Settings;
 import com.example.demo.domain.Item;
 import com.example.demo.web.ItemForm;
 import com.example.demo.web.UserForm;
@@ -15,9 +16,11 @@ import com.example.demo.web.UserForm;
 @Service
 @Transactional
 public class BotService {
+	@Autowired
+    private Settings settings;
 	public void ExhibitBot(ItemForm form, @AuthenticationPrincipal LoginUserDetails userDatails) throws IOException {
 		//slackのAPI送信
-		String botToken ="xoxb-566853536343-566110452773-6LWPXLusgBvsdOKffK09bawN"; 
+		String botToken = settings.getStringKey(); 
 
 		SlackletService slackService = new SlackletService(botToken);
 		slackService.start();
@@ -33,13 +36,13 @@ public class BotService {
 	
 	public void UsercreateBot(UserForm form) throws IOException {
 		//slackのAPI送信
-		String botToken ="xoxb-566853536343-566110452773-6LWPXLusgBvsdOKffK09bawN"; 
+		String botToken = settings.getStringKey(); ; 
 
 		SlackletService slackService = new SlackletService(botToken);
 		slackService.start();
 
 		//slackダイレクトメッセージを送る
-		String userName =form.getSlackname();
+		String userName = form.getSlackname();
 		slackService.sendDirectMessageTo(userName, userName+"さんのアカウント作成が完了しました。ログインしてtechmaをお楽しみください。");
 
 		// slackとの接続を終了
@@ -47,7 +50,7 @@ public class BotService {
 	}
 	public void purchaseBot(Item item, ItemForm form, @AuthenticationPrincipal LoginUserDetails userDatails) throws IOException {
 		//slackのAPI送信
-		String botToken ="xoxb-566853536343-566110452773-6LWPXLusgBvsdOKffK09bawN"; 
+		String botToken = settings.getStringKey(); ; 
 
 		SlackletService slackService = new SlackletService(botToken);
 		slackService.start();
@@ -60,7 +63,7 @@ public class BotService {
 				
 	}
 	public void ExhibitPurchaseBot(Item item, ItemForm form, @AuthenticationPrincipal LoginUserDetails userDatails) throws IOException {
-		String botToken ="xoxb-566853536343-566110452773-6LWPXLusgBvsdOKffK09bawN"; 
+		String botToken = settings.getStringKey(); ; 
 
 		SlackletService slackService = new SlackletService(botToken);
 		slackService.start();
