@@ -25,6 +25,10 @@ public class UserService {
 		return userRepository.findOne(name);
 	}
 	
+	public User findByUserId(Integer id) {
+		return userRepository.findByUserId(id);
+	}
+	
 	public User create(User user) {
 		return userRepository.save(user);
 	}

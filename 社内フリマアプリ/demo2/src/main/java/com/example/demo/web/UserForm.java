@@ -8,6 +8,7 @@ public class UserForm {
 	private String password;
 	private String tel;
 	private String mail;
-	private String coments;
+	private String comments;
 	private String slackname;
+	private String filename;
 }

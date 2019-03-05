@@ -310,7 +310,7 @@ public class DemoController {
 	}
 	//＠ユーザー作成
 	@PostMapping(path = "**/usercreate")
-	String UserCreate(@Validated UserForm form, BindingResult result, Model model, @AuthenticationPrincipal LoginUserDetails userDatails ,String password) throws IOException {
+	String UserCreate(@Validated UserForm form, BindingResult result, Model model, @AuthenticationPrincipal LoginUserDetails userDatails , String password) throws IOException {
 		if (result.hasErrors()) {
 		 return techmaController(model, userDatails);
 		}
@@ -353,25 +353,27 @@ public class DemoController {
 	}
 	
 	
-	//ユーザー更新
-	@GetMapping(path = "techma/useredit",params = "form")
-	String UserEditForm(@RequestParam String name,@Validated UserForm form) {
-		User user = userService.findOne(name);
-		BeanUtils.copyProperties(user, form);
-		return "useredit";
+	//ユーザー更新画面
+	@GetMapping(path = "techma/user/useredit")
+	String UserEditForm(@Validated UserForm form, @AuthenticationPrincipal LoginUserDetails userDatails, BindingResult result) {
+		//User user = userService.findOne(userDatails.getUsername());
+		//BeanUtils.copyProperties(user, form);
+		return "userupdate";
 	}
-	//ユーザー更新
-	@PostMapping(path = "techma/useredit")
-	String UserEdit(@RequestParam String name,@Validated UserForm form, BindingResult result) {
+	//ユーザー更新処理
+	@PostMapping(path = "techma/userupdate")
+	String UserEdit(@Validated UserForm form, @AuthenticationPrincipal LoginUserDetails userDatails, BindingResult result, String password) {
+		User user = userService.findByUserId(userDatails.getUser().getId());
 		if (result.hasErrors()) {
 			/*＠後で繊維先変える*/
-		return UserEditForm(name, form);
+		return UserEditForm( form, userDatails, result);
 		}
-		User user = new User();
 		BeanUtils.copyProperties(form, user);
-		user.setUsername(name);
+		password = user.getPassword();
+		password = new Pbkdf2PasswordEncoder().encode(password);
+		user.setPassword(password);
 		userService.update(user);
-		return "redirect:/item";
+		return "userupdateresult";
 	}
 	//カテゴリー更新
 	@GetMapping(path = "techma/categoryedit",params = "form")

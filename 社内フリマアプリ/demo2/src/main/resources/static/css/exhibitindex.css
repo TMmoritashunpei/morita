@@ -282,3 +282,53 @@ input[type="checkbox"]:checked + label {
 input[type="checkbox"]:checked + label:after {
   left:2px;
 }
+
+ /* === ボタンを表示するエリア ============================== */
+.sample4Area {
+  margin         : auto;                /* 中央寄せ           */
+  width          : 70px;                /* ボタンの横幅       */
+}
+ 
+ /* === チェックボックス ==================================== */
+.sample4Area input[type="checkbox"] {
+  display        : none;            /* チェックボックス非表示 */
+}
+ 
+ /* === チェックボックスのラベル（標準） ==================== */
+.sample4Area label {
+  display        : block;               /* ボックス要素に変更 */
+  box-sizing     : border-box;          /* 枠線を含んだサイズ */
+  border         : 2px solid #ccc;      /* 枠線(一旦四方向)   */
+  border-radius  : 35px;                /* 角丸               */
+  height         : 70px;                /* ボタンの高さ       */
+  background     : #ff6347;             /* 背景色             */
+  box-shadow     : 3px 3px 6px #888;    /* 影付け             */
+  transition     : .5s;                 /* 滑らか変化         */
+}
+ 
+ /* === チェックボックスのラベル（ONの時） ================== */
+.sample4Area #sample4check:checked + label {
+  background     : #78bd78;             /* 背景色             */
+  box-shadow     : none;                /* 影を消す           */
+}
+ 
+ /* === ラベル内の画像（標準） ============================== */
+.sample4Area label img{
+  display        : block;               /* ブロック化         */
+  margin         : 6px auto auto auto;  /* 上は6pxで中央寄せ  */
+}
+ 
+ /* === ラベル内の画像（ONの時） ============================ */
+.sample4Area #sample4check:checked + label img {
+  animation      : sample4On .5s ease;  /* アニメーション実行 */
+}
+@keyframes sample4On {
+  100% {transform  : rotate(360deg)}    /* 時計回り回転       */
+}
+ 
+ /* === ラベル内の画像（OFFの時） =========================== */
+.sample4Area #sample4check:not(:checked) + label img {
+  animation      : sample4Off .5s ease; /* アニメーション実行 */
+}
+@keyframes sample4Off {
+  100% {transform  : rotate(-360deg)}   /* 反時計回り回転     */
