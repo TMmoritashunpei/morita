@@ -45,11 +45,11 @@
 				<div class="status">
 					<button class="cp_button01" onclick="location.href='javascript:history.back()'"><span>出品者へ連絡</span></button>
 				</div>
-				<div class="status">
-					<button class="cp_button01" onclick="location.href='javascript:history.back()'"><span>購入キャンセル</span></button>
+				<div class="status" th:if="${purchase.cansellflg == false}">
+					<a th:href="@{/techmatop/techma/item/purchasecansell/purchaseId(purchaseId=${purchase.purchaseId})}"><button class="cp_button01"><span>購入キャンセル</span></button></a>
 				</div>
-				<div class="status">
-					<button class="cp_button01" onclick="location.href='javascript:history.back()'"><span>キャンセル取消</span></button>
+				<div class="status" th:if="${purchase.cansellflg == true}">
+					<a th:href="@{/techmatop/techma/item/purchasecansell/purchaseId(purchaseId=${purchase.purchaseId})}"><button class="cp_button01" ><span>キャンセル取消</span></button></a>
 				</div>
 				</div>
 			</div>

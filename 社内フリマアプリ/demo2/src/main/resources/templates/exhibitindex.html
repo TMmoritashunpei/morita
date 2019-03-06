@@ -29,7 +29,7 @@
 					<p>商品名：<span th:text="${item.itemname}"></span></p>
 					<p>現在庫数:<span th:text="${item.stock}"></span></p>	
 					<p th:if="${item.exhibitcansellflg == false}">ステータス:<span>販売中</span></p>	
-					<p th:if="${item.exhibitcansellflg == true}">ステータス:<span>キャンセル中</span></p>	
+					<p th:if="${item.exhibitcansellflg == true}">ステータス:<span>キャンセル</span></p>
 				</div>
 				<div class="status">
 					<p>金額:<span th:text="${item.price}+￥"></span></p>

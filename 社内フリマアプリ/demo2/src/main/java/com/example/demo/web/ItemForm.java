@@ -26,5 +26,5 @@ public class ItemForm implements Serializable{
 	private MultipartFile uploadedFile2;
 	private MultipartFile uploadedFile3;
 	private MultipartFile uploadedFile4;
-	private Boolean exhibitcansellflg;
+	private Boolean exhibitcansellflg = false;
 }

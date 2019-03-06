@@ -11,8 +11,6 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-
-import org.riversun.slacklet.SlackletService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -175,20 +173,6 @@ public class DemoController {
 		    //fileUploadSampleForm.getUploadedFile().getOriginalFilename();
 			return itemcreate(model, form);
 	}
-	//アイテム作成
-	@PostMapping(path = "techma/itemedit")
-	String ItemEdit(@RequestParam Integer id,@Validated ItemForm form, BindingResult result, Model model,
-			@AuthenticationPrincipal LoginUserDetails userDatails) {
-		if (result.hasErrors()) {
-			/*＠後で繊維先変える*/
-		return ItemEditForm(id, form,  userDatails, model);
-		}
-		Item item = new Item();
-		BeanUtils.copyProperties(form, item);
-		item.setItemId(id);
-		itemService.update(item, userDatails.getUser());
-		return "redirect:/techma/item";
-		}
 	//アイテム出品処理
 	@PostMapping(path = "techma/exhibit")
 	String ItemExhibit(@Validated ItemForm form, BindingResult result, Model model,
@@ -301,7 +285,7 @@ public class DemoController {
 		if (userDatails.getUser().getSlackname() != null) {
 			botService.ExhibitBot(form, userDatails);
 		}
-		return "itemresult";
+		return "redirect:/techmatop/techma/itemresult";
 	}
 		//出品完了画面遷移
 	@RequestMapping("techma/itemresult")
@@ -402,7 +386,12 @@ public class DemoController {
 		if (user.getSlackname() != null) {
 			botService.UserUpdateBot(user);
 		}
-		return "userupdateresult";
+		return "redirect:/techmatop/techma/userupdateresult";
+	}
+	//ユーザー更新完了
+	@RequestMapping("techma/userupdateresult")
+	public String UserUpdateresult() {
+	return "userupdateresult";
 	}
 	//カテゴリー更新
 	@GetMapping(path = "techma/categoryedit",params = "form")
@@ -524,8 +513,13 @@ public class DemoController {
 		if (item.getUser().getSlackname() != null) {
 			botService.ExhibitPurchaseBot(item, form, userDatails);
 		}
-		return "itembuyresult";
+		return "redirect:/techmatop/techma/buyresult";
 	}
+	//購入完了
+		@RequestMapping("techma/buyresult")
+		public String ItemBuyresult() {
+			return "itemresult";
+		}
 	//購入確認
 	@RequestMapping("techma/itemresultcheck")
 	public String goToItemresultcheck() {
@@ -548,6 +542,8 @@ public class DemoController {
 	//購入履歴画面遷移
 	@RequestMapping("techma/user/purchaseindex")
 	public String purchaseIndex(Model model,  Integer purchaseId, Purchase purchase, @AuthenticationPrincipal LoginUserDetails userDatails) {
+		List<Category> categories = categoryService.findAll();
+		model.addAttribute("categories", categories);
 		List<Purchase> purchases = purchaseService.findPurchaseList(userDatails.getUser());
 		model.addAttribute("purchases",purchases);
 		if (purchaseService.findPurchaseList(userDatails.getUser()).size() == 0) {
@@ -558,6 +554,8 @@ public class DemoController {
 	//出品履歴画面遷移
 	@RequestMapping("techma/user/exhibitindex")
 	public String exhibitIndex(Model model,@AuthenticationPrincipal LoginUserDetails userDatails) {
+		List<Category> categories = categoryService.findAll();
+		model.addAttribute("categories", categories);
 		List<Item> items = itemService.findEhibitList(userDatails.getUser());
 		model.addAttribute("items", items);
 		if (itemService.findEhibitList(userDatails.getUser()).size() == 0) {
@@ -565,7 +563,7 @@ public class DemoController {
 		}
 		return "exhibitindex";
 	}
-	//アイテム更新
+	//出品アイテムキャンセル
 	@RequestMapping("techma/item/cansell/itemId{itemId}")
 	String ItemEditForm(@RequestParam Integer itemId,@Validated ItemForm form, @AuthenticationPrincipal LoginUserDetails userDatails,Model model) {
 		Item item = itemService.findOne(itemId);
@@ -575,4 +573,14 @@ public class DemoController {
 		itemService.update(item, userDatails.getUser());
 		return "redirect:/techmatop/techma/user/exhibitindex";
 	}
+	//購入アイテムキャンセル
+		@RequestMapping("techma/item/purchasecansell/purchaseId{purchaseId}")
+		String PurchaseItemEditForm(@RequestParam Integer purchaseId,@Validated ItemForm form, @AuthenticationPrincipal LoginUserDetails userDatails,Model model) {
+			Purchase purchase = purchaseService.findOne(purchaseId);
+		     Boolean purchaseflg = purchase.getCansellflg();
+		     purchaseflg = !purchaseflg;
+		    purchase.setCansellflg(purchaseflg);
+			purchaseService.update(purchase, userDatails.getUser());
+			return "redirect:/techmatop/techma/user/purchaseindex";
+		}
 }
