@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS items (
 CREATE TABLE IF NOT EXISTS users (
 	id INT(10) PRIMARY KEY AUTO_INCREMENT,
 	username VARCHAR(30) NOT NULL,
- 	password VARCHAR(255), tel VARCHAR(20), mail VARCHAR(50), comments VARCHAR(255), slackname VARCHAR(30),
+ 	password VARCHAR(255), tel VARCHAR(20), mail VARCHAR(50), comments VARCHAR(255), slackname VARCHAR(30), filename VARCHAR(30),
  	created_at timestamp not null default current_timestamp,
   	updated_at timestamp not null default current_timestamp on update current_timestamp
  ) character set 'utf8';

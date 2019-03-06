@@ -31,6 +31,8 @@ public class User {
 	@Column(name="slackname")
 	private String slackname;
 	/*itemと一対多の関係にする*/
+	@Column(name="filename")
+	private String filename;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
 	private List<Item> items;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")

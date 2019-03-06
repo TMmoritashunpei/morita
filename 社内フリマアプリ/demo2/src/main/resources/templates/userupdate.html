@@ -25,7 +25,7 @@
 				<div class="pic-add">
 				<ul>
 					<li><div class="pic-item">
-						<input class="pic-control" id="file" name="file" type="file"  accept="image/*" required="required"/>
+						<input class="pic-control" id="file" name="file" type="file" th:field="*{uploadedFile}" accept="image/*"/>
 						<img  class="noimg" src="/image/No_Image_Available.jpg"></img>
 						<div class="preview"><input id="cancel" class="cansel" type="button" value="cancel"></input></div>
 						</div>
@@ -39,11 +39,11 @@
 					</div>
 					<div class="itemprice">
 					<p>パスワードを入力してください</p>
-						<input class="form-control" type="text" placeholder="password"  required="required"></input>
+						<input class="form-control" type="text" placeholder="password" th:field="*{password}"  required="required"></input>
 					</div>
 					<div class="itemprice">
 					<p>再入力</p>
-						<input class="form-control" type="text" placeholder="password" th:field="*{password}" required="required"></input>
+						<input class="form-control" type="text" placeholder="password" required="required"></input>
 					</div>
 					<div class="itemprice">
 					<p>電話番号を入力してください</p>

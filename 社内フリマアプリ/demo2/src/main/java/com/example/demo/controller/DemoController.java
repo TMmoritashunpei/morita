@@ -355,24 +355,62 @@ public class DemoController {
 	
 	//ユーザー更新画面
 	@GetMapping(path = "techma/user/useredit")
-	String UserEditForm(@Validated UserForm form, @AuthenticationPrincipal LoginUserDetails userDatails, BindingResult result) {
-		//User user = userService.findOne(userDatails.getUsername());
-		//BeanUtils.copyProperties(user, form);
+	String UserEditForm(@Validated UserForm form, @AuthenticationPrincipal LoginUserDetails userDatails, BindingResult result, Model model) {
+		List<Category> categories = categoryService.findAll();
+		model.addAttribute("categories", categories);
 		return "userupdate";
 	}
 	//ユーザー更新処理
 	@PostMapping(path = "techma/userupdate")
-	String UserEdit(@Validated UserForm form, @AuthenticationPrincipal LoginUserDetails userDatails, BindingResult result, String password) {
-		User user = userService.findByUserId(userDatails.getUser().getId());
+	String UserEdit(@Validated UserForm form, @AuthenticationPrincipal LoginUserDetails userDatails, BindingResult result, String password,Model model) throws IOException {
+		User user = userDatails.getUser();
 		if (result.hasErrors()) {
 			/*＠後で繊維先変える*/
-		return UserEditForm( form, userDatails, result);
+		return UserEditForm( form, userDatails, result, model);
 		}
+		//画像アップロード
+		Path path = Paths.get("src/main/resources/static/userimage/");
+		if (!Files.exists(path)) {
+			try {
+				Files.createDirectory(path);
+			} catch (NoSuchFileException ex) {
+				System.out.println(ex);
+				} catch (IOException ex) {
+				System.out.println(ex);
+			}
+			
+		}
+		int dot = form.getUploadedFile().getOriginalFilename().lastIndexOf(".");
+		  String extention = "";
+		  if (dot > 0) {
+		    extention = form.getUploadedFile().getOriginalFilename().substring(dot).toLowerCase();
+		  }
+		  String filename = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS").format(LocalDateTime.now());
+		  form.setFilename(filename + extention);
+		  Path uploadfile = Paths		  
+		      .get("src/main/resources/static/userimage/" + filename + extention);
+		  if(dot < 0) {
+				form.setFilename(null);
+			} else {
+		  try (OutputStream os = Files.newOutputStream(uploadfile, StandardOpenOption.CREATE)) {
+		    byte[] bytes = form.getUploadedFile().getBytes();
+		    os.write(bytes);
+		  } catch (IOException ex) {
+		    System.err.println(ex);
+		  }
+		}
+		  if (result.hasErrors()) {
+				 return UserEditForm(form, userDatails, result, model);
+		  }
 		BeanUtils.copyProperties(form, user);
 		password = user.getPassword();
 		password = new Pbkdf2PasswordEncoder().encode(password);
 		user.setPassword(password);
 		userService.update(user);
+		//slackapi呼び出し
+		if (user.getSlackname() != null) {
+			botService.UserUpdateBot(user);
+		}
 		return "userupdateresult";
 	}
 	//カテゴリー更新
