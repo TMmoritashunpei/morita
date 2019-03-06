@@ -33,10 +33,11 @@
 				<img class="item-image" th:if="${item.filename == null and item.stock != 0}" src="/image/No_Image_Available.jpg"></img>
 				<img class="item-image" th:if="${item.stock != 0 and item.filename != null}" th:src="|/itemimage/${item.filename}|"></img>
 				<div class="status">
-					<p><span th:text="${item.itemname}"></span></p>
-					<p>price:<span th:text="${item.price}"></span></p>
-					<p>stock:<span th:text="${item.stock}"></span></p>
-					<p><span th:text="${item.category.categoryname}"></span></p>
+					<p>商品名:&nbsp;&nbsp;<span th:text="${item.itemname}"></span></p>
+					<p>price:&nbsp;&nbsp;<span th:text="${item.price}"></span></p>
+					<p>stock:&nbsp;&nbsp;<span th:text="${item.stock}"></span></p>
+					<p>出品者:&nbsp;&nbsp; <span th:text="${item.user.username}"></span></p>
+					<p>カテゴリー:&nbsp;&nbsp;<span th:text="${item.category.categoryname}"></span></p>
 				</div>
 			</a>
 			</div>

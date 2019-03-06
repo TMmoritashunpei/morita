@@ -28,6 +28,8 @@
 				<div class="status">
 					<p>商品名：<span th:text="${item.itemname}"></span></p>
 					<p>現在庫数:<span th:text="${item.stock}"></span></p>	
+					<p th:if="${item.exhibitcansellflg == false}">ステータス:<span>販売中</span></p>	
+					<p th:if="${item.exhibitcansellflg == true}">ステータス:<span>キャンセル中</span></p>	
 				</div>
 				<div class="status">
 					<p>金額:<span th:text="${item.price}+￥"></span></p>
@@ -42,13 +44,13 @@
 					<a href="/techmatop/techma/item/" th:href="@{/techmatop/techma/item/itemId(itemId=${item.itemId})}"><button class="cp_button01"><span>商品詳細へ</span></button></a>
 				</div>
 				<div class="status">
-					<button class="cp_button01" onclick="location.href='javascript:history.back()'"><span>購入者一覧</span></button>
+					<button  th:if="${#lists.size(item.purchases) != 0}" class="cp_button01" onclick="location.href='javascript:history.back()'"><span>購入者一覧</span></button>
+				</div>		
+				<div class="status" th:if="${item.exhibitcansellflg == false}">
+					<a th:href="@{/techmatop/techma/item/cansell/itemId(itemId=${item.itemId})}"><button class="cp_button01" th:value="${item.itemId}"><span>出品キャンセル</span></button></a>
 				</div>
-				<div class="status">
-					<button class="cp_button01" onclick="location.href='javascript:history.back()'"><span>出品キャンセル</span></button>
-				</div>
-				<div class="status">
-					<button class="cp_button01" onclick="location.href='javascript:history.back()'"><span>キャンセル取消</span></button>
+				<div class="status" th:if="${item.exhibitcansellflg == true}">
+					<a th:href="@{/techmatop/techma/item/cansell/itemId(itemId=${item.itemId})}"><button class="cp_button01" type="submit"><span>キャンセル取消</span></button></a>
 				</div>
 				</div>
 			</div>

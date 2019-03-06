@@ -177,11 +177,11 @@ public class DemoController {
 	}
 	//アイテム作成
 	@PostMapping(path = "techma/itemedit")
-	String ItemEdit(@RequestParam Integer id,@Validated ItemForm form, BindingResult result,
+	String ItemEdit(@RequestParam Integer id,@Validated ItemForm form, BindingResult result, Model model,
 			@AuthenticationPrincipal LoginUserDetails userDatails) {
 		if (result.hasErrors()) {
 			/*＠後で繊維先変える*/
-		return ItemEditForm(id, form);
+		return ItemEditForm(id, form,  userDatails, model);
 		}
 		Item item = new Item();
 		BeanUtils.copyProperties(form, item);
@@ -344,15 +344,6 @@ public class DemoController {
 		/*＠後で繊維先変える*/
 		return "redairect:/techma/itemresult";
 	}
-	//アイテム更新
-	@GetMapping(path = "techma/itemedit",params = "form")
-	String ItemEditForm(@RequestParam Integer id,@Validated ItemForm form) {
-		Item item = itemService.findOne(id);
-		BeanUtils.copyProperties(item, form);
-		return "itemedit";
-	}
-	
-	
 	//ユーザー更新画面
 	@GetMapping(path = "techma/user/useredit")
 	String UserEditForm(@Validated UserForm form, @AuthenticationPrincipal LoginUserDetails userDatails, BindingResult result, Model model) {
@@ -507,8 +498,6 @@ public class DemoController {
 		model.addAttribute("categories", categories);
 		return "user";
 	}
-
-
 	//購入処理
 	@PostMapping("techma/buyresult/itemId{itemId}")
 	public String goTobuyResult(Model model, Integer itemId, ItemForm form, BindingResult result,
@@ -568,15 +557,22 @@ public class DemoController {
 	}
 	//出品履歴画面遷移
 	@RequestMapping("techma/user/exhibitindex")
-	public String exhibitIndex(Model model,@AuthenticationPrincipal LoginUserDetails userDatails, String str, Integer i, Integer pur) {
+	public String exhibitIndex(Model model,@AuthenticationPrincipal LoginUserDetails userDatails) {
 		List<Item> items = itemService.findEhibitList(userDatails.getUser());
 		model.addAttribute("items", items);
-		//List<Purchase> purchases = purchaseService.findItemPurchaseList(items.get(i));
-		//pur = purchases.size();
-		//model.addAttribute("pur", pur);
 		if (itemService.findEhibitList(userDatails.getUser()).size() == 0) {
 			model.addAttribute("noexhibit","出品商品がありません");
 		}
 		return "exhibitindex";
+	}
+	//アイテム更新
+	@RequestMapping("techma/item/cansell/itemId{itemId}")
+	String ItemEditForm(@RequestParam Integer itemId,@Validated ItemForm form, @AuthenticationPrincipal LoginUserDetails userDatails,Model model) {
+		Item item = itemService.findOne(itemId);
+	     Boolean itemflg = item.getExhibitcansellflg();
+	     itemflg = !itemflg;
+	    item.setExhibitcansellflg(itemflg);
+		itemService.update(item, userDatails.getUser());
+		return "redirect:/techmatop/techma/user/exhibitindex";
 	}
 }
