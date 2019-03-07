@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.domain.Category;
 import com.example.demo.domain.Item;
@@ -48,7 +49,7 @@ import com.example.demo.web.UserForm;
 
 @Controller
 @RequestMapping("techmatop")
-@SessionAttributes(types = ItemForm.class)
+@SessionAttributes(value = "itemForm")
 public class DemoController {
 	
 	@Autowired
@@ -154,123 +155,124 @@ public class DemoController {
 	}
 	//出品確認画面遷移
 	@PostMapping("techma/itemchack")	
-	public String itemChack(Model model, ItemForm form) {
+	public String itemChack(Model model, ItemForm form, BindingResult result) {
 	/*ctegory全件取得*/
 	List<Category> categories = categoryService.findAll();
 	model.addAttribute("categories", categories);
 	model.addAttribute("itemForm", form);
+	if (form.getUploadedFile().isEmpty()) {
+		return "itemcreate";
+	}
+	Path path = Paths.get("src/main/resources/static/itemimage/");
+	if (!Files.exists(path)) {
+		try {
+			Files.createDirectory(path);
+		} catch (NoSuchFileException ex) {
+			System.out.println(ex);
+			} catch (IOException ex) {
+			System.out.println(ex);
+		}
+		
+	}
+	int dot = form.getUploadedFile().getOriginalFilename().lastIndexOf(".");
+	  String extention = "";
+	  if (dot > 0) {
+	    extention = form.getUploadedFile().getOriginalFilename().substring(dot).toLowerCase();
+	  }
+	  String filename = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS").format(LocalDateTime.now());
+	  form.setFilename(filename + extention);
+	  Path uploadfile = Paths
+	      .get("src/main/resources/static/itemimage/" + filename + extention);
+
+	  try (OutputStream os = Files.newOutputStream(uploadfile, StandardOpenOption.CREATE)) {
+	    byte[] bytes = form.getUploadedFile().getBytes();
+	    os.write(bytes);
+	  } catch (IOException ex) {
+	    System.err.println(ex);
+	  }
+	if (result.hasErrors()) {
+	 return itemcreate(model, form);
+	}
+	//2つ目の画像処理
+	int dot2 = form.getUploadedFile2().getOriginalFilename().lastIndexOf(".");
+	  String extention2 = "";
+	  if (dot2 > 0) {
+	    extention2 = form.getUploadedFile2().getOriginalFilename().substring(dot2).toLowerCase();
+	  }
+	  String filename2 = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS").format(LocalDateTime.now());
+	  form.setFilename2(filename2 + extention2);
+	  Path uploadfile2 = Paths
+	      .get("src/main/resources/static/itemimage/" + filename2 + extention2);
+	  if(dot2 < 0) {
+		 form.setFilename2(null);
+	  } else {
+	  try (OutputStream os = Files.newOutputStream(uploadfile2, StandardOpenOption.CREATE)) {
+	    byte[] bytes = form.getUploadedFile2().getBytes();
+	    os.write(bytes);
+	  } catch (IOException ex) {
+	    System.err.println(ex);
+	  		}
+	  }
+	 //3つ目の画像処理
+	 int dot3 = form.getUploadedFile3().getOriginalFilename().lastIndexOf(".");
+	  String extention3 = "";
+	  if (dot3 > 0) {
+	    extention3 = form.getUploadedFile3().getOriginalFilename().substring(dot3).toLowerCase();
+	  }
+	  String filename3 = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS").format(LocalDateTime.now());
+	  form.setFilename3(filename3 + extention3);
+	  Path uploadfile3 = Paths
+	      .get("src/main/resources/static/itemimage/" + filename3 + extention3);
+	  if(dot3 < 0) {
+			 form.setFilename3(null);
+	  } else {
+	  try (OutputStream os = Files.newOutputStream(uploadfile3, StandardOpenOption.CREATE)) {
+	    byte[] bytes = form.getUploadedFile3().getBytes();
+	    os.write(bytes);
+	  } catch (IOException ex) {
+	    System.err.println(ex);
+	  		}
+	  }
+	if (result.hasErrors()) {
+	 return itemcreate(model, form);
+	}
+	int dot4 = form.getUploadedFile4().getOriginalFilename().lastIndexOf(".");
+	  String extention4 = "";
+	  if (dot4 > 0) {
+	    extention4 = form.getUploadedFile4().getOriginalFilename().substring(dot4).toLowerCase();
+	  }
+	  String filename4 = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS").format(LocalDateTime.now());
+	  form.setFilename4(filename4 + extention4);
+	  Path uploadfile4 = Paths
+	      .get("src/main/resources/static/itemimage/" + filename4 + extention4);
+	  if(dot4 < 0) {
+			 form.setFilename4(null);
+	  } else {
+	  try (OutputStream os = Files.newOutputStream(uploadfile4, StandardOpenOption.CREATE)) {
+	    byte[] bytes = form.getUploadedFile4().getBytes();
+	    os.write(bytes);
+	  } catch (IOException ex) {
+	    System.err.println(ex);
+	  		}
+	  }
+	if (result.hasErrors()) {
+	 return itemcreate(model, form);
+	}
 	return "itemexhibitcheck";
 	}
 	//アイテム画像送信
 	@RequestMapping(path ="techma/uproadfile",method = RequestMethod.POST)
-	String ItemUproadFile(Model model ,ItemForm form) {		
+	String ItemUproadFile(Model model ,ItemForm form, MultipartFile uploadedFile) {		
 		    //fileUploadSampleForm.getUploadedFile().getOriginalFilename();
 			return itemcreate(model, form);
 	}
 	//アイテム出品処理
-	@RequestMapping(path = "techma/exhibit")
-	String ItemExhibit(@Validated @RequestParam("itemForm") ItemForm form, BindingResult result, Model model,
-			@AuthenticationPrincipal LoginUserDetails userDatails) throws IOException {
+	@PostMapping(path = "techma/exhibit")
+	String ItemExhibit(@Validated ItemForm form, BindingResult result, Model model,
+			@AuthenticationPrincipal LoginUserDetails userDatails, MultipartFile uploadedFile) throws IOException {
 		List<Category> categories = categoryService.findAll();
 		model.addAttribute("categories", categories);
-		if (form.getUploadedFile().isEmpty()) {
-			return "itemcreate";
-		}
-		Path path = Paths.get("src/main/resources/static/itemimage/");
-		if (!Files.exists(path)) {
-			try {
-				Files.createDirectory(path);
-			} catch (NoSuchFileException ex) {
-				System.out.println(ex);
-				} catch (IOException ex) {
-				System.out.println(ex);
-			}
-			
-		}
-		int dot = form.getUploadedFile().getOriginalFilename().lastIndexOf(".");
-		  String extention = "";
-		  if (dot > 0) {
-		    extention = form.getUploadedFile().getOriginalFilename().substring(dot).toLowerCase();
-		  }
-		  String filename = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS").format(LocalDateTime.now());
-		  form.setFilename(filename + extention);
-		  Path uploadfile = Paths
-		      .get("src/main/resources/static/itemimage/" + filename + extention);
-
-		  try (OutputStream os = Files.newOutputStream(uploadfile, StandardOpenOption.CREATE)) {
-		    byte[] bytes = form.getUploadedFile().getBytes();
-		    os.write(bytes);
-		  } catch (IOException ex) {
-		    System.err.println(ex);
-		  }
-		if (result.hasErrors()) {
-		 return itemcreate(model, form);
-		}
-		//2つ目の画像処理
-		int dot2 = form.getUploadedFile2().getOriginalFilename().lastIndexOf(".");
-		  String extention2 = "";
-		  if (dot2 > 0) {
-		    extention2 = form.getUploadedFile2().getOriginalFilename().substring(dot2).toLowerCase();
-		  }
-		  String filename2 = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS").format(LocalDateTime.now());
-		  form.setFilename2(filename2 + extention2);
-		  Path uploadfile2 = Paths
-		      .get("src/main/resources/static/itemimage/" + filename2 + extention2);
-		  if(dot2 < 0) {
-			 form.setFilename2(null);
-		  } else {
-		  try (OutputStream os = Files.newOutputStream(uploadfile2, StandardOpenOption.CREATE)) {
-		    byte[] bytes = form.getUploadedFile2().getBytes();
-		    os.write(bytes);
-		  } catch (IOException ex) {
-		    System.err.println(ex);
-		  		}
-		  }
-		 //3つ目の画像処理
-		 int dot3 = form.getUploadedFile3().getOriginalFilename().lastIndexOf(".");
-		  String extention3 = "";
-		  if (dot3 > 0) {
-		    extention3 = form.getUploadedFile3().getOriginalFilename().substring(dot3).toLowerCase();
-		  }
-		  String filename3 = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS").format(LocalDateTime.now());
-		  form.setFilename3(filename3 + extention3);
-		  Path uploadfile3 = Paths
-		      .get("src/main/resources/static/itemimage/" + filename3 + extention3);
-		  if(dot3 < 0) {
-				 form.setFilename3(null);
-		  } else {
-		  try (OutputStream os = Files.newOutputStream(uploadfile3, StandardOpenOption.CREATE)) {
-		    byte[] bytes = form.getUploadedFile3().getBytes();
-		    os.write(bytes);
-		  } catch (IOException ex) {
-		    System.err.println(ex);
-		  		}
-		  }
-		if (result.hasErrors()) {
-		 return itemcreate(model, form);
-		}
-		int dot4 = form.getUploadedFile4().getOriginalFilename().lastIndexOf(".");
-		  String extention4 = "";
-		  if (dot4 > 0) {
-		    extention4 = form.getUploadedFile4().getOriginalFilename().substring(dot4).toLowerCase();
-		  }
-		  String filename4 = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS").format(LocalDateTime.now());
-		  form.setFilename4(filename4 + extention4);
-		  Path uploadfile4 = Paths
-		      .get("src/main/resources/static/itemimage/" + filename4 + extention4);
-		  if(dot4 < 0) {
-				 form.setFilename4(null);
-		  } else {
-		  try (OutputStream os = Files.newOutputStream(uploadfile4, StandardOpenOption.CREATE)) {
-		    byte[] bytes = form.getUploadedFile4().getBytes();
-		    os.write(bytes);
-		  } catch (IOException ex) {
-		    System.err.println(ex);
-		  		}
-		  }
-		if (result.hasErrors()) {
-		 return itemcreate(model, form);
-		}
+		
 		//アイテム作成後にDB登録
 		Item item  = new Item();
 		BeanUtils.copyProperties(form, item );

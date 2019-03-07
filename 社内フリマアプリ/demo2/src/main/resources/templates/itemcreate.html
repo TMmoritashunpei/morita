@@ -62,9 +62,9 @@
 							<option th:each="category : ${categories}" th:value="${category.categoryId}" th:text="${category.categoryname}">Category1</option>
 						</select>
 					</div>
-					<div class="condition-select" th:field="*{condition}" required="required">
+					<div class="condition-select" th:field="*{condition}" >
 					<p>商品の状態を選択してください</p>
-						<select name="condition" class="form-control" value="状態">
+						<select name="condition" class="form-control" value="状態" required="required">
 							<option value="">Conditionを選択してください</option>
 							<option value="新品、未使用">新品、未使用</option>
 							<option value="未使用に近い">未使用に近い</option>
