@@ -27,6 +27,8 @@ public class Item {
 	private String payment;
 	@Column(name="stock")
 	private Integer stock;
+	@Column(name="purchasecount")
+	private Integer purchasecount;
 	@Column(name="comments")
 	private String comments;
 	@Column(name="filename")

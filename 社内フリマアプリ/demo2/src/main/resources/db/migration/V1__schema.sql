@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS items (
 	id INT PRIMARY KEY AUTO_INCREMENT, 
 	item_name VARCHAR(30), price INT, conditions VARCHAR(30), 
-	payment VARCHAR(30), stock INT, comments VARCHAR(255),
+	payment VARCHAR(30), stock INT, purchasecount INT, comments VARCHAR(255),
 	user_id INT(10), category_id INT(10), filename VARCHAR(30),
 	filename2 VARCHAR(30),filename3 VARCHAR(30),filename4 VARCHAR(30),exhibitcansellflg BOOLEAN,
 	created_at timestamp not null default current_timestamp,

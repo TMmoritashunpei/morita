@@ -12,11 +12,12 @@
 		<header>
 			<div class="container">
 				<div class="header-left">
-					<a href="/techmatop/techma"><img class="logo" src="/image/techma.png"></img></a>
-					<div class="user" th:object="${userDatails}">
-					<a href="/techmatop/techma/user" th:href="@{/techmatop/techma/user/}">LoginUser:
+					<a href="/techmatop/techma" class="logo" ><img src="/image/techma.png"></img></a>
+					<a href="/techmatop/techma/user" class="user" th:href="@{/techmatop/techma/user/}"><div class="usermypage" th:object="${userDatails}">
+					LoginUser:
 					<span sec:authentication="principal.user.username">Guest</span>
-					</a></div>				
+					</div>
+					</a>				
 				</div>
 				<div class="header-right">				
 					<a href="/techmatop/techma/itemserch">Serch</a>

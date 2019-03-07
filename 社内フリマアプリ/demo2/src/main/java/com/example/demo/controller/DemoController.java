@@ -29,6 +29,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
 import com.example.demo.domain.Category;
 import com.example.demo.domain.Item;
 import com.example.demo.domain.Purchase;
@@ -46,8 +48,9 @@ import com.example.demo.web.UserForm;
 
 @Controller
 @RequestMapping("techmatop")
+@SessionAttributes(types = ItemForm.class)
 public class DemoController {
-
+	
 	@Autowired
 	ItemService itemService;
 	@Autowired
@@ -60,7 +63,7 @@ public class DemoController {
 	@Autowired
 	BotService botService;
 		
-	@ModelAttribute
+	@ModelAttribute("itemForm")
 	ItemForm setUpItemForm() {
 	return new ItemForm();
 	}
@@ -115,24 +118,6 @@ public class DemoController {
 		List<Purchase> purchases = purchaseService.findAll();
 		model.addAttribute("purchases", purchases);
 		return "demo";
-		}
-	
-	//アイテム詳細画面遷移
-	@RequestMapping({"techma/item","techma/item/itemId{itemId}"})
-	public String goToItem(@RequestParam Integer itemId ,Model model, ItemForm form, 
-			@AuthenticationPrincipal LoginUserDetails userDatails, java.sql.Timestamp created_at) {
-		Item item = itemService.findOne(itemId);
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		sdf.setLenient(false);
-		String str = sdf.format(item.getCreated_at());
-		model.addAttribute("str", str);
-		model.addAttribute("item",item);
-		if (userDatails.getUser().getId() == item.getUser().getId()) {
-			model.addAttribute("userDatailscheck", "この商品はご自身で出品されたアイテムの為購入できません。");
-		}
-		List<Category> categories = categoryService.findAll();
-		model.addAttribute("categories", categories);
-		return "item";
 	}
 	//カテゴリー検索
 	@GetMapping(path = "/techma/category/{id}")
@@ -164,18 +149,27 @@ public class DemoController {
 		/*ctegory全件取得*/
 		List<Category> categories = categoryService.findAll();
 		model.addAttribute("categories", categories);
+		model.addAttribute("itemForm", form);
 		return "itemcreate";
 	}
+	//出品確認画面遷移
+	@PostMapping("techma/itemchack")	
+	public String itemChack(Model model, ItemForm form) {
+	/*ctegory全件取得*/
+	List<Category> categories = categoryService.findAll();
+	model.addAttribute("categories", categories);
+	model.addAttribute("itemForm", form);
+	return "itemexhibitcheck";
+	}
 	//アイテム画像送信
-		@RequestMapping(path ="techma/uproadfile",method = RequestMethod.POST)
-	String ItemUproadFile(Model model ,ItemForm form) {
-			
+	@RequestMapping(path ="techma/uproadfile",method = RequestMethod.POST)
+	String ItemUproadFile(Model model ,ItemForm form) {		
 		    //fileUploadSampleForm.getUploadedFile().getOriginalFilename();
 			return itemcreate(model, form);
 	}
 	//アイテム出品処理
-	@PostMapping(path = "techma/exhibit")
-	String ItemExhibit(@Validated ItemForm form, BindingResult result, Model model,
+	@RequestMapping(path = "techma/exhibit")
+	String ItemExhibit(@Validated @RequestParam("itemForm") ItemForm form, BindingResult result, Model model,
 			@AuthenticationPrincipal LoginUserDetails userDatails) throws IOException {
 		List<Category> categories = categoryService.findAll();
 		model.addAttribute("categories", categories);
@@ -287,7 +281,7 @@ public class DemoController {
 		}
 		return "redirect:/techmatop/techma/itemresult";
 	}
-		//出品完了画面遷移
+	//出品完了画面遷移
 	@RequestMapping("techma/itemresult")
 	public String goToItemResult() {
 		return "itemresult";
@@ -431,11 +425,6 @@ public class DemoController {
 		categoryService.dalete(id);
 		return "redirect:/techma/ctegory";
 	}
-	//アイテム購入
-	@RequestMapping("techma/itembuy")
-	public String goToBuy() {
-		return "itembuy";
-	}
 	//アイテム検索画面
 	@RequestMapping("techma/itemserch")
 	public String goToSerch(Model model, String itemname, Category category) {
@@ -487,16 +476,45 @@ public class DemoController {
 		model.addAttribute("categories", categories);
 		return "user";
 	}
+	//アイテム詳細画面遷移
+	@RequestMapping({"techma/item","techma/item/itemId{itemId}"})
+	public String goToItem(@RequestParam Integer itemId ,Model model, ItemForm form, 
+			@AuthenticationPrincipal LoginUserDetails userDatails, java.sql.Timestamp created_at) {
+		Item item = itemService.findOne(itemId);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		sdf.setLenient(false);
+		String str = sdf.format(item.getCreated_at());
+		model.addAttribute("str", str);
+		model.addAttribute("item",item);
+		if (userDatails.getUser().getId() == item.getUser().getId()) {
+			model.addAttribute("userDatailscheck", "この商品はご自身で出品されたアイテムの為購入できません。");
+		}
+		List<Category> categories = categoryService.findAll();
+		model.addAttribute("categories", categories);
+		return "item";
+	}
+	//購入確認
+	@RequestMapping("techma/itemcheck/itemId{itemId}")
+	public String goToItemresultcheck(@RequestParam Integer itemId ,Model model, ItemForm form, 
+			@AuthenticationPrincipal LoginUserDetails userDatails, java.sql.Timestamp created_at) {
+		Item item = itemService.findOne(itemId);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		sdf.setLenient(false);
+		String str = sdf.format(item.getCreated_at());
+		model.addAttribute("str", str);
+		model.addAttribute("item",item);
+	return "itempurchasecheck";
+	}
 	//購入処理
-	@PostMapping("techma/buyresult/itemId{itemId}")
-	public String goTobuyResult(Model model, Integer itemId, ItemForm form, BindingResult result,
-			@AuthenticationPrincipal LoginUserDetails userDatails, java.sql.Timestamp created_at) throws IOException {
+	@PostMapping("techma/buyresult/itemId")
+	public String goTobuyResult(Model model, @RequestParam("itemId") Integer itemId, ItemForm form, BindingResult result,
+			@AuthenticationPrincipal LoginUserDetails userDatails, java.sql.Timestamp created_at, @RequestParam("purchasenumber")Integer purchasenumber) throws IOException {
 		Item item = itemService.findOne(itemId);
 		model.addAttribute("itemForm", form);
 		if (item.getStock()==0) {
 			return goToItem(itemId, model,form, userDatails, created_at);
 		}
-		item.setStock(item.getStock() - form.getPurchasenumber());
+		item.setStock(item.getStock() - purchasenumber);
 		//購入履歴作成
 		//商品名と購入数を取得しpurchaseインスタンスにセットする
 		Purchase purchase = new Purchase();
@@ -519,16 +537,6 @@ public class DemoController {
 		@RequestMapping("techma/buyresult")
 		public String ItemBuyresult() {
 			return "itemresult";
-		}
-	//購入確認
-	@RequestMapping("techma/itemresultcheck")
-	public String goToItemresultcheck() {
-		return "itemresultcheck";
-	}
-	//アイテム購入チェック
-	@RequestMapping("techma/itembuycheck")
-	public String goToItembuycheck() {
-		return "itembuycheck";
 	}
 	//出品者画面遷移
 	@RequestMapping("techma/exhibitor/itemId{itemId}")
@@ -565,22 +573,26 @@ public class DemoController {
 	}
 	//出品アイテムキャンセル
 	@RequestMapping("techma/item/cansell/itemId{itemId}")
-	String ItemEditForm(@RequestParam Integer itemId,@Validated ItemForm form, @AuthenticationPrincipal LoginUserDetails userDatails,Model model) {
+	String ItemEditForm(@RequestParam Integer itemId,@Validated ItemForm form, @AuthenticationPrincipal LoginUserDetails userDatails,Model model) throws IOException {
 		Item item = itemService.findOne(itemId);
 	     Boolean itemflg = item.getExhibitcansellflg();
 	     itemflg = !itemflg;
 	    item.setExhibitcansellflg(itemflg);
 		itemService.update(item, userDatails.getUser());
+		//slackApi呼び出し
+		botService.ItemStatusBot(item);
 		return "redirect:/techmatop/techma/user/exhibitindex";
 	}
 	//購入アイテムキャンセル
 		@RequestMapping("techma/item/purchasecansell/purchaseId{purchaseId}")
-		String PurchaseItemEditForm(@RequestParam Integer purchaseId,@Validated ItemForm form, @AuthenticationPrincipal LoginUserDetails userDatails,Model model) {
+		String PurchaseItemEditForm(@RequestParam Integer purchaseId,@Validated ItemForm form, @AuthenticationPrincipal LoginUserDetails userDatails,Model model) throws IOException {
 			Purchase purchase = purchaseService.findOne(purchaseId);
 		     Boolean purchaseflg = purchase.getCansellflg();
 		     purchaseflg = !purchaseflg;
 		    purchase.setCansellflg(purchaseflg);
 			purchaseService.update(purchase, userDatails.getUser());
+			//slackApi呼び出し
+			botService.PurchaseStatusBot(purchase);
 			return "redirect:/techmatop/techma/user/purchaseindex";
 		}
 }

@@ -21,7 +21,7 @@
 		<div class="container">
 			<h1>Put Up Your Item</h1>
 			<div class="item-form">
-				<form th:action="@{/techmatop/techma/exhibit}" th:object="${itemForm}" method="post" enctype="multipart/form-data">
+				<form th:action="@{/techmatop/techma/itemchack}" th:object="${itemForm}" method="post" enctype="multipart/form-data">
 				<div class="pic-add">
 				<ul>
 					<li><div class="pic-item">
@@ -109,7 +109,7 @@
 						<button class="cp_button04" type="submit"><span>Put Up</span></button>
 						<button class="cp_button04" onclick="location.href='javascript:history.back()'"><span>前のページへ</span></button>						
 						<!--後に実装  <a href="/techmatop/techma/itemresultcheck"><input type="submit" class="cp_button04"><span>Put Up</span></input></a>-->
-						<input type="hidden" name="id"></input>
+
 					</div>
 				</form>
 			</div>
