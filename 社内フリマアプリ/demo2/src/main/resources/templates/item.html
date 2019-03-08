@@ -48,7 +48,7 @@
 					
 				</div>
 				<div class="item-status-wrapper">
-					<p>価格:&nbsp;&nbsp; <span th:text="${item.price}"></span>￥</p>
+					<p>価格:&nbsp;&nbsp; <span th:text="${item.price}+￥"></span></p>
 					<p>カテゴリー:&nbsp;&nbsp;<span th:text="${item.category.categoryname}"></span></p>
 					<p>状態:&nbsp;&nbsp;　<span th:text="${item.condition}"></span></p>
 					<p>支払方法:&nbsp;&nbsp; <span th:text="${item.payment}"></span></p>

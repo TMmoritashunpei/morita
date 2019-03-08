@@ -21,7 +21,7 @@
 		<div class="container">
 			<h1>Put Up Your Item</h1>
 			<div class="item-form">
-				<form th:action="@{/techmatop/techma/userupdate}" th:object="${userForm}" method="post" enctype="multipart/form-data">
+				<form th:action="@{/techmatop/techma/user/userupdatecheck}" th:object="${userForm}" method="post" enctype="multipart/form-data">
 				<div class="pic-add">
 				<ul>
 					<li><div class="pic-item">
@@ -59,12 +59,13 @@
 					</div>
 					<div class="coments" id="item">
 					<p>コメントを入力してください</p>
-					<textarea name="coments" class="form-control" value="商品説明" th:field="*{comments}" required="required"></textarea>
+					<textarea name="coments" class="form-control" value="コメント（任意）" th:field="*{comments}"></textarea>
 					</div>
 				</div>
 					<div class="form-check">
 						<button class="cp_button04" type="submit"><span>登録</span></button>
 						<button class="cp_button04" onclick="location.href='javascript:history.back()'"><span>前のページへ</span></button>						
+						<button class="cp_button04" onclick="location.href='/techmatop/techma'"><span>TOP</span></button>
 						<!--後に実装  <a href="/techmatop/techma/itemresultcheck"><input type="submit" class="cp_button04"><span>Put Up</span></input></a>-->
 					</div>
 				</form>

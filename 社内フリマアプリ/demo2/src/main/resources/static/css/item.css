@@ -51,19 +51,25 @@ p {
 	font-size: 13px;
 	text-decoration:none;
 }
+span {
+	font-size: 18px;
+}
 
 .coments-wrapper {
 	float: right;
 }
 
 .item-status-wrapper {
-	float: left;
-	
+	float: left;	
+}
+
+.item-status-wrapper p, .coments-wrapper p , .purchasenumber p{
+	font-size: 15px;	
 }
 
 select {
 	cursor: pointer !important;
-	
+	font-size: 20px;
 }
 
 .background {

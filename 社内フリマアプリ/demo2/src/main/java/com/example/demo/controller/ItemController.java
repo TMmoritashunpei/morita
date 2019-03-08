@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
@@ -14,24 +13,18 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 import java.util.List;
-
-import javax.imageio.ImageIO;
-import javax.imageio.ImageReader;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -39,12 +32,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.example.demo.domain.Category;
 import com.example.demo.domain.Item;
 import com.example.demo.domain.Purchase;
-import com.example.demo.domain.User;
 import com.example.demo.service.BotService;
 import com.example.demo.service.CategoryService;
 import com.example.demo.service.ItemService;
@@ -362,7 +352,7 @@ public class ItemController {
 	//購入完了
 		@RequestMapping("techma/buyresult")
 		public String ItemBuyresult() {
-			return "itemresult";
+			return "itembuyresult";
 	}
 	//出品者画面遷移
 	@RequestMapping("techma/exhibitor/itemId{itemId}")

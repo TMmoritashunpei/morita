@@ -14,6 +14,10 @@ body {
 	margin-bottom: 40px;
 }
 
+.item-container p {
+	font-size: 12px;
+}
+
 .user-user {
 	margin-top: 100px;
 	margin-bottom: 30px;
@@ -38,9 +42,11 @@ h1 {
 	margin-top: 40px;
 	height:35%;
 	width: 50%;
+	font-size: 15px;
 }
 
-.item-status-wrapper {
+.item-status-wrapper p, a span, .coments-wrapper p {
+	font-size: 15px;
 }
 
 .coments-wrapper {
@@ -50,7 +56,7 @@ h1 {
 
 p {
 	word-wrap: break-word;
-	font-size:12px;
+	font-size:16px;
 }
 
 .buy:active {
@@ -97,6 +103,9 @@ a {
 	border-radius: 4px;
 	background: #4DD0E1;
 	overflow: hidden;
+}
+span {
+	font-size: 15px;
 }
 
 span {

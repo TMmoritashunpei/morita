@@ -22,8 +22,7 @@
 	</div>
 		<div class="item-container">
 			<div class="item-item">			
-			<form action="#" th:action="@{/techmatop/techma/exhibit}" method="post">
-				
+			<form action="#" th:action="@{/techmatop/techma/exhibit}" method="post">				
 				<h2>商品名： <span th:text="${itemForm.itemname}"></span></h2>
 				<div class="item-pic">
 					<img class="item-item-image" th:if="${itemForm.filename == null}" src="/image/No_Image_Available.jpg"></img>

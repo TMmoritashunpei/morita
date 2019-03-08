@@ -14,10 +14,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 import java.util.List;
-
 import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -40,7 +38,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.example.demo.domain.Category;
 import com.example.demo.domain.Item;
 import com.example.demo.domain.Purchase;
@@ -149,7 +146,7 @@ public class UserController {
 	}
 	//＠ユーザー作成
 	@PostMapping(path = "**/usercreate")
-	String UserCreate(@Validated UserForm form, BindingResult result, Model model, @AuthenticationPrincipal LoginUserDetails userDatails , String password) throws IOException {
+	String UserCreate(@Validated UserForm form, BindingResult result, Model model, @AuthenticationPrincipal LoginUserDetails userDatails , String password, SessionStatus sessionStatus) throws IOException {
 		if (result.hasErrors()) {
 		 return techmaController(model, userDatails);
 		}
@@ -163,12 +160,14 @@ public class UserController {
 		if (form.getSlackname() != null) {
 			botService.UsercreateBot(form);
 		}
+		sessionStatus.setComplete();
 		return "userresult";
 		//return "createuserchack";
 	}
 	//アカウント作成完了
 	@RequestMapping("userresult")
-	public String goToUserResult() {
+	public String goToUserResult(Model model, SessionStatus sessionStatus) {
+		sessionStatus.setComplete();
 		return "userresult";
 	}
 	 //マイページに遷移
@@ -187,6 +186,49 @@ public class UserController {
 		model.addAttribute("categories", categories);
 		return "userupdate";
 	}
+	//ユーザー更新確認
+	@PostMapping("techma/user/userupdatecheck")
+		public String UserUpdateCheck(UserForm form, Model model,@AuthenticationPrincipal LoginUserDetails userDatails, BindingResult result) {
+		model.addAttribute("userForm", form);
+		//画像アップロード
+				Path path = Paths.get("src/main/resources/static/userimage/");
+				if (!Files.exists(path)) {
+					try {
+						Files.createDirectory(path);
+					} catch (NoSuchFileException ex) {
+						System.out.println(ex);
+						} catch (IOException ex) {
+						System.out.println(ex);
+					}	
+				}
+				int dot = form.getUploadedFile().getOriginalFilename().lastIndexOf(".");
+				  String extention = "";
+				  if (dot > 0) {
+				    extention = form.getUploadedFile().getOriginalFilename().substring(dot).toLowerCase();
+				  }
+				  String filename = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS").format(LocalDateTime.now());
+				  form.setFilename(filename + extention);
+				  Path uploadfile = Paths		  
+				      .get("src/main/resources/static/userimage/" + filename + extention);
+				  if(dot < 0) {
+						form.setFilename(null);
+					} else {
+				  try (OutputStream os = Files.newOutputStream(uploadfile, StandardOpenOption.CREATE)) {
+				    byte[] bytes = form.getUploadedFile().getBytes();
+				  //bytesをBase64に変換してビューに渡す
+				    String base64str = Base64.getEncoder().encodeToString(bytes);
+				    model.addAttribute("base64str",base64str);
+				  //転送したファイルを書き込みディレクトリに格納
+				    os.write(bytes);
+				  } catch (IOException ex) {
+				    System.err.println(ex);
+				  }
+				}
+				  if (result.hasErrors()) {
+						 return UserEditForm(form, userDatails, result, model);
+				  }
+		return "updateusercheck";
+	}
 	//ユーザー更新処理
 	@PostMapping(path = "techma/userupdate")
 	String UserEdit(@Validated UserForm form, @AuthenticationPrincipal LoginUserDetails userDatails, BindingResult result, String password,Model model) throws IOException {
@@ -195,40 +237,6 @@ public class UserController {
 			/*＠後で繊維先変える*/
 		return UserEditForm( form, userDatails, result, model);
 		}
-		//画像アップロード
-		Path path = Paths.get("src/main/resources/static/userimage/");
-		if (!Files.exists(path)) {
-			try {
-				Files.createDirectory(path);
-			} catch (NoSuchFileException ex) {
-				System.out.println(ex);
-				} catch (IOException ex) {
-				System.out.println(ex);
-			}
-			
-		}
-		int dot = form.getUploadedFile().getOriginalFilename().lastIndexOf(".");
-		  String extention = "";
-		  if (dot > 0) {
-		    extention = form.getUploadedFile().getOriginalFilename().substring(dot).toLowerCase();
-		  }
-		  String filename = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS").format(LocalDateTime.now());
-		  form.setFilename(filename + extention);
-		  Path uploadfile = Paths		  
-		      .get("src/main/resources/static/userimage/" + filename + extention);
-		  if(dot < 0) {
-				form.setFilename(null);
-			} else {
-		  try (OutputStream os = Files.newOutputStream(uploadfile, StandardOpenOption.CREATE)) {
-		    byte[] bytes = form.getUploadedFile().getBytes();
-		    os.write(bytes);
-		  } catch (IOException ex) {
-		    System.err.println(ex);
-		  }
-		}
-		  if (result.hasErrors()) {
-				 return UserEditForm(form, userDatails, result, model);
-		  }
 		BeanUtils.copyProperties(form, user);
 		password = user.getPassword();
 		password = new Pbkdf2PasswordEncoder().encode(password);
