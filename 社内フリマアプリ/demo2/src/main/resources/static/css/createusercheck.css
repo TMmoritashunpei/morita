@@ -15,6 +15,10 @@ body {
 	text-align: center;
 }
 
+.item-item p, span{
+	font-size: 15px;
+}
+
 h1 {
 	font-size: 15px;
 	background-color: #0f8453;
@@ -25,11 +29,7 @@ h1 {
 }
 
 h2 {
-	font-size: 24px;
-}
-
-h2 span{
-	font-size: 24px;
+	font-size: 20px;
 }
 
 .item-item-image {
@@ -44,10 +44,6 @@ h2 span{
 	width:60%;
 }
 
-.item-item p, span{
-	font-size: 15px;
-}
-
 .coments-wrapper {
 	height: outo;
 	word-wrap: break-word;
@@ -56,7 +52,7 @@ h2 span{
 
 p {
 	word-wrap: break-word;
-	font-size: 13px;
+	font-size: 20px;
 	text-decoration:none;
 }
 

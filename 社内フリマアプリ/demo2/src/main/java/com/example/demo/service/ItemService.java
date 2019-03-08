@@ -54,5 +54,8 @@ public class ItemService {
 	public List<Item> findItemNameSerch(String itemname) {
 		return itemRepository.itemNameSerch(itemname);
 	}
+	public List<Item> itemNameInCategory( String itemname, Integer categoryId) {
+		return itemRepository.itemInCategoryInItemSerch(itemname, categoryId);
+	}
 }
 	

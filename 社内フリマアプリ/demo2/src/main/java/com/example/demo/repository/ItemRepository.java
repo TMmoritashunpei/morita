@@ -34,6 +34,6 @@ public interface ItemRepository extends JpaRepository<Item, Integer> {
 	@Query("SELECT x FROM Item x where x.itemname like  %:itemname%")
 	List<Item> itemNameSerch(@Param("itemname") String itemname);
 	
-	@Query("SELECT x FROM Item x where x.itemname like  %:itemname% and x.category = :category")
-	List<Item> itemInCategoryInItemSerch(@Param("itemname") String itemname, @Param("category") Category category);
+	@Query("SELECT x FROM Item x where x.itemname like  %:itemname% and x.category.categoryId = :categoryId")
+	List<Item> itemInCategoryInItemSerch(@Param("itemname") String itemname, @Param("categoryId") Integer categoryId);
 }

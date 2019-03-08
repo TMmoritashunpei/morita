@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+	<title>登録確認画面</title>
+<link rel="stylesheet" type="text/css" href="/css/createusercheck.css"></link>
+<link rel="stylesheet" type="text/css" href="/css/responsive.css"></link>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"></link>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<canvas class="background"></canvas>
+	<!--modalをJSで表示させるsignupformここから-->
+	<div class="item-wrapper">
+	<h1>登録</h1>
+	<div class="error-massage">
+	<span>会員登録の内容をご確認ください。</span>
+	</div>
+		<div class="item-container">
+			<div class="item-item">			
+			<form action="#" th:action="@{usercreate}" method="post">
+				<h2>ユーザー名 :<span th:text="${userForm.username}"></span></h2>
+				<div class="item-item-status">
+				<div class="coments-wrapper">
+					<p>メールアドレス:<br></br><span th:text="${userForm.mail}"></span></p>		
+				</div>
+				<div class="item-status-wrapper">
+					<p>電話番号:&nbsp;&nbsp; <span th:text="${userForm.tel}"></span></p>
+					<p>パスワード:&nbsp;&nbsp;<span th:text="${userForm.password}"></span></p>
+					<p>slackに連携の際はslackに表示されているご自身のアカウントの名前を入れる必要があります。</p>
+					<p>slackname:&nbsp;&nbsp;　<span th:text="${userForm.slackname}"></span></p>
+				</div>	
+				</div>
+			<div class="btn">
+				<p><span>こちらの内容でよろしいですか？よろしければ登録ボタンを押してください</span></p>
+				<button class="cp_button04" type="submit"><span>登録</span></button>	
+				<button class="cp_button04" type="button" onclick="location.href='javascript:history.back()'"><span>前のページへ</span></button>
+			</div>
+			</form>	
+			</div>
+		</div>
+	</div>	
+	<script src="/js/demo.js"></script>
+	<script src="/js/particles.min.js"></script>
+	<script src="/js/itemcreate.js"></script>
+</body>	
+</html>

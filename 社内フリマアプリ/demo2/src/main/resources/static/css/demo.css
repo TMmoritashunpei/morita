@@ -26,11 +26,14 @@ a {
 	background-size: cover;
 	opacity: 0.8;
 	text-align: center;
+	padding-top: 50px;
 }
 .top-wrapper h1 {
 	opacity: 1;
 	font-size: 45px;
 	letter-spacing: 5px;
+	margin: 0px;
+	margin-top: 20px;
 }
 .top-wrapper p {
 	opacity: 1;
