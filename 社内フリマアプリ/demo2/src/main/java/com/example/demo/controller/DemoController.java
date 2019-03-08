@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
@@ -10,7 +12,12 @@ import java.nio.file.StandardOpenOption;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Base64;
 import java.util.List;
+
+import javax.imageio.ImageIO;
+import javax.imageio.ImageReader;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -30,7 +37,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.domain.Category;
 import com.example.demo.domain.Item;
@@ -186,6 +195,9 @@ public class DemoController {
 
 	  try (OutputStream os = Files.newOutputStream(uploadfile, StandardOpenOption.CREATE)) {
 	    byte[] bytes = form.getUploadedFile().getBytes();
+	    String base64str = Base64.getEncoder().encodeToString(bytes);
+	    model.addAttribute("base64str",base64str);
+	 //転送したファイルを書き込みディレクトリに格納
 	    os.write(bytes);
 	  } catch (IOException ex) {
 	    System.err.println(ex);
@@ -203,12 +215,17 @@ public class DemoController {
 	  form.setFilename2(filename2 + extention2);
 	  Path uploadfile2 = Paths
 	      .get("src/main/resources/static/itemimage/" + filename2 + extention2);
+	  //ビューでファイルが選択され無かった時の処理
 	  if(dot2 < 0) {
 		 form.setFilename2(null);
 	  } else {
 	  try (OutputStream os = Files.newOutputStream(uploadfile2, StandardOpenOption.CREATE)) {
-	    byte[] bytes = form.getUploadedFile2().getBytes();
-	    os.write(bytes);
+	    byte[] bytes2 = form.getUploadedFile2().getBytes();
+	  //bytesをBase64に変換してビューに渡す
+	    String base64str2 = Base64.getEncoder().encodeToString(bytes2);
+	    model.addAttribute("base64str2",base64str2);
+	  //転送したファイルを書き込みディレクトリに格納
+	    os.write(bytes2);
 	  } catch (IOException ex) {
 	    System.err.println(ex);
 	  		}
@@ -223,12 +240,17 @@ public class DemoController {
 	  form.setFilename3(filename3 + extention3);
 	  Path uploadfile3 = Paths
 	      .get("src/main/resources/static/itemimage/" + filename3 + extention3);
+	  //ビューでファイルが選択され無かった時の処理
 	  if(dot3 < 0) {
 			 form.setFilename3(null);
 	  } else {
 	  try (OutputStream os = Files.newOutputStream(uploadfile3, StandardOpenOption.CREATE)) {
-	    byte[] bytes = form.getUploadedFile3().getBytes();
-	    os.write(bytes);
+	    byte[] bytes3 = form.getUploadedFile3().getBytes();
+	  //bytesをBase64に変換してビューに渡す
+	    String base64str3 = Base64.getEncoder().encodeToString(bytes3);
+	    model.addAttribute("base64str3",base64str3);
+	  //転送したファイルを書き込みディレクトリに格納
+	    os.write(bytes3);
 	  } catch (IOException ex) {
 	    System.err.println(ex);
 	  		}
@@ -245,12 +267,17 @@ public class DemoController {
 	  form.setFilename4(filename4 + extention4);
 	  Path uploadfile4 = Paths
 	      .get("src/main/resources/static/itemimage/" + filename4 + extention4);
+	  //ビューでファイルが選択され無かった時の処理
 	  if(dot4 < 0) {
 			 form.setFilename4(null);
 	  } else {
 	  try (OutputStream os = Files.newOutputStream(uploadfile4, StandardOpenOption.CREATE)) {
-	    byte[] bytes = form.getUploadedFile4().getBytes();
-	    os.write(bytes);
+	    byte[] bytes4 = form.getUploadedFile4().getBytes();
+	  //bytesをBase64に変換してビューに渡す
+	    String base64str4 = Base64.getEncoder().encodeToString(bytes4);
+	    model.addAttribute("base64str4",base64str4);
+	 //転送したファイルを書き込みディレクトリに格納
+	    os.write(bytes4);
 	  } catch (IOException ex) {
 	    System.err.println(ex);
 	  		}
@@ -269,10 +296,9 @@ public class DemoController {
 	//アイテム出品処理
 	@PostMapping(path = "techma/exhibit")
 	String ItemExhibit(@Validated ItemForm form, BindingResult result, Model model,
-			@AuthenticationPrincipal LoginUserDetails userDatails, MultipartFile uploadedFile) throws IOException {
+			@AuthenticationPrincipal LoginUserDetails userDatails) throws IOException {
 		List<Category> categories = categoryService.findAll();
 		model.addAttribute("categories", categories);
-		
 		//アイテム作成後にDB登録
 		Item item  = new Item();
 		BeanUtils.copyProperties(form, item );
@@ -285,7 +311,8 @@ public class DemoController {
 	}
 	//出品完了画面遷移
 	@RequestMapping("techma/itemresult")
-	public String goToItemResult() {
+	public String goToItemResult(Model model, SessionStatus sessionStatus) {
+		sessionStatus.setComplete();
 		return "itemresult";
 	}
 	//＠ユーザー作成

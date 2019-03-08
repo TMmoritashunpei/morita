@@ -27,13 +27,13 @@
 				<h2>商品名： <span th:text="${itemForm.itemname}"></span></h2>
 				<div class="item-pic">
 					<img class="item-item-image" th:if="${itemForm.filename == null}" src="/image/No_Image_Available.jpg"></img>
-					<img class="item-item-image" th:if="${itemForm.stock != 0 and itemForm.filename != null}" th:src="|/itemimage/${itemForm.filename}|"></img>
+					<img class="item-item-image" th:if="${itemForm.stock != 0 and base64str != null}" th:src="|data:image/jpg;base64,${base64str}|"></img>
 					<img class="item-item-image" th:if="${itemForm.filename2 == null}" src="/image/No_Image_Available.jpg"></img>
-					<img class="item-item-image" th:if="${itemForm.stock != 0 and itemForm.filename2 != null}" th:src="|/itemimage/${itemForm.filename2}|"></img>
+					<img class="item-item-image" th:if="${itemForm.stock != 0 and base64str2 != null}" th:src="|data:image/jpg;base64,${base64str2}|"></img>
 					<img class="item-item-image" th:if="${itemForm.filename3 == null}" src="/image/No_Image_Available.jpg"></img>
-					<img class="item-item-image" th:if="${itemForm.stock != 0 and itemForm.filename3 != null}" th:src="|/itemimage/${itemForm.filename3}|"></img>
+					<img class="item-item-image" th:if="${itemForm.stock != 0 and base64str3 != null}" th:src="|data:image/jpg;base64,${base64str3}|"></img>
 					<img class="item-item-image" th:if="${itemForm.filename4 == null}" src="/image/No_Image_Available.jpg"></img>
-					<img class="item-item-image" th:if="${itemForm.stock != 0 and itemForm.filename4 != null}" th:src="|/itemimage/${itemForm.filename4}|"></img>
+					<img class="item-item-image" th:if="${itemForm.stock != 0 and base64str4 != null}" th:src="|data:image/jpg;base64,${base64str4}|"></img>
 				</div>
 				<div class="item-item-status">
 				<div class="coments-wrapper">
