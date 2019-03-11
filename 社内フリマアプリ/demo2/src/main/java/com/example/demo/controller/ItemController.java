@@ -275,6 +275,7 @@ public class ItemController {
 		model.addAttribute("itemForm", form);
 		model.addAttribute("itemname", itemname);
 		model.addAttribute("category", category);
+		//検索画面から商品名を検索
 		if (category.getCategoryId() == null) {
 			List<Item>items = itemService.findItemNameSerch(itemname);
 			model.addAttribute("items", items);
@@ -285,6 +286,7 @@ public class ItemController {
 		} else {
 			List<Item> items = itemService.itemNameInCategory(itemname, category.getCategoryId());
 			model.addAttribute("items", items);
+			//カテゴリ検索からアイテムの名前を検索し見つからない時の処理
 			if (itemService.itemNameInCategory(itemname, category.getCategoryId()).size() == 0) {
 				model.addAttribute("noitem","ご指定の検索条件でアイテムが見つかりませんでした。");
 			}

@@ -241,7 +241,8 @@ public class UserController {
 	}
 	//ユーザー更新完了
 	@RequestMapping("techma/userupdateresult")
-	public String UserUpdateresult() {
+	public String UserUpdateresult(Model model, SessionStatus sessionStatus) {
+		sessionStatus.setComplete();
 	return "userupdateresult";
 	}
 	//ユーザー削除

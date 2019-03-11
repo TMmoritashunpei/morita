@@ -29,6 +29,7 @@ public class CategoryService {
 	public Category create(Category categoty) {
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		categoty.setCreated_at(timestamp);
+		categoty.setUpdated_at(timestamp);
 		return categoryRepository.save(categoty);
 	}
 	

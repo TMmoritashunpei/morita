@@ -36,6 +36,7 @@ public class ItemService {
 		item.setUser(user);
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		item.setCreated_at(timestamp);
+		item.setUpdated_at(timestamp);
 		return itemRepository.save(item);
 	}
 	

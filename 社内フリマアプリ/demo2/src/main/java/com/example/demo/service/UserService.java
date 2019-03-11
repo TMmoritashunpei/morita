@@ -33,6 +33,7 @@ public class UserService {
 	public User create(User user) {
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		user.setCreated_at(timestamp);
+		user.setUpdated_at(timestamp);
 		return userRepository.save(user);
 	}
 	

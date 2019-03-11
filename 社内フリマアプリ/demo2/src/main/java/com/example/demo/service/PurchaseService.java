@@ -40,6 +40,7 @@ public class PurchaseService {
 		purchase.setItem(item);
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		purchase.setCreated_at(timestamp);
+		purchase.setUpdated_at(timestamp);
 		return purchaseRepository.save(purchase);
 	}
 	
