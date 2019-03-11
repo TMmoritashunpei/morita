@@ -37,4 +37,8 @@ public class User {
 	private List<Item> items;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
 	private List<Purchase> purchases;
+	@Column(name="created_at")
+	java.sql.Timestamp created_at;
+	@Column(name="updated_at")
+	java.sql.Timestamp updated_at;
 }

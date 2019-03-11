@@ -22,4 +22,8 @@ public class Category {
 	private String categoryname;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "category")
 	private List<Item> items;
+	@Column(name="created_at")
+	java.sql.Timestamp created_at;
+	@Column(name="updated_at")
+	java.sql.Timestamp updated_at;
 }

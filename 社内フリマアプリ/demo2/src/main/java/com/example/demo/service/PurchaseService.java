@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -37,11 +38,15 @@ public class PurchaseService {
 	public Purchase create(Purchase purchase, User user, Item item) {
 		purchase.setUser(user);
 		purchase.setItem(item);
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		purchase.setCreated_at(timestamp);
 		return purchaseRepository.save(purchase);
 	}
 	
 	public Purchase update(Purchase purchase, User user) {
 		purchase.setUser(user);
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		purchase.setUpdated_at(timestamp);
 		return purchaseRepository.save(purchase);
 	}
 	

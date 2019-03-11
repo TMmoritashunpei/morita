@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -33,11 +34,15 @@ public class ItemService {
 	
 	public Item create(Item item, User user) {
 		item.setUser(user);
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		item.setCreated_at(timestamp);
 		return itemRepository.save(item);
 	}
 	
 	public Item update(Item item, User user) {
 		item.setUser(user);
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		item.setUpdated_at(timestamp);
 		return itemRepository.save(item);
 	}
 	

@@ -278,15 +278,16 @@ public class ItemController {
 		if (category.getCategoryId() == null) {
 			List<Item>items = itemService.findItemNameSerch(itemname);
 			model.addAttribute("items", items);
+			//item検索で見つからない場合
+			if (itemService.findItemNameSerch(itemname).size() == 0) {
+				model.addAttribute("noitem","ご指定の検索条件でアイテムが見つかりませんでした。");
+			} 	
 		} else {
 			List<Item> items = itemService.itemNameInCategory(itemname, category.getCategoryId());
-			model.addAttribute("tems", items);
-		}
-		//item検索で見つからない場合
-		if (itemService.findItemNameSerch(itemname).size() == 0) {
-			model.addAttribute("noitem","ご指定の検索条件でアイテムが見つかりませんでした。");
-		} else if (itemService.itemNameInCategory(itemname, category.getCategoryId()).size() == 0) {
-			model.addAttribute("noitem","ご指定の検索条件でアイテムが見つかりませんでした。");
+			model.addAttribute("items", items);
+			if (itemService.itemNameInCategory(itemname, category.getCategoryId()).size() == 0) {
+				model.addAttribute("noitem","ご指定の検索条件でアイテムが見つかりませんでした。");
+			}
 		}
 		List<Category> categories = categoryService.findAll();
 		model.addAttribute("categories", categories);

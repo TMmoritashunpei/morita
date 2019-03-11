@@ -54,7 +54,7 @@
 				</div>
 			<div class="btn">
 				<p><span>こちらの商品でよろしいですか？よろしければ購入ボタンを押してください</span></p>
-				<button th:if="${item.stock != 0} and ${userDatailscheck == fals} and ${item.exhibitcansellflg == false}" class="cp_button04" type="submit"><span>購入</span></button>	
+				<button th:if="${item.stock != 0} and ${userDatailscheck == fals} and ${item.exhibitcansellflg != false}" class="cp_button04" type="submit"><span>購入</span></button>	
 				<button class="cp_button04" type="button" onclick="location.href='javascript:history.back()'"><span>前のページへ</span></button>
 			</div>
 			<input type="hidden" name="itemId" th:value="${item.itemId}"></input>

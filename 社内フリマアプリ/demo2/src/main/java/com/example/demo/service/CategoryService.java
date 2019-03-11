@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -25,12 +26,16 @@ public class CategoryService {
 		return categoryRepository.findOne(id);
 	}
 	
-	public Category create(Category Categoty) {
-		return categoryRepository.save(Categoty);
+	public Category create(Category categoty) {
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		categoty.setCreated_at(timestamp);
+		return categoryRepository.save(categoty);
 	}
 	
-	public Category update(Category Categoty) {
-		return categoryRepository.save(Categoty);
+	public Category update(Category categoty) {
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		categoty.setUpdated_at(timestamp);
+		return categoryRepository.save(categoty);
 	}
 	
 	public void dalete(Integer id) {
