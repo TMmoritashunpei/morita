@@ -74,4 +74,5 @@ CREATE TABLE IF NOT EXISTS purchases (
 	user_id INT(10),
 	created_at timestamp not null default current_timestamp,
   	updated_at timestamp default current_timestamp
+); 
 */
