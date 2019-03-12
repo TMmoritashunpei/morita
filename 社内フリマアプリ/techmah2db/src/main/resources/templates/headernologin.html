@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+	<head>
+	<meta charset="utf-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+		<link rel="stylesheet" type="text/css" href="/css/header.css"></link>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	</head>
+	<body>
+	<div  th:fragment="headernologin">
+		<header>
+			<div class="container">
+				<div class="header-left">
+					<a href="/techmatop/techma" class="logo" ><img src="/image/techma.png"></img></a>
+					<div class="user">LoginUser:Guest</div>				
+				</div>
+				<div class="header-right">				
+					<a href="/techmatop/itemserch">検索</a>
+					<a href="/techmatop/itemcreate">出品</a>
+					<div class="contact" id="contact-show">お問い合わせ</div>
+					<div class="login" id="login-show">Login</div>
+					<ul class="accordion">
+						<li class="catagory-items">
+							<div class="category">Categorys</div>
+							<div class="nest" th:each="category : ${categories}">
+								<a href="../../techmatop/techma/itemserch" th:text="${category.categoryname}">categorys1</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+		<!--modalをJSで表示させるsignupformここから-->
+		<div class="singup-modal-wrapper" id="signup-modal">
+			<div class="singup-modal">
+				<div class="close-modal">
+					<i class="fa fa-2x fa-times"></i>
+				</div>
+				<div id="signup-form">
+					<h2>新規アカウント作成</h2>
+					<form th:action="@{/techmatop/createusercheck}" th:object="${userForm}" method="post">
+						<p>アカウント名を入力してください</p>
+						<input class="form-control" type="text" id="username" placeholder="UserName" th:field="*{username}" required="required"></input>
+						<p>メールアドレスを入力してください</p>
+						<input class="form-control" type="email" placeholder="Email" id="mail" th:field="*{mail}" required="required"></input>
+						<p>電話番号を入力してください</p>
+						<input class="form-control" type="tel" placeholder="tel" id="tel" th:field="*{tel}" required="required"></input>
+						<p>パスワードを入力してください</p>
+						<input class="form-control" type="password" placeholder="Password" id="password" th:field="*{password}" required="required"></input>
+						<p>確認用のパスワードを入力してください</p>
+						<input class="form-control" type="password" placeholder="Password(確認)"></input>
+						<p>slackと連携する方はslackアカウントの名前を入れてください</p>
+						<p>登録ボタン先のリンクにてslackの登録が可能です。</p>
+						<input class="form-control" type="text" placeholder="slackname（任意）" id="slackname" th:field="*{slackname}"></input>
+						<p>よろしければ確認ボタンを押してください</p>
+						<div><button id="submit-btn" type="submit" class="yubi">登録確認</button></div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!--modalをJSで表示させるsignupformここまで-->
+		<!--modalをJSで表示させるcontacrformここから-->
+		<div class="modal-wrapper" id="contact-modal">			
+			<div class="modal">
+			<div class="close-modal">
+				<i class="fa fa-2x fa-times"></i>
+			</div>
+				<div id="contact-form">
+					<h2>お問い合わせ</h2>
+					<form action="#">
+						<input class="form-control" type="email" placeholder="Email"></input>
+						<input class="form-control" type="text" placeholder="UserName"></input>
+						<input class="form-control" type="password" placeholder="Password"></input>
+						<div id="submit-btn">送信</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!--modalをJSで表示させるcontacrformここまで-->
+		<!--modalをJSで表示させるloginformここから-->
+		<div class="modal-wrapper" id="login-modal">			
+			<div class="modal">
+			<div class="close-modal">
+				<i class="fa fa-2x fa-times"></i>
+			</div>
+				<div id="login-form">
+					<h2>LoginForm</h2>
+					<form method="post" th:action="@{/login}">
+					<div th:if="${param.error}" class="alert alert-danger">
+            			ユーザー名またはパスワードが正しくありません。
+        	 		</div>
+						<input class="form-control" type="text" name="username" placeholder="UserName" required="required"></input>
+						<input class="form-control" type="password" name="password" placeholder="Password" required="required"></input>
+						<div><button id="submit-btn" type="submit" class="yubi">Login</button></div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!--modalをJSで表示させるloginformここまで-->
+	</div>
+	<script src="/js/header.js"></script>
+	</body>
+</html>

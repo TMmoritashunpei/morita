@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<title>login</title>
+	<meta charset="utf-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+		<link rel="stylesheet" type="text/css" href="/css/login.css"></link>
+		<link rel="stylesheet" type="text/css" href="/css/loginresponsive.css"></link>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	</head>
+	<canvas class="background"></canvas>
+	<body>
+	<div class='box'>
+  		<div class='wave -one'></div>
+  		<div class='wave -two'></div>
+  		<div class='wave -three'></div>	
+  	<div class='title'><h2>techma Login</h2></div>
+	</div>
+		<div id="login-form">	
+			<form method="post" th:action="@{/login}">
+			  <div th:if="${param.error}" class="alert alert-danger">
+            	ユーザー名またはパスワードが正しくありません。
+        	 </div>
+				<p>UserName</p>
+				<input class="form-control" type="text" name="username" placeholder="UserName" required="required"></input>
+				<p>Password</p>
+				<input class="form-control" type="password" name="password" placeholder="Password" required="required"></input>
+			<button class="cp_button04" type="submit"><span>Login</span></button>
+			<button class="cp_button04" onclick="location.href='techmatop'"><span>TOP</span></button>
+			<button class="cp_button04" onclick="location.href='https://join.slack.com/t/techmahq/shared_invite/enQtNTY2Nzc0Mzg4MjI5LThhZmU3M2NiYjE2YzUxYmI1ZGJlYTgwNTdlNGMwYTNjMGNiYzc2NGQ5NTgzMzFmMTA4ZmU3MTBlZjIyYTljNWM'"><span>slackへ</span></button>	
+			</form>
+		</div>
+		<script src="/js/particles.min.js"></script>
+		<script src="/js/itemserch.js"></script>
+	</body>
+</html>
+	

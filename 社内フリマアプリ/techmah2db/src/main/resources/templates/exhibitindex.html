@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>itemserch</title>
+	<meta charset="utf-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+	<title>techma</title>
+<link rel="stylesheet" type="text/css" href="/css/exhibitindex.css"></link>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"></link>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<canvas class="background"></canvas>
+	<!--header.htmlの情報を読み込む-->
+	<div th:replace="header"></div>
+	<div class="item-serch-list">
+		<h1>出品履歴一覧</h1>
+			<div class="error">
+				<div><span th:if="${noexhibit}">出品商品がありません</span></div>
+			</div>
+		<div class="items">
+			<div class="item" th:each="item : ${items}">
+			<!--<a href="/techmatop/techma/item/" th:href="@{/techmatop/techma/item/itemId(itemId=${item.itemId})}">-->
+				<img class="item-item-image" th:if="${item.filename == null and item.stock != 0}" src="/image/No_Image_Available.jpg"></img>
+				<img class="item-image" th:if="${item.stock != 0 and item.filename != null}" th:src="|/itemimage/${item.filename}|"></img>
+				<img class="item-item-image" th:if="${item.stock == 0}" src="/image/sould-out.png"></img>
+				<div class="status">
+					<p>商品名：<span th:text="${item.itemname}"></span></p>
+					<p>現在庫数:<span th:text="${item.stock}"></span></p>	
+					<p th:if="${item.exhibitcansellflg == false}">ステータス:<span>販売中</span></p>	
+					<p th:if="${item.exhibitcansellflg == true}">ステータス:<span>キャンセル</span></p>
+				</div>
+				<div class="status">
+					<p>金額:<span th:text="${item.price}+￥"></span></p>
+					<p>カテゴリー:<span th:text="${item.category.categoryname}"></span></p>
+				</div>
+				<div class="status">
+					<p>出品日:&nbsp;&nbsp;<span th:text="${#dates.format(item.created_at, 'yyyy/MM/dd HH:mm:ss')}"></span></p>
+					<p>購入取引数:&nbsp;&nbsp;<span th:text="${#lists.size(item.purchases)}"></span></p>
+				</div>
+				<div class="status-btn">
+				<div class="status">
+					<a href="/techmatop/techma/item/" th:href="@{/techmatop/techma/item/itemId(itemId=${item.itemId})}"><button class="cp_button01"><span>商品詳細へ</span></button></a>
+				</div>
+				<div class="status">
+					<button  th:if="${#lists.size(item.purchases) != 0}" class="cp_button01" onclick="location.href='javascript:history.back()'"><span>購入者一覧</span></button>
+				</div>		
+				<div class="status" th:if="${item.exhibitcansellflg == false}">
+					<a th:href="@{/techmatop/techma/item/cansell/itemId(itemId=${item.itemId})}"><button class="cp_button01" th:value="${item.itemId}"><span>出品キャンセル</span></button></a>
+				</div>
+				<div class="status" th:if="${item.exhibitcansellflg == true}">
+					<a th:href="@{/techmatop/techma/item/cansell/itemId(itemId=${item.itemId})}"><button class="cp_button01" type="submit"><span>キャンセル取消</span></button></a>
+				</div>
+				</div>
+			</div>
+		</div>				
+	</div>
+	<div class="btn">
+		<button class="cp_button04" onclick="location.href='/techmatop/techma/user/'"><span>ユーザーページへ</span></button>
+		<button class="cp_button04" onclick="location.href='/techmatop/techma'"><span>TOP</span></button>
+	</div>
+	<div class="footer">
+	<div th:replace="footer"></div>
+	</div>
+	<script src="/js/demo.js"></script>
+	<script src="/js/particles.min.js"></script>
+	<script src="/js/itemserch.js"></script>
+</body>	
+</html>

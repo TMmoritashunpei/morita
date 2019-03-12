@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head lang="en">
+	<meta charset="utf-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+	<title>itemcreate</title>
+<link rel="stylesheet" type="text/css" href="/css/userupdate.css"></link>
+<link rel="stylesheet" type="text/css" href="/css/responsive.css"></link>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"></link>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="canvas">
+<canvas class="background"></canvas>
+</div>
+	<!--header.htmlの情報を読み込む-->
+	<div th:replace="header"></div>
+	<div class="top-wrapper">
+		<div class="container">
+			<h1>Put Up Your Item</h1>
+			<div class="item-form">
+				<form th:action="@{/techmatop/techma/user/userupdatecheck}" th:object="${userForm}" method="post" enctype="multipart/form-data">
+				<div class="pic-add">
+				<ul>
+					<li><div class="pic-item">
+						<input class="pic-control" id="file" name="file" type="file" th:field="*{uploadedFile}" accept="image/*"/>
+						<img  class="noimg" src="/image/No_Image_Available.jpg"></img>
+						<div class="preview"><input id="cancel" class="cansel" type="button" value="cancel"></input></div>
+						</div>
+					</li>	
+				</ul>
+				</div>
+				<div class="contains-form">
+					<div class="itemname">
+					<p>アカウント名を入力してください</p>
+						<input class="form-control" type="text" placeholder="ItemName" th:field="*{username}" required="required"></input>
+					</div>
+					<div class="itemprice">
+					<p>パスワードを入力してください</p>
+						<input class="form-control" type="text" placeholder="password" th:field="*{password}"  required="required"></input>
+					</div>
+					<div class="itemprice">
+					<p>再入力</p>
+						<input class="form-control" type="text" placeholder="password" required="required"></input>
+					</div>
+					<div class="itemprice">
+					<p>電話番号を入力してください</p>
+						<input class="form-control" type="tel" placeholder="tel" th:field="*{tel}" required="required"></input>
+					</div>
+					<div class="Category-select">
+					<p>メールアドレスを入力してください</p>
+						<input class="form-control" type="email" placeholder="Email" id="mail" th:field="*{mail}" required="required"></input>
+					</div>
+					<div class="condition-select"  required="required">
+					<p>slackbotを使用する方はslackに登録のアカウント名を入力してください</p>
+						<input class="form-control" type="text" placeholder="slackname（任意）" id="slackname" th:field="*{slackname}"></input>
+					</div>
+					<div class="coments" id="item">
+					<p>コメントを入力してください</p>
+					<textarea name="coments" class="form-control" value="コメント（任意）" th:field="*{comments}"></textarea>
+					</div>
+				</div>
+					<div class="form-check">
+						<button class="cp_button04" type="submit"><span>登録</span></button>
+						<button class="cp_button04" onclick="location.href='javascript:history.back()'"><span>前のページへ</span></button>						
+						<button class="cp_button04" onclick="location.href='/techmatop/techma'"><span>TOP</span></button>
+						<!--後に実装  <a href="/techmatop/techma/itemresultcheck"><input type="submit" class="cp_button04"><span>Put Up</span></input></a>-->
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!--footer.htmlの情報を読み込む-->
+	<div th:replace="footer"></div>
+	<script src="/js/demo.js"></script>
+	<script src="/js/particles.min.js"></script>
+	<script src="/js/itemcreate.js"></script>
+</body>	
+</html>

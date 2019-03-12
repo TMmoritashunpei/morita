@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+	<title>item</title>
+<link rel="stylesheet" type="text/css" href="/css/item.css"></link>
+<link rel="stylesheet" type="text/css" href="/css/responsive.css"></link>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"></link>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<canvas class="background"></canvas>
+	<!--header.htmlの情報を読み込む-->
+	<div th:replace="header"></div>
+	<!--modalをJSで表示させるsignupformここから-->
+	<div class="item-wrapper">
+	<h1>Item Status</h1>
+	<div class="error-massage">
+	<span th:if="${userDatailscheck}">こちらの商品はご自身で出品されたアイテムの為購入できません。</span>
+	<br></br>
+	<span th:if="${item.stock == 0}">こちらの商品は商品の在庫がないため購入できません。</span>
+	<br></br>
+	<span th:if="${item.exhibitcansellflg == false}">こちらの商品は出品者がキャンセルしているため購入できません。</span>
+	</div>
+		<div class="item-container">
+			<div class="item-item">			
+			<form action="#" th:action="@{/techmatop/techma/itemcheck/itemId(itemId=${item.itemId})}" th:object="${itemForm}" method="get">
+				
+				<h2>Item Name： <span th:text="${item.itemname}"></span></h2>
+				<div class="item-pic">
+					<img class="item-item-image" th:if="${item.filename == null and item.stock != 0}" src="/image/No_Image_Available.jpg"></img>
+					<img class="item-item-image" th:if="${item.stock != 0 and item.filename != null}" th:src="|/itemimage/${item.filename}|"></img>
+					<img class="item-item-image" th:if="${item.stock == 0}" src="/image/sould-out.png"></img>
+					<img class="item-item-image" th:if="${item.filename2 == null and item.stock != 0}" src="/image/No_Image_Available.jpg"></img>
+					<img class="item-item-image" th:if="${item.stock != 0 and item.filename2 != null}" th:src="|/itemimage/${item.filename2}|"></img>
+					<img class="item-item-image" th:if="${item.filename3 == null  and item.stock != 0}" src="/image/No_Image_Available.jpg"></img>
+					<img class="item-item-image" th:if="${item.stock != 0 and item.filename3 != null}" th:src="|/itemimage/${item.filename3}|"></img>
+					<img class="item-item-image" th:if="${item.filename4 == null  and item.stock != 0}" src="/image/No_Image_Available.jpg"></img>
+					<img class="item-item-image" th:if="${item.stock != 0 and item.filename4 != null}" th:src="|/itemimage/${item.filename4}|"></img>
+				</div>
+				
+				<div class="item-item-status">
+				<div class="coments-wrapper">
+					<p>出品時間:<br></br><span th:text="${str}"></span></p>
+					<p>商品説明:<br></br><span th:text="${item.comments}"></span></p>
+					
+				</div>
+				<div class="item-status-wrapper">
+					<p>価格:&nbsp;&nbsp; <span th:text="${item.price}+￥"></span></p>
+					<p>カテゴリー:&nbsp;&nbsp;<span th:text="${item.category.categoryname}"></span></p>
+					<p>状態:&nbsp;&nbsp;　<span th:text="${item.condition}"></span></p>
+					<p>支払方法:&nbsp;&nbsp; <span th:text="${item.payment}"></span></p>
+					<p>在庫:&nbsp;&nbsp; <span th:text="${item.stock}"></span></p>
+					<a href="/techmatop/techma/exhibitor/" th:href="@{/techmatop/techma/exhibitor/itemId(itemId=${item.itemId})}"><p>出品者:&nbsp;&nbsp; <span th:text="${item.user.username}"></span></p></a>
+				</div>		
+					<div class="purchasenumber" th:with="x=${item.stock}" th:if="${item.stock != 0} and ${userDatailscheck == fals}">
+					<p>購入数を選択してください</p>
+					<select  th:field="*{purchasenumber}">
+						<option  name="purchasenumber" th:each="i : ${#numbers.sequence(1, x)}" th:text="${i}" th:value="${i}"></option>
+					</select>
+					</div>
+				</div>
+				<input type="hidden" name="itemId" th:value="${item.itemId}"></input>
+			<div class="btn">
+				<button th:if="${item.stock != 0} and ${userDatailscheck == fals} and ${item.exhibitcansellflg != false}" class="cp_button04" type="submit"><span>購入へ</span></button>	
+				<button class="cp_button04" type="button" onclick="location.href='javascript:history.back()'"><span>前のページへ</span></button>
+			</div>
+			</form>
+			
+			</div>
+		</div>
+	</div>	
+	<!--footer.htmlの情報を読み込む-->
+	<div th:replace="footer"></div>
+	<script src="/js/demo.js"></script>
+	<script src="/js/particles.min.js"></script>
+	<script src="/js/itemcreate.js"></script>
+</body>	
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head lang="en">
+	<meta charset="utf-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+	<title>itemcreate</title>
+<link rel="stylesheet" type="text/css" href="/css/itemcreate.css"></link>
+<link rel="stylesheet" type="text/css" href="/css/responsive.css"></link>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"></link>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="canvas">
+<canvas class="background"></canvas>
+</div>
+	<!--header.htmlの情報を読み込む-->
+	<div th:replace="header"></div>
+	<div class="top-wrapper">
+		<div class="container">
+			<h1>Put Up Your Item</h1>
+			<div class="item-form">
+				<form th:action="@{/techmatop/techma/itemchack}" th:object="${itemForm}" method="post" enctype="multipart/form-data">
+				<div class="pic-add">
+				<ul>
+					<li><div class="pic-item">
+						<input class="pic-control" id="file" name="file" type="file" th:field="*{uploadedFile}" accept="image/*" required="required"/>
+						<img  class="noimg" src="/image/No_Image_Available.jpg"></img>
+						<div class="preview"><input id="cancel" class="cansel" type="button" value="cancel"></input></div>
+					</div></li>
+					<li><div class="pic-item2">
+						<input class="pic-control2" id="file2" name="file2" type="file" th:field="*{uploadedFile2}" accept="image/*"/>
+						<img  class="noimg" src="/image/No_Image_Available.jpg"></img>
+						<div class="preview"><input id="cancel2" class="cansel" type="button" value="cancel"></input></div>
+					</div></li>
+					<li><div class="pic-item3">
+						<input class="pic-control3" id="file3" name="file3" type="file" th:field="*{uploadedFile3}" accept="image/*"/>
+						<img  class="noimg" src="/image/No_Image_Available.jpg"></img>
+						<div class="preview"><input id="cancel3" class="cansel" type="button" value="cancel"></input></div>
+					</div></li>
+					<li><div class="pic-item4">
+						<input class="pic-control4" id="file4" name="file4" type="file" th:field="*{uploadedFile4}" accept="image/*"/>
+						<img  class="noimg" src="/image/No_Image_Available.jpg"></img>
+						<div class="preview"><input id="cancel4" class="cansel" type="button" value="cancel"></input></div>
+					</div></li>
+				</ul>
+				</div>
+				<div class="contains-form">
+					<div class="itemname">
+					<p>商品名を入力してください</p>
+						<input class="form-control" type="text" placeholder="ItemName" th:field="*{itemname}" required="required"></input>
+					</div>
+					<div class="itemprice">
+					<p>金額を入力してください</p>
+						<input class="form-control" type="tel" placeholder="price" th:field="*{price}" required="required"></input>
+					</div>
+					<div class="Category-select">
+					<p>カテゴリーを選択してください</p>
+						<select name="category" value="select Category" th:field="*{category}" required="required">
+							<option value="">---</option>
+							<option th:each="category : ${categories}" th:value="${category.categoryId}" th:text="${category.categoryname}">Category1</option>
+						</select>
+					</div>
+					<div class="condition-select" th:field="*{condition}" >
+					<p>商品の状態を選択してください</p>
+						<select name="condition" class="form-control" value="状態" required="required">
+							<option value="">Conditionを選択してください</option>
+							<option value="新品、未使用">新品、未使用</option>
+							<option value="未使用に近い">未使用に近い</option>
+							<option value="目立った傷や汚れなし">目立った傷や汚れなし</option>
+							<option value="やや傷や汚れあり">やや傷や汚れあり</option>
+							<option value="傷や汚れあり">傷や汚れあり</option>
+							<option value="全体的に状態が悪い">全体的に状態が悪い</option>
+						</select>
+					</div>
+					<div class="payment">
+					<p>希望支払い方法</p>
+						<select name="payment" class="form-control" value="希望支払い方法" th:field="*{payment}" required="required">
+							<option value="">取引方法を選択してください</option>
+							<option value="手渡し">手渡し</option>
+							<option value="銀行振込">銀行振込</option>
+							<option value="LINE Pay">LINE Pay</option>
+							<option value="物々交換">物々交換</option>
+						</select>
+					</div>
+					<div class="stock">
+					<p>数量選択</p>
+						<select name="stock" class="form-control" value="数量" th:field="*{stock}" required="required">
+							<option value="">数量</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+						</select>
+					</div>
+					<div class="coments" id="item">
+					<p>商品説明を入力してください</p>
+					<textarea name="coments" class="form-control" value="商品説明" th:field="*{comments}" required="required"></textarea>
+					</div>
+				</div>
+					<div class="form-check">
+						<button class="cp_button04" type="submit"><span>Put Up</span></button>
+						<button class="cp_button04" onclick="location.href='javascript:history.back()'"><span>前のページへ</span></button>	
+						<button class="cp_button04" onclick="location.href='/techmatop/techma'"><span>TOP</span></button>					
+						<!--後に実装  <a href="/techmatop/techma/itemresultcheck"><input type="submit" class="cp_button04"><span>Put Up</span></input></a>-->
+
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!--footer.htmlの情報を読み込む-->
+	<div th:replace="footer"></div>
+	<script src="/js/demo.js"></script>
+	<script src="/js/particles.min.js"></script>
+	<script src="/js/itemcreate.js"></script>
+</body>	
+</html>

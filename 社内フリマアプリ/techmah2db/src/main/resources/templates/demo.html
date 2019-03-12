@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head lang="en">
+	<meta charset="utf-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+	<title>techma</title>
+<link rel="stylesheet" type="text/css" href="/css/demo.css"></link>
+<link rel="stylesheet" type="text/css" href="/css/responsive.css"></link>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"></link>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<canvas class="background"></canvas>
+	<!--header.htmlの情報を読み込む-->
+	<div th:replace="header"></div>
+	<!--modalをJSで表示させるsignupformここから-->
+		<div class="modal-wrapper" id="signup-modal">
+			<div class="modal">
+				<div id="contact-form">
+				</div>
+			</div>
+		</div>
+	<div class="top-wrapper">
+		<div class="container">
+			<h1>More Good Items</h1>
+			<h1>Something</h1>
+			<p>techmaは社内で商品の取引ができるサービスです</p>
+			<div class="btn-wrapper">
+				<div class="btn message signup-show">新規登録</div>
+				<p>or sign up with</p>
+				<a class="btn facebook" href="#">
+					<span class="fa fa-facebook"></span>
+					Facebookで登録
+				</a>
+				<a class="btn twitter" href="#">
+					<span class="fa fa-twitter"></span>
+					Twitterで登録
+				</a>
+			</div>		
+		</div>
+	</div>
+	<div class="contents-wrapper">
+		<div class="container">
+			<div class="heading">
+				<h2>Select Service</h2>
+			</div>
+			<div class="services">
+			<div class="service service-hover">
+				<div class="service-icon">
+					<img src="/image/syuppin.png"></img>
+					<p>Put Up</p>
+				</div>
+				<p class="text-contents">商品の出品ができます</p>
+			</div>
+			<div class="service service-hover">
+				<div class="service-icon">
+					<img src="/image/buy.png"></img>
+					<p>Buy</p>
+				</div>
+				<p class="text-contents">商品の購入ができます</p>
+			</div>
+			<div class="service service-hover">
+				<div class="service-icon">
+					<img src="/image/serch.png"></img>
+					<p>Search</p>
+				</div>
+				<p class="text-contents">商品の検索ができます</p>
+			</div>
+			<div class="service service-hover">
+				<div class="service-icon">
+					<img src="/image/syuppin.png"></img>
+					<p>slackbotと連携</p>
+				</div>
+				<p class="text-contents">slackと連動</p>
+			</div>
+			<div class="clear"></div>
+		</div>
+		</div>
+	</div>
+	<div class='box'>
+  		<div class='wave -one'></div>
+  		<div class='wave -two'></div>
+  		<div class='wave -three'></div>
+  		<div class="message-wrapper">
+		<div class="container">
+			<div class="heading">
+				<h2>slackを利用してみよう</h2>
+				<h3>slackの登録を行うことで出品した商品の購入をお知らせ</h3>
+			</div>
+			<a class="btn message" href="https://join.slack.com/t/techmahq/shared_invite/enQtNTY2Nzc0Mzg4MjI5LThhZmU3M2NiYjE2YzUxYmI1ZGJlYTgwNTdlNGMwYTNjMGNiYzc2NGQ5NTgzMzFmMTA4ZmU3MTBlZjIyYTljNWM">slackへ</a>
+		</div>
+		</div>
+  	<div class='title'></div>
+	</div>
+	<!--footer.htmlの情報を読み込む-->
+	<div th:replace="footer"></div>
+	<script src="/js/demo.js"></script>
+	<script src="/js/particles.min.js"></script>
+	<script src="/js/itemserch.js"></script>
+</body>	
+</html>

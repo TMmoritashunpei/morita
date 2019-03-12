@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+	<title>user</title>
+<link rel="stylesheet" type="text/css" href="/css/user.css"></link>
+<link rel="stylesheet" type="text/css" href="/css/responsive.css"></link>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"></link>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<canvas class="background"></canvas>
+	<!--header.htmlの情報を読み込む-->
+	<div th:replace="header"></div>
+	<!--modalをJSで表示させるsignupformここから-->
+	<div><h1>マイページ</h1></div>
+		<div class="item-wrapper">
+		<div class="item-container">
+			<div class="user-user">
+				<div class="item-pic">
+					<img class="user-image" th:if="${user.filename == null}" src="/image/No_Image_Available.jpg"></img>
+					<img class="user-image" th:if="${user.filename != null}" th:src="|/userimage/${user.filename}|"></img>
+				</div>
+				<div class="item-status-wrapper">
+					<p>User Name：<span th:text="${user.username}"></span></p>
+					<p>mail：<span th:text="${user.mail}"></span></p>
+					<p><a href="/techmatop/techma/user/exhibitindex/">出品履歴&nbsp;&nbsp;</a></p>
+					<p><a href="/techmatop/techma/user/purchaseindex/">購入履歴&nbsp;&nbsp;</a></p>		
+					<p><a href="/techma">お気に入り&nbsp;&nbsp;</a></p>
+					<p><a href="/techmatop/techma/user/useredit">アカウント情報変更&nbsp;&nbsp;</a></p>
+				</div>
+				<div class="coments-wrapper">
+					<p>slackname ：<span th:text="${user.slackname}"></span></p>
+					<p>コメント:<br></br><span th:text="${user.comments}"></span></p>
+				</div>
+			</div>
+		<p>slackの登録でtechmabotから通知を受け取ることができます。</p>
+		<p>techmabotの使用にはslacknameの登録が必要になります。</p>
+		<button class="cp_button04" onclick="location.href='https://join.slack.com/t/techmahq/shared_invite/enQtNTY2Nzc0Mzg4MjI5LThhZmU3M2NiYjE2YzUxYmI1ZGJlYTgwNTdlNGMwYTNjMGNiYzc2NGQ5NTgzMzFmMTA4ZmU3MTBlZjIyYTljNWM'"><span>slackへ</span></button>
+		<button class="cp_button04" onclick="location.href='javascript:history.back()'"><span>前のページへ</span></button>
+		<button class="cp_button04" onclick="location.href='/techmatop/techma'"><span>TOP</span></button>
+		</div>
+		</div>	
+	<!--footer.htmlの情報を読み込む-->
+	<div th:replace="footer"></div>
+	<script src="/js/demo.js"></script>
+	<script src="/js/particles.min.js"></script>
+	<script src="/js/itemserch.js"></script>
+</body>	
+</html>

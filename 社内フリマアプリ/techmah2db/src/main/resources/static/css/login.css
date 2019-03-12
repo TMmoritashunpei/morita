@@ -1,0 +1,227 @@
+body {	
+	background-color: #DFD8F3;
+}
+
+#login-form {
+	display: inline-block;
+	margin: 0 outo;
+	text-align: center;
+	opacity: 0.9;
+}
+h2 {
+	font-size:25px;
+	text-align: center;
+	
+}
+
+p {
+	color: white; 
+	font-size:20px;
+}	
+
+form {
+	background-color: #D5CCF3;
+	margin: 0px;
+	display: inline-block;
+	width: 33%;
+	transition: all 0.5s;
+	border-radius: 8px;
+	font-size:12px;
+}
+
+.modal {
+	text-align: center;
+}
+
+.modal h2 {
+}
+
+#contact-form, #login-form, #signup-form {
+  width: 100%;
+}
+
+#contact-form h2, #login-form h2, #signup-form h2 {
+  color: white;
+  letter-spacing: 1px;
+}
+
+#contact-form input, #login-form input, #signup-form input {
+  width: 70%;
+  margin-bottom: 20px;
+  font-size: 12px;
+  padding: 12px 12px;
+  border: 1px solid #d0d5d8;
+  border-radius: 5px;
+}
+
+input {
+	cursor : pointer;
+}
+
+.background {
+  background-color: #9277F3;
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  z-index:-1;
+}
+
+.box {
+  width: 100%;
+  height: 300px;
+  border-radius: 5px;
+  box-shadow: 0 2px 30px rgba(black, .2);
+  background: lighten(#f0f4c3, 10%);
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.wave {
+  opacity: .4;
+  position: absolute;
+  top: 3%;
+  left: 50%;
+  background: #0af;
+  width: 500px;
+  height: 500px;
+  margin-left: -250px;
+  margin-top: -250px;
+  transform-origin: 80% 98%;
+  border-radius: 93%;
+  animation: drift 4000ms infinite linear;
+}
+
+.wave.-three {
+  animation: drift 5000ms infinite linear;
+}
+
+.wave.-two {
+  animation: drift 7000ms infinite linear;
+  opacity: .1;
+  background: yellow;
+}
+
+form:hover {
+	background-color: rgba(255, 255, 250, 0.5);
+	box-shadow: 0 0 40px gray;
+	transition: all 0.5s;
+	border-radius: 8px;
+	padding:1px;
+}
+
+.box:after {
+  content: '';
+  display: block;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(#e8a, 1), rgba(#def, 0) 80%, rgba(white, .5));
+  transform: translate3d(0, 0, 0);
+}
+
+.title {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  line-height: 300px;
+  text-align: center;
+  transform: translate3d(0, 0, 0);
+  color: white;
+  text-transform: uppercase;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: .4em;
+  font-size: 24px;
+  text-shadow: 0 1px 0 rgba(black, .1);
+  text-indent: .3em;
+}
+
+@keyframes drift {
+  from { transform: rotate(0deg); }
+  from { transform: rotate(360deg); }
+}
+View Compiled 
+Resources
+}
+
+.cp_button04 {
+	display: block;
+	text-decoration:none;
+	width: 160px;
+	padding: 0.8em;
+	text-align: center;
+	color: #FFF;
+	border-radius: 4px;
+	background: #4DD0E1;
+	overflow: hidden;
+}
+
+.cp_button04 span {
+	display:inline-block;
+	transition: .5s
+}
+.cp_button04:hover span {
+	transform: rotateX(360deg);
+}
+
+.cp_button04 {
+	display: inline-block;
+	padding: 1em;
+	width: 160px;
+	background: transparent;
+	cursor: pointer;
+	line-height: 1.4;
+	user-select: none;
+	vertical-align: bottom;
+	transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+	color: #F4511E;
+	border: 1px solid #F4511E;
+	border-radius: 0;
+	position: relative;
+	z-index: 1;
+}
+.cp_button04:hover:before {
+	-webkit-transform: scale(0.85, 1) translate(8%, -15%);
+	        transform: scale(0.85, 1) translate(8%, -15%);
+}
+.cp_button04:active:before {
+	transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	transition-duration: 0.15s;
+	-webkit-transform: scale(1, 1.2) translate(6%, 3%);
+	        transform: scale(1, 1.2) translate(6%, 3%);
+}
+.cp_button04:before {
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+	content: '';
+	transition: transform 0.3s, background-color 0.3s;
+	-webkit-transform: scale(0.3, 0.2) translate(12%, -20%);
+	        transform: scale(0.3, 0.2) translate(12%, -20%);
+	transform-origin: 5% -5%;
+	background-color: #ff7043;
+}
+.cp_button04:hover,
+.cp_button04:active {
+	color: #ffffff;
+	border: 1px solid #ff7043;
+}
+.cp_button04:focus {
+	color: #ff7043;
+	border: 1px solid #ff7043;
+}
+.cp_button04:focus:hover {
+	color: #ffffff;
+	border: 1px solid #ff7043;
+}
+.cp_button04:focus:before {
+	background-color: #ff7043;
+}

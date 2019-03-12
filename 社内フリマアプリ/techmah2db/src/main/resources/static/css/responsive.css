@@ -1,0 +1,175 @@
+@media (max-width: 2000px ) {
+	.item-form {
+	max-width: 1400px;
+	}
+	.items {
+	text-aligin: center;
+	max-width:1800px;
+	}
+	.item {
+	margin-left: 70px;
+	margin-right: -10px;
+	max-width: 265px;
+	}
+}	
+
+@media (max-width: 1000px ) {
+	.service {
+	width: 50%; 
+   	margin-bottom:50px;
+	}
+	.top-rapper h1 {
+	font-size: 32px;
+	}
+	
+	.pic-item {
+	width: 90%;
+	margin: auto;
+	text-aligin: center;
+	}
+	.heaging h2 {
+	font-size: 20px;
+	}
+	.item h1,h2 {
+	margin-top: 80px;
+	width: 50%;
+	}
+	.item-item h1 {
+	margin-top: 100px;
+	width: 100%;
+	}
+	.user-user h1 {
+	margin-top: 200px;
+	width: 100%;
+	}
+	.items {
+	margin-right: 0px;
+	}
+	.item img {
+	height: 200px;
+	margin-right:40px;
+	}
+	.item {
+	width: 50%;
+	text-aligin: center;
+	margin: auto;
+	margin-left:80px;
+	
+	}
+	.item-item-image {
+	width: 90%;
+	margin: auto;
+	text-aligin: center;
+	}
+	.item-item {
+	width: 50%;
+	}
+	.buy, .gototop {
+	float: left;
+	margin:10px;
+	}
+	.user-image {
+	width: 70%;
+	height: 70%;
+	margin: auto;
+	text-aligin: center;
+	}
+	.user-user {
+	margin:0 auto;
+	width: 60%;
+	margin-left:20px;
+	}
+	gototop {
+	float: left;
+	}
+}
+
+@media (max-width: 670px ) {
+	.pic-item {
+	width: 90%;
+	margin: auto;
+	text-aligin: center;
+	}
+	.items {
+	padding-right:0px;
+	}
+	.item {
+	width: 90%;
+	}
+	.contains-form {
+	text-aligin: center;
+	width: 70%;
+	margin: auto;
+	}
+	.service {
+	width: 100%;
+	}
+	footer {
+	text-aligin: center;
+	}
+	footer {
+	text-aligin: center;
+	}
+	.btn {
+	width: 100%;
+	}
+	.facebook {
+	margin-bottom: 10px;
+	}
+	.top-wrapper {
+	text-aligin: left;
+	padding-top: 130px;
+	}
+	.top-wrapper h1 {
+	font-size: 24px;
+	}
+	.top-wrapper p {
+	font-size: 14px;
+	}
+	.form-check-top {
+	margin-right: 45px;
+	}
+	.btn-info {
+	margin-right: 45px;
+	}
+	.item {
+	width: 80%;
+	margin-left:35px;
+	margin-bottom: 10px;
+	}
+	.item-image {
+	width: 100%;
+	height: 100px;
+	}
+	.item-status-wrapper {
+	width: 80%
+	}
+	.item p {
+	width: 70%
+	}
+	.item h1 {
+	padding-top:120px;
+	width:50%%;
+	}
+	.serch-form {
+	margin: 0;
+	margin-bottom:20px;
+	}
+	.item-item-image {
+	width:50%%;
+	}
+	.buy, .gototop {
+	float: left;
+	margin:10px;
+	}
+	.item-item {
+	margin:0 auto;
+	width: 40%;
+	margin-left:20px;
+	}
+	.user-user {
+	margin:0 auto;
+	width: 40%;
+	margin-left:20px;
+	}
+}

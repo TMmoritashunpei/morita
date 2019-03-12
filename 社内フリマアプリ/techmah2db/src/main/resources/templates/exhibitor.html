@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+	<title>user</title>
+<link rel="stylesheet" type="text/css" href="/css/user.css"></link>
+<link rel="stylesheet" type="text/css" href="/css/responsive.css"></link>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"></link>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<canvas class="background"></canvas>
+	<!--header.htmlの情報を読み込む-->
+	<div th:replace="header"></div>
+	<!--modalをJSで表示させるsignupformここから-->
+	<div><h1>出品者</h1></div>
+		<div class="item-wrapper">
+		<div class="item-container">
+			<div class="user-user">
+				<div class="item-pic">
+					<img class="user-image" th:if="${item.user.filename == null}" src="/image/No_Image_Available.jpg"></img>
+					<img class="user-image" th:if="${item.user.filename != null}" th:src="|/userimage/${item.user.filename}|"></img>
+				</div>
+				<div class="item-status-wrapper">
+					<p>User Name：<span th:text="${item.user.username}"></span></p>
+					<p>mail：<span th:text="${item.user.mail}"></span></p>
+					<p><a href="/techma">お気に入り&nbsp;&nbsp;</a></p>
+				</div>
+				<div class="coments-wrapper">
+					<p>coments：<br></br><span th:text="${item.user.comments}"></span></p>
+				</div>
+			</div>
+		<button class="cp_button04" onclick="location.href='javascript:history.back()'"><span>前のページへ</span></button>
+		</div>
+		</div>	
+	<!--footer.htmlの情報を読み込む-->
+	<div th:replace="footer"></div>
+	<script src="/js/demo.js"></script>
+	<script src="/js/particles.min.js"></script>
+	<script src="/js/itemcreate.js"></script>
+</body>	
+</html>

@@ -1,0 +1,309 @@
+header {
+	height:65px;
+	width: 100%;
+	background-color: #60CDB8;
+	position: fixed;
+	top: o;
+	z-index: 10;
+	opacity: 0.9;
+}
+
+.logo {
+	width: 124px;
+	margin-top: 20px;
+}
+
+.user {
+	text-align: center;	
+	padding-left: 50px;
+	padding-top: 25px;
+	float: right;
+}
+
+.user a {
+	background-color: rgba(200, 100, 200, 0.8);
+	cursol: pointer;
+}
+
+.header-left {
+	float: left;
+	cursol: pointer;
+}
+
+.header-right {
+	float: right;
+	text-align: center;	
+	color: #6e048c;
+}
+
+.header-right a {
+	margin-right: 3px;
+	line-height: 65px;
+	padding-left: 15px;
+	padding: 0 25px;
+	display:block;
+	float: left;
+	transition: all 0.5s;
+	background-color: rgba(255, 255, 255, 0.3); 
+	box-shadow: 0px 7px #526059;
+	cursol: pointer;
+}
+
+.contact {
+	margin-right: 3px;
+	margin-left: 12px;
+}
+
+.contact, .login, .category{
+	line-height: 65px;
+	padding-right: 25px;
+	padding-left: 25px;
+	display: inline-block;
+	flort: left;
+	transition: all 0.5s;
+	background-color: rgba(255, 255, 255, 0.3); 
+	box-shadow: 0px 7px #526059;
+	list-style: none;
+	cursor : pointer;
+}
+
+.ctagory-items {
+	margin-right: 3px;
+	margin-left: 3px;
+	cursol: pointer;
+}
+
+.login {
+	margin-left: -6px;
+	height: 65px;
+}
+
+p {
+	font-size:7px;
+}
+
+.accordion {
+	width: 119px;
+	list-style: none;
+	margin: auto;
+	padding-left: 0;
+	float: left;
+}
+
+.nest {
+	display: none;
+}
+.nest a {
+	width:200px;
+	padding: 0;
+	height: 50px;
+}
+
+ul {
+	height: auto;
+	z-index: 100;
+	text-align: center;
+	
+}
+
+.header-right a:active {
+	box-shadow: none;
+	posotion: relative;
+	top: 7px;
+}
+
+.login:active {
+	box-shadow: none;
+	posotion: relative;
+	top: 7px;
+}
+
+.contact:active {
+	box-shadow: none;
+	posotion: relative;
+	top: 7px;
+}
+
+.category:active {
+	box-shadow: none;
+	posotion: relative;
+	top: 7px;
+}
+
+.header-right a:hover {
+	background-color: rgba(255, 255, 255, 0.5);
+	box-shadow: 0 0 40px #000000;
+	transition: all 0.5s;
+	border-radius: 8px;
+	margin: 3px;
+}
+
+.category:hover {
+	background-color: rgba(255, 255, 255, 0.5);
+	box-shadow: 0 0 40px #000000;
+	transition: all 0.5s;
+	border-radius: 8px;
+	margin: 3px;
+}
+
+.contact:hover {
+	background-color: rgba(255, 255, 255, 0.5);
+	box-shadow: 0 0 40px #000000;
+	transition: all 0.5s;
+	border-radius: 8px;
+	margin: 3px;
+}
+
+.login:hover {
+	background-color: rgba(255, 255, 255, 0.5);
+	box-shadow: 0 0 40px #000000;
+	transition: all 0.5s;
+	border-radius: 8px;
+	margin: 1px;
+}
+.user a:hover {
+	background-color: rgba(255, 255, 255, 0.5);
+	box-shadow: 0 0 40px #000000;
+	transition: all 0.5s;
+	border-radius: 8px;
+	padding: 1px;
+}
+.logo a:hover {
+	background-color: rgba(255, 255, 255, 0.5);
+	box-shadow: 0 0 40px #000000;
+	transition: all 0.5s;
+	border-radius: 8px;
+	padding: 1px;
+}
+.header-right a {
+	line-height: 65px;
+	padding-right: 25px;
+	padding-left: 25px;
+	coler: white;
+	display: block;
+	text-decoration: none;
+	cursol: pointer;
+}
+
+.singup-modal-wrapper {
+	padding-top:100px;
+	margin-bottom: 0px;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.6);
+	z-index: 100;
+	display: none;
+}
+
+.modal-wrapper {
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.6);
+	z-index: 100;
+	display: none;
+}
+.modal {
+	margin: auto;
+	top: 20%;
+	left: 34%;
+	background-color: #e6ecf0;
+	padding: 20px 0 40px;
+	border-radius: 10px;
+	max-width: 450px;
+	width: auto;
+	height: auto;
+	text-align: center;
+}
+
+.modal h2 {
+	padding-left: 30px;
+	margin: 0px;
+}
+
+.singup-modal {
+	margin: auto;
+	margin-top: 30px;
+	top: 5%;
+	left: 34%;
+	background-color: #e6ecf0;
+	padding: 20px 0 40px;
+	border-radius: 10px;
+	max-width: 450px;
+	width: auto;
+	height: auto;
+	text-align: center;
+}
+
+.top-wrapper {
+	padding-bottom: 0px;
+}
+
+.singup-modal h2 {
+	padding-left: 30px;
+}
+
+i {
+	float: right;
+	padding-right: 10px;
+}
+
+.fa {
+	margin-right: 5px;
+}
+
+.fa-times {
+	postition: absolute;
+	top: 12px;
+	right: 12px;
+	color: rgba(128, 128, 128, 0.46);
+	cursol: pointer;
+}
+
+.modal-wrapper {
+	padding-top: 100px;
+}
+
+#contact-form, #login-form, #signup-form {
+  width: 100%;
+}
+
+#contact-form h2, #login-form h2, #signup-form h2 {
+  color: #5f5d60;
+  letter-spacing: 1px;
+  margin-bottom: 40px;
+}
+
+#contact-form input, #login-form input, #signup-form input {
+  width: 320px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  padding: 12px 12px;
+  border: 1px solid #d0d5d8;
+  border-radius: 5px;
+}
+
+#submit-btn {
+  display: inline-block;
+  padding: 14px 140px;
+  background-color: #5dca88;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  margin: 10px auto;
+  cursol: pointer;
+}
+
+#submit-btn a {
+	color: white;
+	text-decoration: none;
+	cursol: pointer;
+}
+
+.yubi,input {
+  cursor : pointer;
+}
+
