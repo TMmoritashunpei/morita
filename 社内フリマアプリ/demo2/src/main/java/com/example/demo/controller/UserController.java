@@ -17,6 +17,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -137,13 +138,20 @@ public class UserController {
 	}
 	//＠ユーザー作成
 	@PostMapping(path = "**/usercreate")
-	String UserCreate(@Validated UserForm form, BindingResult result, Model model, @AuthenticationPrincipal LoginUserDetails userDatails , String password, SessionStatus sessionStatus) throws IOException {
+	String UserCreate(@Validated UserForm form, BindingResult result, Model model, @AuthenticationPrincipal LoginUserDetails userDatails , String password, SessionStatus sessionStatus,PasswordEncoder passwordEncoder) throws IOException {
 		if (result.hasErrors()) {
 		 return techmaController(model, userDatails);
 		}
+		List<User> daoUsers = userService.findNameUser(form.getUsername());
+		for (int i=0; i < daoUsers.size(); i++) {
+			String formPassword = form.getPassword();
+			String daouserpassword = daoUsers.get(i).getPassword();
+			if (passwordEncoder.matches(formPassword, daouserpassword)) {
+				model.addAttribute("error","アカウントが既に存在します。");
+				return createUserNologinCheck(model, form, password);
+				}
+			}
 		User user  = new User();
-		form.getUsername();
-		form.getPassword();
 		BeanUtils.copyProperties(form, user);
 		password = user.getPassword();
 		password = new Pbkdf2PasswordEncoder().encode(password);

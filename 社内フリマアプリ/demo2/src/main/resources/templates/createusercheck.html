@@ -17,6 +17,7 @@
 	<h1>登録確認</h1>
 	<div class="error-massage">
 	<span>会員登録の内容をご確認ください。</span>
+	<span th:if="${error}">アカウントが既に存在します。</span>
 	</div>
 		<div class="item-container">
 			<div class="item-item">			
