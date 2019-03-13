@@ -22,8 +22,8 @@
 		<div class="items">
 			<div class="item" th:each="purchase : ${purchases}">
 			<!--<a href="/techmatop/techma/item/" th:href="@{/techmatop/techma/item/itemId(itemId=${item.itemId})}">-->
-				<img class="item-item-image" th:if="${purchase.filename == null and purchase.stock != 0}" src="/image/No_Image_Available.jpg"></img>
-				<img class="item-image" th:if="${purchase.stock != 0 and purchase.filename != null}" th:src="|/itemimage/${purchase.filename}|"></img>
+				<img class="item-item-image" th:if="${purchase.item.filename == null and purchase.stock != 0}" src="/image/No_Image_Available.jpg"></img>
+				<img class="item-image" th:if="${purchase.stock != 0 and purchase.item.filename != null}" th:src="|data:image/jpg;base64,${purchase.item.filename}|"></img>
 				<div class="status">
 					<p>商品名：<span th:text="${purchase.purchasename}"></span></p>
 					<p>購入数:<span th:text="${purchase.stock}"></span></p>	

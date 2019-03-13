@@ -1,7 +1,7 @@
 body {	
 	font-family: "Hiragino Kaku Gothic Prow";
 	margin:0 auto;
-	background-color: #efeeea;
+	background-color: #fff6ed;
 }
 
 h1 {
@@ -89,8 +89,12 @@ input:hover {
 	margin-left:10px;
 }
 
+a {
+	text-decoration: none;
+}
+
 .background {
-  background-color: #fcf3d1;
+  background-color: #5b5957;
   position: absolute;
   display: block;
   top: 0;
@@ -283,52 +287,52 @@ input[type="checkbox"]:checked + label:after {
   left:2px;
 }
 
- /* === ƒ{ƒ^ƒ“‚ğ•\¦‚·‚éƒGƒŠƒA ============================== */
+ /* === ï¿½{ï¿½^ï¿½ï¿½ï¿½ï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½A ============================== */
 .sample4Area {
-  margin         : auto;                /* ’†‰›Šñ‚¹           */
-  width          : 70px;                /* ƒ{ƒ^ƒ“‚Ì‰¡•       */
+  margin         : auto;                /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½           */
+  width          : 70px;                /* ï¿½{ï¿½^ï¿½ï¿½ï¿½Ì‰ï¿½ï¿½ï¿½       */
 }
  
- /* === ƒ`ƒFƒbƒNƒ{ƒbƒNƒX ==================================== */
+ /* === ï¿½`ï¿½Fï¿½bï¿½Nï¿½{ï¿½bï¿½Nï¿½X ==================================== */
 .sample4Area input[type="checkbox"] {
-  display        : none;            /* ƒ`ƒFƒbƒNƒ{ƒbƒNƒX”ñ•\¦ */
+  display        : none;            /* ï¿½`ï¿½Fï¿½bï¿½Nï¿½{ï¿½bï¿½Nï¿½Xï¿½ï¿½\ï¿½ï¿½ */
 }
  
- /* === ƒ`ƒFƒbƒNƒ{ƒbƒNƒX‚Ìƒ‰ƒxƒ‹i•W€j ==================== */
+ /* === ï¿½`ï¿½Fï¿½bï¿½Nï¿½{ï¿½bï¿½Nï¿½Xï¿½Ìƒï¿½ï¿½xï¿½ï¿½ï¿½iï¿½Wï¿½ï¿½ï¿½j ==================== */
 .sample4Area label {
-  display        : block;               /* ƒ{ƒbƒNƒX—v‘f‚É•ÏX */
-  box-sizing     : border-box;          /* ˜gü‚ğŠÜ‚ñ‚¾ƒTƒCƒY */
-  border         : 2px solid #ccc;      /* ˜gü(ˆê’Ul•ûŒü)   */
-  border-radius  : 35px;                /* ŠpŠÛ               */
-  height         : 70px;                /* ƒ{ƒ^ƒ“‚Ì‚‚³       */
-  background     : #ff6347;             /* ”wŒiF             */
-  box-shadow     : 3px 3px 6px #888;    /* ‰e•t‚¯             */
-  transition     : .5s;                 /* ŠŠ‚ç‚©•Ï‰»         */
+  display        : block;               /* ï¿½{ï¿½bï¿½Nï¿½Xï¿½vï¿½fï¿½É•ÏX */
+  box-sizing     : border-box;          /* ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½Ü‚ñ‚¾ƒTï¿½Cï¿½Y */
+  border         : 2px solid #ccc;      /* ï¿½gï¿½ï¿½(ï¿½ï¿½Uï¿½lï¿½ï¿½ï¿½ï¿½)   */
+  border-radius  : 35px;                /* ï¿½pï¿½ï¿½               */
+  height         : 70px;                /* ï¿½{ï¿½^ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½       */
+  background     : #ff6347;             /* ï¿½wï¿½iï¿½F             */
+  box-shadow     : 3px 3px 6px #888;    /* ï¿½eï¿½tï¿½ï¿½             */
+  transition     : .5s;                 /* ï¿½ï¿½ï¿½ç‚©ï¿½Ï‰ï¿½         */
 }
  
- /* === ƒ`ƒFƒbƒNƒ{ƒbƒNƒX‚Ìƒ‰ƒxƒ‹iON‚Ìj ================== */
+ /* === ï¿½`ï¿½Fï¿½bï¿½Nï¿½{ï¿½bï¿½Nï¿½Xï¿½Ìƒï¿½ï¿½xï¿½ï¿½ï¿½iONï¿½Ìï¿½ï¿½j ================== */
 .sample4Area #sample4check:checked + label {
-  background     : #78bd78;             /* ”wŒiF             */
-  box-shadow     : none;                /* ‰e‚ğÁ‚·           */
+  background     : #78bd78;             /* ï¿½wï¿½iï¿½F             */
+  box-shadow     : none;                /* ï¿½eï¿½ï¿½ï¿½ï¿½ï¿½ï¿½           */
 }
  
- /* === ƒ‰ƒxƒ‹“à‚Ì‰æ‘œi•W€j ============================== */
+ /* === ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½ï¿½ï¿½Ì‰æ‘œï¿½iï¿½Wï¿½ï¿½ï¿½j ============================== */
 .sample4Area label img{
-  display        : block;               /* ƒuƒƒbƒN‰»         */
-  margin         : 6px auto auto auto;  /* ã‚Í6px‚Å’†‰›Šñ‚¹  */
+  display        : block;               /* ï¿½uï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½         */
+  margin         : 6px auto auto auto;  /* ï¿½ï¿½ï¿½6pxï¿½Å’ï¿½ï¿½ï¿½ï¿½ï¿½  */
 }
  
- /* === ƒ‰ƒxƒ‹“à‚Ì‰æ‘œiON‚Ìj ============================ */
+ /* === ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½ï¿½ï¿½Ì‰æ‘œï¿½iONï¿½Ìï¿½ï¿½j ============================ */
 .sample4Area #sample4check:checked + label img {
-  animation      : sample4On .5s ease;  /* ƒAƒjƒ[ƒVƒ‡ƒ“Às */
+  animation      : sample4On .5s ease;  /* ï¿½Aï¿½jï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½s */
 }
 @keyframes sample4On {
-  100% {transform  : rotate(360deg)}    /* Œv‰ñ‚è‰ñ“]       */
+  100% {transform  : rotate(360deg)}    /* ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½ï¿½]       */
 }
  
- /* === ƒ‰ƒxƒ‹“à‚Ì‰æ‘œiOFF‚Ìj =========================== */
+ /* === ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½ï¿½ï¿½Ì‰æ‘œï¿½iOFFï¿½Ìï¿½ï¿½j =========================== */
 .sample4Area #sample4check:not(:checked) + label img {
-  animation      : sample4Off .5s ease; /* ƒAƒjƒ[ƒVƒ‡ƒ“Às */
+  animation      : sample4Off .5s ease; /* ï¿½Aï¿½jï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½s */
 }
 @keyframes sample4Off {
-  100% {transform  : rotate(-360deg)}   /* ”½Œv‰ñ‚è‰ñ“]     */
+  100% {transform  : rotate(-360deg)}   /* ï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½ï¿½]     */

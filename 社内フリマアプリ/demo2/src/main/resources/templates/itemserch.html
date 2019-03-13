@@ -31,7 +31,7 @@
 			<a href="/techmatop/techma/item/" th:href="@{/techmatop/techma/item/itemId(itemId=${item.itemId})}">
 				<img class="item-image" th:if="${item.stock == 0}" src="/image/sould-out.png"></img>
 				<img class="item-image" th:if="${item.filename == null and item.stock != 0}" src="/image/No_Image_Available.jpg"></img>
-				<img class="item-image" th:if="${item.stock != 0 and item.filename != null}" th:src="|/itemimage/${item.filename}|"></img>
+				<img class="item-image" th:if="${item.stock != 0 and item.filename != null}" th:src="|data:image/jpg;base64,${item.filename}|"></img>
 				<div class="status">
 					<p>商品名:&nbsp;&nbsp;<span th:text="${item.itemname}"></span></p>
 					<p>price:&nbsp;&nbsp;<span th:text="${item.price}"></span></p>

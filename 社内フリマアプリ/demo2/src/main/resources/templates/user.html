@@ -21,7 +21,7 @@
 			<div class="user-user">
 				<div class="item-pic">
 					<img class="user-image" th:if="${user.filename == null}" src="/image/No_Image_Available.jpg"></img>
-					<img class="user-image" th:if="${user.filename != null}" th:src="|/userimage/${user.filename}|"></img>
+					<img class="user-image" th:if="${user.filename != null}" th:src="|data:image/jpg;base64,${user.filename}|"></img>
 				</div>
 				<div class="item-status-wrapper">
 					<p>User Name：<span th:text="${user.username}"></span></p>

@@ -142,6 +142,8 @@ public class UserController {
 		 return techmaController(model, userDatails);
 		}
 		User user  = new User();
+		form.getUsername();
+		form.getPassword();
 		BeanUtils.copyProperties(form, user);
 		password = user.getPassword();
 		password = new Pbkdf2PasswordEncoder().encode(password);
@@ -208,9 +210,10 @@ public class UserController {
 				    byte[] bytes = form.getUploadedFile().getBytes();
 				  //bytesをBase64に変換してビューに渡す
 				    String base64str = Base64.getEncoder().encodeToString(bytes);
+				    form.setFilename(base64str);
 				    model.addAttribute("base64str",base64str);
 				  //転送したファイルを書き込みディレクトリに格納
-				    os.write(bytes);
+				    //os.write(bytes);
 				  } catch (IOException ex) {
 				    System.err.println(ex);
 				  }
