@@ -22,9 +22,14 @@ public class UserService {
 		return userRepository.findAllUserOrderByName();
 	}
 	
-	public List<User> findNameUser(String username) {
+	public List<User> findNameUserList(String username) {
 		return userRepository.findUserName(username);
 	}
+	
+	public User findNameUser(String username) {
+		return userRepository.findByUsername(username);
+	}
+	
 	public User findOne(String name) {
 		return userRepository.findOne(name);
 	}

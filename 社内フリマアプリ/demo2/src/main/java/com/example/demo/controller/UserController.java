@@ -140,23 +140,22 @@ public class UserController {
 	@PostMapping(path = "**/usercreate")
 	String UserCreate(@Validated UserForm form, BindingResult result, Model model, @AuthenticationPrincipal LoginUserDetails userDatails , String password, SessionStatus sessionStatus,PasswordEncoder passwordEncoder) throws IOException {
 		if (result.hasErrors()) {
-		 return techmaController(model, userDatails);
+			return techmaController(model, userDatails);
 		}
-		List<User> daoUsers = userService.findNameUser(form.getUsername());
-		for (int i=0; i < daoUsers.size(); i++) {
-			String formPassword = form.getPassword();
-			String daouserpassword = daoUsers.get(i).getPassword();
-			if (passwordEncoder.matches(formPassword, daouserpassword)) {
-				model.addAttribute("error","アカウントが既に存在します。");
-				return createUserNologinCheck(model, form, password);
-				}
-			}
+		//入力した名前と同じユーザーをDBから検索
+		User daoUser = userService.findNameUser(form.getUsername());
+		if (daoUser == null) {
+		//存在していない場合はアカウント作成
 		User user  = new User();
 		BeanUtils.copyProperties(form, user);
 		password = user.getPassword();
 		password = new Pbkdf2PasswordEncoder().encode(password);
 		user.setPassword(password);
 		userService.create(user);
+		} else {
+			model.addAttribute("error", "同一の名前のアカウントが既に存在します。");
+			return createUserNologinCheck(model,  form, password);
+		}
 		//slackapi呼び出し
 		if (form.getSlackname() != null) {
 			botService.UsercreateBot(form);
@@ -237,17 +236,23 @@ public class UserController {
 		User user = userDatails.getUser();
 		if (result.hasErrors()) {
 			/*＠後で繊維先変える*/
-		return UserEditForm( form, userDatails, result, model);
+			return UserEditForm( form, userDatails, result, model);
 		}
-		BeanUtils.copyProperties(form, user);
-		password = user.getPassword();
-		password = new Pbkdf2PasswordEncoder().encode(password);
-		user.setPassword(password);
-		userService.update(user);
-		//slackapi呼び出し
-		if (user.getSlackname() != null) {
-			botService.UserUpdateBot(user);
-		}
+		List<User> daoUsers = userService.findNameUserList(form.getUsername());
+			if (daoUsers.size() < 1) {
+				BeanUtils.copyProperties(form, user);
+				password = user.getPassword();
+				password = new Pbkdf2PasswordEncoder().encode(password);
+				user.setPassword(password);
+				userService.update(user);		
+			} else {
+				model.addAttribute("error", "同一の名前のアカウントが既に存在します。");
+				return UserUpdateCheck(form, model, userDatails,  result);
+			}
+			//slackapi呼び出し
+			if (user.getSlackname() != null) {
+				botService.UserUpdateBot(user);
+			}
 		return "redirect:/techmatop/techma/userupdateresult";
 	}
 	//ユーザー更新完了

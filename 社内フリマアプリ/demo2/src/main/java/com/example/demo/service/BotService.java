@@ -38,7 +38,7 @@ public class BotService {
 		String userName = userDatails.getUser().getSlackname();
 		slackService.sendDirectMessageTo(userName, userName+"さん！商品の出品が完了しました。出品履歴画面で商品の確認が可能です。  商品名:  "
 		+form.getItemname() + "  数量:  " +  form.getStock()+"点" + "  カテゴリー:   " + form.getCategory().getCategoryname() 
-		+ "  techmaのtopはこちら http://localhost:8080/techmatop/techma/" );
+		+ "  techmaのtopはこちら https://techmah2.herokuapp.com/techmatop/" );
 
 		// slackとの接続を終了
 		slackService.stop();
@@ -56,7 +56,7 @@ public class BotService {
 		//slackダイレクトメッセージを送る
 		String userName = form.getSlackname();
 		slackService.sendDirectMessageTo(userName, userName+"さんのアカウント作成が完了しました。ログインしてtechmaをお楽しみください。 "
-		+ "techmaのtopはこちら http://localhost:8080/techmatop/techma/");
+		+ "techmaのtopはこちら https://techmah2.herokuapp.com/techmatop");
 
 		// slackとの接続を終了
 		slackService.stop();
@@ -72,7 +72,7 @@ public class BotService {
 		String purchaseName = userDatails.getUser().getSlackname();
 		slackService.sendDirectMessageTo(purchaseName, purchaseName+"さん！商品の購入が完了致しました。購入履歴画面で商品の確認が可能です。  商品名:"
 		+ item.getItemname() + "  購入数:  " + form.getPurchasenumber() + "  出品者  " + item.getUser().getUsername() 
-		+ "  techmaのマイページはこちら http://localhost:8080/techmatop/techma/user");
+		+ "  techmaのマイページはこちら https://techmah2.herokuapp.com/techmatop/techma/user");
 
 				
 	}
@@ -88,7 +88,7 @@ public class BotService {
 		String exhibitName = item.getUser().getSlackname();
 		slackService.sendDirectMessageTo(exhibitName, exhibitName+"さん！出品した商品の購入申し込みが行われました。出品履歴画面で商品の確認が可能です。  商品名:"
 		+ item.getItemname() + "  購入数:  " + form.getPurchasenumber() + "  購入者  " + userDatails.getUser().getUsername() 
-		+ "  techmaのマイページはこちら http://localhost:8080/techmatop/techma/user");
+		+ "  techmaのマイページはこちら https://techmah2.herokuapp.com/techmatop/techma/user");
 
 		// slackとの接続を終了
 		slackService.stop();
@@ -104,7 +104,7 @@ public class BotService {
 		//slackダイレクトメッセージを送る
 		String userName = user.getSlackname();
 		slackService.sendDirectMessageTo(userName, userName+"さん！アカウントの変更が完了いたしました。  techmaのマイページはこちら "
-		+ "http://localhost:8080/techmatop/techma/user");
+		+ "https://techmah2.herokuapp.com/techmatop/techma/user");
 
 		// slackとの接続を終了
 		slackService.stop();
@@ -124,7 +124,7 @@ public class BotService {
 		//slackダイレクトメッセージを送る
 		String userName = item.getUser().getSlackname();
 		slackService.sendDirectMessageTo(userName, userName+"さん！出品のステータスの変更が完了いたしました。　商品名：  " + item.getItemname()+
-		"  カテゴリー:  " + item.getCategory().getCategoryname()  + "   ステータス：  " + itemStatus + "  techmaのマイページはこちら http://localhost:8080/techmatop/techma/user");
+		"  カテゴリー:  " + item.getCategory().getCategoryname()  + "   ステータス：  " + itemStatus + "  techmaのマイページはこちら https://techmah2.herokuapp.com/techmatop/techma/user");
 
 		// slackとの接続を終了
 		slackService.stop();
@@ -144,7 +144,7 @@ public class BotService {
 		//slackダイレクトメッセージを送る
 		String userName = purchase.getUser().getSlackname();
 		slackService.sendDirectMessageTo(userName, userName+"さん！購入したステータスの変更が完了いたしました。　商品名：  " + purchase.getItem().getItemname()+
-		"  カテゴリー:  " + purchase.getItem().getCategory().getCategoryname()  + "   ステータス：  " + purchaseStatus + "  techmaのマイページはこちら http://localhost:8080/techmatop/techma/user");
+		"  カテゴリー:  " + purchase.getItem().getCategory().getCategoryname()  + "   ステータス：  " + purchaseStatus + "  techmaのマイページはこちら https://techmah2.herokuapp.com/techmatop/techma/user");
 
 		// slackとの接続を終了
 		slackService.stop();
