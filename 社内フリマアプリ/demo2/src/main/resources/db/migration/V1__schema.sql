@@ -1,4 +1,46 @@
 CREATE TABLE IF NOT EXISTS items (
+	id SERIAL PRIMARY KEY, 
+	item_name VARCHAR(30), price INT, conditions VARCHAR(30), 
+	payment VARCHAR(30), stock INT, purchasecount INT, comments VARCHAR(255),
+	user_id INT, category_id INT, filename varchar(255),
+	filename2 varchar(255),filename3 varchar(255),filename4 varchar(255), exhibitcansellflg BOOLEAN,
+	created_at timestamp not null default current_timestamp,
+  	updated_at timestamp not null default current_timestamp
+);
+
+CREATE TABLE IF NOT EXISTS users (
+	id SERIAL PRIMARY KEY,
+	username VARCHAR(30) NOT NULL,
+ 	password VARCHAR(255), tel VARCHAR(20), mail VARCHAR(50), comments VARCHAR(255), slackname VARCHAR(30), filename varchar(255),
+ 	created_at timestamp not null default current_timestamp,
+  	updated_at timestamp not null default current_timestamp
+ );
+
+CREATE TABLE IF NOT EXISTS categorys (
+	id SERIAL PRIMARY KEY,
+	category_name VARCHAR(20),
+	created_at timestamp not null default current_timestamp,
+  	updated_at timestamp not null default current_timestamp
+);
+
+CREATE TABLE IF NOT EXISTS purchases (
+	id SERIAL PRIMARY KEY,
+	purchase_name VARCHAR(20),
+	stock INT,
+	cansellflg BOOLEAN,
+	purchaseflg BOOLEAN,
+	filename VARCHAR(30),
+	item_id INT,
+	user_id INT,
+	created_at timestamp not null default current_timestamp,
+  	updated_at timestamp not null default current_timestamp
+);
+
+
+
+
+/*mysql
+CREATE TABLE IF NOT EXISTS items (
 	id INT PRIMARY KEY AUTO_INCREMENT, 
 	item_name VARCHAR(30), price INT, conditions VARCHAR(30), 
 	payment VARCHAR(30), stock INT, purchasecount INT, comments VARCHAR(255),
@@ -35,6 +77,7 @@ CREATE TABLE IF NOT EXISTS purchases (
 	created_at timestamp not null default current_timestamp,
   	updated_at timestamp not null default current_timestamp on update current_timestamp
 ) character set 'utf8';
+*/
 
 
 /*h2
