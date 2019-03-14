@@ -21,6 +21,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.CollectionUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -207,7 +208,7 @@ public class UserController {
 				    extention = form.getUploadedFile().getOriginalFilename().substring(dot).toLowerCase();
 				  }
 				  String filename = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS").format(LocalDateTime.now());
-				  form.setFilename(filename + extention);
+				  //form.setFilename(filename + extention);
 				  Path uploadfile = Paths		  
 				      .get("src/main/resources/static/userimage/" + filename + extention);
 				  if(dot < 0) {
@@ -239,12 +240,18 @@ public class UserController {
 			return UserEditForm( form, userDatails, result, model);
 		}
 		List<User> daoUsers = userService.findNameUserList(form.getUsername());
-			if (daoUsers.size() < 1) {
-				BeanUtils.copyProperties(form, user);
-				password = user.getPassword();
-				password = new Pbkdf2PasswordEncoder().encode(password);
-				user.setPassword(password);
-				userService.update(user);		
+		if (user.getUsername().equals(form.getUsername())) {
+			BeanUtils.copyProperties(form, user);
+			password = user.getPassword();
+			password = new Pbkdf2PasswordEncoder().encode(password);
+			user.setPassword(password);
+			userService.update(user);	
+		} else  if (CollectionUtils.isEmpty(daoUsers)) {
+			BeanUtils.copyProperties(form, user);
+			password = user.getPassword();
+			password = new Pbkdf2PasswordEncoder().encode(password);
+			user.setPassword(password);
+			userService.update(user);	
 			} else {
 				model.addAttribute("error", "同一の名前のアカウントが既に存在します。");
 				return UserUpdateCheck(form, model, userDatails,  result);

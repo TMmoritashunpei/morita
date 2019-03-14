@@ -279,9 +279,6 @@ public class ItemController {
 		model.addAttribute("itemForm", form);
 		model.addAttribute("itemname", itemname);
 		model.addAttribute("category", category);
-		//画像をビューに渡す
-		String base64str = item.getFilename();
-		model.addAttribute("base64str", base64str);
 		//検索画面から商品名を検索
 		if (category.getCategoryId() == null) {
 			List<Item>items = itemService.findItemNameSerch(itemname);
@@ -370,8 +367,6 @@ public class ItemController {
 	public String exhibitor(Model model, @RequestParam Integer itemId) {
 		Item item = itemService.findOne(itemId);
 		//画像をビューに渡す
-		String base64str = item.getUser().getFilename();
-		model.addAttribute("base64str", base64str);
 		model.addAttribute("item",item);
 		List<Category> categories = categoryService.findAll();
 		model.addAttribute("categories", categories);
