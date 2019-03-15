@@ -1,7 +1,7 @@
 body {
 	margin: 0;
 	font-family: "Hiragino Kaku Gothic Prow";
-	background-color: #FFFDE9;
+	background-color: #f9f7fc;
 }
 
 .container {
@@ -44,7 +44,7 @@ body {
 	width: 23%;
 	margin: 5px;
 	height: 250px;
-	background-color: #FFF9A9;
+	background-color: #D5CCF3;
 	transition: all 0.5s;
 	border-radius: 8px;
 }
@@ -72,7 +72,7 @@ ul {
 	width :60%;
 	text-align: center;
 	font-size: 10px;
-	background-color: #FFF9A9;
+	background-color: #D5CCF3;
 	transition: all 0.5s;
 	border-radius: 8px;
 }
@@ -234,7 +234,7 @@ input, select, textarea {
 }
 
 .background {
-  background-color: #FFF450;
+  background-color: #9277F3;
   position: absolute;
   top: 0;
   left: 0;

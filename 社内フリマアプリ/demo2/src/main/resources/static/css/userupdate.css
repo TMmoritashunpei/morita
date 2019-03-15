@@ -45,7 +45,7 @@ body {
 	width: 23%;
 	margin: 5px;
 	height: 250px;
-	background-color: #FFF9A9;
+	background-color: rgba(185, 220, 245, 0.4);
 	transition: all 0.5s;
 	border-radius: 8px;
 }
@@ -73,7 +73,7 @@ ul {
 	width :60%;
 	text-align: center;
 	font-size: 10px;
-	background-color: #FFF9A9;
+	background-color: rgba(185, 220, 245, 0.4);
 	transition: all 0.5s;
 	border-radius: 8px;
 }
@@ -235,7 +235,7 @@ input, select, textarea {
 }
 
 .background {
-  background-color: #FFF450;
+  background-color: rgba(25, 80, 245, 0.9);
   position: absolute;
   top: 0;
   left: 0;

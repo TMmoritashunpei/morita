@@ -53,7 +53,7 @@
 					</div>
 					<div class="itemprice">
 					<p>金額を入力してください</p>
-						<input class="form-control" type="tel" placeholder="price" th:field="*{price}" required="required"></input>
+						<input class="form-control" type="text" name="price" pattern="\d*" oncopy="return false" onpaste="return false" oninput="check_numtype(this)" onblur="check_code(this)" style="ime-mode:disabled" placeholder="price" th:field="*{price}" required="required"></input>
 					</div>
 					<div class="Category-select">
 					<p>カテゴリーを選択してください</p>
