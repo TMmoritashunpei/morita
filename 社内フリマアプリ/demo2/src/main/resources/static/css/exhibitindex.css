@@ -46,7 +46,6 @@ form {
 	font-size:10px;
 	float: left;
 	margin-left:3%;
-	margin-top: 2%;
 }
 
 .status-btn  button {
@@ -287,52 +286,54 @@ input[type="checkbox"]:checked + label:after {
   left:2px;
 }
 
- /* === �{�^����\������G���A ============================== */
+ /* === �ｿｽ{�ｿｽ^�ｿｽ�ｿｽ�ｿｽ�ｿｽ\�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽG�ｿｽ�ｿｽ�ｿｽA ============================== */
 .sample4Area {
-  margin         : auto;                /* ������           */
-  width          : 70px;                /* �{�^���̉���       */
+  margin         : auto;                /* �ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ           */
+  width          : 70px;                /* �ｿｽ{�ｿｽ^�ｿｽ�ｿｽ�ｿｽﾌ会ｿｽ�ｿｽ�ｿｽ       */
 }
  
- /* === �`�F�b�N�{�b�N�X ==================================== */
+ /* === �ｿｽ`�ｿｽF�ｿｽb�ｿｽN�ｿｽ{�ｿｽb�ｿｽN�ｿｽX ==================================== */
 .sample4Area input[type="checkbox"] {
-  display        : none;            /* �`�F�b�N�{�b�N�X��\�� */
+  display        : none;            /* �ｿｽ`�ｿｽF�ｿｽb�ｿｽN�ｿｽ{�ｿｽb�ｿｽN�ｿｽX�ｿｽ�ｿｽ\�ｿｽ�ｿｽ */
 }
  
- /* === �`�F�b�N�{�b�N�X�̃��x���i�W���j ==================== */
+ /* === �ｿｽ`�ｿｽF�ｿｽb�ｿｽN�ｿｽ{�ｿｽb�ｿｽN�ｿｽX�ｿｽﾌ�ｿｽ�ｿｽx�ｿｽ�ｿｽ�ｿｽi�ｿｽW�ｿｽ�ｿｽ�ｿｽj ==================== */
 .sample4Area label {
-  display        : block;               /* �{�b�N�X�v�f�ɕύX */
-  box-sizing     : border-box;          /* �g�����܂񂾃T�C�Y */
-  border         : 2px solid #ccc;      /* �g��(��U�l����)   */
-  border-radius  : 35px;                /* �p��               */
-  height         : 70px;                /* �{�^���̍���       */
-  background     : #ff6347;             /* �w�i�F             */
-  box-shadow     : 3px 3px 6px #888;    /* �e�t��             */
-  transition     : .5s;                 /* ���炩�ω�         */
+  display        : block;               /* �ｿｽ{�ｿｽb�ｿｽN�ｿｽX�ｿｽv�ｿｽf�ｿｽﾉ変更 */
+  box-sizing     : border-box;          /* �ｿｽg�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽﾜんだサ�ｿｽC�ｿｽY */
+  border         : 2px solid #ccc;      /* �ｿｽg�ｿｽ�ｿｽ(�ｿｽ�ｿｽU�ｿｽl�ｿｽ�ｿｽ�ｿｽ�ｿｽ)   */
+  border-radius  : 35px;                /* �ｿｽp�ｿｽ�ｿｽ               */
+  height         : 70px;                /* �ｿｽ{�ｿｽ^�ｿｽ�ｿｽ�ｿｽﾌ搾ｿｽ�ｿｽ�ｿｽ       */
+  background     : #ff6347;             /* �ｿｽw�ｿｽi�ｿｽF             */
+  box-shadow     : 3px 3px 6px #888;    /* �ｿｽe�ｿｽt�ｿｽ�ｿｽ             */
+  transition     : .5s;                 /* �ｿｽ�ｿｽ�ｿｽ轤ｩ�ｿｽﾏ会ｿｽ         */
 }
  
- /* === �`�F�b�N�{�b�N�X�̃��x���iON�̎��j ================== */
+ /* === �ｿｽ`�ｿｽF�ｿｽb�ｿｽN�ｿｽ{�ｿｽb�ｿｽN�ｿｽX�ｿｽﾌ�ｿｽ�ｿｽx�ｿｽ�ｿｽ�ｿｽiON�ｿｽﾌ趣ｿｽ�ｿｽj ================== */
 .sample4Area #sample4check:checked + label {
-  background     : #78bd78;             /* �w�i�F             */
-  box-shadow     : none;                /* �e������           */
+  background     : #78bd78;             /* �ｿｽw�ｿｽi�ｿｽF             */
+  box-shadow     : none;                /* �ｿｽe�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ           */
 }
  
- /* === ���x�����̉摜�i�W���j ============================== */
+ /* === �ｿｽ�ｿｽ�ｿｽx�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽﾌ画像�ｿｽi�ｿｽW�ｿｽ�ｿｽ�ｿｽj ============================== */
 .sample4Area label img{
-  display        : block;               /* �u���b�N��         */
-  margin         : 6px auto auto auto;  /* ���6px�Œ�����  */
+  display        : block;               /* �ｿｽu�ｿｽ�ｿｽ�ｿｽb�ｿｽN�ｿｽ�ｿｽ         */
+  margin         : 6px auto auto auto;  /* �ｿｽ�ｿｽ�ｿｽ6px�ｿｽﾅ抵ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ  */
 }
  
- /* === ���x�����̉摜�iON�̎��j ============================ */
+ /* === �ｿｽ�ｿｽ�ｿｽx�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽﾌ画像�ｿｽiON�ｿｽﾌ趣ｿｽ�ｿｽj ============================ */
 .sample4Area #sample4check:checked + label img {
-  animation      : sample4On .5s ease;  /* �A�j���[�V�������s */
+  animation      : sample4On .5s ease;  /* �ｿｽA�ｿｽj�ｿｽ�ｿｽ�ｿｽ[�ｿｽV�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽs */
 }
 @keyframes sample4On {
-  100% {transform  : rotate(360deg)}    /* ���v����]       */
+  100% {transform  : rotate(360deg)}    /* �ｿｽ�ｿｽ�ｿｽv�ｿｽ�ｿｽ�ｿｽ�ｿｽ]       */
 }
  
- /* === ���x�����̉摜�iOFF�̎��j =========================== */
+ /* === �ｿｽ�ｿｽ�ｿｽx�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽﾌ画像�ｿｽiOFF�ｿｽﾌ趣ｿｽ�ｿｽj =========================== */
 .sample4Area #sample4check:not(:checked) + label img {
-  animation      : sample4Off .5s ease; /* �A�j���[�V�������s */
+  animation      : sample4Off .5s ease; /* �ｿｽA�ｿｽj�ｿｽ�ｿｽ�ｿｽ[�ｿｽV�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽs */
 }
 @keyframes sample4Off {
-  100% {transform  : rotate(-360deg)}   /* �����v����]     */
+  100% {transform  : rotate(-360deg)}   /* �ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽv�ｿｽ�ｿｽ�ｿｽ�ｿｽ]     */
+  
+  

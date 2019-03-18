@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8"></meta>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-	<title>user</title>
+	<title>マイページ</title>
 <link rel="stylesheet" type="text/css" href="/css/user.css"></link>
 <link rel="stylesheet" type="text/css" href="/css/responsive.css"></link>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"></link>
@@ -27,12 +27,10 @@
 					<p>User Name：<span th:text="${user.username}"></span></p>
 					<p>mail：<span th:text="${user.mail}"></span></p>
 					<div>
-						<button class="cp_button04" onclick="location.href='/techmatop/techma/user/exhibitindex/'"><span>出品履歴</span></button>	
-						<button class="cp_button04" onclick="location.href='/techmatop/techma/user/purchaseindex/'"><span>購入履歴</span></button>
-					</div>		
-					<div>
-						<button class="cp_button04" onclick="location.href='#'"><span>お気に入り</span></button>
-						<button class="cp_button04" onclick="location.href='/techmatop/techma/user/useredit'"><span>アカウント変更</span></button>
+						<button class="button2" onclick="location.href='/techmatop/techma/user/exhibitindex/'"><span>出品履歴</span></button>	
+						<button class="button2" onclick="location.href='/techmatop/techma/user/purchaseindex/'"><span>購入履歴</span></button>						
+						<button class="button2" onclick="location.href='#'"><span>お気に入り</span></button>
+						<button class="button2" onclick="location.href='/techmatop/techma/user/useredit'"><span>アカウント変更</span></button>
 					</div>
 				</div>
 				<div class="coments-wrapper">
