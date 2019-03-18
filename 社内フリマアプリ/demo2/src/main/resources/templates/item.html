@@ -53,7 +53,8 @@
 					<p>状態:&nbsp;&nbsp;　<span th:text="${item.condition}"></span></p>
 					<p>支払方法:&nbsp;&nbsp; <span th:text="${item.payment}"></span></p>
 					<p>在庫:&nbsp;&nbsp; <span th:text="${item.stock}"></span></p>
-					<a href="/techmatop/techma/exhibitor/" th:href="@{/techmatop/techma/exhibitor/itemId(itemId=${item.itemId})}"><p>出品者:&nbsp;&nbsp; <span th:text="${item.user.username}"></span></p></a>
+					<a href="/techmatop/techma/exhibitor/" th:href="@{/techmatop/techma/exhibitor/itemId(itemId=${item.itemId})}">
+					<bottun class="button2" type="button"><p>出品者: <span th:text="${item.user.username}"></span></p></bottun></a>
 				</div>		
 					<div class="purchasenumber" th:with="x=${item.stock}" th:if="${item.stock != 0} and ${userDatailscheck == fals}">
 					<p>購入数を選択してください</p>

@@ -1,7 +1,7 @@
 body {
 	margin: 0 auto;
 	padding:opx;
-	background-color: #F3F1F0;
+	background-color: #F3F2F0;
 	text-align: center;
 }
 .error-massage {
@@ -40,7 +40,10 @@ h2 {
 	margin-bottom: 150px;
 	display: inline-block;
 	width:60%;
-	background-color: rgba(205, 200, 245, 0.4)
+	border-radius: 8px;
+	border: solid 1px #b2b2b2;
+	background-color: white;
+	opacity: 0.7;
 }
 
 .coments-wrapper {
@@ -70,7 +73,7 @@ select {
 }
 
 .background {
-  background-color: rgba(25, 80, 245, 0.9);
+  background-color: #fafafa;
   position: absolute;
   top: 0;
   left: 0;

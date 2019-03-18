@@ -26,10 +26,14 @@
 				<div class="item-status-wrapper">
 					<p>User Name：<span th:text="${user.username}"></span></p>
 					<p>mail：<span th:text="${user.mail}"></span></p>
-					<p><a href="/techmatop/techma/user/exhibitindex/">出品履歴&nbsp;&nbsp;</a></p>
-					<p><a href="/techmatop/techma/user/purchaseindex/">購入履歴&nbsp;&nbsp;</a></p>		
-					<p><a href="/techma">お気に入り&nbsp;&nbsp;</a></p>
-					<p><a href="/techmatop/techma/user/useredit">アカウント情報変更&nbsp;&nbsp;</a></p>
+					<div>
+						<button class="cp_button04" onclick="location.href='/techmatop/techma/user/exhibitindex/'"><span>出品履歴</span></button>	
+						<button class="cp_button04" onclick="location.href='/techmatop/techma/user/purchaseindex/'"><span>購入履歴</span></button>
+					</div>		
+					<div>
+						<button class="cp_button04" onclick="location.href='#'"><span>お気に入り</span></button>
+						<button class="cp_button04" onclick="location.href='/techmatop/techma/user/useredit'"><span>アカウント変更</span></button>
+					</div>
 				</div>
 				<div class="coments-wrapper">
 					<p>slackname ：<span th:text="${user.slackname}"></span></p>

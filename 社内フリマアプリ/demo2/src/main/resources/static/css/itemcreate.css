@@ -1,7 +1,7 @@
 body {
 	margin: 0;
 	font-family: "Hiragino Kaku Gothic Prow";
-	background-color: #f9f7fc;
+	background-color: #F3F2F0;
 }
 
 .container {
@@ -44,9 +44,11 @@ body {
 	width: 23%;
 	margin: 5px;
 	height: 250px;
-	background-color: #D5CCF3;
+	background-color: white;
 	transition: all 0.5s;
 	border-radius: 8px;
+	border: solid 1px #b2b2b2;
+	opacity: 0.8;
 }
 
 #pic-submit {
@@ -72,7 +74,8 @@ ul {
 	width :60%;
 	text-align: center;
 	font-size: 10px;
-	background-color: #D5CCF3;
+	border: solid 1px #b2b2b2;
+	opacity: 0.8;
 	transition: all 0.5s;
 	border-radius: 8px;
 }
@@ -234,7 +237,7 @@ input, select, textarea {
 }
 
 .background {
-  background-color: #9277F3;
+  background-color: #fafafa;
   position: absolute;
   top: 0;
   left: 0;
