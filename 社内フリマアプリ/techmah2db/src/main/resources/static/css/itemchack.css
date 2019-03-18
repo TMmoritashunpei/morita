@@ -75,7 +75,7 @@ select {
 }
 
 .background {
-  background-color: #fff1e0;
+  background-color: rgba(255, 150, 105, 0.8);
   position: absolute;
   top: 0;
   left: 0;

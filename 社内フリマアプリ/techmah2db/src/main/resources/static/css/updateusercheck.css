@@ -40,6 +40,7 @@ h2 {
 	margin-bottom: 150px;
 	display: inline-block;
 	width:60%;
+	background-color: rgba(205, 200, 245, 0.4)
 }
 
 .coments-wrapper {
@@ -69,7 +70,7 @@ select {
 }
 
 .background {
-  background-color: #fff1e0;
+  background-color: rgba(25, 80, 245, 0.9);
   position: absolute;
   top: 0;
   left: 0;

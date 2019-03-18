@@ -22,12 +22,24 @@ public class UserService {
 		return userRepository.findAllUserOrderByName();
 	}
 	
+	public List<User> findNameUserList(String username) {
+		return userRepository.findUserName(username);
+	}
+	
+	public User findNameUser(String username) {
+		return userRepository.findByUsername(username);
+	}
+	
 	public User findOne(String name) {
 		return userRepository.findOne(name);
 	}
 	
 	public User findByUserId(Integer id) {
 		return userRepository.findByUserId(id);
+	}
+	
+	public User findUserCheck(String username, String password) {
+		return userRepository.findByUserCheck(username, password);
 	}
 	
 	public User create(User user) {

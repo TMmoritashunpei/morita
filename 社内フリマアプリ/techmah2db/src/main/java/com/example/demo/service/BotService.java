@@ -26,10 +26,10 @@ public class BotService {
 	}
 	
 	public void ExhibitBot(ItemForm form, @AuthenticationPrincipal LoginUserDetails userDatails) throws IOException {
-		//slackのAPI送信.yml使用
-		//String botToken = getKey(); 
+		//slackのAPI送信
+		String botToken = getKey(); 
 		//環境変数使用
-		String botToken = System.getenv("botkey");
+		//String botToken = System.getenv("botkey");
 
 		SlackletService slackService = new SlackletService(botToken);
 		slackService.start();
@@ -38,17 +38,17 @@ public class BotService {
 		String userName = userDatails.getUser().getSlackname();
 		slackService.sendDirectMessageTo(userName, userName+"さん！商品の出品が完了しました。出品履歴画面で商品の確認が可能です。  商品名:  "
 		+form.getItemname() + "  数量:  " +  form.getStock()+"点" + "  カテゴリー:   " + form.getCategory().getCategoryname() 
-		+ "  techmaのtopはこちら http://localhost:8080/techmatop/techma/" );
+		+ "  techmaのtopはこちら https://techmah2.herokuapp.com/techmatop/" );
 
 		// slackとの接続を終了
 		slackService.stop();
 	}
 	
 	public void UsercreateBot(UserForm form) throws IOException {
-		//slackのAPI送信.yml使用
-		//String botToken = getKey(); 
+		//slackのAPI送信
+		String botToken = getKey();
 		//環境変数使用
-		String botToken = System.getenv("botkey");
+		//String botToken = System.getenv("botkey");
 
 		SlackletService slackService = new SlackletService(botToken);
 		slackService.start();
@@ -56,15 +56,14 @@ public class BotService {
 		//slackダイレクトメッセージを送る
 		String userName = form.getSlackname();
 		slackService.sendDirectMessageTo(userName, userName+"さんのアカウント作成が完了しました。ログインしてtechmaをお楽しみください。 "
-		+ "techmaのtopはこちら http://localhost:8080/techmatop/techma/");
+		+ "techmaのtopはこちら https://techmah2.herokuapp.com/techmatop");
 
 		// slackとの接続を終了
 		slackService.stop();
 	}
 	public void purchaseBot(Item item, ItemForm form, @AuthenticationPrincipal LoginUserDetails userDatails) throws IOException {
 		//slackのAPI送信
-		//String botToken = getKey(); 
-		String botToken = System.getenv("botkey");
+		String botToken = getKey();
 
 		SlackletService slackService = new SlackletService(botToken);
 		slackService.start();
@@ -73,15 +72,14 @@ public class BotService {
 		String purchaseName = userDatails.getUser().getSlackname();
 		slackService.sendDirectMessageTo(purchaseName, purchaseName+"さん！商品の購入が完了致しました。購入履歴画面で商品の確認が可能です。  商品名:"
 		+ item.getItemname() + "  購入数:  " + form.getPurchasenumber() + "  出品者  " + item.getUser().getUsername() 
-		+ "  techmaのマイページはこちら http://localhost:8080/techmatop/techma/user");
+		+ "  techmaのマイページはこちら https://techmah2.herokuapp.com/techmatop/techma/user");
 
 				
 	}
 	public void ExhibitPurchaseBot(Item item, ItemForm form, @AuthenticationPrincipal LoginUserDetails userDatails) throws IOException {
-		//slackのAPI送信.yml使用
-		//String botToken = getKey(); 
+		String botToken = getKey();
 		//環境変数使用
-		String botToken = System.getenv("botkey");
+		//String botToken = System.getenv("botkey");
 
 		SlackletService slackService = new SlackletService(botToken);
 		slackService.start();
@@ -90,14 +88,15 @@ public class BotService {
 		String exhibitName = item.getUser().getSlackname();
 		slackService.sendDirectMessageTo(exhibitName, exhibitName+"さん！出品した商品の購入申し込みが行われました。出品履歴画面で商品の確認が可能です。  商品名:"
 		+ item.getItemname() + "  購入数:  " + form.getPurchasenumber() + "  購入者  " + userDatails.getUser().getUsername() 
-		+ "  techmaのマイページはこちら http://localhost:8080/techmatop/techma/user");
+		+ "  techmaのマイページはこちら https://techmah2.herokuapp.com/techmatop/techma/user");
 
 		// slackとの接続を終了
 		slackService.stop();
 	}
 	public void UserUpdateBot(User user) throws IOException {
-		//String botToken = getKey(); 
-		String botToken = System.getenv("botkey");
+		String botToken = getKey(); 
+		//環境変数使用
+		//String botToken = System.getenv("botkey");
 
 		SlackletService slackService = new SlackletService(botToken);
 		slackService.start();
@@ -105,13 +104,15 @@ public class BotService {
 		//slackダイレクトメッセージを送る
 		String userName = user.getSlackname();
 		slackService.sendDirectMessageTo(userName, userName+"さん！アカウントの変更が完了いたしました。  techmaのマイページはこちら "
-		+ "http://localhost:8080/techmatop/techma/user");
+		+ "https://techmah2.herokuapp.com/techmatop/techma/user");
 
 		// slackとの接続を終了
 		slackService.stop();
 	}
 	public void ItemStatusBot(Item item) throws IOException {
-		String botToken = getKey(); 
+		String botToken = getKey();
+		//環境変数使用
+		//String botToken = System.getenv("botkey");
 		String itemStatus;
 		if (item.getExhibitcansellflg() == false) {
 			itemStatus = "発売中";
@@ -123,16 +124,15 @@ public class BotService {
 		//slackダイレクトメッセージを送る
 		String userName = item.getUser().getSlackname();
 		slackService.sendDirectMessageTo(userName, userName+"さん！出品のステータスの変更が完了いたしました。　商品名：  " + item.getItemname()+
-		"  カテゴリー:  " + item.getCategory().getCategoryname()  + "   ステータス：  " + itemStatus + "  techmaのマイページはこちら http://localhost:8080/techmatop/techma/user");
+		"  カテゴリー:  " + item.getCategory().getCategoryname()  + "   ステータス：  " + itemStatus + "  techmaのマイページはこちら https://techmah2.herokuapp.com/techmatop/techma/user");
 
 		// slackとの接続を終了
 		slackService.stop();
 	}
 	public void PurchaseStatusBot(Purchase purchase) throws IOException {
-		//slackのAPI送信.yml使用
-		//String botToken = getKey(); 
+		String botToken = getKey(); 
 		//環境変数使用
-		String botToken = System.getenv("botkey");
+		//String botToken = System.getenv("botkey");
 		String purchaseStatus;
 		if (purchase.getCansellflg() == false) {
 			purchaseStatus = "発売中";
@@ -144,7 +144,7 @@ public class BotService {
 		//slackダイレクトメッセージを送る
 		String userName = purchase.getUser().getSlackname();
 		slackService.sendDirectMessageTo(userName, userName+"さん！購入したステータスの変更が完了いたしました。　商品名：  " + purchase.getItem().getItemname()+
-		"  カテゴリー:  " + purchase.getItem().getCategory().getCategoryname()  + "   ステータス：  " + purchaseStatus + "  techmaのマイページはこちら http://localhost:8080/techmatop/techma/user");
+		"  カテゴリー:  " + purchase.getItem().getCategory().getCategoryname()  + "   ステータス：  " + purchaseStatus + "  techmaのマイページはこちら https://techmah2.herokuapp.com/techmatop/techma/user");
 
 		// slackとの接続を終了
 		slackService.stop();

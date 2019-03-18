@@ -131,9 +131,10 @@ public class ItemController {
 	  try (OutputStream os = Files.newOutputStream(uploadfile, StandardOpenOption.CREATE)) {
 	    byte[] bytes = form.getUploadedFile().getBytes();
 	    String base64str = Base64.getEncoder().encodeToString(bytes);
+	    form.setFilename(base64str);
 	    model.addAttribute("base64str",base64str);
 	 //転送したファイルを書き込みディレクトリに格納
-	    os.write(bytes);
+	    //os.write(bytes);
 	  } catch (IOException ex) {
 	    System.err.println(ex);
 	  }
@@ -158,9 +159,10 @@ public class ItemController {
 	    byte[] bytes2 = form.getUploadedFile2().getBytes();
 	  //bytesをBase64に変換してビューに渡す
 	    String base64str2 = Base64.getEncoder().encodeToString(bytes2);
+	    form.setFilename2(base64str2);
 	    model.addAttribute("base64str2",base64str2);
 	  //転送したファイルを書き込みディレクトリに格納
-	    os.write(bytes2);
+	    //os.write(bytes2);
 	  } catch (IOException ex) {
 	    System.err.println(ex);
 	  		}
@@ -183,9 +185,10 @@ public class ItemController {
 	    byte[] bytes3 = form.getUploadedFile3().getBytes();
 	  //bytesをBase64に変換してビューに渡す
 	    String base64str3 = Base64.getEncoder().encodeToString(bytes3);
+	    form.setFilename3(base64str3);
 	    model.addAttribute("base64str3",base64str3);
 	  //転送したファイルを書き込みディレクトリに格納
-	    os.write(bytes3);
+	    //os.write(bytes3);
 	  } catch (IOException ex) {
 	    System.err.println(ex);
 	  		}
@@ -210,9 +213,10 @@ public class ItemController {
 	    byte[] bytes4 = form.getUploadedFile4().getBytes();
 	  //bytesをBase64に変換してビューに渡す
 	    String base64str4 = Base64.getEncoder().encodeToString(bytes4);
+	    form.setFilename4(base64str4);
 	    model.addAttribute("base64str4",base64str4);
 	 //転送したファイルを書き込みディレクトリに格納
-	    os.write(bytes4);
+	    //os.write(bytes4);
 	  } catch (IOException ex) {
 	    System.err.println(ex);
 	  		}
@@ -259,7 +263,7 @@ public class ItemController {
 	}
 //アイテム検索画面
 	@RequestMapping("techma/itemserch")
-	public String goToSerch(Model model, String itemname, Category category) {
+	public String goToSerch(Model model, String itemname, Category category, Item item) {
 		/*item　全件取得*/
 		model.addAttribute("itemname", itemname);
 		List<Item> items = itemService.findAll();
@@ -271,7 +275,7 @@ public class ItemController {
 	}
 	//アイテム検索機能
 	@GetMapping("techma/itemserch/itemname")
-	public String itemNameSerch(Model model, @RequestParam("itemname") String itemname,  ItemForm form, Category category) {
+	public String itemNameSerch(Model model, @RequestParam("itemname") String itemname,  ItemForm form, Category category, Item item) {
 		model.addAttribute("itemForm", form);
 		model.addAttribute("itemname", itemname);
 		model.addAttribute("category", category);
@@ -300,11 +304,13 @@ public class ItemController {
 	public String goToItem(@RequestParam Integer itemId ,Model model, ItemForm form, 
 			@AuthenticationPrincipal LoginUserDetails userDatails, java.sql.Timestamp created_at) {
 		Item item = itemService.findOne(itemId);
+		//作成日をビューに渡す
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		sdf.setLenient(false);
 		String str = sdf.format(item.getCreated_at());
 		model.addAttribute("str", str);
 		model.addAttribute("item",item);
+		//出品アイテムが自身の所有アイテム時の処理
 		if (userDatails.getUser().getId() == item.getUser().getId()) {
 			model.addAttribute("userDatailscheck", "この商品はご自身で出品されたアイテムの為購入できません。");
 		}
@@ -339,7 +345,6 @@ public class ItemController {
 		Purchase purchase = new Purchase();
 		purchase.setPurchasename(item.getItemname());
 		purchase.setStock(form.getPurchasenumber());
-		purchase.setFilename(item.getFilename());
 		purchaseService.create(purchase, userDatails.getUser(), item);
 		itemService.update(item, item.getUser());
 		//slackapi呼び出し
@@ -361,6 +366,7 @@ public class ItemController {
 	@RequestMapping("techma/exhibitor/itemId{itemId}")
 	public String exhibitor(Model model, @RequestParam Integer itemId) {
 		Item item = itemService.findOne(itemId);
+		//画像をビューに渡す
 		model.addAttribute("item",item);
 		List<Category> categories = categoryService.findAll();
 		model.addAttribute("categories", categories);
@@ -368,11 +374,14 @@ public class ItemController {
 	}
 	//出品履歴画面遷移
 	@RequestMapping("techma/user/exhibitindex")
-	public String exhibitIndex(Model model,@AuthenticationPrincipal LoginUserDetails userDatails) {
+	public String exhibitIndex(Model model,@AuthenticationPrincipal LoginUserDetails userDatails,Item item) {
 		List<Category> categories = categoryService.findAll();
 		model.addAttribute("categories", categories);
 		List<Item> items = itemService.findEhibitList(userDatails.getUser());
 		model.addAttribute("items", items);
+		//画像をビューに渡す
+		String base64str = item.getFilename();
+		model.addAttribute("base64str", base64str);
 		if (itemService.findEhibitList(userDatails.getUser()).size() == 0) {
 			model.addAttribute("noexhibit","出品商品がありません");
 		}

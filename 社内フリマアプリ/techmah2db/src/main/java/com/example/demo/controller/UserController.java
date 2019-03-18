@@ -17,9 +17,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.CollectionUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -137,16 +139,24 @@ public class UserController {
 	}
 	//＠ユーザー作成
 	@PostMapping(path = "**/usercreate")
-	String UserCreate(@Validated UserForm form, BindingResult result, Model model, @AuthenticationPrincipal LoginUserDetails userDatails , String password, SessionStatus sessionStatus) throws IOException {
+	String UserCreate(@Validated UserForm form, BindingResult result, Model model, @AuthenticationPrincipal LoginUserDetails userDatails , String password, SessionStatus sessionStatus,PasswordEncoder passwordEncoder) throws IOException {
 		if (result.hasErrors()) {
-		 return techmaController(model, userDatails);
+			return techmaController(model, userDatails);
 		}
+		//入力した名前と同じユーザーをDBから検索
+		User daoUser = userService.findNameUser(form.getUsername());
+		if (daoUser == null) {
+		//存在していない場合はアカウント作成
 		User user  = new User();
 		BeanUtils.copyProperties(form, user);
 		password = user.getPassword();
 		password = new Pbkdf2PasswordEncoder().encode(password);
 		user.setPassword(password);
 		userService.create(user);
+		} else {
+			model.addAttribute("error", "同一の名前のアカウントが既に存在します。");
+			return createUserNologinCheck(model,  form, password);
+		}
 		//slackapi呼び出し
 		if (form.getSlackname() != null) {
 			botService.UsercreateBot(form);
@@ -198,7 +208,7 @@ public class UserController {
 				    extention = form.getUploadedFile().getOriginalFilename().substring(dot).toLowerCase();
 				  }
 				  String filename = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS").format(LocalDateTime.now());
-				  form.setFilename(filename + extention);
+				  //form.setFilename(filename + extention);
 				  Path uploadfile = Paths		  
 				      .get("src/main/resources/static/userimage/" + filename + extention);
 				  if(dot < 0) {
@@ -208,9 +218,10 @@ public class UserController {
 				    byte[] bytes = form.getUploadedFile().getBytes();
 				  //bytesをBase64に変換してビューに渡す
 				    String base64str = Base64.getEncoder().encodeToString(bytes);
+				    form.setFilename(base64str);
 				    model.addAttribute("base64str",base64str);
 				  //転送したファイルを書き込みディレクトリに格納
-				    os.write(bytes);
+				    //os.write(bytes);
 				  } catch (IOException ex) {
 				    System.err.println(ex);
 				  }
@@ -226,17 +237,29 @@ public class UserController {
 		User user = userDatails.getUser();
 		if (result.hasErrors()) {
 			/*＠後で繊維先変える*/
-		return UserEditForm( form, userDatails, result, model);
+			return UserEditForm( form, userDatails, result, model);
 		}
-		BeanUtils.copyProperties(form, user);
-		password = user.getPassword();
-		password = new Pbkdf2PasswordEncoder().encode(password);
-		user.setPassword(password);
-		userService.update(user);
-		//slackapi呼び出し
-		if (user.getSlackname() != null) {
-			botService.UserUpdateBot(user);
-		}
+		List<User> daoUsers = userService.findNameUserList(form.getUsername());
+		if (user.getUsername().equals(form.getUsername())) {
+			BeanUtils.copyProperties(form, user);
+			password = user.getPassword();
+			password = new Pbkdf2PasswordEncoder().encode(password);
+			user.setPassword(password);
+			userService.update(user);	
+		} else  if (CollectionUtils.isEmpty(daoUsers)) {
+			BeanUtils.copyProperties(form, user);
+			password = user.getPassword();
+			password = new Pbkdf2PasswordEncoder().encode(password);
+			user.setPassword(password);
+			userService.update(user);	
+			} else {
+				model.addAttribute("error", "同一の名前のアカウントが既に存在します。");
+				return UserUpdateCheck(form, model, userDatails,  result);
+			}
+			//slackapi呼び出し
+			if (user.getSlackname() != null) {
+				botService.UserUpdateBot(user);
+			}
 		return "redirect:/techmatop/techma/userupdateresult";
 	}
 	//ユーザー更新完了

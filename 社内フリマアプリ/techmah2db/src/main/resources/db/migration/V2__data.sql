@@ -1,9 +1,10 @@
-﻿INSERT INTO items(item_name, price, conditions, payment, stock, comments, user_id, category_id, created_at) 
-VALUES('item', 1000, 'good', 'pay', 3, 'nice', 1, 2,'2019-03-07 21:13:50');
-INSERT INTO items(item_name, price, conditions, payment, stock, comments, user_id, category_id, created_at) 
-VALUES('item2', 1000, 'good', 'pay', 3, 'nice', 2, 1,'2019-03-07 21:13:50');
-INSERT INTO items(item_name, price, conditions, payment, stock, comments, user_id, category_id, created_at) 
-VALUES('item3', 1000, 'good', 'pay', 3, 'nice', 2, 1,'2019-03-07 21:13:50');
+﻿
+INSERT INTO items(item_name, price, conditions, payment, stock, comments, user_id, category_id, exhibitcansellflg, created_at) 
+VALUES('item', 1000, 'good', 'pay', 3, 'nice', 1, 2, false, '2019-03-07 21:13:50');
+INSERT INTO items(item_name, price, conditions, payment, stock, comments, user_id, category_id, exhibitcansellflg, created_at) 
+VALUES('item2', 1000, 'good', 'pay', 3, 'nice', 2, 1, false, '2019-03-07 21:13:50');
+INSERT INTO items(item_name, price, conditions, payment, stock, comments, user_id, category_id, exhibitcansellflg, created_at) 
+VALUES('item3', 1000, 'good', 'pay', 3, 'nice', 2, 1, false, '2019-03-07 21:13:50');
 
 INSERT INTO users(username, password, tel, mail, comments,created_at) 
 VALUES('techma', '997f8d664d976118f473e3c012a2fa4018cb5cb34ff4cfe065968b278a8b5dd8513b91b06ca2ee36'/*techma*/, '080-3663-8899', 'techma@i.softbank.jp', 'こんにちは', '2019-03-07 21:13:50');
