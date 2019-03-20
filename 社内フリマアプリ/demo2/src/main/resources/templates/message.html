@@ -25,7 +25,8 @@
 				<span th:text="${#dates.format(message.created_at, 'yyyy/MM/dd HH:mm:ss')}"></span>
 				<div th:text="${message.user.username}"></div>
 				<div th:text="${message.message}"></div>
-				<textarea th:if="${message.user.id == usercheck}" class="messagechenge"></textarea>
+				
+					<textarea th:if="${message.user.id == usercheck}" class="messagechenge"></textarea>
 					<ui><div class="button">
 						<li><button th:if="${message.user.id == usercheck}" class="showbtn" type="button"><span>編集</span></button></li>
 						<li><a th:if="${message.user.id == usercheck}" th:href="@{/techmatop/techma/messagedelete(messageId=${message.messageId})}"><button class="" type="submit"><span>削除</span></button></a></li>
