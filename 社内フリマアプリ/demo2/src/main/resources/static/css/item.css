@@ -38,6 +38,11 @@ h2 {
 	margin-bottom: 150px;
 	display: inline-block;
 	width:60%;
+	background-color: white;
+	opacity: 0.7;
+	transition: all 0.5s;
+	border-radius: 8px;
+	border: solid 1px #b2b2b2;
 }
 
 .coments-wrapper {
@@ -177,4 +182,19 @@ span:hover {
 }
 .cp_button04:focus:before {
 	background-color: #ff7043;
+}
+
+.button2 {
+	margin-top: 50px;
+	display: inline-block;
+  	padding: 7px 20px;
+  	border-radius: 25px;
+  	text-decoration: none;
+  	color: #FFF;
+  	background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+  	transition: .4s;
+}
+
+.button2:hover {
+	background-image: linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
 }

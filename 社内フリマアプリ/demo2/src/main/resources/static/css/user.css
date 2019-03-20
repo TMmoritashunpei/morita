@@ -1,6 +1,6 @@
 body {
 	margin: 0 auto;
-	background-color: #101659;
+	background-color: #F3F2F0;
 }
 
 .item-wrapper {
@@ -23,10 +23,11 @@ body {
 	margin-bottom: 30px;
 	display: inline-block;
 	text-align: center;
-	background-color: #3f436d;
+	background-color: white;
 	opacity: 0.7;
 	transition: all 0.5s;
 	border-radius: 8px;
+	border: solid 1px #b2b2b2;
 }
 
 h1 {
@@ -57,7 +58,7 @@ h1 {
 .item-wrapper p {
 	word-wrap: break-word;
 	font-size:16px;
-	color: white;
+	
 }
 
 .buy:active {
@@ -75,7 +76,7 @@ a {
 }
 
 .background {
-  background-color: #010642;
+  background-color: #fafafa;
   position: absolute;
   display: block;
   top: 0;
@@ -84,7 +85,7 @@ a {
 }
 
 .user-user:hover {
-	background-color: rgba(5, 5, 5, 0.4);
+	background-color: rgba(245, 255, 250, 0.5);
 	box-shadow: 0  0 40px gray;
 	transition: all 0.5s;
 	border-radius: 8px;
@@ -177,4 +178,18 @@ span:hover {
 }
 .cp_button04:focus:before {
 	background-color: #ff7043;
+}
+
+.button2 {
+	display: inline-block;
+  	padding: 7px 20px;
+  	border-radius: 25px;
+  	text-decoration: none;
+  	color: #FFF;
+  	background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+  	transition: .4s;
+}
+
+.button2:hover {
+	background-image: linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
 }

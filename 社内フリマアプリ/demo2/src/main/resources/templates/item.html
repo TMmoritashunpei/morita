@@ -52,8 +52,7 @@
 					<p>カテゴリー:&nbsp;&nbsp;<span th:text="${item.category.categoryname}"></span></p>
 					<p>状態:&nbsp;&nbsp;　<span th:text="${item.condition}"></span></p>
 					<p>支払方法:&nbsp;&nbsp; <span th:text="${item.payment}"></span></p>
-					<p>在庫:&nbsp;&nbsp; <span th:text="${item.stock}"></span></p>
-					<a href="/techmatop/techma/exhibitor/" th:href="@{/techmatop/techma/exhibitor/itemId(itemId=${item.itemId})}"><p>出品者:&nbsp;&nbsp; <span th:text="${item.user.username}"></span></p></a>
+					<p>在庫:&nbsp;&nbsp; <span th:text="${item.stock}"></span></p>				
 				</div>		
 					<div class="purchasenumber" th:with="x=${item.stock}" th:if="${item.stock != 0} and ${userDatailscheck == fals}">
 					<p>購入数を選択してください</p>
@@ -61,6 +60,8 @@
 						<option  name="purchasenumber" th:each="i : ${#numbers.sequence(1, x)}" th:text="${i}" th:value="${i}"></option>
 					</select>
 					</div>
+					<a href="/techmatop/techma/exhibitor/" th:href="@{/techmatop/techma/exhibitor/itemId(itemId=${item.itemId})}">
+					<bottun class="button2" type="button"><p>出品者: <span th:text="${item.user.username}"></span></p></bottun></a>
 				</div>
 				<input type="hidden" name="itemId" th:value="${item.itemId}"></input>
 			<div class="btn">

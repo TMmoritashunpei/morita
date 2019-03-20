@@ -43,7 +43,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.domain.Category;
 import com.example.demo.domain.Item;
-import com.example.demo.domain.Message;
 import com.example.demo.domain.Purchase;
 import com.example.demo.domain.User;
 import com.example.demo.service.BotService;
@@ -100,31 +99,5 @@ public class MessageController {
 	@ModelAttribute("messageForm")
 	MessageForm setUpMessageForm() {
 	return new MessageForm();
-	}
-	@RequestMapping("techma/purchasemessage{purchaseId}")
-	public String purchaseMessage(Model model, @RequestParam Integer purchaseId, MessageForm messageForm, @AuthenticationPrincipal LoginUserDetails userDatails) {
-		Purchase purchase = purchaseService.findOne(purchaseId);
-		model.addAttribute("purchase", purchase);
-		List<Message> messages = messageService.findPurchaseMessage(purchase);
-		model.addAttribute("messages", messages);
-		model.addAttribute("usercheck", userDatails.getUser());
-		return "message";
-	}
-	@RequestMapping("techma/messagesubmit{purchaseId}") 
-	public String messageSubmit(@Validated MessageForm messageForm, Model model,
-			@AuthenticationPrincipal LoginUserDetails userDatails, @RequestParam("purchaseId")Integer purchaseId) {
-		Purchase purchase = purchaseService.findOne(purchaseId);
-		model.addAttribute("purchase", purchase);
-		Message message  = new Message();
-		BeanUtils.copyProperties(messageForm, message);
-		messageService.create(purchase, userDatails.getUser(), message);
-		return purchaseMessage(model, purchaseId, messageForm, userDatails);
-	}
-	@RequestMapping("techma/messagedelete{messageId}")
-	public String messageDelete(@RequestParam("messageId") Integer messageId, Model model, MessageForm messageForm, @AuthenticationPrincipal LoginUserDetails userDatails) {
-		Message message = messageService.findOne(messageId);
-		Integer purchaseId = message.getPurchase().getPurchaseId();
-		messageService.dalete(messageId);
-		return purchaseMessage(model, purchaseId, messageForm, userDatails);
 	}
 }

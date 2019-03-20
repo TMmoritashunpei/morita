@@ -14,9 +14,6 @@ public interface MessageRepository extends JpaRepository <Message, Integer>{
 	@Query("SELECT x FROM Message x ORDER BY x.created_at")
 	List<Message> findAllMessage(); 
 	
-	@Query("SELECT x FROM Message x  where x.purchase = :purchase ORDER BY x.created_at")
-	List<Message> findPurchaseMessage(@Param("purchase") Purchase purchase); 
-	
 	@Query("SELECT x FROM Message x where x.user = :user")
 	List<Message> findUserMessageList(@Param("user") User user); 
 	
