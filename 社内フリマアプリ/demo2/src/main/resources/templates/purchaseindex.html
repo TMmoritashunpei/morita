@@ -43,7 +43,7 @@
 					<a href="/techmatop/techma/item/" th:href="@{/techmatop/techma/item/itemId(itemId=${purchase.item.itemId})}"><button class="cp_button01"><span>商品詳細へ</span></button></a>
 				</div>
 				<div class="status">
-					<button class="cp_button01" onclick="location.href='javascript:history.back()'"><span>出品者へ連絡</span></button>
+					<a th:href="@{/techmatop/techma/purchasemessage(purchaseId=${purchase.purchaseId})}"><button class="cp_button01"><span>出品者へ連絡</span></button></a>
 				</div>
 				<div class="status" th:if="${purchase.cansellflg == false}">
 					<a th:href="@{/techmatop/techma/item/purchasecansell/purchaseId(purchaseId=${purchase.purchaseId})}"><button class="cp_button01"><span>購入キャンセル</span></button></a>

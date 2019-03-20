@@ -105,15 +105,23 @@ public class PurchaseController {
 		return "purchaseindex";
 	}
 	//購入アイテムキャンセル
-		@RequestMapping("techma/item/purchasecansell/purchaseId{purchaseId}")
-		String PurchaseItemEditForm(@RequestParam Integer purchaseId,@Validated ItemForm form, @AuthenticationPrincipal LoginUserDetails userDatails,Model model) throws IOException {
-			Purchase purchase = purchaseService.findOne(purchaseId);
-		     Boolean purchaseflg = purchase.getCansellflg();
-		     purchaseflg = !purchaseflg;
-		    purchase.setCansellflg(purchaseflg);
-			purchaseService.update(purchase, userDatails.getUser());
-			//slackApi呼び出し
-			botService.PurchaseStatusBot(purchase);
-			return "redirect:/techmatop/techma/user/purchaseindex";
-		}
+	@RequestMapping("techma/item/purchasecansell/purchaseId{purchaseId}")
+	public String PurchaseItemEditForm(@RequestParam Integer purchaseId,@Validated ItemForm form, @AuthenticationPrincipal LoginUserDetails userDatails,Model model) throws IOException {
+		Purchase purchase = purchaseService.findOne(purchaseId);
+		Boolean purchaseflg = purchase.getCansellflg();
+		purchaseflg = !purchaseflg;
+		purchase.setCansellflg(purchaseflg);
+		purchaseService.update(purchase, userDatails.getUser());
+		//slackApi呼び出し
+		botService.PurchaseStatusBot(purchase);
+		return "redirect:/techmatop/techma/user/purchaseindex";
+	}
+	
+	@RequestMapping("techma/user/purchases{itemId}")
+	public String purchases(Model model, @RequestParam Integer itemId) {
+		Item item = itemService.findOne(itemId);
+		List<Purchase> purchases = purchaseService.findItemPurchaseList(item);
+		model.addAttribute("purchases", purchases);
+		return "purchases";
+	}
 }

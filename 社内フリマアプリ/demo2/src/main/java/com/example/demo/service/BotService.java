@@ -27,9 +27,9 @@ public class BotService {
 	
 	public void ExhibitBot(ItemForm form, @AuthenticationPrincipal LoginUserDetails userDatails) throws IOException {
 		//slackのAPI送信
-		//String botToken = getKey(); 
+		String botToken = getKey(); 
 		//環境変数使用
-		String botToken = System.getenv("botkey");
+		//String botToken = System.getenv("botkey");
 
 		SlackletService slackService = new SlackletService(botToken);
 		slackService.start();
@@ -46,9 +46,9 @@ public class BotService {
 	
 	public void UsercreateBot(UserForm form) throws IOException {
 		//slackのAPI送信
-		//String botToken = getKey();
+		String botToken = getKey(); 
 		//環境変数使用
-		String botToken = System.getenv("botkey");
+		//String botToken = System.getenv("botkey");
 
 		SlackletService slackService = new SlackletService(botToken);
 		slackService.start();
@@ -63,9 +63,9 @@ public class BotService {
 	}
 	public void purchaseBot(Item item, ItemForm form, @AuthenticationPrincipal LoginUserDetails userDatails) throws IOException {
 		//slackのAPI送信
-		//String botToken = getKey();
+		String botToken = getKey(); 
 		//環境変数使用
-		String botToken = System.getenv("botkey");
+		//String botToken = System.getenv("botkey");
 
 		SlackletService slackService = new SlackletService(botToken);
 		slackService.start();
@@ -80,9 +80,9 @@ public class BotService {
 	}
 	public void ExhibitPurchaseBot(Item item, ItemForm form, @AuthenticationPrincipal LoginUserDetails userDatails) throws IOException {
 		//slackのAPI送信
-		//String botToken = getKey();
+		String botToken = getKey(); 
 		//環境変数使用
-		String botToken = System.getenv("botkey");
+		//String botToken = System.getenv("botkey");
 		
 		SlackletService slackService = new SlackletService(botToken);
 		slackService.start();
@@ -98,9 +98,9 @@ public class BotService {
 	}
 	public void UserUpdateBot(User user) throws IOException {
 		//slackのAPI送信
-		//String botToken = getKey();
+		String botToken = getKey(); 
 		//環境変数使用
-		String botToken = System.getenv("botkey");
+		//String botToken = System.getenv("botkey");
 
 		SlackletService slackService = new SlackletService(botToken);
 		slackService.start();
@@ -115,9 +115,9 @@ public class BotService {
 	}
 	public void ItemStatusBot(Item item) throws IOException {
 		//slackのAPI送信
-		//String botToken = getKey();
+		String botToken = getKey(); 
 		//環境変数使用
-		String botToken = System.getenv("botkey");
+		//String botToken = System.getenv("botkey");
 		
 		String itemStatus;
 		if (item.getExhibitcansellflg() == false) {
@@ -137,9 +137,9 @@ public class BotService {
 	}
 	public void PurchaseStatusBot(Purchase purchase) throws IOException {
 		//slackのAPI送信
-		//String botToken = getKey();
+		String botToken = getKey(); 
 		//環境変数使用
-		String botToken = System.getenv("botkey");
+		//String botToken = System.getenv("botkey");
 		
 		String purchaseStatus;
 		if (purchase.getCansellflg() == false) {
