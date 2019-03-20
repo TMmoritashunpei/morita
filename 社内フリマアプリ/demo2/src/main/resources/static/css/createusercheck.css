@@ -1,7 +1,7 @@
 body {
 	margin: 0 auto;
 	padding:opx;
-	background-color: #F3F2F0;
+	background-color: #F3F1F0;
 	text-align: center;
 }
 .error-massage {
@@ -76,7 +76,7 @@ select {
 }
 
 .background {
-  background-color: #fafafa;
+  background-color: #fff1e0;
   position: absolute;
   top: 0;
   left: 0;

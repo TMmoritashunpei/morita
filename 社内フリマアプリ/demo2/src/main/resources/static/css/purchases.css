@@ -1,101 +1,124 @@
-body {
-	margin: 0 auto;
-	padding:opx;
-	background-color: #F3F1F0;
-}
-.error-massage {
-	color :red;
-}
-
-.item-wrapper {
-	padding-top: 55px;
-}
-
-.item-item {
-	text-align: center;
+body {	
+	font-family: "Hiragino Kaku Gothic Prow";
+	margin:0 auto;
+	background-color: #F3F2F0;
 }
 
 h1 {
-	font-size: 15px;
-	background-color: #0f8453;
 	color: white;
+	padding-top: 80px;
+	font-size: 20px;
+	margin: 0px;
 	background-color: #006c61;
 	opacity: 0.7;
-	height: 50px;
 }
 
-h2 {
-	font-size: 24px;
+.serch-form {
+	padding-top: 150px;
+	height: 100px;
 }
 
-h2 span{
-	font-size: 24px;
+form {
+	margin-top: 0px;
 }
 
-.item-item-image {
-	height:200px;
-	width: 250px;
+input {
+	margin-top: 50px;
+	cursor: pointer !important;
+	height: 30px;
+	width: 30%;	
 }
 
-.item-item-status {
-	word-wrap: break-word;
-	margin-bottom: 150px;
-	display: inline-block;
-	width:60%;
+.input {
+	margin: 10px;
+	background-color: #60CDB8;
+	border: 3px solid #564e4d;
+	float: right;
+}	
+
+.items {
+	
+	width: 100%;
+	padding: 10px;
 }
 
-.item-item p, span{
-	font-size: 15px;
+.item {
+	float: left;
+	display:inline-bloc;
+	width: 20%;
+	margin:5px;
+	background-color: white;
+	cursor: pointer !important;
+	border: solid 1px #b2b2b2;
+	border-radius: 8px;
 }
 
-.coments-wrapper {
-	height: outo;
-	word-wrap: break-word;
-	padding-right:30px;
-}
-
-p {
-	word-wrap: break-word;
-	font-size: 13px;
-	text-decoration:none;
-}
-
-.coments-wrapper {
+.items {
+	display:inline-bloc;
 	float: right;
 }
 
-.item-status-wrapper {
-	float: left;
-	
+.item img {
+	margin-left: 15px;
+	margin-top: 10px;
+	width: 86%;
+	height: 150px;
 }
 
-select {
-	cursor: pointer !important;
-	
+p {
+	max-width: 1200px;
+	padding-left: 10px;
+	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+}
+
+.status {
+	font-size:9px;
+}
+
+a {
+	text-decoration: none;
+}
+
+.error {
+	font-size: 15px;
+	text-align: center;
+	background-color: white;
+	color: red;
+}
+.item:hover {
+	background-color: rgba(245, 255, 250, 0.5);
+	box-shadow: 0 0 40px gray;
+	transition: all 0.5s;
+	border-radius: 8px;
+}
+
+.item img:hover {
+	background-color: rgba(255, 255, 250, 0.5);
+	box-shadow: 3px 3px 3px gray;
+	transition: all 0.5s;
+	border-radius: 8px;
+}
+
+input:hover {
+	background-color: rgba(255, 255, 255, 0.7);
+}
+.items {
+	min-height: 500px;
+}
+
+.btn {
+	margin-left:10px;
 }
 
 .background {
-  background-color: rgba(255, 150, 105, 0.8);
+  background-color: #fafafa;
   position: absolute;
+  display: block;
   top: 0;
   left: 0;
-  z-index:-10;
-}
-
-.item-item-status:hover {
-	background-color: rgba(255, 255, 250, 0.5);
-	box-shadow: 10px 10px 10px gray;
-	transition: all 0.5s;
-	border-radius: 8px;
-	padding:1px;
-}
-
-.item-item-image:hover {
-	background-color: rgba(255, 255, 250, 0.5);
-	box-shadow: 10px 10px 10px gray;
-	transition: all 0.5s;
-	border-radius: 8px;
-	padding:1px;
+  z-index:-1;
 }
 
 .cp_button04 {
@@ -110,16 +133,11 @@ select {
 	overflow: hidden;
 }
 
-.btn {
-	margin-bottom: 50px;
-}
-
-span {
+.cp_button04 span {
 	display:inline-block;
-	
 	transition: .5s
 }
-span:hover {
+.cp_button04:hover span {
 	transform: rotateX(360deg);
 }
 

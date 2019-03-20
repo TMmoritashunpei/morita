@@ -39,11 +39,11 @@
 					</div>
 					<div class="itemprice">
 					<p>パスワードを入力してください</p>
-						<input class="form-control" type="password" name="password" placeholder="password" th:field="*{password}" id="password_addr" required="required"></input>
+						<input class="form-control" type="text" placeholder="password" th:field="*{password}"  required="required"></input>
 					</div>
 					<div class="itemprice">
 					<p>再入力</p>
-						<input class="form-control" type="password" name="confirm" placeholder="password" id="password_addr_repeat" required="required"></input>
+						<input class="form-control" type="text" placeholder="password" required="required"></input>
 					</div>
 					<div class="itemprice">
 					<p>電話番号を入力してください</p>
@@ -76,6 +76,6 @@
 	<div th:replace="footer"></div>
 	<script src="/js/demo.js"></script>
 	<script src="/js/particles.min.js"></script>
-	<script src="/js/userupdate.js"></script>
+	<script src="/js/itemcreate.js"></script>
 </body>	
 </html>

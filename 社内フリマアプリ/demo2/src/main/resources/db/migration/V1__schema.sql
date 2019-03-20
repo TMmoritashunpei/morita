@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS items (
 	payment VARCHAR(30), stock INT, purchasecount INT, comments VARCHAR(255),
 	user_id INT(10), category_id INT(10), filename varchar,
 	filename2 varchar,filename3 varchar,filename4 varchar, exhibitcansellflg BOOLEAN,
-	userreviews VARCHAR(255), created_at timestamp not null default current_timestamp,
+	created_at timestamp not null default current_timestamp,
   	updated_at timestamp default current_timestamp
 );
 
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS users (
 	id INT(10) PRIMARY KEY AUTO_INCREMENT,
 	username VARCHAR(30) NOT NULL,
  	password VARCHAR(255), tel VARCHAR(20), mail VARCHAR(50), comments VARCHAR(255), slackname VARCHAR(30), filename varchar,
- 	userreviews VARCHAR(255), created_at timestamp not null default current_timestamp,
+ 	created_at timestamp not null default current_timestamp,
   	updated_at timestamp default current_timestamp
  );
 
@@ -115,15 +115,6 @@ CREATE TABLE IF NOT EXISTS purchases (
 	purchaseflg BOOLEAN,
 	filename VARCHAR(30),
 	item_id INT(10),
-	user_id INT(10),
-	created_at timestamp not null default current_timestamp,
-  	updated_at timestamp default current_timestamp
-); 
-
-CREATE TABLE IF NOT EXISTS messages (
-	id INT(10) PRIMARY KEY AUTO_INCREMENT,
-	message VARCHAR(255),
-	purchase_id INT(10),
 	user_id INT(10),
 	created_at timestamp not null default current_timestamp,
   	updated_at timestamp default current_timestamp

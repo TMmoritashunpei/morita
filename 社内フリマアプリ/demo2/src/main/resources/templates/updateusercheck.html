@@ -28,13 +28,14 @@
 					<img class="item-item-image" th:if="${base64str != null}" th:src="|data:image/jpg;base64,${base64str}|"></img>
 				</div>
 				<div class="item-item-status">
+				<div class="coments-wrapper">
+					<p>メールアドレス:<br></br><span th:text="${userForm.mail}"></span></p>		
+				</div>
 				<div class="item-status-wrapper">
-					<p>メールアドレス:<br></br><span th:text="${userForm.mail}"></span></p>
 					<p>電話番号:&nbsp;&nbsp; <span th:text="${userForm.tel}"></span></p>
 					<p>パスワード:&nbsp;&nbsp;<span th:text="${userForm.password}"></span></p>
+					<p>slackに連携の際はslackに表示されているご自身のアカウントの名前を入れる必要があります。</p>
 					<p>slackname:&nbsp;&nbsp;　<span th:text="${userForm.slackname}"></span></p>
-					<p>&nbsp;&nbsp;&nbsp;&nbsp;slackに連携の際はslackに表示されているご自身のアカウントの名前を入れてください。</p>
-					<p>slackの連携により通知を受け取ることが可能になります。</p>
 					<p>コメント:&nbsp;&nbsp;　<span th:text="${userForm.comments}"></span></p>
 				</div>	
 				</div>
@@ -49,6 +50,6 @@
 	</div>	
 	<script src="/js/demo.js"></script>
 	<script src="/js/particles.min.js"></script>
-	<script src="/js/userupdate.js"></script>
+	<script src="/js/itemcreate.js"></script>
 </body>	
 </html>

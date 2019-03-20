@@ -47,9 +47,9 @@
 						<p>電話番号を入力してください</p>
 						<input class="form-control" type="tel" placeholder="tel" id="tel" th:field="*{tel}" required="required"></input>
 						<p>パスワードを入力してください</p>
-						<input class="form-control" type="password" placeholder="Password" name="password" id="password" th:field="*{password}" required="required"></input>
+						<input class="form-control" type="password" placeholder="Password" id="password" th:field="*{password}" required="required"></input>
 						<p>確認用のパスワードを入力してください</p>
-						<input class="form-control" type="password" placeholder="Password(確認)" name="confirm" oninput="CheckPassword(this)"></input>
+						<input class="form-control" type="password" placeholder="Password(確認)"></input>
 						<p>slackと連携する方はslackアカウントの名前を入れてください</p>
 						<p>登録ボタン先のリンクにてslackの登録が可能です。</p>
 						<input class="form-control" type="text" placeholder="slackname（任意）" id="slackname" th:field="*{slackname}"></input>

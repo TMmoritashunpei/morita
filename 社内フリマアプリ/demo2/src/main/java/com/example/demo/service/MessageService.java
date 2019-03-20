@@ -21,6 +21,10 @@ public class MessageService {
 		return messageRepository.findAllMessage();
 	}
 	
+	public List<Message> findPurchaseMessage(Purchase purchase) {
+		return messageRepository.findPurchaseMessage(purchase);
+	}
+	
 	public List<Message> findPurchaseList(User user) {
 		return messageRepository.findUserMessageList(user);
 	}

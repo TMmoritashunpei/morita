@@ -28,8 +28,9 @@ form {
 	margin-top: 10px;
 	float: left;
 	width: 100%;
-	background-color: white;
+	background-color: #48474c;
 	opacity: 0.9;
+	color: #fcfaf2;
 }
 
 .items {
@@ -67,7 +68,6 @@ form {
 	box-shadow: 0 0 40px gray;
 	transition: all 0.5s;
 	border-radius: 8px;
-	color: white;
 }
 
 .item img:hover {

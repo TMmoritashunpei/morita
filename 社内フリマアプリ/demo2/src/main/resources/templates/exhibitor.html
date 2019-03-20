@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8"></meta>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-	<title>出品者</title>
+	<title>user</title>
 <link rel="stylesheet" type="text/css" href="/css/user.css"></link>
 <link rel="stylesheet" type="text/css" href="/css/responsive.css"></link>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"></link>
@@ -26,13 +26,13 @@
 				<div class="item-status-wrapper">
 					<p>User Name：<span th:text="${item.user.username}"></span></p>
 					<p>mail：<span th:text="${item.user.mail}"></span></p>
-					<button class="button2" onclick="location.href='#'"><span>お気に入り</span></button>
+					<p><a href="/techma">お気に入り&nbsp;&nbsp;</a></p>
 				</div>
 				<div class="coments-wrapper">
 					<p>coments：<br></br><span th:text="${item.user.comments}"></span></p>
 				</div>
 			</div>
-		<div><button class="cp_button04" onclick="location.href='javascript:history.back()'"><span>前のページへ</span></button></div>
+		<button class="cp_button04" onclick="location.href='javascript:history.back()'"><span>前のページへ</span></button>
 		</div>
 		</div>	
 	<!--footer.htmlの情報を読み込む-->

@@ -1,7 +1,7 @@
 body {
 	margin: 0;
 	font-family: "Hiragino Kaku Gothic Prow";
-	background-color: #F3F2F0;
+	background-color: #FFFDE9;
 }
 
 .container {
@@ -45,11 +45,9 @@ body {
 	width: 23%;
 	margin: 5px;
 	height: 250px;
-	background-color: white;
+	background-color: rgba(185, 220, 245, 0.4);
 	transition: all 0.5s;
 	border-radius: 8px;
-	border: solid 1px #b2b2b2;
-	opacity: 0.8;
 }
 
 #pic-submit {
@@ -75,11 +73,9 @@ ul {
 	width :60%;
 	text-align: center;
 	font-size: 10px;
-	background-color: white;
+	background-color: rgba(185, 220, 245, 0.4);
 	transition: all 0.5s;
 	border-radius: 8px;
-	border: solid 1px #b2b2b2;
-	opacity: 0.8;
 }
 
 .category-select {
@@ -183,7 +179,7 @@ img {
 }
 
 .contains-form:hover {
-	background-color: rgba(245, 235, 205, 0.2);
+	background-color: rgba(235, 235, 255, 0.7);
 	box-shadow: 0 0 40px gray;
 	transition: all 0.5s;
 	border-radius: 8px;
@@ -191,11 +187,11 @@ img {
 }
 
 .gototop:hover {
-	background-color: rgba(235, 235, 255, 0.7);
+	background-color: rgba(150, 100, 100, 0.6);
 }
 
 .pic-item:hover {
-	background-color: rgba(245, 235, 205, 0.2);
+	background-color: rgba(155, 155, 250, 0.7);
 	box-shadow: 0 0 40px gray;
 	transition: all 0.5s;
 	border-radius: 8px;
@@ -239,7 +235,7 @@ input, select, textarea {
 }
 
 .background {
-  background-color: #fafafa;
+  background-color: rgba(25, 80, 245, 0.9);
   position: absolute;
   top: 0;
   left: 0;

@@ -49,8 +49,6 @@ input {
 	margin:5px;
 	background-color: white;
 	cursor: pointer !important;
-	border: solid 1px #b2b2b2;
-	border-radius: 8px;
 }
 
 .items {

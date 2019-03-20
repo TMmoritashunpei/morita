@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>商品検索</title>
+	<meta charset="utf-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+	<title>購入者一覧</title>
+<link rel="stylesheet" type="text/css" href="/css/purchases.css"></link>
+<link rel="stylesheet" type="text/css" href="/css/responsive.css"></link>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"></link>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<canvas class="background"></canvas>
+	<!--header.htmlの情報を読み込む-->
+	<div th:replace="header"></div>
+	<div class="item-serch-list">
+		<h1>購入者一覧</h1>
+		<div class="items">
+			<div class="item" th:each="purchase : ${purchases}">
+			<a th:href="@{/techmatop/techma/purchasemessage(purchaseId=${purchase.purchaseId})}">
+				<img class="item-image" th:if="${purchase.user.filename == null}" src="/image/No_Image_Available.jpg"></img>
+				<img class="item-image" th:if="${purchase.user.filename != null}" th:src="|data:image/jpg;base64,${purchase.user.filename}|"></img>
+				<div class="status">
+					<p>購入者:&nbsp;&nbsp;<span th:text="${purchase.user.username}"></span></p>
+				</div>
+			</a>
+			</div>
+		</div>				
+	</div>
+	<div class="btn">
+		<button class="cp_button04" onclick="location.href='javascript:history.back()'"><span>前のページへ</span></button>
+		<button class="cp_button04" onclick="location.href='/techmatop/techma'"><span>TOP</span></button>
+	</div>
+	<div class="footer">
+	<div th:replace="footer"></div>
+	</div>
+	<script src="/js/demo.js"></script>
+	<script src="/js/particles.min.js"></script>
+	<script src="/js/itemserch.js"></script>
+</body>	
+</html>
