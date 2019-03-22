@@ -102,29 +102,42 @@ public class MessageController {
 	return new MessageForm();
 	}
 	@RequestMapping("techma/purchasemessage{purchaseId}")
-	public String purchaseMessage(Model model, @RequestParam Integer purchaseId, MessageForm messageForm, @AuthenticationPrincipal LoginUserDetails userDatails) {
+	public String purchaseMessage(Model model, @RequestParam Integer purchaseId, MessageForm messageForm, @AuthenticationPrincipal LoginUserDetails userDatails, SessionStatus sessionStatus) {
 		Purchase purchase = purchaseService.findOne(purchaseId);
 		model.addAttribute("purchase", purchase);
 		List<Message> messages = messageService.findPurchaseMessage(purchase);
 		model.addAttribute("messages", messages);
 		model.addAttribute("usercheck", userDatails.getUser().getId());
+		sessionStatus.setComplete();
 		return "message";
 	}
 	@RequestMapping("techma/messagesubmit{purchaseId}") 
 	public String messageSubmit(@Validated MessageForm messageForm, Model model,
-			@AuthenticationPrincipal LoginUserDetails userDatails, @RequestParam("purchaseId")Integer purchaseId) {
+		@AuthenticationPrincipal LoginUserDetails userDatails, @RequestParam("purchaseId")Integer purchaseId, SessionStatus sessionStatus) {
 		Purchase purchase = purchaseService.findOne(purchaseId);
 		model.addAttribute("purchase", purchase);
 		Message message  = new Message();
 		BeanUtils.copyProperties(messageForm, message);
 		messageService.create(purchase, userDatails.getUser(), message);
-		return purchaseMessage(model, purchaseId, messageForm, userDatails);
+		sessionStatus.setComplete();
+		return purchaseMessage(model, purchaseId, messageForm, userDatails, sessionStatus);
 	}
 	@RequestMapping("techma/messagedelete{messageId}")
-	public String messageDelete(@RequestParam("messageId") Integer messageId, Model model, MessageForm messageForm, @AuthenticationPrincipal LoginUserDetails userDatails) {
+	public String messageDelete(@RequestParam("messageId") Integer messageId, Model model, MessageForm messageForm, @AuthenticationPrincipal LoginUserDetails userDatails,  SessionStatus sessionStatus) {
 		Message message = messageService.findOne(messageId);
 		Integer purchaseId = message.getPurchase().getPurchaseId();
 		messageService.dalete(messageId);
-		return purchaseMessage(model, purchaseId, messageForm, userDatails);
+		sessionStatus.setComplete();
+		return purchaseMessage(model, purchaseId, messageForm, userDatails, sessionStatus);
+	}
+	@RequestMapping("techma/messageupdate{messageId}")
+	public String messageUpdate(@RequestParam("messageId") Integer messageId, MessageForm messageForm, @AuthenticationPrincipal LoginUserDetails userDatails,Model model, SessionStatus sessionStatus) {
+		Message message = messageService.findOne(messageId);
+		Integer purchaseId = message.getPurchase().getPurchaseId();
+		Purchase purchase = message.getPurchase();
+		message.setMessage(messageForm.getMessage());
+		messageService.update(purchase, userDatails.getUser(), message);
+		sessionStatus.setComplete();
+		return purchaseMessage(model, purchaseId, messageForm,userDatails, sessionStatus);
 	}
 }

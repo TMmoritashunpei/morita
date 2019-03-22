@@ -37,7 +37,23 @@ textarea {
 	margin-left: 10px;
 }
 
-.textarea {
+.button {
+	width: 100%;
+}
+
+.button button{
+	float: right;
+}
+
+.comment button {
+	float: right;
+}
+
+.messagechenge {
+	margin-bottom: 60px;	
+}
+
+.textarea, .botton textarea{
 	display:inline-block;
 	text-align: center;
 }

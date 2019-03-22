@@ -24,20 +24,20 @@
 				<div class="comment" th:each="message : ${messages}">
 				<span th:text="${#dates.format(message.created_at, 'yyyy/MM/dd HH:mm:ss')}"></span>
 				<div th:text="${message.user.username}"></div>
-				<div th:text="${message.message}"></div>
-				
-					<textarea th:if="${message.user.id == usercheck}" class="messagechenge"></textarea>
-					<ui><div class="button">
-						<li><button th:if="${message.user.id == usercheck}" class="showbtn" type="button"><span>編集</span></button></li>
-						<li><a th:if="${message.user.id == usercheck}" th:href="@{/techmatop/techma/messagedelete(messageId=${message.messageId})}"><button class="" type="submit"><span>削除</span></button></a></li>
-					</div></ui>
-				<form th:action="@{/techmatop/techma/messagesubmit(purchaseId=${purchase.purchaseId})}" method="post" th:object="${messageForm}">
-					<div class="messagechenge"><button th:if="${message.user.id == usercheck}" type="button"><span>保存</span></button></div>
-				</form>				
+				<div class="mainmessage" th:text="${message.message}"></div>
+				<a th:if="${message.user.id == usercheck}" th:href="@{/techmatop/techma/messagedelete(messageId=${message.messageId})}"><button class="" type="submit"><span>削除</span></button></a>	
+					<form th:object="${messageForm}" th:action="@{/techmatop/techma/messageupdate(messageId=${message.messageId})}" method="post">
+					<div class="button">
+						<button th:if="${message.user.id == usercheck}" class="showbtn" id="hide" type="button"><span>編集</span></button>					
+						<textarea neme="message" th:field="*{message}" th:text="${message.message}" th:if="${message.user.id == usercheck}" class="messagechenge" maxlength="255"></textarea>
+						<input type="hidden" name="purchaseId" th:value="${purchase.purchaseId}"></input>
+						<div class="messagechenge" th:if="${message.user.id == usercheck}"><a th:href="@{/techmatop/techma/messageupdate(messageId=${message.messageId})}"><button type="submit"><span>保存</span></button></a></div>
+					</div>
+					</form>			
 				</div>
-				<form th:action="@{/techmatop/techma/messagesubmit(purchaseId=${purchase.purchaseId})}" method="post" th:object="${messageForm}">
+				<form class="clearForm" th:action="@{/techmatop/techma/messagesubmit(purchaseId=${purchase.purchaseId})}" method="post" th:object="${messageForm}">
 				<div class="texteria">
-				<textarea class="form-control" th:field="*{message}" required="required"></textarea>
+				<textarea class="form-control" th:field="*{message}" required="required" maxlength="255"></textarea>
 				</div>
 				<input type="hidden" name="purchaseId" th:value="${purchase.purchaseId}"></input>
 				<button class="cp_button04" type="submit"><span>送信</span></button>
@@ -50,6 +50,8 @@
 	<div class="btn">
 		<button class="cp_button04" onclick="location.href='/techmatop/techma/user/'"><span>マイページ</span></button>
 		<button class="cp_button04" onclick="location.href='/techmatop/techma'"><span>TOP</span></button>
+		<button class="cp_button04" onclick="location.href='/techmatop/techma/user/exhibitindex/'"><span>出品履歴</span></button>	
+		<button class="cp_button04" onclick="location.href='/techmatop/techma/user/purchaseindex/'"><span>購入履歴</span></button>	
 	</div>
 	<div class="footer">
 	<div th:replace="footer"></div>

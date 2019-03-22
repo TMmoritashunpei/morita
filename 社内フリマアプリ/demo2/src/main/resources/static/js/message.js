@@ -7,18 +7,25 @@ var particles = Particles.init({
 
 $(function() {
     $('.comment').mouseover(function(){
-        $('ui',this).show();
+        $('.button',this).show();
     });    
 });
 
 $(function() {
     $('.comment').mouseout(function(){
-        $('ui',this).hide();
+        $('.button',this).hide();
     });    
 });
 
 $(function() {
-    $('.showbtn').click(function(){
-        $('.messagechenge').show();
+    $('.button,#hide').click(function(){
+        $(this).children().show();
+        $(this).children('.showbtn').hide();
+    });    
+});
+
+$(function() {
+    $('#cansel').click(function(){
+        $(this).hide();
     });    
 });
